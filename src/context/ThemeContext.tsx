@@ -5,6 +5,7 @@ import {
   useMemo,
   useReducer,
   Dispatch,
+  useCallback,
 } from "react";
 import { ThemeProvider as MuiThemeProvider } from "@mui/material/styles";
 // import { useMediaQuery } from "@mui/material";
@@ -71,4 +72,16 @@ function useThemeDispatch() {
   return context;
 }
 
-export { ThemeProvider, useThemeDispatch };
+function useChangeTheme() {
+  const dispatch = useContext(ThemeDispatchContext);
+  if (dispatch === undefined) {
+    throw new Error("ThemeDispatchContext must be used within a ThemeProvides");
+  }
+  return useCallback(
+    (mode: "light" | "dark") =>
+      dispatch({ type: "SET_MODE", payload: { paletteMode: mode } }),
+    [dispatch]
+  );
+}
+
+export { ThemeProvider, useThemeDispatch, useChangeTheme };
