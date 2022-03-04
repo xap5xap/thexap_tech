@@ -19,7 +19,18 @@ export default class MyDocument extends Document {
             content={getMetaThemeColor("dark")}
             media="(prefers-color-scheme: dark)"
           />
-          <link rel="icon" href="/favicon.ico" />
+          <link rel="shortcut icon" href="/static/favicon.ico" />
+          {/* iOS Icon */}
+          <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="/static/icons/180x180.png"
+          />
+          {/* SEO */}
+          <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap"
+            rel="stylesheet"
+          />
         </Head>
         <body>
           <Main />

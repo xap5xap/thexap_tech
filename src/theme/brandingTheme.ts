@@ -34,60 +34,53 @@ declare module "@mui/material/styles/createTypography" {
   }
 }
 
-// TODO: enable this once types conflict is fixed
-// declare module '@mui/material/Button' {
-//   interface ButtonPropsVariantOverrides {
-//     code: true;
-//   }
-// }
-
 const defaultTheme = createTheme();
 
-const blue = {
-  50: "#F0F7FF",
-  100: "#C2E0FF",
-  200: "#99CCF3",
-  300: "#66B2FF",
-  400: "#3399FF",
-  main: "#007FFF",
-  500: "#007FFF",
-  600: "#0072E5", // vs blueDark 900: WCAG 4.6 AAA (large), APCA 36 Not for reading text
-  700: "#0059B2",
-  800: "#004C99",
-  900: "#003A75",
+export const orange = {
+  50: "#fef4e7",
+  100: "#fde9ce",
+  200: "#fbd29d",
+  300: "#f9bc6c",
+  400: "#f7a63b",
+  main: "#f59415",
+  500: "#f59415",
+  600: "#c47308", // vs blueDark 900: WCAG 4.6 AAA (large), APCA 36 Not for reading text
+  700: "#935606",
+  800: "#623904",
+  900: "#311d02",
 };
-export const blueDark = {
-  50: "#E2EDF8",
-  100: "#CEE0F3",
-  200: "#91B9E3",
-  300: "#5090D3",
-  main: "#5090D3",
-  400: "#265D97",
-  500: "#1E4976",
-  600: "#173A5E",
-  700: "#132F4C", // contrast 13.64:1
-  800: "#001E3C",
-  900: "#0A1929",
+
+export const greyDark = {
+  50: "#999999",
+  100: "#808080",
+  200: "#666666",
+  300: "#4d4d4d",
+  main: "#4d4d4d",
+  400: "#404040",
+  500: "#333333",
+  600: "#262626",
+  700: "#232323",
+  800: "#1a1a1a",
+  900: "#0d0d0d",
 };
 const grey = {
   50: "#F3F6F9",
   100: "#E7EBF0",
   200: "#E0E3E7",
-  300: "#CDD2D7", // vs blueDark 900: WCAG 11.6 AAA, APCA 78 Best for text
-  400: "#B2BAC2", // vs blueDark 900: WCAG 9 AAA, APCA 63.3 Ok for text
-  500: "#A0AAB4", // vs blueDark 900: WCAG 7.5 AAA, APCA 54.3 Only for large text
-  600: "#6F7E8C", // vs white bg: WCAG 4.1 AA, APCA 68.7 Ok for text
-  700: "#3E5060", // vs white bg: WCAG 8.3 AAA, APCA 88.7 Best for text
-  800: "#2D3843", // vs white bg: WCAG 11.9 AAA, APCA 97.3 Best for text
+  300: "#CDD2D7",
+  400: "#B2BAC2",
+  500: "#A0AAB4",
+  600: "#6F7E8C",
+  700: "#3E5060",
+  800: "#2D3843",
   900: "#1A2027",
 };
-// context on the Advanced Perceptual Contrast Algorithm (APCA) used above here: https://github.com/w3c/wcag/issues/695
 
 const systemFont = [
+  "Roboto",
   "-apple-system",
   "BlinkMacSystemFont",
   '"Segoe UI"',
-  "Roboto",
   '"Helvetica Neue"',
   "Arial",
   "sans-serif",
@@ -99,7 +92,7 @@ const systemFont = [
 export const getMetaThemeColor = (mode: "light" | "dark") => {
   const themeColor = {
     light: grey[50],
-    dark: blueDark[800],
+    dark: greyDark[700],
   };
   return themeColor[mode];
 };
@@ -108,18 +101,18 @@ export const getDesignTokens = (mode: "light" | "dark") =>
   ({
     palette: {
       primary: {
-        ...blue,
+        ...orange,
         ...(mode === "dark" && {
-          main: blue[400],
+          main: orange[500],
         }),
       },
-      divider: mode === "dark" ? alpha(blue[100], 0.08) : grey[100],
-      primaryDark: blueDark,
+      divider: mode === "dark" ? alpha(orange[100], 0.08) : grey[100],
+      primaryDark: greyDark,
       mode,
       ...(mode === "dark" && {
         background: {
-          default: blueDark[800],
-          paper: blueDark[900],
+          default: greyDark[700],
+          paper: greyDark[800],
         },
       }),
       common: {
@@ -188,54 +181,38 @@ export const getDesignTokens = (mode: "light" | "dark") =>
     },
     spacing: 10,
     typography: {
-      fontFamily: ['"IBM Plex Sans"', ...systemFont].join(","),
-      fontFamilyCode: [
-        "Consolas",
-        "Menlo",
-        "Monaco",
-        "Andale Mono",
-        "Ubuntu Mono",
-        "monospace",
-      ].join(","),
-      fontFamilyTagline: ['"PlusJakartaSans-ExtraBold"', ...systemFont].join(
-        ","
-      ),
+      fontFamily: [...systemFont].join(","),
       fontFamilySystem: systemFont.join(","),
       fontWeightExtraBold: 800,
       h1: {
-        fontFamily: ['"PlusJakartaSans-ExtraBold"', ...systemFont].join(","),
         fontSize: "clamp(2.625rem, 1.2857rem + 3.5714vw, 4rem)",
         fontWeight: 800,
         lineHeight: 78 / 70,
         ...(mode === "light" && {
-          color: blueDark[900],
+          color: greyDark[900],
         }),
       },
       h2: {
-        fontFamily: ['"PlusJakartaSans-ExtraBold"', ...systemFont].join(","),
         fontSize: "clamp(1.5rem, 0.9643rem + 1.4286vw, 2.25rem)",
         fontWeight: 800,
         lineHeight: 44 / 36,
-        color: mode === "dark" ? grey[100] : blueDark[700],
+        color: mode === "dark" ? grey[100] : greyDark[500],
       },
       h3: {
-        fontFamily: ['"PlusJakartaSans-Bold"', ...systemFont].join(","),
         fontSize: defaultTheme.typography.pxToRem(36),
         lineHeight: 44 / 36,
         letterSpacing: 0.2,
       },
       h4: {
-        fontFamily: ['"PlusJakartaSans-Bold"', ...systemFont].join(","),
         fontSize: defaultTheme.typography.pxToRem(28),
         lineHeight: 42 / 28,
         letterSpacing: 0.2,
       },
       h5: {
-        fontFamily: ['"PlusJakartaSans-Bold"', ...systemFont].join(","),
         fontSize: defaultTheme.typography.pxToRem(24),
         lineHeight: 36 / 24,
         letterSpacing: 0.1,
-        color: mode === "dark" ? blue[300] : blue.main,
+        color: mode === "dark" ? orange[300] : orange.main,
       },
       h6: {
         fontSize: defaultTheme.typography.pxToRem(20),
@@ -283,6 +260,7 @@ export function getThemedComponents(theme: Theme) {
       MuiButton: {
         defaultProps: {
           disableElevation: true,
+          variant: "contained",
         },
         styleOverrides: {
           sizeLarge: {
