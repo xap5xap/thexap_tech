@@ -1,8 +1,9 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import { Box } from "@mui/material";
+import { Box, Container } from "@mui/material";
 import Hero from "../src/components/Hero";
 import AppHeader from "../src/components/AppHeader";
+import WhatYouGetSection from "../src/components/WhatYouGetSection";
 
 const Home: NextPage = () => {
   return (
@@ -14,7 +15,9 @@ const Home: NextPage = () => {
       </Head>
       <AppHeader></AppHeader>
       <Hero />
-      <Box sx={{ height: "400px", width: "100%" }}>bla</Box>
+      <Container sx={{ my: 4 }}>
+        <WhatYouGetSection />
+      </Container>
     </Box>
   );
 };

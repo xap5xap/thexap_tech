@@ -12,7 +12,7 @@ const Hero = () => {
         justifyContent: "flex-end",
         alignItems: "center",
         flex: 1,
-        height: "calc(100vh - 5rem)",
+        height: "calc(100vh - 150px)",
       }}
     >
       <Image
