@@ -15,6 +15,7 @@ import GithubIcon from "@mui/icons-material/GitHub";
 import ThemeModeToggle from "./ThemeModeToggle";
 import { useChangeTheme } from "../context/ThemeContext";
 import { useTheme } from "@mui/material/styles";
+import { greyDark } from "../theme/brandingTheme";
 
 const Header = styled("header")(({ theme }) => ({
   position: "sticky",
@@ -29,7 +30,7 @@ const Header = styled("header")(({ theme }) => ({
   }`,
   backgroundColor:
     theme.palette.mode === "dark"
-      ? alpha(theme.palette.primaryDark[900], 0.72)
+      ? alpha(greyDark[900], 0.72)
       : "rgba(255,255,255,0.72)",
 }));
 
