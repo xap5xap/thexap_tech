@@ -1,16 +1,15 @@
-import { Box, Container, Typography } from "@mui/material";
+import { Box, Container } from "@mui/material";
 import { greyDark } from "../theme/brandingTheme";
 import DevelopmentProcessImage from "./DevelopmentProcessImage";
+import SectionTitle from "./SectionTitle";
 
 const DevelopmentProcessSection = () => {
   return (
     <Box component="section" sx={{ backgroundColor: greyDark[400], py: 5 }}>
-      <Typography textAlign="center" variant="h3">
-        What you get
-      </Typography>
-      <Typography textAlign="center" sx={{ mt: 2 }}>
-        This process will guarantee the best quality of your app
-      </Typography>
+      <SectionTitle
+        title="What you get"
+        subTitle="This process will guarantee the best quality of your app"
+      />
       <Container sx={{ mt: 5 }}>
         <DevelopmentProcessImage></DevelopmentProcessImage>
       </Container>

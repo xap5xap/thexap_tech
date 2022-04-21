@@ -5,6 +5,7 @@ import Hero from "../src/components/Hero";
 import AppHeader from "../src/components/AppHeader";
 import AppFooter from "../src/components/AppFooter";
 import DevelopmentProcessSection from "../src/components/DevelopmentProcessSection";
+import KnowMeSection from "../src/components/KnowMeSection";
 
 const Home: NextPage = () => {
   return (
@@ -19,6 +20,7 @@ const Home: NextPage = () => {
         <Hero />
         {/* <WhatYouGetSection /> */}
         <DevelopmentProcessSection></DevelopmentProcessSection>
+        <KnowMeSection />
       </main>
       <AppFooter />
     </Box>

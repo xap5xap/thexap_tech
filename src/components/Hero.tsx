@@ -47,7 +47,12 @@ const Hero = () => {
         >
           I help you migrate your React app to NextJS
         </Typography>
-        <Button sx={{ mt: 2 }}>Contact me</Button>
+        <Button
+          sx={{ mt: 2 }}
+          href="https://www.upwork.com/freelancers/xavierperez"
+        >
+          Contact me
+        </Button>
       </Box>
     </Box>
   );

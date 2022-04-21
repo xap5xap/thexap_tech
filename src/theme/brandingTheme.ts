@@ -191,7 +191,7 @@ export const getDesignTokens = (mode: "light" | "dark") =>
       },
     },
     shape: {
-      borderRadius: 10,
+      borderRadius: 16,
     },
     spacing: 10,
     typography: {

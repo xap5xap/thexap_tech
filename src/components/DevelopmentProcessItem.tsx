@@ -17,7 +17,7 @@ const DevelopmentProcessItem: FC<Props> = ({ imageSrc, text }) => {
       }}
     >
       <Image src={imageSrc} alt={text} width={200} height={200}></Image>
-      <Typography fontWeight="bold" color="primary">
+      <Typography fontWeight="bold" color="primary" sx={{ mt: 1 }}>
         {text}
       </Typography>
     </Box>
