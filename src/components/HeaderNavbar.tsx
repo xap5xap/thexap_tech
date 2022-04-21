@@ -1,12 +1,12 @@
-import { Box, Button } from "@mui/material";
-import Link from "next/link";
-import ROUTES from "../route";
+import { Box } from "@mui/material";
+// import Link from "next/link";
+// import ROUTES from "../route";
 
 const HeaderNavbar = () => {
   return (
     <Box component="nav">
       <Box component={"ul"} role="menubar">
-        <Link href={ROUTES.portfolio} passHref>
+        {/* <Link href={ROUTES.portfolio} passHref>
           <Button
             LinkComponent={"li"}
             variant="text"
@@ -30,7 +30,7 @@ const HeaderNavbar = () => {
           >
             Blog
           </Button>
-        </Link>
+        </Link> */}
       </Box>
     </Box>
   );
