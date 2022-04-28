@@ -4,7 +4,7 @@ import DevelopmentProcessItem from "./DevelopmentProcessItem";
 
 const DevelopmentProcessImage = () => {
   return (
-    <Grid container spacing={2}>
+    <Grid container spacing={2} mt={3}>
       <Grid item xs={4} sx={{ position: "relative" }}>
         <Box
           sx={{

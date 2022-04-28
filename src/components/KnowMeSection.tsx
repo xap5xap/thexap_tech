@@ -5,12 +5,20 @@ import SectionTitle from "./SectionTitle";
 const KnowMeSection = () => {
   return (
     <Box component="section" sx={{ py: 5 }}>
-      <SectionTitle
-        title="Know me"
-        subTitle="Let’s talk about your project to see how I can help you."
-      />
-      <Container sx={{ mt: 5 }}>
-        <Box sx={{ display: "flex", justifyContent: "space-between", my: 5 }}>
+      <Container>
+        <SectionTitle
+          title="Know me"
+          subTitle="Let’s talk about your project to see how I can help you."
+        />
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: { xs: "column", md: "row" },
+            justifyContent: "space-between",
+            my: 5,
+            rowGap: 2,
+          }}
+        >
           <KnowMeItem primaryText="26" secondaryText="Projects completed" />
           <KnowMeItem primaryText="8000+" secondaryText="Worked hours" />
           <KnowMeItem primaryText="100%" secondaryText="Job Success" />
