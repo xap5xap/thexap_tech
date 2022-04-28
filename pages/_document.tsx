@@ -4,6 +4,8 @@ import createEmotionCache from "../src/theme/createEmotionCache";
 import createEmotionServer from "@emotion/server/create-instance";
 import React from "react";
 
+const GOOGLE_ANALYTICS_ID = "UA-138074150-1";
+
 export default class MyDocument extends Document {
   render() {
     return (
@@ -34,6 +36,15 @@ export default class MyDocument extends Document {
         </Head>
         <body>
           <Main />
+          <script
+            // eslint-disable-next-line react/no-danger
+            dangerouslySetInnerHTML={{
+              __html: `
+                window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+                window.ga('create','${GOOGLE_ANALYTICS_ID}');
+              `,
+            }}
+          />
           <NextScript />
         </body>
       </Html>
@@ -43,9 +54,6 @@ export default class MyDocument extends Document {
 
 MyDocument.getInitialProps = async (ctx) => {
   const originalRenderPage = ctx.renderPage;
-
-  // You can consider sharing the same emotion cache between all the SSR requests to speed up performance.
-  // However, be aware that it can have global side effects.
   const cache = createEmotionCache();
   const { extractCriticalToChunks } = createEmotionServer(cache);
 

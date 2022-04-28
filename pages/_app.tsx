@@ -5,6 +5,7 @@ import createEmotionCache from "../src/theme/createEmotionCache";
 import Head from "next/head";
 import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeProvider } from "../src/context/ThemeContext";
+import GoogleAnalytics from "../src/lib/GoogleAnalytics";
 
 const clientSideEmotionCache = createEmotionCache();
 
@@ -18,6 +19,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <ThemeProvider>
           <CssBaseline></CssBaseline>
           <Component {...pageProps} />
+          <GoogleAnalytics />
         </ThemeProvider>
       </CacheProvider>
     </>

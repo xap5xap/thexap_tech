@@ -5,7 +5,7 @@ import DevelopmentProcessItem from "./DevelopmentProcessItem";
 const DevelopmentProcessImage = () => {
   return (
     <Grid container spacing={2}>
-      <Grid xs={4} sx={{ position: "relative" }}>
+      <Grid item xs={4} sx={{ position: "relative" }}>
         <Box
           sx={{
             transform: "rotate(34deg)",
@@ -22,13 +22,13 @@ const DevelopmentProcessImage = () => {
           ></Image>
         </Box>
       </Grid>
-      <Grid xs={4}>
+      <Grid item xs={4}>
         <DevelopmentProcessItem
           imageSrc="/images/testsJest.svg"
           text="Jest Unit Tests"
         />
       </Grid>
-      <Grid xs={4} sx={{ position: "relative" }}>
+      <Grid item xs={4} sx={{ position: "relative" }}>
         <Box
           sx={{
             transform: "rotate(125deg)",
@@ -45,20 +45,20 @@ const DevelopmentProcessImage = () => {
           ></Image>
         </Box>
       </Grid>
-      <Grid xs={6}>
+      <Grid item xs={6}>
         <DevelopmentProcessItem
           imageSrc="/images/e2e.svg"
           text="Cypress e2e Tests"
         />
       </Grid>
-      <Grid xs={6}>
+      <Grid item xs={6}>
         <DevelopmentProcessItem
           imageSrc="/images/development.svg"
           text="React - NextJS Development"
         />
       </Grid>
-      <Grid xs={4} sx={{ height: "100px" }}></Grid>
-      <Grid xs={4} sx={{ position: "relative" }}>
+      <Grid item xs={4} sx={{ height: "100px" }}></Grid>
+      <Grid item xs={4} sx={{ position: "relative" }}>
         <Box
           sx={{
             transform: "rotate(255deg)",

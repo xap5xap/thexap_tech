@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import { Box, Container } from "@mui/material";
+import { Box } from "@mui/material";
 import Hero from "../src/components/Hero";
 import AppHeader from "../src/components/AppHeader";
 import AppFooter from "../src/components/AppFooter";
@@ -11,7 +11,7 @@ const Home: NextPage = () => {
   return (
     <Box>
       <Head>
-        <title>theXap</title>
+        <title>thexap</title>
         <meta name="I help you build beautiful React websites, mobile apps and NodeJS backends" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
