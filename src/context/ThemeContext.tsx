@@ -1,4 +1,4 @@
-import {
+import React, {
   createContext,
   FC,
   useContext,
@@ -18,7 +18,10 @@ const ThemeDispatchContext = createContext<
   Dispatch<DispatchThemeAction> | undefined
 >(undefined);
 
-const ThemeProvider: FC = ({ children }) => {
+type Props = {
+  children: React.ReactNode;
+};
+const ThemeProvider: FC<Props> = ({ children }) => {
   const prefersDarkMode = true;
   //   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
   const preferredMode = prefersDarkMode ? "dark" : "light";
