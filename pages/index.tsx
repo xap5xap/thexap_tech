@@ -11,7 +11,7 @@ const Home: NextPage = () => {
   return (
     <Box>
       <Head>
-        <title>thexap</title>
+        <title>thexap2</title>
         <meta name="I help you build beautiful React websites, mobile apps and NodeJS backends" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
