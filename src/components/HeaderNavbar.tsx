@@ -1,6 +1,7 @@
-import { Box } from "@mui/material";
 // import Link from "next/link";
 // import ROUTES from "../route";
+
+import Box from "@mui/material/Box";
 
 const HeaderNavbar = () => {
   return (

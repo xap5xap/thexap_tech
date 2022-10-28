@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useRouter } from "next/router";
-import { useMediaQuery } from "@mui/material";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 function loadScript(src, position) {
   const script = document.createElement("script");

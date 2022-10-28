@@ -1,8 +1,10 @@
-import { Container, Typography, Box } from "@mui/material";
 import Stake from "./Stake";
 import ScheduleIcon from "@mui/icons-material/Schedule";
 import MoneyOffIcon from "@mui/icons-material/MoneyOff";
 import BugReportIcon from "@mui/icons-material/BugReport";
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
+import Typography from "@mui/material/Typography";
 
 const stakesData = [
   {

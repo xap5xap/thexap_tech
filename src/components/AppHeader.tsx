@@ -1,4 +1,8 @@
-import { Box, Button, Container, Link, Stack } from "@mui/material";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Container from "@mui/material/Container";
+import Link from "@mui/material/Link";
+import Stack from "@mui/material/Stack";
 import { styled } from "@mui/material/styles";
 import Image from "next/image";
 import NextLink from "next/link";

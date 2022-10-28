@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import { Box } from "@mui/material";
+import Box from "@mui/material/Box";
 import Hero from "../src/components/Hero";
 import AppHeader from "../src/components/AppHeader";
 import AppFooter from "../src/components/AppFooter";

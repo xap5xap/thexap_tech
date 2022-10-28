@@ -1,5 +1,4 @@
-import ScheduleIcon from "@mui/icons-material/Schedule";
-import { Stack } from "@mui/material";
+import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import { FC } from "react";
 

@@ -1,7 +1,8 @@
-import { IconButton, Tooltip } from "@mui/material";
 import { FC } from "react";
 import DarkModeOutlined from "@mui/icons-material/DarkModeOutlined";
 import LightModeOutlined from "@mui/icons-material/LightModeOutlined";
+import Tooltip from "@mui/material/Tooltip";
+import IconButton from "@mui/material/IconButton";
 
 type Props = {
   checked: boolean;
