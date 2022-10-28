@@ -31,7 +31,7 @@ const planData = [
     description: [
       "Deploy the app quickly and constantly to get feedback fast",
       "Give your users value",
-      "Start generating profit fast",
+      "Generate profit fast",
     ],
   },
 ];

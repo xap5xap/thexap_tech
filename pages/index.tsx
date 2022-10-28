@@ -7,6 +7,8 @@ import AppFooter from "../src/components/AppFooter";
 import StakesSection from "../src/components/StakesSection";
 import ValuesSection from "../src/components/ValuesSection";
 import GuideSection from "../src/components/GuideSection";
+import PlanSection from "../src/components/PlanSection";
+import HireLaunchSection from "../src/components/HireLaunchSection";
 
 const Home: NextPage = () => {
   return (
@@ -22,6 +24,8 @@ const Home: NextPage = () => {
         <StakesSection />
         <ValuesSection />
         <GuideSection />
+        <PlanSection />
+        <HireLaunchSection />
       </main>
       <AppFooter />
     </Box>

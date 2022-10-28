@@ -5,10 +5,12 @@ import {
   IconButton,
   Stack,
   Typography,
+  Link,
 } from "@mui/material";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import NextLink from "next/link";
 
 const AppFooter = () => {
   return (
@@ -23,9 +25,13 @@ const AppFooter = () => {
             justifyContent: { sm: "space-between" },
           }}
         >
-          <Typography color="text.secondary" variant="body2">
-            Copyright © {new Date().getFullYear()} thexap.tech
-          </Typography>
+          <NextLink passHref href="/about-me">
+            <Link>
+              <Typography color="text.secondary" variant="body2">
+                Xavier Perez
+              </Typography>
+            </Link>
+          </NextLink>
           <Box sx={{ py: { xs: 2, sm: 0 } }}>
             <Stack spacing={2} direction="row">
               <IconButton
