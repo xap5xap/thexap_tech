@@ -6,6 +6,7 @@ import AppHeader from "../src/components/AppHeader";
 import AppFooter from "../src/components/AppFooter";
 import StakesSection from "../src/components/StakesSection";
 import ValuesSection from "../src/components/ValuesSection";
+import GuideSection from "../src/components/GuideSection";
 
 const Home: NextPage = () => {
   return (
@@ -20,7 +21,7 @@ const Home: NextPage = () => {
         <Hero />
         <StakesSection />
         <ValuesSection />
-        {/* <KnowMeSection /> */}
+        <GuideSection />
       </main>
       <AppFooter />
     </Box>

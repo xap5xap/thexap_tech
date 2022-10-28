@@ -31,7 +31,10 @@ const valueData = [
 ];
 const ValuesSection = () => {
   return (
-    <Box component="section" sx={{ paddingY: 9, backgroundColor: "#303136" }}>
+    <Box
+      component="section"
+      sx={{ paddingY: 9, backgroundColor: "background.paper" }}
+    >
       <Container
         sx={{
           display: "flex",
