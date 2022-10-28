@@ -7,8 +7,9 @@ type Props = {
   title: string;
   description: string[];
   icon: any;
+  color?: string;
 };
-const Stake: FC<Props> = ({ title, description, icon }) => {
+const Stake: FC<Props> = ({ title, description, icon, color = "inherit" }) => {
   return (
     <Stack
       alignItems="center"
@@ -16,7 +17,9 @@ const Stake: FC<Props> = ({ title, description, icon }) => {
       sx={{ maxWidth: { sm: "100%", md: "360px" } }}
     >
       {icon}
-      <Typography variant="h5">{title}</Typography>
+      <Typography variant="h5" color={color}>
+        {title}
+      </Typography>
       <ul>
         {description.map((el, idx) => (
           <li key={idx}>{el}</li>
