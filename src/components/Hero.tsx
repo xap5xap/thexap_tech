@@ -18,6 +18,7 @@ const Hero = () => {
       }}
     >
       <Image
+        priority
         src="/images/hero.svg"
         alt="thexap"
         layout="fill"
