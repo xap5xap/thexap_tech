@@ -18,6 +18,7 @@ const Hero = () => {
       }}
     >
       <Image
+        priority
         src="/images/hero.svg"
         alt="thexap"
         layout="fill"
@@ -38,8 +39,11 @@ const Hero = () => {
                 theme.palette.mode === "dark"
                   ? lightPalette.text.primary
                   : "inherit",
-              [theme.breakpoints.down("sm")]: {
-                fontSize: "1.6rem",
+              [theme.breakpoints.down("lg")]: {
+                fontSize: "4rem",
+              },
+              [theme.breakpoints.down("md")]: {
+                fontSize: "3rem",
               },
             };
           }}
@@ -53,7 +57,7 @@ const Hero = () => {
               theme.palette.mode === "dark"
                 ? lightPalette.text.primary
                 : "inherit",
-            [theme.breakpoints.down("sm")]: {
+            [theme.breakpoints.down("lg")]: {
               fontSize: "1.2rem",
             },
           })}
