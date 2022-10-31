@@ -80,9 +80,14 @@ const AppHeader = () => {
           <Button variant="text" sx={{ display: { xs: "none", md: "block" } }}>
             Projects
           </Button>
-          <Button variant="text" sx={{ display: { xs: "none", md: "block" } }}>
-            About me
-          </Button>
+          <NextLink href={routes.aboutMe.path} passHref>
+            <Button
+              variant="text"
+              sx={{ display: { xs: "none", md: "block" } }}
+            >
+              About me
+            </Button>
+          </NextLink>
           <Button>SCHEDULE A MEETING</Button>
         </Stack>
       </Container>
