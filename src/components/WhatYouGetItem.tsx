@@ -1,14 +1,12 @@
-import {
-  Box,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  Typography,
-} from "@mui/material";
 import Image from "next/image";
 import { FC } from "react";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import ListItem from "@mui/material/ListItem";
+import List from "@mui/material/List";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
 
 type Props = {
   reverse?: boolean;

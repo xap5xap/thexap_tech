@@ -8,7 +8,6 @@ import React, {
   useCallback,
 } from "react";
 import { ThemeProvider as MuiThemeProvider } from "@mui/material/styles";
-// import { useMediaQuery } from "@mui/material";
 import { getDesignTokens, getThemedComponents } from "../theme/brandingTheme";
 import { deepmerge } from "@mui/utils";
 import { createTheme } from "@mui/material/styles";
