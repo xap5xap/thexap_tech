@@ -9,7 +9,7 @@ const HeadlineSection = () => {
       <Container
         sx={{
           display: "grid",
-          gridTemplateColumns: "auto 1fr",
+          gridTemplateColumns: { xs: "auto", md: "auto 1fr" },
           columnGap: 3,
         }}
       >

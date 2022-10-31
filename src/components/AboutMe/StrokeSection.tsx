@@ -11,7 +11,7 @@ const StrokeSection = () => {
       <Container
         sx={{
           display: "grid",
-          gridTemplateColumns: "1fr 1fr",
+          gridTemplateColumns: { xs: "1fr", md: "1fr 1fr" },
           columnGap: 3,
           alignItems: "center",
         }}
