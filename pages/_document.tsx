@@ -4,7 +4,7 @@ import createEmotionCache from "../src/theme/createEmotionCache";
 import createEmotionServer from "@emotion/server/create-instance";
 import React from "react";
 
-const GOOGLE_ANALYTICS_ID = "UA-138074150-1";
+const GOOGLE_ANALYTICS_ID = process.env.NEXT_PUBLIC_ANALYTICS;
 
 export default class MyDocument extends Document {
   render() {
