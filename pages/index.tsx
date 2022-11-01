@@ -10,14 +10,12 @@ import HeaderFooterLayout from "../src/components/HeaderFooterLayout";
 const Home: NextPage = () => {
   return (
     <HeaderFooterLayout>
-      <main>
-        <Hero />
-        <StakesSection />
-        <ValuesSection />
-        <GuideSection />
-        <PlanSection />
-        <HireLaunchSection />
-      </main>
+      <Hero />
+      <StakesSection />
+      <ValuesSection />
+      <GuideSection />
+      <PlanSection />
+      <HireLaunchSection />
     </HeaderFooterLayout>
   );
 };
