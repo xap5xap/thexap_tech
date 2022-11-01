@@ -9,49 +9,7 @@ import CardActionArea from "@mui/material/CardActionArea";
 import Link from "@mui/material/Link";
 import NextLink from "next/link";
 import { routes } from "../../src/lib/routes";
-
-const projectsData = [
-  {
-    image: "/images/logo_x.svg",
-    title: "thexap",
-    slug: "the-xap",
-  },
-  {
-    image: "/images/aircraft.svg",
-    title: "Icarus flights",
-    slug: "icarus-flights",
-  },
-  {
-    image: "/images/cademy.png",
-    title: "1cademy",
-    slug: "1cademy",
-  },
-  {
-    image: "/images/learns.svg",
-    title: "Selfstudy",
-    slug: "selfstudy",
-  },
-  {
-    image: "/images/armonia.svg",
-    title: "Armonia",
-    slug: "armonia",
-  },
-  {
-    image: "/images/panoramic-view.png",
-    title: "Quito360",
-    slug: "quito-360",
-  },
-  {
-    image: "/images/chiff.svg",
-    title: "Chiff",
-    slug: "chiff",
-  },
-  {
-    image: "/images/haiku.png",
-    title: "Haiku deck",
-    slug: "haiku",
-  },
-];
+import projectsData from "../../data/projects.json";
 
 const ProjectsPage = () => {
   return (
