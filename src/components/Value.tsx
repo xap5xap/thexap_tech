@@ -42,7 +42,13 @@ const Value: FC<Props> = ({ title, description, imageSrc, reverse }) => {
           ))}
         </ul>
         <Box>
-          <Button size="small">Schedule a meeting</Button>
+          <Button
+            component="a"
+            href="https://www.upwork.com/freelancers/xavierperez"
+            size="small"
+          >
+            Schedule a meeting
+          </Button>
         </Box>
       </Box>
     </Box>
