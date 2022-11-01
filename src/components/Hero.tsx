@@ -65,8 +65,9 @@ const Hero = () => {
           Helping you complete the app your users will love to use
         </Typography>
         <Button
-          sx={{ mt: 2 }}
+          component="a"
           href="https://www.upwork.com/freelancers/xavierperez"
+          sx={{ mt: 2 }}
         >
           SCHEDULE A MEETING
         </Button>

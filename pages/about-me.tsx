@@ -8,13 +8,11 @@ import HireLaunchSection from "../src/components/HireLaunchSection";
 const AboutMePage = () => {
   return (
     <HeaderFooterLayout>
-      <main>
-        <HeadlineSection />
-        <ReassureSection />
-        <TrackRecordSection />
-        <StrokeSection />
-        <HireLaunchSection />
-      </main>
+      <HeadlineSection />
+      <ReassureSection />
+      <TrackRecordSection />
+      <StrokeSection />
+      <HireLaunchSection />
     </HeaderFooterLayout>
   );
 };

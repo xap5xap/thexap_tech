@@ -1,0 +1,114 @@
+[
+  {
+    "image": "/images/logo_x.svg",
+    "imageLarge": "/images/thexap.jpg",
+    "title": "thexap",
+    "slug": "the-xap",
+    "productDescription": "This is my website to promote my services.",
+    "role": "Frontend developer",
+    "responsabilities": "Digital wireframing, low and high fidelity prototyping in Figma. Code the website with React and NextJS",
+    "technologies": ["NextJS", "React", "Typescript", "Figma"],
+    "urls": ["http://thexap.com/", "https://github.com/xap5xap/thexap_tech"]
+  },
+  {
+    "image": "/images/aircraft.svg",
+    "imageLarge": "/images/icarus.jpg",
+    "title": "Icarus flights",
+    "slug": "icarus-flights",
+    "productDescription": "Icarus flights is a tool For analyzing uncensored Aircraft activity data and tracing global Aircraft Owners Records.",
+    "role": "Frontend developer",
+    "responsabilities": "Digital wireframing, low and high fidelity prototyping in Figma. Code the website with ReactJS",
+    "technologies": [
+      "DeckGL",
+      "React",
+      "Typescript",
+      "Figma",
+      "ReactQuery",
+      "BlueprintJS"
+    ],
+    "urls": ["https://icarus.flights/", "https://app.icarus.flights/"]
+  },
+  {
+    "image": "/images/cademy.png",
+    "imageLarge": "/images/1cademy.jpg",
+    "title": "1cademy",
+    "slug": "1cademy",
+    "productDescription": "Web application to visualize learning pathways from books and research papers.",
+    "role": "Fullstack developer",
+    "responsabilities": "Code the website with React and NextJS.Devops tasks in Google Cloud Run",
+    "technologies": [
+      "NextJS",
+      "React",
+      "Typescript",
+      "ReactQuery",
+      "NodeJS",
+      "Google Cloud Run"
+    ],
+    "urls": ["https://1cademy.com/", "https://github.com/ImanYZ/1Cademy-Public"]
+  },
+  {
+    "image": "/images/armonia.svg",
+    "imageLarge": "/images/ArmoniaLarge.jpg",
+    "title": "Armonia",
+    "slug": "armonia",
+    "productDescription": "Web application that helps therapists save time by automatically invoice patients after each session",
+    "role": "Fullstack developer",
+    "responsabilities": "Code the website with React and NextJS. Code APIs with NodeJS.  Digital wireframing, low and high fidelity prototyping in Figma.",
+    "technologies": [
+      "NextJS",
+      "React",
+      "Typescript",
+      "ReactQuery",
+      "NodeJS",
+      "Figma"
+    ],
+    "urls": ["https://www.armoniapsicologia.com/"]
+  },
+  {
+    "image": "/images/panoramic-view.png",
+    "imageLarge": "/images/quito360.jpg",
+    "title": "Quito360",
+    "slug": "quito-360",
+    "productDescription": "Web application that explains and allows possible tourists to experience the city and its places showing the 360 photos of the museums, streets and all the tourist places in the city.",
+    "role": "Frontend developer",
+    "responsabilities": "Code the website with React 360. Digital wireframing, low and high fidelity prototyping in Figma.",
+    "technologies": ["React", "Javascript", "WebGL", "Figma"],
+    "urls": [
+      "https://devpost.com/software/quito-360",
+      "https://github.com/xap5xap/quito360"
+    ]
+  },
+  {
+    "image": "/images/chiff.svg",
+    "imageLarge": "/images/chiffLarge.jpg",
+    "title": "Chiff",
+    "slug": "chiff",
+    "productDescription": "Chiff is the logical next step of logging in to websites. It's as easy as unlocking your phone.",
+    "role": "Fullstack developer",
+    "responsabilities": "Code a prototype app with authentication web apis",
+    "technologies": ["React", "NodeJS", "Javascript"],
+    "urls": ["https://www.chiff.app/"]
+  },
+  {
+    "image": "/images/learns.svg",
+    "imageLarge": "/images/selfStudyLarge.jpg",
+    "title": "Selfstudy",
+    "slug": "selfstudy",
+    "productDescription": "The Smartest Way To Make Your People Smarter",
+    "role": "Fullstack developer",
+    "responsabilities": "Code Cypress e2e test for the React app",
+    "technologies": ["React", "NodeJS", "Javascript", "Cypress.io"],
+    "urls": ["https://www.learnswell.io/"]
+  },
+  {
+    "image": "/images/haiku.png",
+    "imageLarge": "/images/HaikuLarge.jpg",
+    "title": "Haiku deck",
+    "slug": "haiku",
+    "productDescription": "Haiku Deck is the easiest way to create an amazing presentation on the web, iPad, or iPhone.",
+    "role": "Fullstack developer",
+    "responsabilities": "Code the website with React. Code api with GraphQL. Digital wireframing, low and high fidelity prototyping in Figma.",
+    "technologies": ["React", "NodeJS", "Javascript", "GraphQL"],
+    "urls": ["https://www.haikudeck.com/"]
+  }
+]
