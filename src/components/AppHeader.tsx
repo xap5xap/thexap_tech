@@ -93,7 +93,12 @@ const AppHeader = () => {
               About me
             </Button>
           </NextLink>
-          <Button>SCHEDULE A MEETING</Button>
+          <Button
+            component="a"
+            href="https://www.upwork.com/freelancers/xavierperez"
+          >
+            SCHEDULE A MEETING
+          </Button>
         </Stack>
       </Container>
       <Drawer
