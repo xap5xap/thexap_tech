@@ -22,7 +22,7 @@ const HireLaunchSection = () => {
           width={100}
           height={100}
         />
-        <Typography color="text.secondary">Launch you app now</Typography>
+        <Typography color="text.secondary">Launch your app now</Typography>
         <Button
           component="a"
           href="https://www.upwork.com/freelancers/xavierperez"
