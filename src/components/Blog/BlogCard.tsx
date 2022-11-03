@@ -6,26 +6,43 @@ import CardContent from "@mui/material/CardContent";
 import Chip from "@mui/material/Chip";
 import Typography from "@mui/material/Typography";
 import Image from "next/image";
+import { Blog } from "../../gql/graphql";
 
-const BlogCard = () => {
+type Props = {
+  blog: Blog;
+};
+
+const BlogCard = ({ blog }: Props) => {
   return (
-    <Card sx={{ maxWidth: "524px" }}>
-      <CardActionArea>
+    <Card
+      sx={{
+        maxWidth: 524,
+        height: 537,
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+      }}
+    >
+      <CardActionArea
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "flex-start",
+          flex: 1,
+          justifyContent: "flex-start",
+        }}
+      >
         <Image
-          src="/images/oksana-zub-pi3_ah1x-rs-unsplash.jpg"
-          alt=""
+          src={blog.featuredImage?.url || ""}
+          alt={`Cover image for ${blog.title}`}
           width={524}
           height={297}
+          quality={75}
         />
         <CardContent>
-          <Typography variant="h5">
-            We are stronger as a group than an individual
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book
+          <Typography variant="h5">{blog.title}</Typography>
+          <Typography component="div" variant="body2" color="text.secondary">
+            {blog.excerpt}
           </Typography>
         </CardContent>
       </CardActionArea>
@@ -36,11 +53,12 @@ const BlogCard = () => {
             flexDirection: "row",
             columnGap: 2,
             paddingY: 2,
+            paddingX: 1,
           }}
         >
-          <Chip label="React" />
-          <Chip label="NextJS" />
-          <Chip label="Google Cloud" />
+          {blog.contentfulMetadata?.tags?.map((el) => (
+            <Chip key={el?.id} label={el?.name} />
+          ))}
         </Box>
       </CardActions>
     </Card>

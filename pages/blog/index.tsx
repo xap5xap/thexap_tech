@@ -3,22 +3,31 @@ import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import BlogCard from "../../src/components/Blog/BlogCard";
 import HeaderFooterLayout from "../../src/components/HeaderFooterLayout";
-import { getAllPostForBlogPage } from "../../src/lib/blogApi";
+import { client } from "../../src/contentful/urqlClient";
+import { graphql } from "../../src/gql";
+import { Blog, BlogListForHomeQuery } from "../../src/gql/graphql";
 
-export type Blog = {
-  title: string;
-  slug: string;
-  thumbnailImage: {
-    url: string;
-  };
-  excerpt: string;
-};
-type Props = {
-  allPosts: Blog[];
-};
+const blogListForHome = graphql(`
+  query blogListForHome {
+    blogCollection(order: date_DESC) {
+      items {
+        title
+        featuredImage {
+          url
+        }
+        excerpt
+        contentfulMetadata {
+          tags {
+            id
+            name
+          }
+        }
+      }
+    }
+  }
+`);
 
-const BlogPage = ({ allPosts }: Props) => {
-  console.log("allPosts", allPosts);
+const BlogPage = (props: BlogListForHomeQuery) => {
   return (
     <HeaderFooterLayout>
       <Box sx={{ paddingY: 9, backgroundColor: "background.paper" }}>
@@ -35,43 +44,30 @@ const BlogPage = ({ allPosts }: Props) => {
           rowGap: 5,
         }}
       >
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <BlogCard />
-        </Box>
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <BlogCard />
-        </Box>
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <BlogCard />
-        </Box>
+        {props.blogCollection?.items
+          .filter((el) => el !== null)
+          .map((el, idx) => (
+            <Box
+              key={idx}
+              sx={{
+                display: "flex",
+                flex: 1,
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <BlogCard blog={el as Blog} />
+            </Box>
+          ))}
       </Container>
     </HeaderFooterLayout>
   );
 };
 
 export const getStaticProps = async () => {
-  const allPosts = (await getAllPostForBlogPage()) ?? [];
-  console.log("allPosts", allPosts);
+  const { data } = await client.query(blogListForHome, {}).toPromise();
   return {
-    props: { allPosts },
+    props: { blogCollection: data?.blogCollection },
   };
 };
 
