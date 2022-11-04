@@ -29,8 +29,11 @@ const config: CodegenConfig = {
       preset: "client",
       plugins: [],
     },
-    "./lib/resolvers-types.ts": {
+    "./src/lib/resolvers-types.ts": {
       plugins: ["typescript", "typescript-resolvers"],
+      config: {
+        disableDescriptions: true,
+      },
     },
   },
 };

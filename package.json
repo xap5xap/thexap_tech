@@ -7,7 +7,7 @@
     "lint": "next lint",
     "codegen": "graphql-codegen -w",
     "dev": "graphql-codegen && next",
-    "build": "graphql-codegen && next build",
+    "build": "next build",
     "test": "graphql-codegen && jest"
   },
   "dependencies": {

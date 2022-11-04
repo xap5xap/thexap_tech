@@ -7,7 +7,7 @@ import { client } from "../../src/contentful/urqlClient";
 import { graphql } from "../../src/gql";
 import { Blog, BlogListForHomeQuery } from "../../src/gql/graphql";
 
-const blogListForHome = graphql(`
+const blogListForHome = graphql(/* GraphQL */ `
   query blogListForHome {
     blogCollection(order: date_DESC) {
       items {
