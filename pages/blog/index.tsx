@@ -12,10 +12,10 @@ const blogListForHome = graphql(/* GraphQL */ `
     blogCollection(order: date_DESC) {
       items {
         title
+        slug
         featuredImage {
           url
         }
-        excerpt
         contentfulMetadata {
           tags {
             id

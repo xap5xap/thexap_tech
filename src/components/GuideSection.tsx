@@ -23,7 +23,11 @@ const GuideSection = () => {
           <Typography variant="h3" textAlign="center">
             Join other successful projects that have launched their apps
           </Typography>
-          <Typography variant="h6" textAlign="center" color="text.secondary">
+          <Typography
+            variant="subtitle1"
+            textAlign="center"
+            color="text.secondary"
+          >
             Check out these nice things people are saying about me
           </Typography>
         </Box>

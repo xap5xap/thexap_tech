@@ -52,7 +52,7 @@ const ProjectsPage = () => {
                           height="100px"
                         />
                       </Box>
-                      <Typography variant="h5" component="div">
+                      <Typography variant="h6" component="div">
                         {el.title}
                       </Typography>
                     </CardContent>

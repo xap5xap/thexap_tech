@@ -11,4 +11,8 @@ export const routes = {
     path: "/projects",
     title: "Projects",
   },
+  blog: {
+    path: "/blog",
+    title: "Blog",
+  },
 };

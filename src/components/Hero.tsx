@@ -39,12 +39,6 @@ const Hero = () => {
                 theme.palette.mode === "dark"
                   ? lightPalette.text.primary
                   : "inherit",
-              [theme.breakpoints.down("lg")]: {
-                fontSize: "4rem",
-              },
-              [theme.breakpoints.down("md")]: {
-                fontSize: "3rem",
-              },
             };
           }}
         >
@@ -57,9 +51,6 @@ const Hero = () => {
               theme.palette.mode === "dark"
                 ? lightPalette.text.primary
                 : "inherit",
-            [theme.breakpoints.down("lg")]: {
-              fontSize: "1.2rem",
-            },
           })}
         >
           Helping you complete the app your users will love to use
