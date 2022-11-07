@@ -9,11 +9,17 @@ import PostHeader from "../../src/components/Blog/PostHeader";
 import HeaderFooterLayout from "../../src/components/HeaderFooterLayout";
 import { client } from "../../src/contentful/urqlClient";
 import { graphql } from "../../src/gql";
-import { Blog, BlogBody } from "../../src/gql/graphql";
+import { Blog, BlogBody, Maybe } from "../../src/gql/graphql";
 import ErrorPage from "next/error";
 import { useRouter } from "next/router";
 import PostBody from "../../src/components/Blog/PostBody";
 import BlogCover from "../../src/components/BlogCover";
+import { GetStaticPaths, GetStaticProps } from "next";
+import { ParsedUrlQuery } from "querystring";
+
+interface Params extends ParsedUrlQuery {
+  slug: string;
+}
 
 const getPostAndMorePosts = graphql(/* GraphQL */ `
   query getPostAndMorePosts($slug: String) {
@@ -23,6 +29,17 @@ const getPostAndMorePosts = graphql(/* GraphQL */ `
         body {
           json
           links {
+            entries {
+              hyperlink {
+                sys {
+                  id
+                }
+                ... on Blog {
+                  title
+                  slug
+                }
+              }
+            }
             assets {
               block {
                 sys {
@@ -50,7 +67,7 @@ const getPostAndMorePosts = graphql(/* GraphQL */ `
   }
 `);
 type Props = {
-  blog: Blog;
+  blog?: Maybe<Blog>;
 };
 const IndividualBlogPage = ({ blog }: Props) => {
   console.log("inside blog", blog);
@@ -62,46 +79,50 @@ const IndividualBlogPage = ({ blog }: Props) => {
 
   return (
     <HeaderFooterLayout>
-      <BlogCover title={blog?.title} url={blog.featuredImage?.url} />
       {router.isFallback ? (
         <Box>Loading</Box>
       ) : (
-        <Container
-          component="article"
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            paddingTop: 12,
-          }}
-        >
-          <Head>
-            <title>We are stronger as a group than an individual</title>
-            <meta property="og:image" content="/images/daniel.jpg" />
-          </Head>
-          <PostHeader
-            title={blog?.title}
-            tags={blog?.contentfulMetadata.tags}
-            url={blog.featuredImage?.url}
-          />
-          <PostBody content={blog?.body as BlogBody} />
-        </Container>
+        <>
+          <BlogCover title={blog?.title} url={blog?.featuredImage?.url} />
+          <Container
+            component="article"
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              paddingTop: 12,
+            }}
+          >
+            <Head>
+              <title>{blog?.title}</title>
+              <meta
+                property="og:image"
+                content={blog?.featuredImage?.url || ""}
+              />
+            </Head>
+            <PostHeader
+              title={blog?.title}
+              tags={blog?.contentfulMetadata?.tags}
+              url={blog?.featuredImage?.url}
+            />
+            <PostBody content={blog?.body as BlogBody} />
+          </Container>
+        </>
       )}
     </HeaderFooterLayout>
   );
 };
 
-export const getStaticProps = async () => {
+export const getStaticProps: GetStaticProps<Props | any, Params> = async ({
+  params,
+}) => {
   const { data } = await client
-    .query(getPostAndMorePosts, { slug: "first-post" })
+    .query(getPostAndMorePosts, { slug: params?.slug })
     .toPromise();
-  console.log(
-    "data?.blogCollection?.items?.[0]",
-    data?.blogCollection?.items?.[0]
-  );
+
   return { props: { blog: data?.blogCollection?.items?.[0] } };
 };
 
-export const getStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths<Params> = async () => {
   return { paths: [], fallback: true };
 };
 

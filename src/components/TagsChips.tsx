@@ -3,7 +3,7 @@ import Chip from "@mui/material/Chip";
 import { ContentfulTag, Maybe } from "../gql/graphql";
 
 type Props = {
-  tags: Maybe<ContentfulTag>[];
+  tags?: Maybe<ContentfulTag>[] | undefined;
 };
 
 const TagsChips = ({ tags }: Props) => {

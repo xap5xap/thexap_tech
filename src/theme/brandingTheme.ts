@@ -1,5 +1,5 @@
 import { deepmerge } from "@mui/utils";
-import { createTheme, ThemeOptions } from "@mui/material/styles";
+import { Theme, createTheme, ThemeOptions } from "@mui/material/styles";
 
 const systemFont = [
   "Roboto",
@@ -75,7 +75,7 @@ export const getDesignTokens = (mode: "light" | "dark") =>
         lineHeight: 78 / 70,
       },
       h2: {
-        fontSize: "clamp(1.5rem, 0.9643rem + 1.4286vw, 3.75rem)",
+        fontSize: "clamp(3rem, 2.75rem + 1.3333vw, 3.75rem);",
         fontWeight: 800,
         lineHeight: 44 / 36,
       },

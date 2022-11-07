@@ -77,10 +77,18 @@ const AppHeader = () => {
           </NextLink>
         </Box>
         <Stack direction="row" spacing={3}>
+          <NextLink href={routes.blog.path} passHref>
+            <Button
+              variant="text"
+              sx={{ textAlign: "center", display: { xs: "none", md: "block" } }}
+            >
+              Blog
+            </Button>
+          </NextLink>
           <NextLink href={routes.projects.path} passHref>
             <Button
               variant="text"
-              sx={{ display: { xs: "none", md: "block" } }}
+              sx={{ textAlign: "center", display: { xs: "none", md: "block" } }}
             >
               Projects
             </Button>
@@ -88,7 +96,7 @@ const AppHeader = () => {
           <NextLink href={routes.aboutMe.path} passHref>
             <Button
               variant="text"
-              sx={{ display: { xs: "none", md: "block" } }}
+              sx={{ textAlign: "center", display: { xs: "none", md: "block" } }}
             >
               About me
             </Button>

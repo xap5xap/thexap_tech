@@ -7,7 +7,7 @@ import TagsChips from "../TagsChips";
 
 type Props = {
   title?: Maybe<string>;
-  tags: Maybe<ContentfulTag>[];
+  tags?: Maybe<ContentfulTag>[] | undefined;
   url?: Maybe<string>;
 };
 

@@ -11,6 +11,7 @@ const BlogCover = ({ url, title }: Props) => {
   return (
     <Box
       sx={{
+        zIndex: -100,
         position: "absolute",
         top: 0,
         left: 0,
