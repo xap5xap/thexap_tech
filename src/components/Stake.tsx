@@ -16,7 +16,7 @@ const Stake: FC<Props> = ({ title, description, icon, color = "inherit" }) => {
       sx={{ maxWidth: { sm: "100%", md: "360px" } }}
     >
       {icon}
-      <Typography variant="h5" color={color}>
+      <Typography variant="h5" color={color} textAlign="center">
         {title}
       </Typography>
       <ul>
