@@ -16,13 +16,35 @@ import PostBody from "../../src/components/Blog/PostBody";
 import BlogCover from "../../src/components/BlogCover";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { ParsedUrlQuery } from "querystring";
+import MorePosts from "../../src/components/MorePosts";
+import SkeletonBlogPost from "../../src/components/Blog/SkeletonBlogPost";
 
 interface Params extends ParsedUrlQuery {
   slug: string;
 }
 
-const getPostAndMorePosts = graphql(/* GraphQL */ `
-  query getPostAndMorePosts($slug: String) {
+const getMorePosts = graphql(/* GraphQL */ `
+  query getMorePosts($slug: String) {
+    blogCollection(where: { slug_not: $slug }, order: date_DESC, limit: 2) {
+      items {
+        title
+        slug
+        featuredImage {
+          url
+        }
+        contentfulMetadata {
+          tags {
+            id
+            name
+          }
+        }
+      }
+    }
+  }
+`);
+
+const getPostBySlug = graphql(/* GraphQL */ `
+  query getPostBySlug($slug: String) {
     blogCollection(where: { slug: $slug }, limit: 1) {
       items {
         title
@@ -67,10 +89,11 @@ const getPostAndMorePosts = graphql(/* GraphQL */ `
   }
 `);
 type Props = {
-  blog?: Maybe<Blog>;
+  blog: Maybe<Blog> | undefined;
+  morePosts: Array<Maybe<Blog>>;
 };
-const IndividualBlogPage = ({ blog }: Props) => {
-  console.log("inside blog", blog);
+
+const IndividualBlogPage = ({ blog, morePosts }: Props) => {
   const router = useRouter();
 
   if (!router.isFallback && !blog) {
@@ -80,7 +103,7 @@ const IndividualBlogPage = ({ blog }: Props) => {
   return (
     <HeaderFooterLayout>
       {router.isFallback ? (
-        <Box>Loading</Box>
+        <SkeletonBlogPost />
       ) : (
         <>
           <BlogCover title={blog?.title} url={blog?.featuredImage?.url} />
@@ -103,8 +126,10 @@ const IndividualBlogPage = ({ blog }: Props) => {
               title={blog?.title}
               tags={blog?.contentfulMetadata?.tags}
               url={blog?.featuredImage?.url}
+              date={blog?.date}
             />
             <PostBody content={blog?.body as BlogBody} />
+            <MorePosts posts={morePosts} />
           </Container>
         </>
       )}
@@ -116,10 +141,19 @@ export const getStaticProps: GetStaticProps<Props | any, Params> = async ({
   params,
 }) => {
   const { data } = await client
-    .query(getPostAndMorePosts, { slug: params?.slug })
+    .query(getPostBySlug, { slug: params?.slug })
     .toPromise();
 
-  return { props: { blog: data?.blogCollection?.items?.[0] } };
+  const morePosts = await client
+    .query(getMorePosts, { slug: params?.slug })
+    .toPromise();
+
+  return {
+    props: {
+      blog: data?.blogCollection?.items?.[0],
+      morePosts: morePosts.data?.blogCollection?.items,
+    },
+  };
 };
 
 export const getStaticPaths: GetStaticPaths<Params> = async () => {

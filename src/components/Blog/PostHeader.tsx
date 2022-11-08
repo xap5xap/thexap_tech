@@ -4,14 +4,17 @@ import Typography from "@mui/material/Typography";
 import Image from "next/image";
 import { ContentfulTag, Maybe } from "../../gql/graphql";
 import TagsChips from "../TagsChips";
+import { format } from "date-fns";
 
 type Props = {
   title?: Maybe<string>;
   tags?: Maybe<ContentfulTag>[] | undefined;
   url?: Maybe<string>;
+  date?: string;
 };
 
-const PostHeader = ({ title, tags, url }: Props) => {
+const PostHeader = ({ title, tags, url, date }: Props) => {
+  console.log("date", date);
   return (
     <>
       <Box component="section" sx={{ paddingBottom: 2 }}>
@@ -21,6 +24,9 @@ const PostHeader = ({ title, tags, url }: Props) => {
         <TagsChips tags={tags} />
       </Box>
       <Divider />
+      <Typography mt={4} variant="body2">
+        {format(new Date(date || ""), "MMMM dd, yyyy")}
+      </Typography>
       <Box sx={{ textAlign: "center", paddingY: 6 }} component="section">
         <Image
           style={{ borderRadius: "24px" }}
