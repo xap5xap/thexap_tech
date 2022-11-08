@@ -18,14 +18,20 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import { ParsedUrlQuery } from "querystring";
 import MorePosts from "../../src/components/MorePosts";
 import SkeletonBlogPost from "../../src/components/Blog/SkeletonBlogPost";
+import { getPreviewFromEnv } from "../../src/lib/utils";
 
 interface Params extends ParsedUrlQuery {
   slug: string;
 }
 
 const getAllPostsWithSlug = graphql(/* GraphQL */ `
-  query getAllPostsWithSlug {
-    blogCollection(where: { slug_exists: true }, order: date_DESC, limit: 200) {
+  query getAllPostsWithSlug($preview: Boolean) {
+    blogCollection(
+      where: { slug_exists: true }
+      order: date_DESC
+      limit: 200
+      preview: $preview
+    ) {
       items {
         slug
       }
@@ -34,8 +40,13 @@ const getAllPostsWithSlug = graphql(/* GraphQL */ `
 `);
 
 const getMorePosts = graphql(/* GraphQL */ `
-  query getMorePosts($slug: String) {
-    blogCollection(where: { slug_not: $slug }, order: date_DESC, limit: 2) {
+  query getMorePosts($slug: String, $preview: Boolean) {
+    blogCollection(
+      where: { slug_not: $slug }
+      order: date_DESC
+      limit: 2
+      preview: $preview
+    ) {
       items {
         title
         slug
@@ -54,8 +65,8 @@ const getMorePosts = graphql(/* GraphQL */ `
 `);
 
 const getPostBySlug = graphql(/* GraphQL */ `
-  query getPostBySlug($slug: String) {
-    blogCollection(where: { slug: $slug }, limit: 1) {
+  query getPostBySlug($slug: String, $preview: Boolean) {
+    blogCollection(where: { slug: $slug }, limit: 1, preview: $preview) {
       items {
         title
         body {
@@ -151,16 +162,15 @@ export const getStaticProps: GetStaticProps<Props | any, Params> = async ({
   params,
 }) => {
   const { data } = await client
-    .query(getPostBySlug, { slug: params?.slug })
+    .query(getPostBySlug, { slug: params?.slug, preview: getPreviewFromEnv() })
     .toPromise();
-
   const morePosts = await client
-    .query(getMorePosts, { slug: params?.slug })
+    .query(getMorePosts, { slug: params?.slug, preview: getPreviewFromEnv() })
     .toPromise();
 
   return {
     props: {
-      blog: data?.blogCollection?.items?.[0],
+      blog: data?.blogCollection?.items?.[0] || null,
       morePosts: morePosts.data?.blogCollection?.items,
     },
   };
@@ -169,7 +179,9 @@ export const getStaticProps: GetStaticProps<Props | any, Params> = async ({
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
   let paths: Array<string | { params: Params }> | undefined = [];
   if (process.env.NODE_ENV === "production") {
-    const { data } = await client.query(getAllPostsWithSlug, {}).toPromise();
+    const { data } = await client
+      .query(getAllPostsWithSlug, { preview: getPreviewFromEnv() })
+      .toPromise();
 
     paths = data?.blogCollection?.items.map((el) => ({
       params: { slug: el?.slug as string },
