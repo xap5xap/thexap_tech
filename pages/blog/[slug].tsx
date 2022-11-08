@@ -90,6 +90,8 @@ const getPostBySlug = graphql(/* GraphQL */ `
                 }
                 url
                 description
+                width
+                height
               }
             }
           }
@@ -98,6 +100,9 @@ const getPostBySlug = graphql(/* GraphQL */ `
         slug
         featuredImage {
           url
+          description
+          width
+          height
         }
         contentfulMetadata {
           tags {
@@ -146,7 +151,7 @@ const IndividualBlogPage = ({ blog, morePosts }: Props) => {
             <PostHeader
               title={blog?.title}
               tags={blog?.contentfulMetadata?.tags}
-              url={blog?.featuredImage?.url}
+              image={blog?.featuredImage}
               date={blog?.date}
             />
             <PostBody content={blog?.body as BlogBody} />
