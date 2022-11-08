@@ -23,6 +23,16 @@ interface Params extends ParsedUrlQuery {
   slug: string;
 }
 
+const getAllPostsWithSlug = graphql(/* GraphQL */ `
+  query getAllPostsWithSlug {
+    blogCollection(where: { slug_exists: true }, order: date_DESC, limit: 200) {
+      items {
+        slug
+      }
+    }
+  }
+`);
+
 const getMorePosts = graphql(/* GraphQL */ `
   query getMorePosts($slug: String) {
     blogCollection(where: { slug_not: $slug }, order: date_DESC, limit: 2) {
@@ -140,6 +150,7 @@ const IndividualBlogPage = ({ blog, morePosts }: Props) => {
 export const getStaticProps: GetStaticProps<Props | any, Params> = async ({
   params,
 }) => {
+  console.log("getStaticProps", params);
   const { data } = await client
     .query(getPostBySlug, { slug: params?.slug })
     .toPromise();
@@ -157,7 +168,17 @@ export const getStaticProps: GetStaticProps<Props | any, Params> = async ({
 };
 
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
-  return { paths: [], fallback: true };
+  let paths: Array<string | { params: Params }> | undefined = [];
+  if (true) {
+    // if (process.env.NODE_ENV === "production") {
+    const { data } = await client.query(getAllPostsWithSlug, {}).toPromise();
+
+    paths = data?.blogCollection?.items.map((el) => ({
+      params: { slug: el?.slug as string },
+    }));
+  }
+  console.log("getStaticPaths paths", paths);
+  return { paths: paths || [], fallback: true };
 };
 
 export default IndividualBlogPage;

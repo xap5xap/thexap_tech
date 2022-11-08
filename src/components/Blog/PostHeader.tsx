@@ -14,7 +14,6 @@ type Props = {
 };
 
 const PostHeader = ({ title, tags, url, date }: Props) => {
-  console.log("date", date);
   return (
     <>
       <Box component="section" sx={{ paddingBottom: 2 }}>
