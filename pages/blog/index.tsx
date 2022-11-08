@@ -6,13 +6,16 @@ import HeaderFooterLayout from "../../src/components/HeaderFooterLayout";
 import { client } from "../../src/contentful/urqlClient";
 import { graphql } from "../../src/gql";
 import { Blog, BlogListForHomeQuery } from "../../src/gql/graphql";
+import { getPreviewFromEnv } from "../../src/lib/utils";
+import Masonry from "@mui/lab/Masonry";
 
 const blogListForHome = graphql(/* GraphQL */ `
-  query blogListForHome {
-    blogCollection(order: date_DESC) {
+  query blogListForHome($preview: Boolean) {
+    blogCollection(order: date_DESC, preview: $preview) {
       items {
         title
         slug
+        excerpt
         featuredImage {
           url
         }
@@ -38,34 +41,33 @@ const BlogPage = (props: BlogListForHomeQuery) => {
       <Container
         sx={{
           paddingY: 9,
-          display: "grid",
-          gridTemplateColumns: { xs: "1fr", md: "1fr 1fr" },
-          columnGap: 4,
-          rowGap: 5,
+          display: "flex",
+          justifyContent: "center",
         }}
       >
-        {props.blogCollection?.items
-          .filter((el) => el !== null)
-          .map((el, idx) => (
-            <Box
-              key={idx}
-              sx={{
-                display: "flex",
-                flex: 1,
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              <BlogCard blog={el as Blog} />
-            </Box>
-          ))}
+        <Masonry
+          columns={{ xs: 1, md: 2 }}
+          spacing={4}
+          defaultHeight={450}
+          defaultColumns={2}
+          defaultSpacing={1}
+        >
+          {(props.blogCollection?.items || [])
+            .filter((el) => el !== null)
+            .map((el, idx) => (
+              <BlogCard key={idx} blog={el as Blog} />
+            ))}
+        </Masonry>
       </Container>
     </HeaderFooterLayout>
   );
 };
 
 export const getStaticProps = async () => {
-  const { data } = await client.query(blogListForHome, {}).toPromise();
+  const { data } = await client
+    .query(blogListForHome, { preview: getPreviewFromEnv() })
+    .toPromise();
+
   return {
     props: { blogCollection: data?.blogCollection },
   };

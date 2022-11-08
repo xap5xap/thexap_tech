@@ -1,11 +1,12 @@
 import type { CodegenConfig } from "@graphql-codegen/cli";
 import { loadEnvConfig } from "@next/env";
 
-const projectDir = process.cwd();
-loadEnvConfig(projectDir);
+const dev = process.env.NODE_ENV !== "production";
+loadEnvConfig("./", dev).combinedEnv;
 
 const CONTENTFUL_SPACE_ID = process.env.CONTENTFUL_SPACE_ID;
-const CONTENTFUL_ACCESS_TOKEN = process.env.CONTENTFUL_ACCESS_TOKEN;
+const CONTENTFUL_PREVIEW_ACCESS_TOKEN =
+  process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN;
 
 const config: CodegenConfig = {
   schema: [
@@ -13,7 +14,7 @@ const config: CodegenConfig = {
       [`https://graphql.contentful.com/content/v1/spaces/${CONTENTFUL_SPACE_ID}`]:
         {
           headers: {
-            Authorization: `Bearer ${CONTENTFUL_ACCESS_TOKEN}`,
+            Authorization: `Bearer ${CONTENTFUL_PREVIEW_ACCESS_TOKEN}`,
           },
         },
     },

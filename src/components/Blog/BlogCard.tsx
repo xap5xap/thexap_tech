@@ -18,46 +18,56 @@ type Props = {
 
 const BlogCard = ({ blog }: Props) => {
   return (
-    <NextLink passHref href={`${routes.blog.path}/${blog.slug}`}>
-      <Link underline="none" color="inherit">
-        <Card
-          sx={{
-            maxWidth: 524,
-            height: 537,
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-between",
-          }}
-        >
-          <CardActionArea
+    <Box sx={{ display: "flex", justifyContent: "center" }}>
+      <NextLink passHref href={`${routes.blog.path}/${blog.slug}`}>
+        <Link underline="none" color="inherit">
+          <Card
             sx={{
+              maxWidth: 524,
+              // height: 537,
               display: "flex",
               flexDirection: "column",
-              alignItems: "flex-start",
-              flex: 1,
-              justifyContent: "flex-start",
+              justifyContent: "space-between",
             }}
           >
-            <Image
-              src={blog.featuredImage?.url || ""}
-              alt={`Cover image for ${blog.title}`}
-              width={524}
-              height={297}
-              quality={75}
-            />
-            <CardContent>
-              <Typography variant="h5">{blog.title}</Typography>
-              {/* <Typography component="div" variant="body2" color="text.secondary">
-            {blog.excerpt}
-          </Typography> */}
-            </CardContent>
-          </CardActionArea>
-          <CardActions>
-            <TagsChips tags={blog.contentfulMetadata?.tags} />
-          </CardActions>
-        </Card>
-      </Link>
-    </NextLink>
+            <CardActionArea
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "flex-start",
+                flex: 1,
+                justifyContent: "flex-start",
+              }}
+            >
+              <Image
+                src={blog.featuredImage?.url || ""}
+                alt={`Cover image for ${blog.title}`}
+                width={524}
+                height={297}
+                quality={75}
+              />
+              <CardContent>
+                <Typography variant="h5">{blog.title}</Typography>
+                {(blog.excerpt?.length || 0) > 0 && (
+                  <Typography
+                    component="div"
+                    variant="body2"
+                    color="text.secondary"
+                  >
+                    {blog.excerpt}
+                  </Typography>
+                )}
+              </CardContent>
+            </CardActionArea>
+            {blog.contentfulMetadata?.tags.length > 0 && (
+              <CardActions>
+                <TagsChips tags={blog.contentfulMetadata?.tags} />
+              </CardActions>
+            )}
+          </Card>
+        </Link>
+      </NextLink>
+    </Box>
   );
 };
 

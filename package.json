@@ -6,9 +6,9 @@
     "start": "next start",
     "lint": "next lint",
     "codegen": "graphql-codegen -w",
-    "dev": "graphql-codegen && next",
+    "dev": "next",
     "build": "next build",
-    "test": "graphql-codegen && jest"
+    "test": "jest"
   },
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^15.12.1",
@@ -16,6 +16,7 @@
     "@emotion/server": "^11.10.0",
     "@emotion/styled": "^11.10.5",
     "@mui/icons-material": "^5.10.9",
+    "@mui/lab": "^5.0.0-alpha.107",
     "@mui/material": "^5.10.12",
     "date-fns": "^2.29.3",
     "graphql": "^16.6.0",
