@@ -19,7 +19,7 @@ const MorePosts = ({ posts }: Props) => {
         sx={{
           display: "flex",
           flexDirection: "row",
-          justifyContent: "space-between",
+          justifyContent: "space-between"
         }}
       >
         {posts.map((el, idx) => (

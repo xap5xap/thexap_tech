@@ -9,7 +9,7 @@ export const client = createClient({
         process.env.CONTENTFUL_PREVIEW
           ? process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN
           : process.env.CONTENTFUL_ACCESS_TOKEN
-      }`,
-    },
-  },
+      }`
+    }
+  }
 });

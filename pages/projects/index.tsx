@@ -22,7 +22,7 @@ const ProjectsPage = () => {
       <Container
         sx={{
           paddingY: 9,
-          textAlign: "center",
+          textAlign: "center"
         }}
       >
         <Box
@@ -31,26 +31,17 @@ const ProjectsPage = () => {
             display: "flex",
             columnGap: 5,
             rowGap: 5,
-            flexWrap: "wrap",
+            flexWrap: "wrap"
           }}
         >
           {projectsData.map((el, idx) => (
-            <NextLink
-              key={idx}
-              passHref
-              href={`${routes.projects.path}/${el.slug}`}
-            >
+            <NextLink key={idx} passHref href={`${routes.projects.path}/${el.slug}`}>
               <Link underline="none" color="inherit">
                 <Card sx={{ width: 250 }}>
                   <CardActionArea>
                     <CardContent>
                       <Box>
-                        <Image
-                          src={el.image}
-                          alt={`project ${el.title}`}
-                          width="100px"
-                          height="100px"
-                        />
+                        <Image src={el.image} alt={`project ${el.title}`} width="100px" height="100px" />
                       </Box>
                       <Typography variant="h6" component="div">
                         {el.title}

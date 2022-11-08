@@ -10,11 +10,7 @@ type Props = {
 };
 const Stake: FC<Props> = ({ title, description, icon, color = "inherit" }) => {
   return (
-    <Stack
-      alignItems="center"
-      spacing={3}
-      sx={{ maxWidth: { sm: "100%", md: "360px" } }}
-    >
+    <Stack alignItems="center" spacing={3} sx={{ maxWidth: { sm: "100%", md: "360px" } }}>
       {icon}
       <Typography variant="h5" color={color} textAlign="center">
         {title}

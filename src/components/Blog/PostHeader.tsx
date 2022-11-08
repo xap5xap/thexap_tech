@@ -41,7 +41,7 @@ const PostHeader = ({ title, tags, date, image }: Props) => {
             variant="caption"
             component="div"
             dangerouslySetInnerHTML={{
-              __html: image?.description || "",
+              __html: image?.description || ""
             }}
           ></Typography>
         )}

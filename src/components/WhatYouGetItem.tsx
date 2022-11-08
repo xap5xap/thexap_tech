@@ -23,15 +23,15 @@ const WhatYouGetItem: FC<Props> = ({ reverse, imageSrc, text, title }) => {
         alignItems: "center",
         flexDirection: {
           xs: "column-reverse",
-          md: reverse ? "row-reverse" : "row",
-        },
+          md: reverse ? "row-reverse" : "row"
+        }
       }}
     >
       <Box
         sx={{
           display: "flex",
           flexDirection: "column",
-          alignItems: "flex-start",
+          alignItems: "flex-start"
         }}
       >
         <Typography variant="h4" color="primary">
@@ -50,13 +50,7 @@ const WhatYouGetItem: FC<Props> = ({ reverse, imageSrc, text, title }) => {
       </Box>
       <Box sx={{ mr: { md: 2 } }} />
       <Box>
-        <Image
-          src={imageSrc}
-          alt="thexap promise image"
-          layout="intrinsic"
-          width={400}
-          height={400}
-        ></Image>
+        <Image src={imageSrc} alt="thexap promise image" layout="intrinsic" width={400} height={400}></Image>
       </Box>
     </Box>
   );

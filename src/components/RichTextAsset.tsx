@@ -8,17 +8,12 @@ type Props = {
 };
 
 export default function RichTextAsset({ id, assets }: Props) {
-  const asset = assets?.block?.find((asset) => asset?.sys?.id === id);
+  const asset = assets?.block?.find(asset => asset?.sys?.id === id);
 
   if (asset?.url) {
     return (
       <Box sx={{ marginY: 5 }}>
-        <Image
-          src={asset.url}
-          width={asset.width || 500}
-          height={asset.height || 200}
-          alt={asset?.description || ""}
-        />
+        <Image src={asset.url} width={asset.width || 500} height={asset.height || 200} alt={asset?.description || ""} />
       </Box>
     );
   }

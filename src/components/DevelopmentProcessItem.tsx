@@ -14,7 +14,7 @@ const DevelopmentProcessItem: FC<Props> = ({ imageSrc, text }) => {
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
-        alignItems: "center",
+        alignItems: "center"
       }}
     >
       <Image src={imageSrc} alt={text} width={200} height={200}></Image>

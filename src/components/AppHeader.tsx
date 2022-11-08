@@ -25,14 +25,9 @@ const Header = styled("header")(({ theme }) => ({
   zIndex: theme.zIndex.appBar,
   backdropFilter: "blur(20px)",
   boxShadow: `inset 0px -1px 1px ${
-    theme.palette.mode === "dark"
-      ? theme.palette.primary.dark
-      : theme.palette.grey[100]
+    theme.palette.mode === "dark" ? theme.palette.primary.dark : theme.palette.grey[100]
   }`,
-  backgroundColor:
-    theme.palette.mode === "dark"
-      ? "rgba(13,13,13,0.72)"
-      : "rgba(255,255,255,0.72)",
+  backgroundColor: theme.palette.mode === "dark" ? "rgba(13,13,13,0.72)" : "rgba(255,255,255,0.72)"
 }));
 
 const AppHeader = () => {
@@ -50,12 +45,12 @@ const AppHeader = () => {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          minHeight: 70,
+          minHeight: 70
         }}
       >
         <Box sx={{ display: "flex", flexDirection: "row", columnGap: 3 }}>
           <IconButton
-            onClick={() => setOpenDrawer((val) => !val)}
+            onClick={() => setOpenDrawer(val => !val)}
             sx={{ display: { xs: "block", md: "none" } }}
             color="inherit"
             aria-label="open drawer"
@@ -66,55 +61,32 @@ const AppHeader = () => {
           </IconButton>
           <NextLink href={ROUTES.home} passHref prefetch={false}>
             <Link sx={{ display: "flex" }}>
-              <Image
-                src="/images/logo_x.svg"
-                alt="logo"
-                title="Xavier Perez"
-                width={50}
-                height={50}
-              ></Image>
+              <Image src="/images/logo_x.svg" alt="logo" title="Xavier Perez" width={50} height={50}></Image>
             </Link>
           </NextLink>
         </Box>
         <Stack direction="row" spacing={3}>
           <NextLink href={routes.blog.path} passHref>
-            <Button
-              variant="text"
-              sx={{ textAlign: "center", display: { xs: "none", md: "block" } }}
-            >
+            <Button variant="text" sx={{ textAlign: "center", display: { xs: "none", md: "block" } }}>
               Blog
             </Button>
           </NextLink>
           <NextLink href={routes.projects.path} passHref>
-            <Button
-              variant="text"
-              sx={{ textAlign: "center", display: { xs: "none", md: "block" } }}
-            >
+            <Button variant="text" sx={{ textAlign: "center", display: { xs: "none", md: "block" } }}>
               Projects
             </Button>
           </NextLink>
           <NextLink href={routes.aboutMe.path} passHref>
-            <Button
-              variant="text"
-              sx={{ textAlign: "center", display: { xs: "none", md: "block" } }}
-            >
+            <Button variant="text" sx={{ textAlign: "center", display: { xs: "none", md: "block" } }}>
               About me
             </Button>
           </NextLink>
-          <Button
-            component="a"
-            href="https://www.upwork.com/freelancers/xavierperez"
-          >
+          <Button component="a" href="https://www.upwork.com/freelancers/xavierperez">
             SCHEDULE A MEETING
           </Button>
         </Stack>
       </Container>
-      <Drawer
-        data-testid="nav-menu-drawer"
-        anchor="left"
-        open={openDrawer}
-        onClose={() => setOpenDrawer(false)}
-      >
+      <Drawer data-testid="nav-menu-drawer" anchor="left" open={openDrawer} onClose={() => setOpenDrawer(false)}>
         <List>
           <ListItem>
             <ListItemButton onClick={() => redirectTo(routes.home.path)}>

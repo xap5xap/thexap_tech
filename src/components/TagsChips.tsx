@@ -14,10 +14,10 @@ const TagsChips = ({ tags }: Props) => {
         flexDirection: "row",
         columnGap: 2,
         paddingY: 2,
-        paddingX: 1,
+        paddingX: 1
       }}
     >
-      {tags?.map((el) => (
+      {tags?.map(el => (
         <Chip key={el?.id} label={el?.name} />
       ))}
     </Box>

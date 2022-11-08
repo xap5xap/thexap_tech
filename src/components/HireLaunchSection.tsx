@@ -13,21 +13,12 @@ const HireLaunchSection = () => {
           flexDirection: "column",
           alignItems: "center",
           flexWrap: "wrap",
-          rowGap: 2,
+          rowGap: 2
         }}
       >
-        <Image
-          alt="launch rocket"
-          src="/images/rocket.svg"
-          width={100}
-          height={100}
-        />
+        <Image alt="launch rocket" src="/images/rocket.svg" width={100} height={100} />
         <Typography color="text.secondary">Launch your app now</Typography>
-        <Button
-          component="a"
-          href="https://www.upwork.com/freelancers/xavierperez"
-          size="large"
-        >
+        <Button component="a" href="https://www.upwork.com/freelancers/xavierperez" size="large">
           Schedule a meeting
         </Button>
       </Container>

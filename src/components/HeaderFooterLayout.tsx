@@ -17,10 +17,7 @@ const HeaderFooterLayout: FC<Props> = ({ children }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <AppHeader></AppHeader>
-      <Box
-        component="main"
-        sx={{ position: "relative", minHeight: "calc(100vh - 70px - 94px)" }}
-      >
+      <Box component="main" sx={{ position: "relative", minHeight: "calc(100vh - 70px - 94px)" }}>
         {children}
       </Box>
       <AppFooter />

@@ -27,7 +27,7 @@ const BlogCard = ({ blog }: Props) => {
               // height: 537,
               display: "flex",
               flexDirection: "column",
-              justifyContent: "space-between",
+              justifyContent: "space-between"
             }}
           >
             <CardActionArea
@@ -36,7 +36,7 @@ const BlogCard = ({ blog }: Props) => {
                 flexDirection: "column",
                 alignItems: "flex-start",
                 flex: 1,
-                justifyContent: "flex-start",
+                justifyContent: "flex-start"
               }}
             >
               <Image
@@ -49,11 +49,7 @@ const BlogCard = ({ blog }: Props) => {
               <CardContent>
                 <Typography variant="h5">{blog.title}</Typography>
                 {(blog.excerpt?.length || 0) > 0 && (
-                  <Typography
-                    component="div"
-                    variant="body2"
-                    color="text.secondary"
-                  >
+                  <Typography component="div" variant="body2" color="text.secondary">
                     {blog.excerpt}
                   </Typography>
                 )}

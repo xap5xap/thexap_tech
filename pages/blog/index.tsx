@@ -42,18 +42,12 @@ const BlogPage = (props: BlogListForHomeQuery) => {
         sx={{
           paddingY: 9,
           display: "flex",
-          justifyContent: "center",
+          justifyContent: "center"
         }}
       >
-        <Masonry
-          columns={{ xs: 1, md: 2 }}
-          spacing={4}
-          defaultHeight={450}
-          defaultColumns={2}
-          defaultSpacing={1}
-        >
+        <Masonry columns={{ xs: 1, md: 2 }} spacing={4} defaultHeight={450} defaultColumns={2} defaultSpacing={1}>
           {(props.blogCollection?.items || [])
-            .filter((el) => el !== null)
+            .filter(el => el !== null)
             .map((el, idx) => (
               <BlogCard key={idx} blog={el as Blog} />
             ))}
@@ -64,12 +58,10 @@ const BlogPage = (props: BlogListForHomeQuery) => {
 };
 
 export const getStaticProps = async () => {
-  const { data } = await client
-    .query(blogListForHome, { preview: getPreviewFromEnv() })
-    .toPromise();
+  const { data } = await client.query(blogListForHome, { preview: getPreviewFromEnv() }).toPromise();
 
   return {
-    props: { blogCollection: data?.blogCollection },
+    props: { blogCollection: data?.blogCollection }
   };
 };
 

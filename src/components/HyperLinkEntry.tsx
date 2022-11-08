@@ -11,9 +11,7 @@ type Props = {
 };
 
 const HyperlinkEntry = ({ id, entries, children }: Props) => {
-  const entry = entries.hyperlink.find(
-    (el) => el?.sys.id === id
-  ) as Maybe<Blog>;
+  const entry = entries.hyperlink.find(el => el?.sys.id === id) as Maybe<Blog>;
   return (
     <NextLink href={`${routes.blog.path}/${entry?.slug}`} passHref>
       <Link>{children}</Link>

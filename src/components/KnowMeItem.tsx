@@ -13,7 +13,7 @@ const KnowMeItem: FC<Props> = ({ primaryText, secondaryText }) => {
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
-        alignItems: "center",
+        alignItems: "center"
       }}
     >
       <Typography color="primary" variant="h4">
