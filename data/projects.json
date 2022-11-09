@@ -18,14 +18,7 @@
     "productDescription": "Icarus flights is a tool For analyzing uncensored Aircraft activity data and tracing global Aircraft Owners Records.",
     "role": "Frontend developer",
     "responsabilities": "Digital wireframing, low and high fidelity prototyping in Figma. Code the website with ReactJS",
-    "technologies": [
-      "DeckGL",
-      "React",
-      "Typescript",
-      "Figma",
-      "ReactQuery",
-      "BlueprintJS"
-    ],
+    "technologies": ["DeckGL", "React", "Typescript", "Figma", "ReactQuery", "BlueprintJS"],
     "urls": ["https://icarus.flights/", "https://app.icarus.flights/"]
   },
   {
@@ -36,14 +29,7 @@
     "productDescription": "Web application to visualize learning pathways from books and research papers.",
     "role": "Fullstack developer",
     "responsabilities": "Code the website with React and NextJS.Devops tasks in Google Cloud Run",
-    "technologies": [
-      "NextJS",
-      "React",
-      "Typescript",
-      "ReactQuery",
-      "NodeJS",
-      "Google Cloud Run"
-    ],
+    "technologies": ["NextJS", "React", "Typescript", "ReactQuery", "NodeJS", "Google Cloud Run"],
     "urls": ["https://1cademy.com/", "https://github.com/ImanYZ/1Cademy-Public"]
   },
   {
@@ -54,14 +40,7 @@
     "productDescription": "Web application that helps therapists save time by automatically invoice patients after each session",
     "role": "Fullstack developer",
     "responsabilities": "Code the website with React and NextJS. Code APIs with NodeJS.  Digital wireframing, low and high fidelity prototyping in Figma.",
-    "technologies": [
-      "NextJS",
-      "React",
-      "Typescript",
-      "ReactQuery",
-      "NodeJS",
-      "Figma"
-    ],
+    "technologies": ["NextJS", "React", "Typescript", "ReactQuery", "NodeJS", "Figma"],
     "urls": ["https://www.armoniapsicologia.com/"]
   },
   {
@@ -73,10 +52,7 @@
     "role": "Frontend developer",
     "responsabilities": "Code the website with React 360. Digital wireframing, low and high fidelity prototyping in Figma.",
     "technologies": ["React", "Javascript", "WebGL", "Figma"],
-    "urls": [
-      "https://devpost.com/software/quito-360",
-      "https://github.com/xap5xap/quito360"
-    ]
+    "urls": ["https://devpost.com/software/quito-360", "https://github.com/xap5xap/quito360"]
   },
   {
     "image": "/images/chiff.svg",

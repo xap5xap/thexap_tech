@@ -33,7 +33,7 @@ const IndividualProjectPage = ({
   responsabilities,
   technologies,
   urls,
-  imageLarge,
+  imageLarge
 }: Props) => {
   return (
     <HeaderFooterLayout>
@@ -48,7 +48,7 @@ const IndividualProjectPage = ({
           display: "grid",
           gridTemplateColumns: { xs: "1fr", md: "auto 1fr" },
           columnGap: 4,
-          rowGap: 4,
+          rowGap: 4
         }}
       >
         <Box>
@@ -103,23 +103,21 @@ const IndividualProjectPage = ({
   );
 };
 
-export const getStaticProps: GetStaticProps<Props | any, Params> = async ({
-  params,
-}) => {
-  const project = projectsData.find((el) => el.slug === params?.slug);
+export const getStaticProps: GetStaticProps<Props | any, Params> = async ({ params }) => {
+  const project = projectsData.find(el => el.slug === params?.slug);
   return { props: project };
 };
 
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
   return {
-    paths: projectsData.map((project) => {
+    paths: projectsData.map(project => {
       return {
         params: {
-          slug: project.slug,
-        },
+          slug: project.slug
+        }
       };
     }),
-    fallback: false,
+    fallback: false
   };
 };
 

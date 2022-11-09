@@ -10,26 +10,24 @@ const stakesData = [
   {
     icon: <ScheduleIcon sx={{ fontSize: 40 }} />,
     title: "Time = Money = Timezone",
-    description: [
-      "Avoid features and bug fixes that take days to complete because of timezone gap communication. ",
-    ],
+    description: ["Avoid features and bug fixes that take days to complete because of timezone gap communication. "]
   },
   {
     icon: <MoneyOffIcon sx={{ fontSize: 40 }} />,
     title: "Invest wisely",
     description: [
       "There are developers that learn in your project and the ones that use their knowledge to actually complete your project.",
-      "When the budget is limited, don't pay others to learn. The app will take more time, and in the long run, more money.",
-    ],
+      "When the budget is limited, don't pay others to learn. The app will take more time, and in the long run, more money."
+    ]
   },
   {
     icon: <BugReportIcon sx={{ fontSize: 40 }} />,
     title: "Buggy apps",
     description: [
       "You can be coding for months just to realize the app is too buggy to been used",
-      "Even worse, there are no tests in the app",
-    ],
-  },
+      "Even worse, there are no tests in the app"
+    ]
+  }
 ];
 const StakesSection = () => {
   return (
@@ -40,7 +38,7 @@ const StakesSection = () => {
           flexDirection: "column",
           alignItems: "center",
           flexWrap: "wrap",
-          rowGap: 6,
+          rowGap: 6
         }}
       >
         <Typography variant="h3" textAlign="center">
@@ -52,16 +50,11 @@ const StakesSection = () => {
             flexDirection: { xs: "column", md: "row" },
             justifyContent: "space-between",
             flexWrap: "wrap",
-            rowGap: 6,
+            rowGap: 6
           }}
         >
           {stakesData.map((el, idx) => (
-            <Stake
-              key={idx}
-              title={el.title}
-              description={el.description}
-              icon={el.icon}
-            />
+            <Stake key={idx} title={el.title} description={el.description} icon={el.icon} />
           ))}
         </Box>
       </Container>

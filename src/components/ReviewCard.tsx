@@ -12,7 +12,7 @@ type Props = {
 
 function stringAvatar(name: string) {
   return {
-    children: `${name.split(" ")[0][0]}${name.split(" ")[1][0]}`,
+    children: `${name.split(" ")[0][0]}${name.split(" ")[1][0]}`
   };
 }
 
@@ -21,13 +21,13 @@ const ReviewCard: FC<Props> = ({ name, review }) => {
     <Card
       sx={{
         minWidth: "300px",
-        width: "300px",
+        width: "300px"
       }}
     >
       <CardContent
         sx={{
           maxHeight: "200px",
-          overflowY: "scroll",
+          overflowY: "scroll"
         }}
       >
         <Box sx={{ display: "flex", columnGap: 2 }}>

@@ -12,22 +12,14 @@ const DevelopmentProcessImage = () => {
             transform: "rotate(34deg)",
             position: "absolute",
             bottom: 0,
-            right: 0,
+            right: 0
           }}
         >
-          <Image
-            src="/images/arrow.svg"
-            alt="arrow"
-            width={100}
-            height="100"
-          ></Image>
+          <Image src="/images/arrow.svg" alt="arrow" width={100} height="100"></Image>
         </Box>
       </Grid>
       <Grid item xs={4}>
-        <DevelopmentProcessItem
-          imageSrc="/images/testsJest.svg"
-          text="Jest Unit Tests"
-        />
+        <DevelopmentProcessItem imageSrc="/images/testsJest.svg" text="Jest Unit Tests" />
       </Grid>
       <Grid item xs={4} sx={{ position: "relative" }}>
         <Box
@@ -35,28 +27,17 @@ const DevelopmentProcessImage = () => {
             transform: "rotate(125deg)",
             position: "absolute",
             bottom: 0,
-            left: 0,
+            left: 0
           }}
         >
-          <Image
-            src="/images/arrow.svg"
-            alt="arrow"
-            width={100}
-            height="100"
-          ></Image>
+          <Image src="/images/arrow.svg" alt="arrow" width={100} height="100"></Image>
         </Box>
       </Grid>
       <Grid item xs={6}>
-        <DevelopmentProcessItem
-          imageSrc="/images/e2e.svg"
-          text="Cypress e2e Tests"
-        />
+        <DevelopmentProcessItem imageSrc="/images/e2e.svg" text="Cypress e2e Tests" />
       </Grid>
       <Grid item xs={6}>
-        <DevelopmentProcessItem
-          imageSrc="/images/development.svg"
-          text="React - NextJS Development"
-        />
+        <DevelopmentProcessItem imageSrc="/images/development.svg" text="React - NextJS Development" />
       </Grid>
       <Grid item xs={4} sx={{ height: "100px" }}></Grid>
       <Grid item xs={4} sx={{ position: "relative" }}>
@@ -65,15 +46,10 @@ const DevelopmentProcessImage = () => {
             transform: "rotate(255deg)",
             position: "absolute",
             top: 0,
-            left: "40%",
+            left: "40%"
           }}
         >
-          <Image
-            src="/images/arrow.svg"
-            alt="arrow"
-            width={100}
-            height="100"
-          ></Image>
+          <Image src="/images/arrow.svg" alt="arrow" width={100} height="100"></Image>
         </Box>
       </Grid>
     </Grid>

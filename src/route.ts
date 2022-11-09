@@ -2,7 +2,7 @@ const ROUTES = {
   home: "/",
   portfolio: "/portfolio/",
   aboutMe: "/about/",
-  blog: "/blog/",
+  blog: "/blog/"
 };
 
 export default ROUTES;
