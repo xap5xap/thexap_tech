@@ -127,6 +127,7 @@ const IndividualBlogPage = ({ blog, morePosts }: Props) => {
             component="article"
             sx={{
               display: "flex",
+              margin: 1,
               flexDirection: "column",
               paddingTop: 12
             }}
