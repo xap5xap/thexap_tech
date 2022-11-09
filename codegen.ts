@@ -22,12 +22,6 @@ const config: CodegenConfig = {
     "./src/gql/": {
       preset: "client",
       plugins: []
-    },
-    "./src/lib/resolvers-types.ts": {
-      plugins: ["typescript", "typescript-resolvers"],
-      config: {
-        disableDescriptions: true
-      }
     }
   }
 };
