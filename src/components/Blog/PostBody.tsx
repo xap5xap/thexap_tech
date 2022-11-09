@@ -44,11 +44,21 @@ const customMarkdownOptions = (content: BlogBody): Options => ({
         {children}
       </Typography>
     ),
-    [BLOCKS.PARAGRAPH]: (node: Block | Inline, children: ReactNode) => (
-      <Typography variant="body1" component="div" marginY={2}>
-        {children}
-      </Typography>
-    ),
+    [BLOCKS.PARAGRAPH]: (node: Block | Inline, children: ReactNode) => {
+      if (
+        node.content.length === 1 &&
+        node.content[0].nodeType === "text" &&
+        node.content[0].marks.length > 0 &&
+        node.content[0].marks[0].type === "code"
+      ) {
+        return <HighlightedCode renderPre>{children}</HighlightedCode>;
+      }
+      return (
+        <Typography variant="body1" component="p" marginY={2}>
+          {children}
+        </Typography>
+      );
+    },
     [BLOCKS.EMBEDDED_ASSET]: node => <RichTextAsset id={node.data.target.sys.id} assets={content.links.assets} />,
     [BLOCKS.QUOTE]: (node: Block | Inline, children: ReactNode) => {
       return (
