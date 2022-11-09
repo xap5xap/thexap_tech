@@ -8,40 +8,37 @@ const valueData = [
     title: "Save time",
     description: [
       "You deserve quick responses.",
-      "Being in the same timezone will improve the communication and complete the tasks faster",
+      "Being in the same timezone will improve the communication and complete the tasks faster"
     ],
-    imageSrc: "/images/communication.svg",
+    imageSrc: "/images/communication.svg"
   },
   {
     title: "Reduce the risk",
     description: [
       "Let’s build a quality app with maintainable code",
-      "Invest the budget on specialists in the technology your app is being built",
+      "Invest the budget on specialists in the technology your app is being built"
     ],
-    imageSrc: "/images/Ethical.svg",
+    imageSrc: "/images/Ethical.svg"
   },
   {
     title: "Keep the project alive",
     description: [
       "Let’s deploy the app constantly with excellent quality to get feedback fast",
-      "Launch an usable app and generate profits or get that new round of funding",
+      "Launch an usable app and generate profits or get that new round of funding"
     ],
-    imageSrc: "/images/QC2.svg",
-  },
+    imageSrc: "/images/QC2.svg"
+  }
 ];
 const ValuesSection = () => {
   return (
-    <Box
-      component="section"
-      sx={{ paddingY: 9, backgroundColor: "background.paper" }}
-    >
+    <Box component="section" sx={{ paddingY: 9, backgroundColor: "background.paper" }}>
       <Container
         sx={{
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
           flexWrap: "wrap",
-          rowGap: 9,
+          rowGap: 9
         }}
       >
         <Typography variant="h3" textAlign="center">
@@ -51,7 +48,7 @@ const ValuesSection = () => {
           sx={{
             display: "flex",
             flexDirection: "column",
-            rowGap: 8,
+            rowGap: 8
           }}
         >
           {valueData.map((el, idx) => (

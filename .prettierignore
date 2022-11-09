@@ -1,0 +1,11 @@
+/cache
+
+data
+.next
+coverage
+.yarn
+.next
+dist
+node_modules
+src/gql
+.github

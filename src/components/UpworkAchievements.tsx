@@ -9,12 +9,11 @@ const UpworkAchievements = () => {
         display: "flex",
         width: "100%",
         flexDirection: "column",
-        rowGap: 3,
+        rowGap: 3
       }}
     >
       <Typography color="text.secondary" textAlign="center">
-        Since 2016 I have been helping innovative startups and companies like
-        yours in Upwork
+        Since 2016 I have been helping innovative startups and companies like yours in Upwork
       </Typography>
       <Box
         sx={{
@@ -22,16 +21,13 @@ const UpworkAchievements = () => {
           flexDirection: { xs: "column", md: "row" },
           justifyContent: "space-between",
           width: "100%",
-          rowGap: 2,
+          rowGap: 2
         }}
       >
         <KnowMeItem primaryText="28" secondaryText="Projects completed" />
         <KnowMeItem primaryText="9000+" secondaryText="Worked hours" />
         <KnowMeItem primaryText="100%" secondaryText="Job Success" />
-        <KnowMeItem
-          primaryText="5"
-          secondaryText="Years Top Rated freelancer"
-        />
+        <KnowMeItem primaryText="5" secondaryText="Years Top Rated freelancer" />
       </Box>
     </Box>
   );

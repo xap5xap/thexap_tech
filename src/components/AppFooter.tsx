@@ -13,16 +13,9 @@ const AppFooter = () => {
   return (
     <Box
       sx={{
-        boxShadow: (theme) =>
-          `inset 0px 1px 1px ${
-            theme.palette.mode === "dark"
-              ? theme.palette.primary.dark
-              : theme.palette.grey[100]
-          }`,
-        backgroundColor: (theme) =>
-          theme.palette.mode === "dark"
-            ? "rgba(13,13,13,0.72)"
-            : "rgba(255,255,255,0.72)",
+        boxShadow: theme =>
+          `inset 0px 1px 1px ${theme.palette.mode === "dark" ? theme.palette.primary.dark : theme.palette.grey[100]}`,
+        backgroundColor: theme => (theme.palette.mode === "dark" ? "rgba(13,13,13,0.72)" : "rgba(255,255,255,0.72)")
       }}
     >
       <Container>
@@ -31,7 +24,7 @@ const AppFooter = () => {
             py: 4,
             display: { xs: "block", sm: "flex" },
             alignItems: { sm: "center" },
-            justifyContent: { sm: "space-between" },
+            justifyContent: { sm: "space-between" }
           }}
         >
           <NextLink passHref href="/about-me">

@@ -6,6 +6,7 @@ import Head from "next/head";
 import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeProvider } from "../src/context/ThemeContext";
 import GoogleAnalytics from "../src/lib/GoogleAnalytics";
+import "../styles/prism.css";
 
 const clientSideEmotionCache = createEmotionCache();
 

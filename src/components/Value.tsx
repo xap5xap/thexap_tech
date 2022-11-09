@@ -18,7 +18,7 @@ const Value: FC<Props> = ({ title, description, imageSrc, reverse }) => {
         alignItems: "center",
         gridTemplateColumns: { xs: "1fr", md: "1fr 1fr" },
         columnGap: 8,
-        rowGap: 2,
+        rowGap: 2
       }}
     >
       <Box>
@@ -30,7 +30,7 @@ const Value: FC<Props> = ({ title, description, imageSrc, reverse }) => {
           rowGap: 2,
           flexDirection: "column",
           order: { xs: 1, md: reverse ? -1 : 1 },
-          alignItems: { xs: "center", md: "flex-start" },
+          alignItems: { xs: "center", md: "flex-start" }
         }}
       >
         <Typography variant="h4" textAlign={{ xs: "center", md: "left" }}>
@@ -42,11 +42,7 @@ const Value: FC<Props> = ({ title, description, imageSrc, reverse }) => {
           ))}
         </ul>
         <Box>
-          <Button
-            component="a"
-            href="https://www.upwork.com/freelancers/xavierperez"
-            size="small"
-          >
+          <Button component="a" href="https://www.upwork.com/freelancers/xavierperez" size="small">
             Schedule a meeting
           </Button>
         </Box>

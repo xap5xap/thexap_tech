@@ -31,7 +31,7 @@ function handleClick(event) {
         hitType: "event",
         eventCategory: category,
         eventAction: element.getAttribute("data-ga-event-action"),
-        eventLabel: element.getAttribute("data-ga-event-label"),
+        eventLabel: element.getAttribute("data-ga-event-label")
       });
       break;
     }
@@ -49,10 +49,7 @@ let boundDataGaListener = false;
  */
 function GoogleAnalytics() {
   React.useEffect(() => {
-    loadScript(
-      "https://www.google-analytics.com/analytics.js",
-      document.querySelector("head")
-    );
+    loadScript("https://www.google-analytics.com/analytics.js", document.querySelector("head"));
 
     if (!boundDataGaListener) {
       boundDataGaListener = true;
@@ -86,9 +83,7 @@ function GoogleAnalytics() {
     /**
      * @type {MediaQueryList}
      */
-    const matchMedia = window.matchMedia(
-      `(resolution: ${window.devicePixelRatio}dppx)`
-    );
+    const matchMedia = window.matchMedia(`(resolution: ${window.devicePixelRatio}dppx)`);
     // Intentionally use deprecated listener methods to support iOS & old browsers
     matchMedia.addListener(trackDevicePixelRation);
     return () => {
@@ -97,7 +92,7 @@ function GoogleAnalytics() {
   }, []);
 
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)", {
-    noSsr: true,
+    noSsr: true
   });
   const colorSchemeOS = prefersDarkMode ? "dark" : "light";
 

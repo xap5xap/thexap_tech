@@ -1,14 +1,18 @@
 export const routes = {
   home: {
     path: "/",
-    title: "Home",
+    title: "Home"
   },
   aboutMe: {
     path: "/about-me",
-    title: "About me",
+    title: "About me"
   },
   projects: {
     path: "/projects",
-    title: "Projects",
+    title: "Projects"
   },
+  blog: {
+    path: "/blog",
+    title: "Blog"
+  }
 };

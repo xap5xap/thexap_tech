@@ -14,37 +14,22 @@ const Hero = () => {
         justifyContent: "flex-end",
         alignItems: "center",
         flex: 1,
-        height: "calc(100vh - 150px)",
+        height: "calc(100vh - 150px)"
       }}
     >
-      <Image
-        priority
-        src="/images/hero.svg"
-        alt="thexap"
-        layout="fill"
-        objectFit="cover"
-      />
+      <Image priority src="/images/hero.svg" alt="thexap" layout="fill" objectFit="cover" />
       <Box
         sx={{
           zIndex: 200,
           mb: { xs: "25px", md: "24px" },
-          textAlign: "center",
+          textAlign: "center"
         }}
       >
         <Typography
           variant="h1"
-          sx={(theme) => {
+          sx={theme => {
             return {
-              color:
-                theme.palette.mode === "dark"
-                  ? lightPalette.text.primary
-                  : "inherit",
-              [theme.breakpoints.down("lg")]: {
-                fontSize: "4rem",
-              },
-              [theme.breakpoints.down("md")]: {
-                fontSize: "3rem",
-              },
+              color: theme.palette.mode === "dark" ? lightPalette.text.primary : "inherit"
             };
           }}
         >
@@ -52,23 +37,13 @@ const Hero = () => {
         </Typography>
         <Typography
           variant="h4"
-          sx={(theme) => ({
-            color:
-              theme.palette.mode === "dark"
-                ? lightPalette.text.primary
-                : "inherit",
-            [theme.breakpoints.down("lg")]: {
-              fontSize: "1.2rem",
-            },
+          sx={theme => ({
+            color: theme.palette.mode === "dark" ? lightPalette.text.primary : "inherit"
           })}
         >
           Helping you complete the app your users will love to use
         </Typography>
-        <Button
-          component="a"
-          href="https://www.upwork.com/freelancers/xavierperez"
-          sx={{ mt: 2 }}
-        >
+        <Button component="a" href="https://www.upwork.com/freelancers/xavierperez" sx={{ mt: 2 }}>
           SCHEDULE A MEETING
         </Button>
       </Box>

@@ -13,11 +13,7 @@ const ThemeModeToggle: FC<Props> = ({ checked, onChange }) => {
   return (
     <Tooltip title={checked ? "Light mode" : "Dark mode"}>
       <IconButton color="primary" onClick={() => onChange(!checked)}>
-        {checked ? (
-          <LightModeOutlined fontSize="small" />
-        ) : (
-          <DarkModeOutlined fontSize="small" />
-        )}
+        {checked ? <LightModeOutlined fontSize="small" /> : <DarkModeOutlined fontSize="small" />}
       </IconButton>
     </Tooltip>
   );

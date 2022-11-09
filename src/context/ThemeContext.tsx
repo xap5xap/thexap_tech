@@ -1,21 +1,11 @@
-import React, {
-  createContext,
-  FC,
-  useContext,
-  useMemo,
-  useReducer,
-  Dispatch,
-  useCallback,
-} from "react";
+import React, { createContext, FC, useContext, useMemo, useReducer, Dispatch, useCallback } from "react";
 import { ThemeProvider as MuiThemeProvider } from "@mui/material/styles";
 import { getDesignTokens, getThemedComponents } from "../theme/brandingTheme";
 import { deepmerge } from "@mui/utils";
 import { createTheme } from "@mui/material/styles";
 import { DispatchThemeAction, DispatchThemeState } from "../thexapTypes";
 
-const ThemeDispatchContext = createContext<
-  Dispatch<DispatchThemeAction> | undefined
->(undefined);
+const ThemeDispatchContext = createContext<Dispatch<DispatchThemeAction> | undefined>(undefined);
 
 type Props = {
   children: React.ReactNode;
@@ -31,7 +21,7 @@ const ThemeProvider: FC<Props> = ({ children }) => {
         case "SET_MODE":
           return {
             ...state,
-            paletteMode: action.payload.paletteMode,
+            paletteMode: action.payload.paletteMode
           };
         default:
           throw new Error(`Unrecognized type ${action.type}`);
@@ -48,8 +38,8 @@ const ThemeProvider: FC<Props> = ({ children }) => {
       ...brandingDesignTokens,
       palette: {
         ...brandingDesignTokens.palette,
-        mode: paletteMode,
-      },
+        mode: paletteMode
+      }
     });
 
     nextTheme = deepmerge(nextTheme, getThemedComponents(nextTheme));
@@ -58,9 +48,7 @@ const ThemeProvider: FC<Props> = ({ children }) => {
 
   return (
     <MuiThemeProvider theme={theme}>
-      <ThemeDispatchContext.Provider value={dispatch}>
-        {children}
-      </ThemeDispatchContext.Provider>
+      <ThemeDispatchContext.Provider value={dispatch}>{children}</ThemeDispatchContext.Provider>
     </MuiThemeProvider>
   );
 };
@@ -80,8 +68,7 @@ function useChangeTheme() {
     throw new Error("ThemeDispatchContext must be used within a ThemeProvides");
   }
   return useCallback(
-    (mode: "light" | "dark") =>
-      dispatch({ type: "SET_MODE", payload: { paletteMode: mode } }),
+    (mode: "light" | "dark") => dispatch({ type: "SET_MODE", payload: { paletteMode: mode } }),
     [dispatch]
   );
 }
