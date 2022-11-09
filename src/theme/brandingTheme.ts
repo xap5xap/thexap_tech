@@ -1,5 +1,4 @@
-import { deepmerge } from "@mui/utils";
-import { Theme, createTheme, ThemeOptions } from "@mui/material/styles";
+import { createTheme, ThemeOptions } from "@mui/material/styles";
 
 const systemFont = [
   "Roboto",
@@ -129,7 +128,7 @@ export const getDesignTokens = (mode: "light" | "dark") =>
     }
   } as ThemeOptions);
 
-export function getThemedComponents(theme: Theme) {
+export function getThemedComponents() {
   return {
     components: {
       MuiButtonBase: {
@@ -151,6 +150,3 @@ export function getThemedComponents(theme: Theme) {
     }
   };
 }
-
-const darkTheme = createTheme(getDesignTokens("dark"));
-export const brandingDarkTheme = deepmerge(darkTheme, getThemedComponents(darkTheme));

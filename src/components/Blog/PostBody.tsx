@@ -1,5 +1,5 @@
 import { documentToReactComponents, Options } from "@contentful/rich-text-react-renderer";
-import { Block, Document, Inline, Text } from "@contentful/rich-text-types";
+import { Block, Inline } from "@contentful/rich-text-types";
 import Box from "@mui/material/Box";
 import Link from "@mui/material/Link";
 import { BlogBody } from "../../gql/graphql";

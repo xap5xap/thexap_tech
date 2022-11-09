@@ -1,11 +1,11 @@
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
-import { FC } from "react";
+import { FC, ReactNode } from "react";
 
 type Props = {
   title: string;
   description: string[];
-  icon: any;
+  icon: ReactNode;
   color?: string;
 };
 const Stake: FC<Props> = ({ title, description, icon, color = "inherit" }) => {

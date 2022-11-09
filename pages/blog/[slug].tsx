@@ -1,10 +1,5 @@
-import Box from "@mui/material/Box";
-import Chip from "@mui/material/Chip";
 import Container from "@mui/material/Container";
-import Divider from "@mui/material/Divider";
-import Typography from "@mui/material/Typography";
 import Head from "next/head";
-import Image from "next/image";
 import PostHeader from "../../src/components/Blog/PostHeader";
 import HeaderFooterLayout from "../../src/components/HeaderFooterLayout";
 import { client } from "../../src/contentful/urqlClient";

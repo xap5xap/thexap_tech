@@ -1,4 +1,4 @@
-const fetchGraphQL = async (query: any, preview: boolean = false) => {
+const fetchGraphQL = async (query: unknown, preview = false) => {
   return fetch(`https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`, {
     method: "POST",
     headers: {

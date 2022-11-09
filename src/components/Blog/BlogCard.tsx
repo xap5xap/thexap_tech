@@ -3,7 +3,6 @@ import Card from "@mui/material/Card";
 import CardActionArea from "@mui/material/CardActionArea";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
-import Chip from "@mui/material/Chip";
 import Typography from "@mui/material/Typography";
 import Image from "next/image";
 import { Blog } from "../../gql/graphql";

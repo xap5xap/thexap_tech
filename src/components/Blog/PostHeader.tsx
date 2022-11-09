@@ -24,11 +24,11 @@ const PostHeader = ({ title, tags, date, image }: Props) => {
         <TagsChips tags={tags} />
       </Box>
       <Divider />
-      {date && 
+      {date && (
         <Typography mt={4} variant="body2">
           {format(new Date(date || ""), "MMMM dd, yyyy")}
         </Typography>
-      }
+      )}
       <Box sx={{ textAlign: "center", paddingY: 6 }} component="section">
         <Image
           style={{ borderRadius: "24px" }}
