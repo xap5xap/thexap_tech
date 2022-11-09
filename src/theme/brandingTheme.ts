@@ -1,4 +1,4 @@
-import { createTheme, ThemeOptions } from "@mui/material/styles";
+import { Theme, createTheme, ThemeOptions } from "@mui/material/styles";
 
 const systemFont = [
   "Roboto",
@@ -128,7 +128,8 @@ export const getDesignTokens = (mode: "light" | "dark") =>
     }
   } as ThemeOptions);
 
-export function getThemedComponents() {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export function getThemedComponents(_theme: Theme) {
   return {
     components: {
       MuiButtonBase: {
