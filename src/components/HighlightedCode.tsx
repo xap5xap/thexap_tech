@@ -1,6 +1,6 @@
-import { Paper } from "@mui/material";
-import { ReactNode, useEffect, useMemo } from "react";
+import { ReactNode, useEffect } from "react";
 import Prism from "prismjs";
+import Paper from "@mui/material/Paper";
 
 type Props = {
   children: ReactNode;
@@ -17,10 +17,8 @@ const HighlightedCode = ({ language = "javascript", children }: Props) => {
   }
 
   return (
-    <Paper sx={{ marginY: 4, p: 1, borderRadius: "10px" }} className="code">
-      <pre>
-        <code className={`language-${language}`}>{children}</code>
-      </pre>
+    <Paper  sx={{ display: "inline-block", p: 1, borderRadius: "10px" }} className="code">
+      <code className={`language-${language}`}>{children}</code>
     </Paper>
   );
 };
