@@ -7,7 +7,7 @@ import { client } from "../../src/contentful/urqlClient";
 import { graphql } from "../../src/gql";
 import { Blog, BlogListForHomeQuery } from "../../src/gql/graphql";
 import { getPreviewFromEnv } from "../../src/lib/utils";
-import Masonry from "@mui/lab/Masonry";
+import Masonry from '@mui/lab/Masonry';
 
 const blogListForHome = graphql(/* GraphQL */ `
   query blogListForHome($preview: Boolean) {

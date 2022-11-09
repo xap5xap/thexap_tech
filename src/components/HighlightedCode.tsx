@@ -17,7 +17,7 @@ const HighlightedCode = ({ language = "javascript", children }: Props) => {
   }
 
   return (
-    <Paper  sx={{ display: "inline-block", p: 1, borderRadius: "10px" }} className="code">
+    <Paper sx={{ display: "inline-block", p: 1, borderRadius: "10px" }} className="code">
       <code className={`language-${language}`}>{children}</code>
     </Paper>
   );
