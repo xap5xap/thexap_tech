@@ -81,9 +81,9 @@ const AppHeader = () => {
               About me
             </Button>
           </NextLink>
-          <Button component="a" href="https://www.upwork.com/freelancers/xavierperez">
-            SCHEDULE A MEETING
-          </Button>
+          <NextLink href={routes.scheduleMeeting.path} passHref>
+            <Button component="a">SCHEDULE A MEETING</Button>
+          </NextLink>
         </Stack>
       </Container>
       <Drawer data-testid="nav-menu-drawer" anchor="left" open={openDrawer} onClose={() => setOpenDrawer(false)}>
@@ -91,6 +91,11 @@ const AppHeader = () => {
           <ListItem>
             <ListItemButton onClick={() => redirectTo(routes.home.path)}>
               <ListItemText primary="Home" />
+            </ListItemButton>
+          </ListItem>
+          <ListItem>
+            <ListItemButton onClick={() => redirectTo(routes.blog.path)}>
+              <ListItemText primary="Blog" />
             </ListItemButton>
           </ListItem>
           <ListItem>
