@@ -2,6 +2,8 @@ import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { FC } from "react";
+import { routes } from "../lib/routes";
+import NextLink from "next/link";
 
 type Props = {
   title: string;
@@ -42,9 +44,11 @@ const Value: FC<Props> = ({ title, description, imageSrc, reverse }) => {
           ))}
         </ul>
         <Box>
-          <Button component="a" href="https://www.upwork.com/freelancers/xavierperez" size="small">
-            Schedule a meeting
-          </Button>
+          <NextLink href={routes.scheduleMeeting.path} passHref>
+            <Button component="a" size="small">
+              Schedule a meeting
+            </Button>
+          </NextLink>
         </Box>
       </Box>
     </Box>

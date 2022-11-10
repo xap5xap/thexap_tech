@@ -14,5 +14,9 @@ export const routes = {
   blog: {
     path: "/blog",
     title: "Blog"
+  },
+  scheduleMeeting: {
+    path: "/schedule-meeting",
+    title: "Schedule a meeting"
   }
 };

@@ -3,6 +3,8 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Image from "next/image";
 import { lightPalette } from "../theme/brandingTheme";
+import NextLink from "next/link";
+import { routes } from "../lib/routes";
 
 const Hero = () => {
   return (
@@ -43,9 +45,11 @@ const Hero = () => {
         >
           Helping you complete the app your users will love to use
         </Typography>
-        <Button component="a" href="https://www.upwork.com/freelancers/xavierperez" sx={{ mt: 2 }}>
-          SCHEDULE A MEETING
-        </Button>
+        <NextLink href={routes.scheduleMeeting.path} passHref>
+          <Button component="a" sx={{ mt: 2 }}>
+            SCHEDULE A MEETING
+          </Button>
+        </NextLink>
       </Box>
     </Box>
   );
