@@ -24,6 +24,7 @@
     "next": "12.2.6",
     "prismjs": "^1.29.0",
     "react": "18.2.0",
+    "react-calendly": "^4.1.0",
     "react-dom": "18.2.0",
     "sharp": "^0.31.1",
     "urql": "^3.0.3"
