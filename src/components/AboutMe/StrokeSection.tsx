@@ -14,15 +14,16 @@ const StrokeSection = () => {
         }}
       >
         <Box>
-          <p>I am available from 8am to 7pm EST Monday to Friday. </p>
-          <p>I think one of the keys to a project's success is organization and communication.</p>
+          <p>Available 8am to 7pm EST, Monday to Friday.</p>
           <p>
-            Having clear requirements before coding is very important, there is where having good communication is
-            important. Being in the same time zone, we can chat in real time or have a quick call or video call. The
-            important thing is that you don't waste money with coded features that users don't find valuable because of
-            misunderstandings with the requirements..
+            Good AI architecture starts with clear communication. Before writing a single line of code, I make sure we
+            align on what the AI should do, how it fits into your product, and what success looks like.
           </p>
-          <p>Feel free to schedule a meeting to see how I can help you.</p>
+          <p>
+            I work iteratively — shipping working software early and often so you can see progress, give feedback, and
+            course-correct before it gets expensive to change direction.
+          </p>
+          <p>Schedule a meeting and let&apos;s talk about what AI can do for your product.</p>
         </Box>
         <Box sx={{ display: "flex", justifyContent: "center" }}>
           <Image src="/images/something.jpg" alt="do something amazing image" width={450} height={300} />

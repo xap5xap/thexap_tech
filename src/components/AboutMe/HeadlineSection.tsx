@@ -17,21 +17,25 @@ const HeadlineSection = () => {
           <Image src="/images/yo.jpg" alt="my picture" height={300} width={267} />
         </Box>
         <Box>
-          <Typography variant="h4">So you have an idea, and you’re are ready to get started.</Typography>
+          <Typography variant="h4">
+            You know AI can transform your product. You just need the right architect.
+          </Typography>
           <Box>
-            <p>Maybe you already researched the market, designed some wireframes or maybe you have a prototype .</p>
             <p>
-              You have completed most of the steps many people don't do. You are a true innovative entrepreneur and take
-              this project very seriously. Now you have to complete that dream. That app is going to help many people,
-              make the internet a better place and help you make profits.
+              Maybe you&apos;ve experimented with ChatGPT wrappers. Maybe your team has prototyped something promising
+              but can&apos;t get it to production. Or maybe you&apos;re starting fresh and want AI built in from the
+              ground up.
             </p>
             <p>
-              I know you have a limited budget and want to invest that money in the best resources that will provide the
-              best quality. However, you want to minimize the risks, you want to hire a freelancer so you don't have to
-              hire a full time employee and all the legal obligations that come with that decision.
+              You&apos;ve done the hard part: you see the opportunity. Now you need someone who can turn that vision
+              into a real product — someone who understands both the AI layer and the full application stack underneath
+              it.
             </p>
-            <p>Oh, you’re in just the right place!</p>
-            <p>That’s where I come in to help you build that app.</p>
+            <p>
+              I design and build AI-powered applications end-to-end. Agentic workflows, model orchestration, tool
+              integration, and the React + Node.js + AWS infrastructure to support it all.
+            </p>
+            <p>That&apos;s where I come in.</p>
           </Box>
         </Box>
       </Container>

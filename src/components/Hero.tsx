@@ -35,7 +35,7 @@ const Hero = () => {
             };
           }}
         >
-          Launch your React app on time
+          Your next app needs AI. Let&apos;s architect it right.
         </Typography>
         <Typography
           variant="h4"
@@ -43,7 +43,7 @@ const Hero = () => {
             color: theme.palette.mode === "dark" ? lightPalette.text.primary : "inherit"
           })}
         >
-          Helping you complete the app your users will love to use
+          Don&apos;t let AI become the most expensive experiment your product never shipped.
         </Typography>
         <NextLink href={routes.scheduleMeeting.path} passHref>
           <Button component="a" sx={{ mt: 2 }}>

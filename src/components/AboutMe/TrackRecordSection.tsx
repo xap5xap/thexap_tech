@@ -25,16 +25,17 @@ const TrackRecordSection = () => {
         >
           <Box>
             <p>
-              I’m Xavier Perez, a Full Stack developer that specializes in Javascript technologies. You know,
-              Typescript, NodeJS, and React.
+              I&apos;m Xavier Perez — an AI Solutions Architect with 9 years of fullstack development experience in
+              React, TypeScript, Node.js, and AWS.
             </p>
             <p>
-              I have been developing software for the past 14 years but for the past 5 years I have been freelancing and
-              helping innovative entrepreneurs complete their applications.
+              I&apos;ve spent those years freelancing and helping teams ship real products. Now I bring that same
+              delivery mindset to AI-powered applications: agentic systems, model orchestration, MCP integrations, and
+              production-grade AI architecture.
             </p>
             <p>
-              I am grateful for having helped more than 26 projects, with 100% job success. Because of this, Upwork has
-              awarded me with a top rated freelancer badge.
+              28+ projects delivered with 100% job success on Upwork. Top Rated freelancer. The track record speaks for
+              itself.
             </p>
           </Box>
           <Box sx={{ display: "flex", justifyContent: "center" }}>
@@ -55,12 +56,16 @@ const TrackRecordSection = () => {
             <Image src="/images/passion.jpg" alt="passion image" width={450} height={300} />
           </Box>
           <Box>
-            <p>Being part of a dream is great. </p>
+            <p>Building AI into a product is a high-stakes decision.</p>
             <p>
-              I understand all the effort you are doing to create this project. The stakes are high! But you are not
-              alone, I will be with you in this journey and I will do my best to make your project a success.
+              I understand the pressure — the budget, the timeline, the need to get it right the first time. I treat
+              every project like my own and bring the same care and intensity that earned me 100% job success across 28
+              projects.
             </p>
-            <p>I will take care you project and your users like I did for the great entrepreneurs I’ve helped.</p>
+            <p>
+              Whether you&apos;re adding AI to an existing product or building something new from scratch, I&apos;ll be
+              with you from architecture to deployment.
+            </p>
           </Box>
         </Box>
       </Container>

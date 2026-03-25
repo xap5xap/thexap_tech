@@ -13,7 +13,7 @@ const UpworkAchievements = () => {
       }}
     >
       <Typography color="text.secondary" textAlign="center">
-        Since 2016 I have been helping innovative startups and companies like yours in Upwork
+        Since 2016 I have been helping startups and companies ship software that matters
       </Typography>
       <Box
         sx={{

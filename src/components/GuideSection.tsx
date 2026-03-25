@@ -21,10 +21,10 @@ const GuideSection = () => {
       >
         <Box>
           <Typography variant="h3" textAlign="center">
-            Join other successful projects that have launched their apps
+            Trusted by teams that needed to ship
           </Typography>
           <Typography variant="subtitle1" textAlign="center" color="text.secondary">
-            Check out these nice things people are saying about me
+            What clients say about working with me
           </Typography>
         </Box>
         <UpworkReviews />

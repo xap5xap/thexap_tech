@@ -1,37 +1,37 @@
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
-import SpokeIcon from "@mui/icons-material/Spoke";
-import CodeIcon from "@mui/icons-material/Code";
-import AutorenewIcon from "@mui/icons-material/Autorenew";
+import SearchIcon from "@mui/icons-material/Search";
+import ArchitectureIcon from "@mui/icons-material/Architecture";
+import RocketLaunchIcon from "@mui/icons-material/RocketLaunch";
 import Stake from "./Stake";
 
 const planData = [
   {
-    icon: <SpokeIcon sx={{ fontSize: 94 }} />,
-    title: "1. Organization / Communication",
+    icon: <SearchIcon sx={{ fontSize: 94 }} />,
+    title: "1. Discovery",
     description: [
-      "Scrum to deliver value incrementally in a collaborative manner.",
-      "Good communication: messages, calls, videos",
-      "Understand requirements with wireframes, prototypes, mockups"
+      "Understand your product, your users, and where AI creates real value.",
+      "Identify the right AI patterns: agentic workflows, RAG, tool use, or model orchestration.",
+      "Define scope so we build what matters first."
     ]
   },
   {
-    icon: <CodeIcon sx={{ fontSize: 94 }} />,
-    title: "2. Is time to code",
+    icon: <ArchitectureIcon sx={{ fontSize: 94 }} />,
+    title: "2. Architecture & Build",
     description: [
-      "Bring designs to life with React and NextJS",
-      "Create unit test with Jest",
-      "Create e2e tests with Cypress"
+      "Design the system end-to-end: frontend, AI backend, integrations, and infrastructure.",
+      "Build with production in mind from day one — evaluation, error handling, and monitoring included.",
+      "Iterate fast with working software, not slide decks."
     ]
   },
   {
-    icon: <AutorenewIcon sx={{ fontSize: 94 }} />,
-    title: "3. Continuous deployments",
+    icon: <RocketLaunchIcon sx={{ fontSize: 94 }} />,
+    title: "3. Ship & Iterate",
     description: [
-      "Deploy the app quickly and constantly to get feedback fast",
-      "Give your users value",
-      "Generate profit fast"
+      "Deploy to production with confidence. Real users, real feedback.",
+      "Measure AI performance and optimize based on actual usage.",
+      "Continuous improvement so your AI gets better over time."
     ]
   }
 ];
@@ -49,7 +49,7 @@ const PlanSection = () => {
         }}
       >
         <Typography variant="h3" textAlign="center">
-          How is your app going to be completed?
+          How we bring your AI-powered app to life
         </Typography>
         <Box
           sx={{

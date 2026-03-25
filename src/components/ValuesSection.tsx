@@ -5,26 +5,26 @@ import Value from "./Value";
 
 const valueData = [
   {
-    title: "Save time",
+    title: "Architecture-first AI",
     description: [
-      "You deserve quick responses.",
-      "Being in the same timezone will improve the communication and complete the tasks faster"
+      "AI features that are designed into your system from the ground up, not patched on after the fact.",
+      "Agentic workflows, tool integration, and model orchestration built on solid foundations."
     ],
     imageSrc: "/images/communication.svg"
   },
   {
-    title: "Reduce the risk",
+    title: "Production-ready from day one",
     description: [
-      "Let’s build a quality app with maintainable code",
-      "Invest the budget on specialists in the technology your app is being built"
+      "No prototypes that fall apart under real traffic. Every AI feature is built to handle production workloads.",
+      "Proper error handling, evaluation, and monitoring so your AI actually works when users depend on it."
     ],
     imageSrc: "/images/Ethical.svg"
   },
   {
-    title: "Keep the project alive",
+    title: "End-to-end delivery",
     description: [
-      "Let’s deploy the app constantly with excellent quality to get feedback fast",
-      "Launch an usable app and generate profits or get that new round of funding"
+      "From frontend to agentic backend, the entire stack is covered. No handoffs, no gaps.",
+      "9 years of fullstack experience means your AI-powered app ships complete, not half-built."
     ],
     imageSrc: "/images/QC2.svg"
   }
@@ -42,7 +42,7 @@ const ValuesSection = () => {
         }}
       >
         <Typography variant="h3" textAlign="center">
-          Act now and actually deploy your app
+          AI that works in production, not just in demos
         </Typography>
         <Box
           sx={{

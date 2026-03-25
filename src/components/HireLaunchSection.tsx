@@ -19,7 +19,7 @@ const HireLaunchSection = () => {
         }}
       >
         <Image alt="launch rocket" src="/images/rocket.svg" width={100} height={100} />
-        <Typography color="text.secondary">Launch your app now</Typography>
+        <Typography color="text.secondary">Ready to build AI into your product?</Typography>
         <NextLink href={routes.scheduleMeeting.path} passHref>
           <Button component="a" size="large">
             Schedule a meeting
