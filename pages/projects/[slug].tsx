@@ -52,7 +52,7 @@ const IndividualProjectPage = ({
         }}
       >
         <Box>
-          <Image src={imageLarge} alt={title} width={600} height={330} />
+          <Image src={imageLarge} alt={title || ""} width={600} height={330} />
         </Box>
         <Stack spacing={5}>
           <Box>

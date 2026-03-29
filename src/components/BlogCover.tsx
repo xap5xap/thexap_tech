@@ -22,7 +22,13 @@ const BlogCover = ({ url, title }: Props) => {
           "linear-gradient(to top,transparent,rgba(0,0,0,.013) 8.1%,rgba(0,0,0,.049) 15.5%,rgba(0,0,0,.104) 22.5%,rgba(0,0,0,.175) 29%,rgba(0,0,0,.259) 35.3%,rgba(0,0,0,.352) 41.2%,rgba(0,0,0,.45) 47.1%,rgba(0,0,0,.55) 52.9%,rgba(0,0,0,.648) 58.8%,rgba(0,0,0,.741) 64.7%,rgba(0,0,0,.825) 71%,rgba(0,0,0,.896) 77.5%,rgba(0,0,0,.951) 84.5%,rgba(0,0,0,.987) 91.9%,#000)"
       }}
     >
-      <Image layout="responsive" src={url || ""} alt={`Cover image for ${title}`} width={1920} height={530} />
+      <Image
+        src={url || ""}
+        alt={`Cover image for ${title}`}
+        width={1920}
+        height={530}
+        style={{ width: "100%", height: "auto" }}
+      />
     </Box>
   );
 };

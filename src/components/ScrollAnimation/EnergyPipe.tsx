@@ -5,8 +5,8 @@ import { useTheme } from "@mui/material/styles";
 
 interface EnergyPipeProps {
   progress: number;
-  imageRefs: RefObject<HTMLDivElement>[];
-  containerRef: RefObject<HTMLElement>;
+  imageRefs: RefObject<HTMLDivElement | null>[];
+  containerRef: RefObject<HTMLElement | null>;
 }
 
 const PRIMARY_COLOR = "#f59415";

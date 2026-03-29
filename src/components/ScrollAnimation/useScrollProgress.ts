@@ -5,7 +5,7 @@ import { useEffect, useRef, useState, RefObject } from "react";
  * 0 = element's top edge reaches the viewport bottom
  * 1 = element's bottom edge reaches the viewport top
  */
-export function useScrollProgress(containerRef: RefObject<HTMLElement>): number {
+export function useScrollProgress(containerRef: RefObject<HTMLElement | null>): number {
   const [progress, setProgress] = useState(0);
   const rafId = useRef(0);
   const lastProgress = useRef(0);
