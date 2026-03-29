@@ -22,7 +22,7 @@ const Hero = () => {
         height: "calc(100vh - 150px)"
       }}
     >
-      <Image priority src="/images/hero.svg" alt="thexap" layout="fill" objectFit="cover" />
+      <Image priority src="/images/hero.svg" alt="thexap" fill style={{ objectFit: "cover" }} />
       <Box
         sx={{
           zIndex: 200,
@@ -48,11 +48,9 @@ const Hero = () => {
         >
           Don&apos;t let AI become the most expensive experiment your product never shipped.
         </Typography>
-        <NextLink href={routes.scheduleMeeting.path} passHref>
-          <Button component="a" sx={{ mt: 2 }}>
-            SCHEDULE A MEETING
-          </Button>
-        </NextLink>
+        <Button component={NextLink} href={routes.scheduleMeeting.path} sx={{ mt: 2 }}>
+          SCHEDULE A MEETING
+        </Button>
       </Box>
       <HeroAgentSpark />
     </Box>

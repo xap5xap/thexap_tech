@@ -10,7 +10,7 @@ type Props = {
   description: string[];
   imageSrc: string;
   reverse?: boolean;
-  imageRef?: RefObject<HTMLDivElement>;
+  imageRef?: RefObject<HTMLDivElement | null>;
   animatedScene?: ReactNode;
 };
 
@@ -48,11 +48,9 @@ const Value: FC<Props> = ({ title, description, imageSrc, reverse, imageRef, ani
           ))}
         </ul>
         <Box>
-          <NextLink href={routes.scheduleMeeting.path} passHref>
-            <Button component="a" size="small">
-              Schedule a meeting
-            </Button>
-          </NextLink>
+          <Button component={NextLink} href={routes.scheduleMeeting.path} size="small">
+            Schedule a meeting
+          </Button>
         </Box>
       </Box>
     </Box>

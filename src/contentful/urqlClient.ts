@@ -1,7 +1,8 @@
-import { createClient } from "urql";
+import { createClient, fetchExchange } from "urql";
 
 export const client = createClient({
   url: `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`,
+  exchanges: [fetchExchange],
   fetchOptions: {
     headers: {
       "Content-Type": "application/json",

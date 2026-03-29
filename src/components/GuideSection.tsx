@@ -30,9 +30,9 @@ const GuideSection = () => {
         <UpworkReviews />
         <UpworkAchievements />
         <Box sx={{ textAlign: "center" }}>
-          <NextLink href={routes.aboutMe.path} passHref>
-            <Button variant="outlined">About me</Button>
-          </NextLink>
+          <Button component={NextLink} href={routes.aboutMe.path} variant="outlined">
+            About me
+          </Button>
         </Box>
       </Container>
     </Box>

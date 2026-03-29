@@ -50,7 +50,13 @@ const WhatYouGetItem: FC<Props> = ({ reverse, imageSrc, text, title }) => {
       </Box>
       <Box sx={{ mr: { md: 2 } }} />
       <Box>
-        <Image src={imageSrc} alt="thexap promise image" layout="intrinsic" width={400} height={400}></Image>
+        <Image
+          src={imageSrc}
+          alt="thexap promise image"
+          width={400}
+          height={400}
+          style={{ maxWidth: "100%", height: "auto" }}
+        />
       </Box>
     </Box>
   );

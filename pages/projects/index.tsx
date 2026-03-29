@@ -35,22 +35,26 @@ const ProjectsPage = () => {
           }}
         >
           {projectsData.map((el, idx) => (
-            <NextLink key={idx} passHref href={`${routes.projects.path}/${el.slug}`}>
-              <Link underline="none" color="inherit">
-                <Card sx={{ width: 250 }}>
-                  <CardActionArea>
-                    <CardContent>
-                      <Box>
-                        <Image src={el.image} alt={`project ${el.title}`} width="100px" height="100px" />
-                      </Box>
-                      <Typography variant="h6" component="div">
-                        {el.title}
-                      </Typography>
-                    </CardContent>
-                  </CardActionArea>
-                </Card>
-              </Link>
-            </NextLink>
+            <Link
+              key={idx}
+              component={NextLink}
+              href={`${routes.projects.path}/${el.slug}`}
+              underline="none"
+              color="inherit"
+            >
+              <Card sx={{ width: 250 }}>
+                <CardActionArea>
+                  <CardContent>
+                    <Box>
+                      <Image src={el.image} alt={`project ${el.title}`} width={100} height={100} />
+                    </Box>
+                    <Typography variant="h6" component="div">
+                      {el.title}
+                    </Typography>
+                  </CardContent>
+                </CardActionArea>
+              </Card>
+            </Link>
           ))}
         </Box>
       </Container>

@@ -59,31 +59,38 @@ const AppHeader = () => {
           >
             <MenuIcon sx={{ color: "grey.200" }}></MenuIcon>
           </IconButton>
-          <NextLink href={ROUTES.home} passHref prefetch={false}>
-            <Link sx={{ display: "flex" }}>
-              <Image src="/images/logo_x.svg" alt="logo" title="Xavier Perez" width={50} height={50}></Image>
-            </Link>
-          </NextLink>
+          <Link component={NextLink} href={ROUTES.home} prefetch={false} sx={{ display: "flex" }}>
+            <Image src="/images/logo_x.svg" alt="logo" title="Xavier Perez" width={50} height={50} />
+          </Link>
         </Box>
         <Stack direction="row" spacing={3}>
-          <NextLink href={routes.blog.path} passHref>
-            <Button variant="text" sx={{ textAlign: "center", display: { xs: "none", md: "block" } }}>
-              Blog
-            </Button>
-          </NextLink>
-          <NextLink href={routes.projects.path} passHref>
-            <Button variant="text" sx={{ textAlign: "center", display: { xs: "none", md: "block" } }}>
-              Projects
-            </Button>
-          </NextLink>
-          <NextLink href={routes.aboutMe.path} passHref>
-            <Button variant="text" sx={{ textAlign: "center", display: { xs: "none", md: "block" } }}>
-              About me
-            </Button>
-          </NextLink>
-          <NextLink href={routes.scheduleMeeting.path} passHref>
-            <Button component="a">SCHEDULE A MEETING</Button>
-          </NextLink>
+          <Button
+            component={NextLink}
+            href={routes.blog.path}
+            variant="text"
+            sx={{ textAlign: "center", display: { xs: "none", md: "block" } }}
+          >
+            Blog
+          </Button>
+          <Button
+            component={NextLink}
+            href={routes.projects.path}
+            variant="text"
+            sx={{ textAlign: "center", display: { xs: "none", md: "block" } }}
+          >
+            Projects
+          </Button>
+          <Button
+            component={NextLink}
+            href={routes.aboutMe.path}
+            variant="text"
+            sx={{ textAlign: "center", display: { xs: "none", md: "block" } }}
+          >
+            About me
+          </Button>
+          <Button component={NextLink} href={routes.scheduleMeeting.path}>
+            SCHEDULE A MEETING
+          </Button>
         </Stack>
       </Container>
       <Drawer data-testid="nav-menu-drawer" anchor="left" open={openDrawer} onClose={() => setOpenDrawer(false)}>
