@@ -5,6 +5,9 @@ import Image from "next/image";
 import { lightPalette } from "../theme/brandingTheme";
 import NextLink from "next/link";
 import { routes } from "../lib/routes";
+import dynamic from "next/dynamic";
+
+const HeroAgentSpark = dynamic(() => import("./ScrollAnimation/HeroAgentSpark"), { ssr: false });
 
 const Hero = () => {
   return (
@@ -51,6 +54,7 @@ const Hero = () => {
           </Button>
         </NextLink>
       </Box>
+      <HeroAgentSpark />
     </Box>
   );
 };

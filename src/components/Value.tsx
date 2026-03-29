@@ -1,7 +1,7 @@
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import { FC } from "react";
+import { FC, ReactNode, RefObject } from "react";
 import { routes } from "../lib/routes";
 import NextLink from "next/link";
 
@@ -10,9 +10,11 @@ type Props = {
   description: string[];
   imageSrc: string;
   reverse?: boolean;
+  imageRef?: RefObject<HTMLDivElement>;
+  animatedScene?: ReactNode;
 };
 
-const Value: FC<Props> = ({ title, description, imageSrc, reverse }) => {
+const Value: FC<Props> = ({ title, description, imageSrc, reverse, imageRef, animatedScene }) => {
   return (
     <Box
       sx={{
@@ -23,8 +25,8 @@ const Value: FC<Props> = ({ title, description, imageSrc, reverse }) => {
         rowGap: 2
       }}
     >
-      <Box>
-        <img src={imageSrc} alt={title}></img>
+      <Box ref={imageRef} sx={{ position: "relative" }}>
+        {animatedScene || <img src={imageSrc} alt={title}></img>}
       </Box>
       <Box
         sx={{
@@ -32,7 +34,9 @@ const Value: FC<Props> = ({ title, description, imageSrc, reverse }) => {
           rowGap: 2,
           flexDirection: "column",
           order: { xs: 1, md: reverse ? -1 : 1 },
-          alignItems: { xs: "center", md: "flex-start" }
+          alignItems: { xs: "center", md: "flex-start" },
+          position: "relative",
+          zIndex: 2
         }}
       >
         <Typography variant="h4" textAlign={{ xs: "center", md: "left" }}>
