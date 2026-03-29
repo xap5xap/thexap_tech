@@ -9,7 +9,7 @@
     "dev": "next",
     "build": "next build",
     "test": "jest",
-    "prepare": "husky install"
+    "prepare": "husky"
   },
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^16.1.6",
@@ -21,11 +21,11 @@
     "@mui/material": "^6.5.0",
     "@react-three/drei": "^10.7.7",
     "@react-three/fiber": "^9.5.0",
-    "date-fns": "^2.29.3",
+    "date-fns": "^4.1.0",
     "next": "^15.5.14",
-    "prismjs": "^1.29.0",
+    "prismjs": "^1.30.0",
     "react": "^19.2.4",
-    "react-calendly": "^4.1.0",
+    "react-calendly": "^4.4.0",
     "react-dom": "^19.2.4",
     "sharp": "^0.34.5",
     "three": "^0.183.2",
@@ -35,7 +35,7 @@
     "@graphql-codegen/cli": "^6.2.1",
     "@graphql-codegen/client-preset": "^5.2.4",
     "@types/node": "^25.5.0",
-    "@types/prismjs": "^1.26.0",
+    "@types/prismjs": "^1.26.6",
     "@types/react": "^19.2.14",
     "@typescript-eslint/eslint-plugin": "^8.57.2",
     "@typescript-eslint/parser": "^8.57.2",
@@ -43,8 +43,8 @@
     "eslint-config-next": "^15.5.14",
     "eslint-config-prettier": "^10.1.8",
     "graphql": "^16.13.2",
-    "husky": "^8.0.2",
-    "lint-staged": "^13.0.3",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.4.0",
     "prettier": "^3.8.1",
     "typescript": "^5.9.3"
   }
