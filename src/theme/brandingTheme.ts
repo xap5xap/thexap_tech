@@ -126,7 +126,7 @@ export const getDesignTokens = (mode: "light" | "dark") =>
         letterSpacing: 0
       }
     }
-  } as ThemeOptions);
+  }) as ThemeOptions;
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function getThemedComponents(_theme: Theme) {

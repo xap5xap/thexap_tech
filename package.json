@@ -40,14 +40,14 @@
     "@types/node": "^25.5.0",
     "@types/prismjs": "^1.26.0",
     "@types/react": "^19.2.14",
-    "@typescript-eslint/eslint-plugin": "^5.42.1",
-    "@typescript-eslint/parser": "^5.42.1",
+    "@typescript-eslint/eslint-plugin": "^8.57.2",
+    "@typescript-eslint/parser": "^8.57.2",
     "eslint": "^8.57.1",
     "eslint-config-next": "^15.5.14",
-    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-prettier": "^10.1.8",
     "husky": "^8.0.2",
     "lint-staged": "^13.0.3",
-    "prettier": "^2.7.1",
+    "prettier": "^3.8.1",
     "typescript": "^5.9.3"
   }
 }

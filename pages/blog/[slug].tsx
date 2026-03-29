@@ -145,7 +145,8 @@ const IndividualBlogPage = ({ blog, morePosts }: Props) => {
   );
 };
 
-export const getStaticProps: GetStaticProps<Props | any, Params> = async ({ params }) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const getStaticProps: GetStaticProps<any, Params> = async ({ params }) => {
   const { data } = await client.query(getPostBySlug, { slug: params?.slug, preview: getPreviewFromEnv() }).toPromise();
   const morePosts = await client.query(getMorePosts, { slug: params?.slug, preview: getPreviewFromEnv() }).toPromise();
 

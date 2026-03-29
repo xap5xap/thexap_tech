@@ -103,7 +103,8 @@ const IndividualProjectPage = ({
   );
 };
 
-export const getStaticProps: GetStaticProps<Props | any, Params> = async ({ params }) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const getStaticProps: GetStaticProps<any, Params> = async ({ params }) => {
   const project = projectsData.find(el => el.slug === params?.slug);
   return { props: project };
 };
