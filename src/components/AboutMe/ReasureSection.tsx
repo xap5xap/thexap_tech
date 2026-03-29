@@ -15,8 +15,8 @@ const ReassureSection = () => {
         }}
       >
         <Typography variant="h4" textAlign="left">
-          I help innovative entrepreneurs complete their React app by writing clear, maintainable code and tests so they
-          can launch an stellar product that users will love
+          I help teams architect and ship AI-powered applications — from intelligent features to full agentic systems —
+          built on 9 years of production fullstack experience
         </Typography>
       </Container>
     </Box>

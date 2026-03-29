@@ -13,7 +13,10 @@ const HeaderFooterLayout: FC<Props> = ({ children }) => {
     <Box>
       <Head>
         <title>Xavier Perez</title>
-        <meta name="I help you build beautiful React websites, mobile apps and NodeJS backends" />
+        <meta
+          name="description"
+          content="AI Solutions Architect — I design and build AI-powered applications end-to-end."
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <AppHeader></AppHeader>

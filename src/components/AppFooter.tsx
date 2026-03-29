@@ -27,13 +27,11 @@ const AppFooter = () => {
             justifyContent: { sm: "space-between" }
           }}
         >
-          <NextLink passHref href="/about-me">
-            <Link>
-              <Typography color="text.secondary" variant="body2">
-                Xavier Perez
-              </Typography>
-            </Link>
-          </NextLink>
+          <Link component={NextLink} href="/about-me">
+            <Typography color="text.secondary" variant="body2">
+              Xavier Perez
+            </Typography>
+          </Link>
           <Box sx={{ py: { xs: 2, sm: 0 } }}>
             <Stack spacing={2} direction="row">
               <IconButton

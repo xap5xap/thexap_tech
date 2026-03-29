@@ -5,6 +5,9 @@ import Image from "next/image";
 import { lightPalette } from "../theme/brandingTheme";
 import NextLink from "next/link";
 import { routes } from "../lib/routes";
+import dynamic from "next/dynamic";
+
+const HeroAgentSpark = dynamic(() => import("./ScrollAnimation/HeroAgentSpark"), { ssr: false });
 
 const Hero = () => {
   return (
@@ -19,7 +22,7 @@ const Hero = () => {
         height: "calc(100vh - 150px)"
       }}
     >
-      <Image priority src="/images/hero.svg" alt="thexap" layout="fill" objectFit="cover" />
+      <Image priority src="/images/hero.svg" alt="thexap" fill style={{ objectFit: "cover" }} />
       <Box
         sx={{
           zIndex: 200,
@@ -35,7 +38,7 @@ const Hero = () => {
             };
           }}
         >
-          Launch your React app on time
+          Your next app needs AI. Let&apos;s architect it right.
         </Typography>
         <Typography
           variant="h4"
@@ -43,14 +46,13 @@ const Hero = () => {
             color: theme.palette.mode === "dark" ? lightPalette.text.primary : "inherit"
           })}
         >
-          Helping you complete the app your users will love to use
+          Don&apos;t let AI become the most expensive experiment your product never shipped.
         </Typography>
-        <NextLink href={routes.scheduleMeeting.path} passHref>
-          <Button component="a" sx={{ mt: 2 }}>
-            SCHEDULE A MEETING
-          </Button>
-        </NextLink>
+        <Button component={NextLink} href={routes.scheduleMeeting.path} sx={{ mt: 2 }}>
+          SCHEDULE A MEETING
+        </Button>
       </Box>
+      <HeroAgentSpark />
     </Box>
   );
 };

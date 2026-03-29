@@ -61,7 +61,7 @@ export const getStaticProps = async () => {
   const { data } = await client.query(blogListForHome, { preview: getPreviewFromEnv() }).toPromise();
 
   return {
-    props: { blogCollection: data?.blogCollection }
+    props: { blogCollection: data?.blogCollection ?? null }
   };
 };
 

@@ -1,10 +1,16 @@
 {
   "extends": ["next/core-web-vitals", "prettier", "plugin:@typescript-eslint/recommended"],
+  "ignorePatterns": ["next-env.d.ts"],
   "rules": {
     "react/no-unescaped-entities": 0,
     "no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": ["error"]
   },
   "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint"]
+  "plugins": ["@typescript-eslint"],
+  "settings": {
+    "next": {
+      "rootDir": "./"
+    }
+  }
 }
