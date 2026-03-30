@@ -59,7 +59,7 @@ export interface Particle {
 
 // ── Constants ──
 
-const SKY_COLOR = "#0a0a1a";
+const SKY_COLOR = "#202124";
 const PRIMARY = "#f59415";
 
 // Window colors: subtle warm tones for lit, cool grays for dark (matching SVG)
@@ -206,11 +206,11 @@ export function generateWindowStates(buildings: Building[], onRatio: number): bo
 // ── Drawing Functions ──
 
 export function drawSky(ctx: CanvasRenderingContext2D, width: number, height: number) {
-  // Sky gradient: deep blue-black at top, slightly lighter at horizon
+  // Sky gradient: dark at top, slightly lighter at horizon
   const grad = ctx.createLinearGradient(0, 0, 0, height);
-  grad.addColorStop(0, "#050510");
+  grad.addColorStop(0, "#151517");
   grad.addColorStop(0.7, SKY_COLOR);
-  grad.addColorStop(1, "#0f0f2a");
+  grad.addColorStop(1, "#1a1a1d");
   ctx.fillStyle = grad;
   ctx.fillRect(0, 0, width, height);
 }
