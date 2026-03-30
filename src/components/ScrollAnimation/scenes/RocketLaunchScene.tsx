@@ -16,7 +16,9 @@ import {
   spawnParticles,
   updateParticles,
   getRocketDimensions,
-  getRocketY
+  getRocketY,
+  IGNITION_START,
+  LAUNCH_START
 } from "./rocketDrawUtils";
 
 interface Props {
@@ -118,9 +120,11 @@ export default function RocketLaunchScene({ progress, width, height }: Props) {
 
     // Target on-ratio increases with progress
     let targetOnRatio: number;
-    if (progress < 0.3) targetOnRatio = 0.15;
-    else if (progress < 0.6) targetOnRatio = 0.15 + ((progress - 0.3) / 0.3) * 0.15;
-    else targetOnRatio = 0.3 + ((progress - 0.6) / 0.4) * 0.2;
+    const ignitionRange = LAUNCH_START - IGNITION_START;
+    const launchRange = 1 - LAUNCH_START;
+    if (progress < IGNITION_START) targetOnRatio = 0.15;
+    else if (progress < LAUNCH_START) targetOnRatio = 0.15 + ((progress - IGNITION_START) / ignitionRange) * 0.15;
+    else targetOnRatio = 0.3 + ((progress - LAUNCH_START) / launchRange) * 0.2;
 
     for (let i = 0; i < buildings.length; i++) {
       const b = buildings[i];

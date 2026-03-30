@@ -1,3 +1,12 @@
+// ── Scroll Phase Thresholds (tweak these to adjust timing) ──
+// Idle: 0 → IGNITION_START (sputtering engine, minimal particles)
+// Ignition: IGNITION_START → LAUNCH_START (vibration, nozzle glow, moderate exhaust)
+// Launch: LAUNCH_START → 1.0 (liftoff, star streaks, full exhaust)
+export const IGNITION_START = 0.02;
+export const LAUNCH_START = 0.1;
+const LAUNCH_RANGE = 1 - LAUNCH_START; // duration of launch phase
+const IGNITION_RANGE = LAUNCH_START - IGNITION_START; // duration of ignition phase
+
 // ── Data Structures ──
 
 export interface Star {
@@ -224,8 +233,8 @@ export function drawStarfield(
     ctx.fill();
 
     // Phase 3: star streaks (desktop only)
-    if (!isMobile && progress > 0.6) {
-      const streakLength = ((progress - 0.6) / 0.4) * 15;
+    if (!isMobile && progress > LAUNCH_START) {
+      const streakLength = ((progress - LAUNCH_START) / LAUNCH_RANGE) * 15;
       ctx.strokeStyle = `rgba(255, 255, 255, ${twinkle * 0.4})`;
       ctx.lineWidth = star.radius * 0.5;
       ctx.beginPath();
@@ -377,8 +386,8 @@ export function drawSkyline(
   ctx.fillRect(0, height - 30, width, 30);
 
   // Exhaust glow on buildings (Phase 3)
-  if (progress > 0.6) {
-    const glowIntensity = (progress - 0.6) / 0.4;
+  if (progress > LAUNCH_START) {
+    const glowIntensity = (progress - LAUNCH_START) / LAUNCH_RANGE;
     const rocketBaseX = width / 2;
     const maxBH = buildings.reduce((max, b) => Math.max(max, b.height), 0);
     const rocketBaseY = baseY - maxBH * 0.5;
@@ -418,10 +427,10 @@ export function getRocketY(progress: number, height: number): number {
   const launchPadY = height - height * 0.05 - padHeight;
   const onPadY = launchPadY - dims.rocketH;
 
-  if (progress <= 0.6) return onPadY;
+  if (progress <= LAUNCH_START) return onPadY;
 
   // Phase 3: liftoff with easeIn
-  const t = (progress - 0.6) / 0.4;
+  const t = (progress - LAUNCH_START) / LAUNCH_RANGE;
   const eased = t * t;
   const targetY = -dims.rocketH - 40;
   return onPadY + (targetY - onPadY) * eased;
@@ -447,8 +456,8 @@ export function drawRocket(
 
   // Phase 2 vibration
   let offsetX = 0;
-  if (progress > 0.3 && progress <= 0.6) {
-    const intensity = (progress - 0.3) / 0.3;
+  if (progress > IGNITION_START && progress <= LAUNCH_START) {
+    const intensity = (progress - IGNITION_START) / IGNITION_RANGE;
     offsetX = (Math.random() * 2 - 1) * intensity * 2;
   }
 
@@ -728,8 +737,8 @@ function drawNozzle(
   ctx.fill(nozzlePath);
 
   // Inner glow during ignition/launch
-  if (progress > 0.15) {
-    const glowIntensity = Math.min(1, (progress - 0.15) / 0.3);
+  if (progress > IGNITION_START) {
+    const glowIntensity = Math.min(1, (progress - IGNITION_START) / IGNITION_RANGE);
     const innerGlow = ctx.createRadialGradient(
       x,
       bodyBottom + nozzleH * 0.8,
@@ -824,14 +833,14 @@ export function spawnParticles(
   let velocityScale: number;
   let spread: number;
 
-  if (progress < 0.3) {
+  if (progress < IGNITION_START) {
     spawnCount = Math.random() < 0.5 ? 1 : 2;
     colors = EXHAUST_COLORS_PHASE1;
     sizeRange = [1, 3];
     lifeRange = [15, 30];
     velocityScale = 1.5;
     spread = rocketW * 0.5;
-  } else if (progress < 0.6) {
+  } else if (progress < LAUNCH_START) {
     spawnCount = 4 + Math.floor(Math.random() * 4);
     colors = EXHAUST_COLORS_PHASE2;
     sizeRange = [2, 5];
