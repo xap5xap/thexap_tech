@@ -3,8 +3,8 @@
 // Ignition: IGNITION_START → LAUNCH_START (vibration, nozzle glow, moderate exhaust)
 // Launch: LAUNCH_START → 1.0 (liftoff, star streaks, full exhaust)
 export const IGNITION_START = 0.02;
-export const LAUNCH_START = 0.1;
-const LAUNCH_RANGE = 1 - LAUNCH_START; // duration of launch phase
+export const LAUNCH_START = 0.3;
+const LAUNCH_RANGE = 0.6 - LAUNCH_START; // duration of launch phase
 const IGNITION_RANGE = LAUNCH_START - IGNITION_START; // duration of ignition phase
 
 // ── Data Structures ──
