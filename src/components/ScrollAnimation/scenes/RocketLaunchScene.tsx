@@ -49,7 +49,7 @@ export default function RocketLaunchScene({ progress, width, height }: Props) {
     starsRef.current = generateStars(width, height);
     buildingsRef.current = generateBuildings(width, height);
 
-    const onRatio = 0.3;
+    const onRatio = 0.15;
     windowStatesRef.current = generateWindowStates(buildingsRef.current, onRatio);
     particlesRef.current = createParticlePool(width);
   }, [width, height]);
@@ -81,11 +81,11 @@ export default function RocketLaunchScene({ progress, width, height }: Props) {
       drawSky(ctx, w, h);
       drawStarfield(ctx, starsRef.current, timestamp, p, w);
       drawSkyline(ctx, buildingsRef.current, windowStatesRef.current, p, timestamp, w, h);
-      drawRocket(ctx, p, timestamp, w, h, buildingsRef.current);
+      drawRocket(ctx, p, timestamp, w, h);
 
       // Particle system
       const { rocketW, rocketH, nozzleH, centerX } = getRocketDimensions(w, h);
-      const rocketY = getRocketY(p, h, buildingsRef.current);
+      const rocketY = getRocketY(p, h);
       const rocketBaseY = rocketY + rocketH * 0.75 + nozzleH;
 
       spawnParticles(particlesRef.current, p, rocketBaseY, centerX, rocketW);
@@ -118,15 +118,20 @@ export default function RocketLaunchScene({ progress, width, height }: Props) {
 
     // Target on-ratio increases with progress
     let targetOnRatio: number;
-    if (progress < 0.3) targetOnRatio = 0.3;
-    else if (progress < 0.6) targetOnRatio = 0.3 + ((progress - 0.3) / 0.3) * 0.2;
-    else targetOnRatio = 0.5 + ((progress - 0.6) / 0.4) * 0.3;
+    if (progress < 0.3) targetOnRatio = 0.15;
+    else if (progress < 0.6) targetOnRatio = 0.15 + ((progress - 0.3) / 0.3) * 0.15;
+    else targetOnRatio = 0.3 + ((progress - 0.6) / 0.4) * 0.2;
 
     for (let i = 0; i < buildings.length; i++) {
       const b = buildings[i];
       const bStates = states[i];
       if (!bStates) continue;
-      const total = b.windowCols * b.windowRows;
+      // Total windows across all window groups
+      let total = 0;
+      for (const g of b.windowGroups) {
+        total += g.cols * g.rows;
+      }
+      if (total === 0) continue;
 
       // Toggle 2-3 random windows, biased toward the target ratio
       const toggleCount = 2 + Math.floor(Math.random() * 2);

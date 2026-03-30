@@ -27,6 +27,7 @@ const Hero = () => {
       <HeroCanvasContainer />
       <Box
         sx={{
+          display: "none", // TEMP: hidden for scene tuning
           position: "absolute",
           inset: 0,
           zIndex: 100,
@@ -36,6 +37,7 @@ const Hero = () => {
       />
       <Box
         sx={{
+          display: "none", // TEMP: hidden for scene tuning
           zIndex: 200,
           mb: { xs: "25px", md: "24px" },
           textAlign: "center"

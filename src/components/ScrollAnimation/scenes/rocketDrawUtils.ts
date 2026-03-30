@@ -12,11 +12,29 @@ export interface Building {
   x: number;
   width: number;
   height: number;
-  windowCols: number;
-  windowRows: number;
-  topStyle: "flat" | "dome" | "peak" | "stepped";
-  layer: number; // 0=back, 1=mid, 2=front
-  windowColorIndices: number[]; // pre-assigned color index per window
+  color: string;
+  layer: number; // 0=back, 1=front
+  roofStyle: "flat" | "peaked" | "stepped" | "tower";
+  // Tower extension on top (only for "tower" roofStyle)
+  towerWidth: number; // fraction of building width (0.15-0.3)
+  towerHeight: number; // extra height above main building
+  // Window groups: 3-column staggered blocks
+  windowGroups: WindowGroup[];
+}
+
+export interface WindowGroup {
+  // Position relative to building left/top
+  relX: number;
+  relY: number;
+  cols: number;
+  rows: number;
+  winW: number;
+  winH: number;
+  gapX: number;
+  gapY: number;
+  // Per-window: color index + stagger offset
+  colorIndices: number[];
+  staggerOffsets: number[]; // Y offset per column for organic feel
 }
 
 export interface Particle {
@@ -35,17 +53,16 @@ export interface Particle {
 const SKY_COLOR = "#0a0a1a";
 const PRIMARY = "#f59415";
 
-const WINDOW_COLORS_ON = ["#ffd870", "#ffe8a0", "#ffcc44", "#e8c060", "#f0d080", "#ffffff"];
+// Window colors: subtle warm tones for lit, cool grays for dark (matching SVG)
+const WINDOW_COLORS_ON = ["#e8d8b0", "#ddd0a8", "#d4c898", "#cfc090", "#e0d4b0"];
 
-const WINDOW_COLORS_OFF = ["#7b7a7c", "#9da3ab", "#b3b9c2", "#bcc1cc", "#c5cad4", "#505060", "#3a3a4a", "#606878"];
+const WINDOW_COLORS_OFF = ["#9da3ab", "#b3b9c2", "#b7bbc4", "#bcc1cc", "#c5cad4"];
 
-const BUILDING_GRADIENTS: [string, string][] = [
-  ["#1a1a2e", "#12121f"], // back layer
-  ["#252540", "#1a1a30"], // mid layer
-  ["#2d2d4a", "#1e1e35"] // front layer
-];
+// Building body colors: cool gray-blues, lighter = further back
+const BUILDING_COLORS_BACK = ["#e3e9f5", "#e4e9f5", "#dde2ed", "#dce2ed"];
+const BUILDING_COLORS_FRONT = ["#d7dde8", "#ccd1db", "#c5cad4"];
 
-const TOP_STYLES: Building["topStyle"][] = ["flat", "dome", "peak", "stepped"];
+const ROOF_STYLES: Building["roofStyle"][] = ["flat", "peaked", "stepped", "tower"];
 
 // ── Generation Functions ──
 
@@ -65,47 +82,114 @@ export function generateStars(width: number, height: number): Star[] {
   return stars;
 }
 
-export function generateBuildings(width: number, height: number): Building[] {
-  const isMobile = width < 768;
-  const count = isMobile ? 5 + Math.floor(Math.random() * 3) : 8 + Math.floor(Math.random() * 6);
-  const buildings: Building[] = [];
-  const avgWidth = width / (count * 0.7);
+function createWindowGroup(buildingW: number, buildingH: number, relX: number, sectionW: number): WindowGroup {
+  const winW = Math.max(5, sectionW * 0.08);
+  const winH = winW * 1.4;
+  const gapX = winW * 3;
+  const gapY = winH * 2.5;
+  const cols = Math.max(2, Math.min(3, Math.floor(sectionW / (winW + gapX))));
+  const availH = buildingH * 0.6;
+  const rows = Math.max(2, Math.min(7, Math.floor(availH / (winH + gapY))));
 
-  for (let i = 0; i < count; i++) {
-    const bWidth = avgWidth * (0.6 + Math.random() * 0.8);
-    const bHeight = height * (0.25 + Math.random() * 0.35);
-    const x = (i / count) * width - bWidth * 0.1 + Math.random() * (avgWidth * 0.3);
-    const windowCols = Math.max(3, Math.floor(bWidth / 10));
-    const windowRows = Math.max(4, Math.floor(bHeight / 12));
-    const total = windowCols * windowRows;
+  const total = cols * rows;
+  const colorIndices = Array.from({ length: total }, () => Math.floor(Math.random() * WINDOW_COLORS_OFF.length));
+  // Stagger: each column has a slight random Y offset
+  const staggerOffsets = Array.from({ length: cols }, () => Math.random() * gapY * 0.4);
 
-    // Pre-assign a color index to each window for consistency across frames
-    const windowColorIndices = Array.from({ length: total }, () =>
-      Math.floor(Math.random() * WINDOW_COLORS_OFF.length)
-    );
+  return {
+    relX,
+    relY: buildingH * 0.08,
+    cols,
+    rows,
+    winW,
+    winH,
+    gapX,
+    gapY,
+    colorIndices,
+    staggerOffsets
+  };
+}
 
-    const layer = i < count / 3 ? 0 : i < (count * 2) / 3 ? 1 : 2;
+function createBuilding(
+  x: number,
+  bWidth: number,
+  bHeight: number,
+  layer: number,
+  roofStyle: Building["roofStyle"]
+): Building {
+  const colors = layer === 0 ? BUILDING_COLORS_BACK : BUILDING_COLORS_FRONT;
+  const color = colors[Math.floor(Math.random() * colors.length)];
 
-    buildings.push({
-      x,
-      width: bWidth,
-      height: bHeight,
-      windowCols,
-      windowRows,
-      topStyle: TOP_STYLES[Math.floor(Math.random() * TOP_STYLES.length)],
-      layer,
-      windowColorIndices
-    });
+  const towerWidth = roofStyle === "tower" ? 0.15 + Math.random() * 0.15 : 0;
+  const towerHeight = roofStyle === "tower" ? bHeight * (0.15 + Math.random() * 0.15) : 0;
+
+  // Single centered window group per building (like SVG's 3-col staggered blocks)
+  const windowGroups: WindowGroup[] = [];
+  const innerPad = bWidth * 0.15;
+  const usableW = bWidth - innerPad * 2;
+
+  if (usableW > 30) {
+    windowGroups.push(createWindowGroup(bWidth, bHeight, innerPad, usableW));
   }
 
-  // Sort by layer so back buildings draw first
+  return {
+    x,
+    width: bWidth,
+    height: bHeight,
+    color,
+    layer,
+    roofStyle,
+    towerWidth,
+    towerHeight,
+    windowGroups
+  };
+}
+
+export function generateBuildings(width: number, height: number): Building[] {
+  const isMobile = width < 768;
+  const buildings: Building[] = [];
+
+  // Center gap: rocket occupies the middle ~40%
+  const centerGapLeft = width * 0.3;
+  const centerGapRight = width * 0.7;
+
+  // Left side buildings: 3-4 buildings, varying heights
+  const leftCount = isMobile ? 2 : 3 + Math.floor(Math.random() * 2);
+  const leftZone = centerGapLeft;
+  for (let i = 0; i < leftCount; i++) {
+    const layer = i < Math.ceil(leftCount / 2) ? 0 : 1;
+    const bWidth = (leftZone / leftCount) * (0.8 + Math.random() * 0.5);
+    const bHeight = height * (0.4 + Math.random() * 0.25);
+    // Spread buildings across the left zone, clamp to stay within zone
+    const maxX = centerGapLeft - bWidth;
+    const x = Math.min(maxX, (i / leftCount) * leftZone);
+    const roofStyle = ROOF_STYLES[Math.floor(Math.random() * ROOF_STYLES.length)];
+    buildings.push(createBuilding(Math.max(0, x), bWidth, bHeight, layer, roofStyle));
+  }
+
+  // Right side buildings: 3-4 buildings, varying heights
+  const rightCount = isMobile ? 2 : 3 + Math.floor(Math.random() * 2);
+  const rightZone = width - centerGapRight;
+  for (let i = 0; i < rightCount; i++) {
+    const layer = i < Math.ceil(rightCount / 2) ? 0 : 1;
+    const bWidth = (rightZone / rightCount) * (0.8 + Math.random() * 0.5);
+    const bHeight = height * (0.4 + Math.random() * 0.25);
+    const x = centerGapRight + (i / rightCount) * rightZone;
+    const roofStyle = ROOF_STYLES[Math.floor(Math.random() * ROOF_STYLES.length)];
+    buildings.push(createBuilding(x, bWidth, bHeight, layer, roofStyle));
+  }
+
+  // Sort: back layer first, then front
   buildings.sort((a, b) => a.layer - b.layer);
   return buildings;
 }
 
 export function generateWindowStates(buildings: Building[], onRatio: number): boolean[][] {
   return buildings.map(b => {
-    const total = b.windowCols * b.windowRows;
+    let total = 0;
+    for (const g of b.windowGroups) {
+      total += g.cols * g.rows;
+    }
     return Array.from({ length: total }, () => Math.random() < onRatio);
   });
 }
@@ -155,57 +239,105 @@ export function drawStarfield(
 
 // ── Building Drawing ──
 
-function drawBuildingShape(ctx: CanvasRenderingContext2D, b: Building, topY: number, baseY: number) {
+function drawBuildingBody(ctx: CanvasRenderingContext2D, b: Building, topY: number, baseY: number) {
+  const cx = b.x + b.width / 2;
+
+  // Main body rectangle
   ctx.beginPath();
+  ctx.rect(b.x, topY, b.width, baseY - topY);
+  ctx.fill();
 
-  switch (b.topStyle) {
-    case "dome":
-      ctx.moveTo(b.x, baseY);
-      ctx.lineTo(b.x, topY + b.width * 0.15);
-      ctx.quadraticCurveTo(b.x, topY, b.x + b.width * 0.15, topY);
-      ctx.lineTo(b.x + b.width * 0.85, topY);
-      ctx.quadraticCurveTo(b.x + b.width, topY, b.x + b.width, topY + b.width * 0.15);
-      ctx.lineTo(b.x + b.width, baseY);
+  // Roofline features
+  switch (b.roofStyle) {
+    case "peaked": {
+      // Triangular peaked roof
+      const peakH = b.height * 0.08;
+      const capW = b.width * 0.7;
+      const capX = cx - capW / 2;
+      ctx.beginPath();
+      ctx.moveTo(capX, topY);
+      ctx.lineTo(cx, topY - peakH);
+      ctx.lineTo(capX + capW, topY);
       ctx.closePath();
-      break;
-
-    case "peak": {
-      const peakH = b.height * 0.12;
-      ctx.moveTo(b.x, baseY);
-      ctx.lineTo(b.x, topY + peakH);
-      ctx.lineTo(b.x + b.width * 0.35, topY + peakH);
-      ctx.quadraticCurveTo(b.x + b.width * 0.5, topY - peakH * 0.3, b.x + b.width * 0.65, topY + peakH);
-      ctx.lineTo(b.x + b.width, topY + peakH);
-      ctx.lineTo(b.x + b.width, baseY);
-      ctx.closePath();
+      ctx.fill();
+      // Roofline cap bar
+      ctx.fillRect(b.x + b.width * 0.1, topY - 2, b.width * 0.8, 4);
       break;
     }
 
     case "stepped": {
-      const stepW = b.width * 0.2;
-      const stepH = b.height * 0.1;
-      ctx.moveTo(b.x, baseY);
-      ctx.lineTo(b.x, topY + stepH);
-      ctx.lineTo(b.x + stepW, topY + stepH);
-      ctx.lineTo(b.x + stepW, topY);
-      ctx.lineTo(b.x + b.width - stepW, topY);
-      ctx.lineTo(b.x + b.width - stepW, topY + stepH);
-      ctx.lineTo(b.x + b.width, topY + stepH);
-      ctx.lineTo(b.x + b.width, baseY);
-      ctx.closePath();
+      // Stepped setback: narrower section on top
+      const stepW = b.width * 0.6;
+      const stepH = b.height * 0.12;
+      const stepX = cx - stepW / 2;
+      ctx.beginPath();
+      ctx.rect(stepX, topY - stepH, stepW, stepH);
+      ctx.fill();
+      // Even narrower top piece
+      const topW = b.width * 0.35;
+      const topH = b.height * 0.06;
+      ctx.beginPath();
+      ctx.rect(cx - topW / 2, topY - stepH - topH, topW, topH);
+      ctx.fill();
+      break;
+    }
+
+    case "tower": {
+      // Narrow tower extending above main building
+      const twrW = b.width * b.towerWidth;
+      const twrX = cx - twrW / 2;
+      ctx.beginPath();
+      ctx.rect(twrX, topY - b.towerHeight, twrW, b.towerHeight);
+      ctx.fill();
+      // Small spire/cap on top of tower
+      const capW = twrW * 0.6;
+      const capH = b.towerHeight * 0.25;
+      ctx.beginPath();
+      ctx.rect(cx - capW / 2, topY - b.towerHeight - capH, capW, capH);
+      ctx.fill();
+      // Antenna spire
+      ctx.strokeStyle = b.color;
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.moveTo(cx, topY - b.towerHeight - capH);
+      ctx.lineTo(cx, topY - b.towerHeight - capH - b.towerHeight * 0.3);
+      ctx.stroke();
       break;
     }
 
     default:
-      // flat with subtle rounded top corners
-      ctx.moveTo(b.x, baseY);
-      ctx.lineTo(b.x, topY + 3);
-      ctx.quadraticCurveTo(b.x, topY, b.x + 3, topY);
-      ctx.lineTo(b.x + b.width - 3, topY);
-      ctx.quadraticCurveTo(b.x + b.width, topY, b.x + b.width, topY + 3);
-      ctx.lineTo(b.x + b.width, baseY);
-      ctx.closePath();
+      // Flat: just a subtle horizontal roofline accent
+      ctx.fillRect(b.x + b.width * 0.05, topY - 2, b.width * 0.9, 3);
       break;
+  }
+}
+
+function drawBuildingWindows(ctx: CanvasRenderingContext2D, b: Building, topY: number, states: boolean[]) {
+  let stateIdx = 0;
+
+  for (const g of b.windowGroups) {
+    for (let row = 0; row < g.rows; row++) {
+      for (let col = 0; col < g.cols; col++) {
+        const idx = stateIdx + row * g.cols + col;
+        const stagger = g.staggerOffsets[col] ?? 0;
+        const wx = b.x + g.relX + col * (g.winW + g.gapX);
+        const wy = topY + g.relY + row * (g.winH + g.gapY) + stagger;
+        const isOn = states[idx];
+        const colorIdx = g.colorIndices[row * g.cols + col] ?? 0;
+
+        if (isOn) {
+          const onIdx = colorIdx % WINDOW_COLORS_ON.length;
+          ctx.fillStyle = WINDOW_COLORS_ON[onIdx];
+        } else {
+          ctx.fillStyle = WINDOW_COLORS_OFF[colorIdx % WINDOW_COLORS_OFF.length];
+        }
+
+        ctx.fillRect(wx, wy, g.winW, g.winH);
+      }
+    }
+    stateIdx += g.cols * g.rows;
+    ctx.shadowBlur = 0;
+    ctx.shadowColor = "transparent";
   }
 }
 
@@ -219,70 +351,21 @@ export function drawSkyline(
   height: number
 ) {
   const baseY = height;
-  const isMobile = width < 768;
 
   for (let i = 0; i < buildings.length; i++) {
     const b = buildings[i];
     const topY = baseY - b.height;
 
-    // Building body with gradient
-    const colors = BUILDING_GRADIENTS[Math.min(b.layer, 2)];
-    const grad = ctx.createLinearGradient(b.x, topY, b.x, baseY);
-    grad.addColorStop(0, colors[0]);
-    grad.addColorStop(1, colors[1]);
-
-    ctx.globalAlpha = b.layer === 0 ? 0.5 : b.layer === 1 ? 0.65 : 0.8;
-
-    drawBuildingShape(ctx, b, topY, baseY);
-    ctx.fillStyle = grad;
-    ctx.fill();
-
-    // Subtle edge highlight on front buildings
-    if (b.layer === 2) {
-      drawBuildingShape(ctx, b, topY, baseY);
-      ctx.strokeStyle = "rgba(100, 100, 140, 0.3)";
-      ctx.lineWidth = 1;
-      ctx.stroke();
-    }
-
+    // Building body: solid color, full opacity (depth via color difference)
+    ctx.globalAlpha = b.layer === 0 ? 0.85 : 1;
+    ctx.fillStyle = b.color;
+    drawBuildingBody(ctx, b, topY, baseY);
     ctx.globalAlpha = 1;
 
     // Windows
     const states = windowStates[i];
-    if (!states) continue;
-
-    const winW = Math.max(5, (b.width / (b.windowCols + 1)) * 0.5);
-    const winH = Math.max(5, (b.height / (b.windowRows + 1)) * 0.4);
-    const padX = (b.width - b.windowCols * winW) / (b.windowCols + 1);
-    const padY = (b.height - b.windowRows * winH) / (b.windowRows + 1);
-
-    for (let row = 0; row < b.windowRows; row++) {
-      for (let col = 0; col < b.windowCols; col++) {
-        const idx = row * b.windowCols + col;
-        const wx = b.x + padX + col * (winW + padX);
-        const wy = topY + padY + row * (winH + padY);
-        const isOn = states[idx];
-        const colorIdx = b.windowColorIndices[idx] ?? 0;
-
-        if (isOn) {
-          const onColorIdx = colorIdx % WINDOW_COLORS_ON.length;
-          ctx.fillStyle = WINDOW_COLORS_ON[onColorIdx];
-
-          // Glow on lit windows (desktop only)
-          if (!isMobile) {
-            ctx.shadowColor = WINDOW_COLORS_ON[onColorIdx];
-            ctx.shadowBlur = 3;
-          }
-        } else {
-          ctx.fillStyle = WINDOW_COLORS_OFF[colorIdx];
-          ctx.shadowBlur = 0;
-        }
-
-        ctx.fillRect(wx, wy, winW, winH);
-      }
-      // Reset shadow after each row for performance
-      ctx.shadowBlur = 0;
-      ctx.shadowColor = "transparent";
+    if (states) {
+      drawBuildingWindows(ctx, b, topY, states);
     }
   }
 
@@ -328,11 +411,11 @@ export function getRocketDimensions(width: number, height: number) {
   return { rocketH, rocketW, centerX, noseH, bodyH, nozzleH, finH };
 }
 
-export function getRocketY(progress: number, height: number, buildings: Building[]): number {
-  const maxBuildingH = buildings.reduce((max, b) => Math.max(max, b.height), 0);
+export function getRocketY(progress: number, height: number): number {
   const dims = getRocketDimensions(0, height);
   const padHeight = 8;
-  const launchPadY = height - maxBuildingH * 0.4 - padHeight;
+  // Rocket sits at the bottom of the scene, just above ground level
+  const launchPadY = height - height * 0.05 - padHeight;
   const onPadY = launchPadY - dims.rocketH;
 
   if (progress <= 0.6) return onPadY;
@@ -356,12 +439,11 @@ export function drawRocket(
   progress: number,
   _time: number,
   width: number,
-  height: number,
-  buildings: Building[]
+  height: number
 ) {
   const dims = getRocketDimensions(width, height);
   const { rocketH, rocketW, centerX, noseH, bodyH, nozzleH, finH } = dims;
-  const rocketY = getRocketY(progress, height, buildings);
+  const rocketY = getRocketY(progress, height);
 
   // Phase 2 vibration
   let offsetX = 0;
@@ -487,8 +569,7 @@ export function drawRocket(
 
   // ── 9. Launch pad ──
   if (progress < 0.8) {
-    const maxBuildingH = buildings.reduce((max, b) => Math.max(max, b.height), 0);
-    const padY = height - maxBuildingH * 0.4;
+    const padY = height - height * 0.05;
     const padW = rocketW * 2.5;
     const padGrad = ctx.createLinearGradient(centerX - padW / 2, padY, centerX + padW / 2, padY);
     padGrad.addColorStop(0, "#3a3a4a");
