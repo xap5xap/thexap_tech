@@ -1,13 +1,14 @@
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import Image from "next/image";
 import { lightPalette } from "../theme/brandingTheme";
 import NextLink from "next/link";
 import { routes } from "../lib/routes";
 import dynamic from "next/dynamic";
 
-const HeroAgentSpark = dynamic(() => import("./ScrollAnimation/HeroAgentSpark"), { ssr: false });
+const HeroCanvasContainer = dynamic(() => import("./ScrollAnimation/HeroCanvasContainer"), {
+  ssr: false
+});
 
 const Hero = () => {
   return (
@@ -19,10 +20,20 @@ const Hero = () => {
         justifyContent: "flex-end",
         alignItems: "center",
         flex: 1,
-        height: "calc(100vh - 150px)"
+        height: "calc(100vh - 150px)",
+        overflow: "hidden"
       }}
     >
-      <Image priority src="/images/hero.svg" alt="thexap" fill style={{ objectFit: "cover" }} />
+      <HeroCanvasContainer />
+      <Box
+        sx={{
+          position: "absolute",
+          inset: 0,
+          zIndex: 100,
+          background: "linear-gradient(to top, rgba(10,10,26,0.85) 0%, rgba(10,10,26,0.4) 40%, transparent 70%)",
+          pointerEvents: "none"
+        }}
+      />
       <Box
         sx={{
           zIndex: 200,
@@ -32,19 +43,19 @@ const Hero = () => {
       >
         <Typography
           variant="h1"
-          sx={theme => {
-            return {
-              color: theme.palette.mode === "dark" ? lightPalette.text.primary : "inherit"
-            };
+          sx={{
+            color: lightPalette.text.primary,
+            textShadow: "0 2px 8px rgba(0,0,0,0.8)"
           }}
         >
           Your next app needs AI. Let&apos;s architect it right.
         </Typography>
         <Typography
           variant="h4"
-          sx={theme => ({
-            color: theme.palette.mode === "dark" ? lightPalette.text.primary : "inherit"
-          })}
+          sx={{
+            color: lightPalette.text.primary,
+            textShadow: "0 2px 8px rgba(0,0,0,0.8)"
+          }}
         >
           Don&apos;t let AI become the most expensive experiment your product never shipped.
         </Typography>
@@ -52,7 +63,6 @@ const Hero = () => {
           SCHEDULE A MEETING
         </Button>
       </Box>
-      <HeroAgentSpark />
     </Box>
   );
 };
