@@ -800,6 +800,172 @@ function drawPorthole(ctx: CanvasRenderingContext2D, x: number, y: number, radiu
   ctx.restore();
 }
 
+// ── Launch Smoke (tweak these to adjust smoke timing/size) ──
+export const SMOKE_IGNITION_INTENSITY = 0.6; // max intensity during ignition phase (0-1)
+export const SMOKE_LAUNCH_FILL_SPEED = 0.4; // fraction of launch phase to reach full (lower = faster)
+export const SMOKE_CLOUD_SIZE = 0.08; // base cloud radius as fraction of width
+export const SMOKE_DRIFT_SPEED = 0.0001; // how fast clouds billow/drift
+export const SMOKE_GROUND_Y = 0.05; // ground level as fraction from bottom
+
+const SMOKE_COLORS_BACK = [
+  "rgba(139, 100, 50, 0.7)", // dark golden brown
+  "rgba(120, 85, 40, 0.65)",
+  "rgba(150, 110, 55, 0.6)",
+  "rgba(100, 75, 35, 0.55)"
+];
+
+const SMOKE_COLORS_FRONT = [
+  "rgba(245, 180, 80, 0.75)", // warm orange
+  "rgba(250, 195, 100, 0.7)",
+  "rgba(240, 170, 65, 0.65)",
+  "rgba(255, 200, 110, 0.6)"
+];
+
+interface SmokeCloud {
+  // Relative position: cx is fraction of width from center, cy is fraction from bottom
+  cx: number;
+  cy: number;
+  // Size multiplier
+  scale: number;
+  // Shape variation seed
+  seed: number;
+}
+
+// Pre-generate cloud positions for consistency across frames
+// Back layer: wider spread, positioned behind building area
+const BACK_CLOUDS: SmokeCloud[] = [
+  { cx: -0.18, cy: 0.12, scale: 1.3, seed: 0.2 },
+  { cx: -0.08, cy: 0.08, scale: 1.1, seed: 0.7 },
+  { cx: 0.0, cy: 0.05, scale: 1.4, seed: 0.4 },
+  { cx: 0.09, cy: 0.09, scale: 1.2, seed: 0.9 },
+  { cx: 0.19, cy: 0.11, scale: 1.3, seed: 0.1 },
+  { cx: -0.25, cy: 0.15, scale: 1.0, seed: 0.5 },
+  { cx: 0.26, cy: 0.14, scale: 1.1, seed: 0.3 },
+  { cx: -0.32, cy: 0.18, scale: 0.9, seed: 0.8 },
+  { cx: 0.33, cy: 0.17, scale: 0.9, seed: 0.6 }
+];
+
+// Front layer: concentrated near center, overlaps buildings
+const FRONT_CLOUDS: SmokeCloud[] = [
+  { cx: -0.12, cy: 0.04, scale: 1.5, seed: 0.3 },
+  { cx: 0.0, cy: 0.0, scale: 1.8, seed: 0.8 },
+  { cx: 0.13, cy: 0.03, scale: 1.5, seed: 0.6 },
+  { cx: -0.22, cy: 0.08, scale: 1.3, seed: 0.1 },
+  { cx: 0.23, cy: 0.07, scale: 1.3, seed: 0.9 },
+  { cx: -0.05, cy: 0.1, scale: 1.6, seed: 0.5 },
+  { cx: 0.06, cy: 0.09, scale: 1.6, seed: 0.2 },
+  { cx: -0.3, cy: 0.12, scale: 1.1, seed: 0.7 },
+  { cx: 0.31, cy: 0.11, scale: 1.1, seed: 0.4 },
+  { cx: -0.38, cy: 0.15, scale: 1.0, seed: 0.35 },
+  { cx: 0.39, cy: 0.14, scale: 1.0, seed: 0.65 },
+  { cx: 0.0, cy: 0.16, scale: 1.4, seed: 0.15 }
+];
+
+function drawPuffyCloud(ctx: CanvasRenderingContext2D, cx: number, cy: number, radius: number, seed: number) {
+  // Draw a cloud shape using overlapping circles and bezier curves
+  const puffs = 5 + Math.floor(seed * 4); // 5-8 puffs per cloud
+  ctx.beginPath();
+
+  for (let i = 0; i < puffs; i++) {
+    const angle = (i / puffs) * Math.PI * 2 + seed * Math.PI;
+    const dist = radius * (0.3 + seed * 0.3 + Math.sin(angle * 2 + seed * 5) * 0.15);
+    const px = cx + Math.cos(angle) * dist;
+    const py = cy + Math.sin(angle) * dist * 0.6; // squash vertically
+    const puffR = radius * (0.5 + Math.sin(i * 2.3 + seed * 7) * 0.2);
+    ctx.moveTo(px + puffR, py);
+    ctx.arc(px, py, puffR, 0, Math.PI * 2);
+  }
+
+  // Central fill puff
+  ctx.moveTo(cx + radius * 0.6, cy);
+  ctx.arc(cx, cy, radius * 0.6, 0, Math.PI * 2);
+
+  ctx.fill();
+}
+
+function drawSmokeLayer(
+  ctx: CanvasRenderingContext2D,
+  clouds: SmokeCloud[],
+  colors: string[],
+  progress: number,
+  width: number,
+  height: number,
+  time: number
+) {
+  // Smoke only appears during ignition and grows massively during launch
+  if (progress < IGNITION_START) return;
+
+  let smokeIntensity: number;
+  if (progress < LAUNCH_START) {
+    // Ignition phase: smoke builds quickly
+    smokeIntensity = ((progress - IGNITION_START) / IGNITION_RANGE) * SMOKE_IGNITION_INTENSITY;
+  } else {
+    // Launch phase: smoke hits full fast (easeOut curve)
+    const launchT = Math.min(1, (progress - LAUNCH_START) / (LAUNCH_RANGE * SMOKE_LAUNCH_FILL_SPEED));
+    smokeIntensity = SMOKE_IGNITION_INTENSITY + (1 - (1 - launchT) * (1 - launchT)) * (1 - SMOKE_IGNITION_INTENSITY);
+  }
+
+  const baseRadius = width * SMOKE_CLOUD_SIZE;
+  const centerX = width / 2;
+  const baseY = height - height * SMOKE_GROUND_Y;
+
+  ctx.save();
+
+  for (let i = 0; i < clouds.length; i++) {
+    const cloud = clouds[i];
+
+    // Only show clouds progressively — outer clouds appear later
+    const cloudDist = Math.abs(cloud.cx);
+    const appearThreshold = cloudDist * 0.8;
+    if (smokeIntensity < appearThreshold) continue;
+
+    const localIntensity = Math.min(1, (smokeIntensity - appearThreshold) / (1 - appearThreshold));
+
+    // Animated drift: clouds slowly billow outward and upward
+    const drift = time * SMOKE_DRIFT_SPEED * (0.5 + cloud.seed * 0.5);
+    const driftX = Math.sin(drift + cloud.seed * 10) * width * 0.01;
+    const driftY = Math.cos(drift * 0.7 + cloud.seed * 5) * height * 0.005;
+
+    const cx = centerX + cloud.cx * width * smokeIntensity + driftX;
+    const cy = baseY - cloud.cy * height * smokeIntensity + driftY;
+    const radius = baseRadius * cloud.scale * localIntensity * smokeIntensity;
+
+    if (radius < 2) continue;
+
+    // Pick color and apply gradient for depth
+    const color = colors[i % colors.length];
+    const grad = ctx.createRadialGradient(cx, cy - radius * 0.2, 0, cx, cy, radius * 1.2);
+    grad.addColorStop(0, color);
+    grad.addColorStop(1, color.replace(/[\d.]+\)$/, "0)"));
+
+    ctx.fillStyle = grad;
+    ctx.globalAlpha = localIntensity;
+    drawPuffyCloud(ctx, cx, cy, radius, cloud.seed);
+  }
+
+  ctx.restore();
+}
+
+export function drawSmokeBack(
+  ctx: CanvasRenderingContext2D,
+  progress: number,
+  width: number,
+  height: number,
+  time: number
+) {
+  drawSmokeLayer(ctx, BACK_CLOUDS, SMOKE_COLORS_BACK, progress, width, height, time);
+}
+
+export function drawSmokeFront(
+  ctx: CanvasRenderingContext2D,
+  progress: number,
+  width: number,
+  height: number,
+  time: number
+) {
+  drawSmokeLayer(ctx, FRONT_CLOUDS, SMOKE_COLORS_FRONT, progress, width, height, time);
+}
+
 // ── Vignette ──
 
 export function drawVignette(ctx: CanvasRenderingContext2D, width: number, height: number) {

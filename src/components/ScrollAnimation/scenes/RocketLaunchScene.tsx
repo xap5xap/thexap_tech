@@ -12,6 +12,8 @@ import {
   drawSkyline,
   drawRocket,
   drawExhaust,
+  drawSmokeBack,
+  drawSmokeFront,
   drawVignette,
   spawnParticles,
   updateParticles,
@@ -123,19 +125,22 @@ export default function RocketLaunchScene({ progress, width, height }: Props) {
       // Effective progress: whichever is higher
       const p = Math.max(scrollP, hoverProgressRef.current);
 
-      // Draw scene layers
+      // Draw scene layers (back to front)
       drawSky(ctx, w, h);
       drawStarfield(ctx, starsRef.current, timestamp, p, w);
+      drawSmokeBack(ctx, p, w, h, timestamp); // smoke behind buildings
       drawSkyline(ctx, buildingsRef.current, windowStatesRef.current, p, timestamp, w, h);
       drawRocket(ctx, p, timestamp, w, h);
 
-      // Particle system
+      // Particle system (small exhaust sparks)
       const { rocketW, rocketH, nozzleH, centerX } = dims;
       const rocketBaseY = rocketY + rocketH * 0.75 + nozzleH;
 
       spawnParticles(particlesRef.current, p, rocketBaseY, centerX, rocketW);
       updateParticles(particlesRef.current);
       drawExhaust(ctx, particlesRef.current, w);
+
+      drawSmokeFront(ctx, p, w, h, timestamp); // smoke in front of buildings
 
       // Vignette overlay (last layer)
       drawVignette(ctx, w, h);
