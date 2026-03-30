@@ -424,7 +424,7 @@ export function getRocketY(progress: number, height: number): number {
   const dims = getRocketDimensions(0, height);
   const padHeight = 8;
   // Rocket sits at the bottom of the scene, just above ground level
-  const launchPadY = height - height * 0.05 - padHeight;
+  const launchPadY = height - height * 0.05 - padHeight - 130;
   const onPadY = launchPadY - dims.rocketH;
 
   if (progress <= LAUNCH_START) return onPadY;
@@ -578,7 +578,7 @@ export function drawRocket(
 
   // ── 9. Launch pad ──
   if (progress < 0.8) {
-    const padY = height - height * 0.05;
+    const padY = height - height * 0.05 - 100;
     const padW = rocketW * 2.5;
     const padGrad = ctx.createLinearGradient(centerX - padW / 2, padY, centerX + padW / 2, padY);
     padGrad.addColorStop(0, "#3a3a4a");
@@ -801,9 +801,10 @@ function drawPorthole(ctx: CanvasRenderingContext2D, x: number, y: number, radiu
 }
 
 // ── Launch Smoke (tweak these to adjust smoke timing/size) ──
-export const SMOKE_IGNITION_INTENSITY = 0.6; // max intensity during ignition phase (0-1)
+export const SMOKE_IDLE_INTENSITY = 0.8; // baseline smoke visible even at idle (0-1)
+export const SMOKE_IGNITION_INTENSITY = 0.9; // max intensity during ignition phase (0-1)
 export const SMOKE_LAUNCH_FILL_SPEED = 0.4; // fraction of launch phase to reach full (lower = faster)
-export const SMOKE_CLOUD_SIZE = 0.08; // base cloud radius as fraction of width
+export const SMOKE_CLOUD_SIZE = 0.09; // base cloud radius as fraction of width
 export const SMOKE_DRIFT_SPEED = 0.0001; // how fast clouds billow/drift
 export const SMOKE_GROUND_Y = 0.05; // ground level as fraction from bottom
 
@@ -911,13 +912,14 @@ function drawSmokeLayer(
   height: number,
   time: number
 ) {
-  // Smoke only appears during ignition and grows massively during launch
-  if (progress < IGNITION_START) return;
-
   let smokeIntensity: number;
-  if (progress < LAUNCH_START) {
-    // Ignition phase: smoke builds quickly
-    smokeIntensity = ((progress - IGNITION_START) / IGNITION_RANGE) * SMOKE_IGNITION_INTENSITY;
+  if (progress < IGNITION_START) {
+    // Idle: baseline smoke always visible
+    smokeIntensity = SMOKE_IDLE_INTENSITY;
+  } else if (progress < LAUNCH_START) {
+    // Ignition phase: smoke builds from idle to ignition intensity
+    const t = (progress - IGNITION_START) / IGNITION_RANGE;
+    smokeIntensity = SMOKE_IDLE_INTENSITY + t * (SMOKE_IGNITION_INTENSITY - SMOKE_IDLE_INTENSITY);
   } else {
     // Launch phase: smoke hits full fast (easeOut curve)
     const launchT = Math.min(1, (progress - LAUNCH_START) / (LAUNCH_RANGE * SMOKE_LAUNCH_FILL_SPEED));
