@@ -861,24 +861,43 @@ const FRONT_CLOUDS: SmokeCloud[] = [
   { cx: 0.0, cy: 0.16, scale: 1.4, seed: 0.15 }
 ];
 
-function drawPuffyCloud(ctx: CanvasRenderingContext2D, cx: number, cy: number, radius: number, seed: number) {
-  // Draw a cloud shape using overlapping circles and bezier curves
+function drawPuffyCloud(
+  ctx: CanvasRenderingContext2D,
+  cx: number,
+  cy: number,
+  radius: number,
+  seed: number,
+  time: number
+) {
+  // Draw a cloud shape using overlapping circles that churn in place
   const puffs = 5 + Math.floor(seed * 4); // 5-8 puffs per cloud
+  const t = time * 0.001; // convert to seconds
   ctx.beginPath();
 
   for (let i = 0; i < puffs; i++) {
-    const angle = (i / puffs) * Math.PI * 2 + seed * Math.PI;
-    const dist = radius * (0.3 + seed * 0.3 + Math.sin(angle * 2 + seed * 5) * 0.15);
-    const px = cx + Math.cos(angle) * dist;
-    const py = cy + Math.sin(angle) * dist * 0.6; // squash vertically
-    const puffR = radius * (0.5 + Math.sin(i * 2.3 + seed * 7) * 0.2);
+    const puffPhase = seed * 10 + i * 1.7; // unique phase per puff
+
+    // Puffs slowly orbit their base position
+    const baseAngle = (i / puffs) * Math.PI * 2 + seed * Math.PI;
+    const orbitAngle = baseAngle + Math.sin(t * 0.4 + puffPhase) * 0.5;
+    const baseDist = radius * (0.3 + seed * 0.3);
+    const dist = baseDist + Math.sin(t * 0.6 + puffPhase * 1.3) * radius * 0.15;
+
+    const px = cx + Math.cos(orbitAngle) * dist;
+    const py = cy + Math.sin(orbitAngle) * dist * 0.6; // squash vertically
+
+    // Puff size pulses
+    const baseR = radius * (0.45 + seed * 0.1);
+    const puffR = baseR + Math.sin(t * 0.8 + puffPhase * 0.9) * radius * 0.12;
+
     ctx.moveTo(px + puffR, py);
     ctx.arc(px, py, puffR, 0, Math.PI * 2);
   }
 
-  // Central fill puff
-  ctx.moveTo(cx + radius * 0.6, cy);
-  ctx.arc(cx, cy, radius * 0.6, 0, Math.PI * 2);
+  // Central fill puff also breathes
+  const centerR = radius * (0.55 + Math.sin(t * 0.5 + seed * 3) * 0.08);
+  ctx.moveTo(cx + centerR, cy);
+  ctx.arc(cx, cy, centerR, 0, Math.PI * 2);
 
   ctx.fill();
 }
@@ -940,7 +959,7 @@ function drawSmokeLayer(
 
     ctx.fillStyle = grad;
     ctx.globalAlpha = localIntensity;
-    drawPuffyCloud(ctx, cx, cy, radius, cloud.seed);
+    drawPuffyCloud(ctx, cx, cy, radius, cloud.seed, time);
   }
 
   ctx.restore();
