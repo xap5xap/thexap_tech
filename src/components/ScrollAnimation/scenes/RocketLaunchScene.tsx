@@ -37,6 +37,8 @@ export default function RocketLaunchScene({ progress, width, height }: Props) {
   const lastFlickerRef = useRef(0);
   const sizeRef = useRef({ width: 0, height: 0 });
   const rafRef = useRef(0);
+  const mouseRef = useRef({ x: -1, y: -1 }); // -1 = not on canvas
+  const hoverProgressRef = useRef(0);
 
   // Keep progress ref in sync
   useEffect(() => {
@@ -69,15 +71,57 @@ export default function RocketLaunchScene({ progress, width, height }: Props) {
     canvas.height = height * dpr;
     ctx.scale(dpr, dpr);
 
+    // Mouse tracking for hover-to-ignite
+    const onMouseMove = (e: MouseEvent) => {
+      const rect = canvas.getBoundingClientRect();
+      mouseRef.current = {
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top
+      };
+    };
+    const onMouseLeave = () => {
+      mouseRef.current = { x: -1, y: -1 };
+    };
+    canvas.addEventListener("mousemove", onMouseMove);
+    canvas.addEventListener("mouseleave", onMouseLeave);
+
     const render = (timestamp: number) => {
       if (document.hidden) {
         rafRef.current = requestAnimationFrame(render);
         return;
       }
 
-      const p = progressRef.current;
+      const scrollP = progressRef.current;
       const w = sizeRef.current.width;
       const h = sizeRef.current.height;
+
+      // Hit-test mouse against rocket bounding box
+      const dims = getRocketDimensions(w, h);
+      const rocketY = getRocketY(scrollP, h);
+      const mx = mouseRef.current.x;
+      const my = mouseRef.current.y;
+      const pad = dims.rocketW * 0.8; // generous hit area around rocket
+      const isHovering =
+        mx >= 0 &&
+        mx >= dims.centerX - dims.rocketW / 2 - pad &&
+        mx <= dims.centerX + dims.rocketW / 2 + pad &&
+        my >= rocketY - pad &&
+        my <= rocketY + dims.rocketH + dims.nozzleH + pad;
+
+      // Smoothly ramp hover progress up/down
+      const hoverTarget = isHovering ? LAUNCH_START : 0;
+      const rampSpeed = 0.03; // per frame (~0.5s to full at 60fps)
+      if (hoverProgressRef.current < hoverTarget) {
+        hoverProgressRef.current = Math.min(hoverTarget, hoverProgressRef.current + rampSpeed);
+      } else if (hoverProgressRef.current > hoverTarget) {
+        hoverProgressRef.current = Math.max(hoverTarget, hoverProgressRef.current - rampSpeed * 0.5);
+      }
+
+      // Update cursor
+      canvas.style.cursor = isHovering ? "pointer" : "default";
+
+      // Effective progress: whichever is higher
+      const p = Math.max(scrollP, hoverProgressRef.current);
 
       // Draw scene layers
       drawSky(ctx, w, h);
@@ -86,8 +130,7 @@ export default function RocketLaunchScene({ progress, width, height }: Props) {
       drawRocket(ctx, p, timestamp, w, h);
 
       // Particle system
-      const { rocketW, rocketH, nozzleH, centerX } = getRocketDimensions(w, h);
-      const rocketY = getRocketY(p, h);
+      const { rocketW, rocketH, nozzleH, centerX } = dims;
       const rocketBaseY = rocketY + rocketH * 0.75 + nozzleH;
 
       spawnParticles(particlesRef.current, p, rocketBaseY, centerX, rocketW);
@@ -110,6 +153,8 @@ export default function RocketLaunchScene({ progress, width, height }: Props) {
 
     return () => {
       cancelAnimationFrame(rafRef.current);
+      canvas.removeEventListener("mousemove", onMouseMove);
+      canvas.removeEventListener("mouseleave", onMouseLeave);
     };
   }, [width, height]);
 
