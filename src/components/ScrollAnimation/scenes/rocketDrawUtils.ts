@@ -63,15 +63,18 @@ const SKY_COLOR = "#202124";
 const PRIMARY = "#f59415";
 
 // Window colors: subtle warm tones for lit, cool grays for dark (matching SVG)
-const WINDOW_COLORS_ON = ["#e8d8b0", "#ddd0a8", "#d4c898", "#cfc090", "#e0d4b0"];
+const WINDOW_COLORS_ON = ["#9e9070", "#8a8068", "#7d7560", "#918760", "#8c8470"];
 
-const WINDOW_COLORS_OFF = ["#9da3ab", "#b3b9c2", "#b7bbc4", "#bcc1cc", "#c5cad4"];
+const WINDOW_COLORS_OFF = ["#3a3e45", "#42464d", "#4a4e55", "#383c43", "#454950"];
 
-// Building body colors: cool gray-blues, lighter = further back
-const BUILDING_COLORS_BACK = ["#e3e9f5", "#e4e9f5", "#dde2ed", "#dce2ed"];
-const BUILDING_COLORS_FRONT = ["#d7dde8", "#ccd1db", "#c5cad4"];
+// Building body colors: muted dark grays so they don't compete with the rocket
+const BUILDING_COLORS_BACK = ["#5a5e66", "#6b7078", "#4e535b", "#737980", "#636971"];
+const BUILDING_COLORS_FRONT = ["#3d4148", "#4a4f57", "#555b63", "#484d54", "#5f656d"];
 
 const ROOF_STYLES: Building["roofStyle"][] = ["flat", "peaked", "stepped", "tower"];
+
+// Counter to cycle through building colors so adjacent buildings never share a color
+let _buildingColorIndex = 0;
 
 // ── Generation Functions ──
 
@@ -127,7 +130,7 @@ function createBuilding(
   roofStyle: Building["roofStyle"]
 ): Building {
   const colors = layer === 0 ? BUILDING_COLORS_BACK : BUILDING_COLORS_FRONT;
-  const color = colors[Math.floor(Math.random() * colors.length)];
+  const color = colors[_buildingColorIndex++ % colors.length];
 
   const towerWidth = roofStyle === "tower" ? 0.15 + Math.random() * 0.15 : 0;
   const towerHeight = roofStyle === "tower" ? bHeight * (0.15 + Math.random() * 0.15) : 0;
@@ -155,6 +158,7 @@ function createBuilding(
 }
 
 export function generateBuildings(width: number, height: number): Building[] {
+  _buildingColorIndex = 0;
   const isMobile = width < 768;
   const buildings: Building[] = [];
 
