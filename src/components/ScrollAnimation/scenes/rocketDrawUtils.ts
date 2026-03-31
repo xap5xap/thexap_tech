@@ -2,8 +2,8 @@
 // Idle: 0 → IGNITION_START (sputtering engine, minimal particles)
 // Ignition: IGNITION_START → LAUNCH_START (vibration, nozzle glow, moderate exhaust)
 // Launch: LAUNCH_START → 1.0 (liftoff, star streaks, full exhaust)
-export const IGNITION_START = 0.02;
-export const LAUNCH_START = 0.3;
+export const IGNITION_START = 0.01;
+export const LAUNCH_START = 0.2;
 const LAUNCH_RANGE = 0.6 - LAUNCH_START; // duration of launch phase
 const IGNITION_RANGE = LAUNCH_START - IGNITION_START; // duration of ignition phase
 
@@ -815,17 +815,17 @@ export const SMOKE_DRIFT_SPEED = 0.0001; // how fast clouds billow/drift
 export const SMOKE_GROUND_Y = 0.05; // ground level as fraction from bottom
 
 const SMOKE_COLORS_BACK = [
-  "rgba(139, 100, 50, 0.7)", // dark golden brown
-  "rgba(120, 85, 40, 0.65)",
-  "rgba(150, 110, 55, 0.6)",
-  "rgba(100, 75, 35, 0.55)"
+  "rgba(139, 100, 50, 0.9)", // dark golden brown
+  "rgba(120, 85, 40, 0.85)",
+  "rgba(150, 110, 55, 0.8)",
+  "rgba(100, 75, 35, 0.75)"
 ];
 
 const SMOKE_COLORS_FRONT = [
-  "rgba(245, 180, 80, 0.75)", // warm orange
-  "rgba(250, 195, 100, 0.7)",
-  "rgba(240, 170, 65, 0.65)",
-  "rgba(255, 200, 110, 0.6)"
+  "rgba(245, 180, 80, 0.95)", // warm orange
+  "rgba(250, 195, 100, 0.9)",
+  "rgba(240, 170, 65, 0.9)",
+  "rgba(255, 200, 110, 0.9)"
 ];
 
 interface SmokeCloud {
