@@ -414,8 +414,10 @@ export function drawSkyline(
 // ── Rocket Drawing ──
 
 export function getRocketDimensions(width: number, height: number) {
-  const rocketH = height * 0.5;
-  const rocketW = rocketH * 0.18;
+  const baseH = height * 0.5 + 75;
+  const baseW = height * 0.5 * 0.18 + 25;
+  const rocketH = baseH;
+  const rocketW = baseW;
   const centerX = width / 2;
   const noseH = rocketH * 0.2;
   const bodyH = rocketH * 0.55;
@@ -688,9 +690,9 @@ function drawFin(
   finPath.closePath();
 
   const finGrad = ctx.createLinearGradient(x, attachTop, x + side * halfW * 1.8, tipY);
-  finGrad.addColorStop(0, "#cc2929");
-  finGrad.addColorStop(0.5, "#e04040");
-  finGrad.addColorStop(1, "#991f1f");
+  finGrad.addColorStop(0, "#cc6a15");
+  finGrad.addColorStop(0.5, "#e07820");
+  finGrad.addColorStop(1, "#994e0f");
   ctx.fillStyle = finGrad;
   ctx.fill(finPath);
 
