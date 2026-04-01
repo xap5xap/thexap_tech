@@ -12,8 +12,14 @@ export default function RichTextAsset({ id, assets }: Props) {
 
   if (asset?.url) {
     return (
-      <Box sx={{ marginY: 5 }}>
-        <Image src={asset.url} width={asset.width || 500} height={asset.height || 200} alt={asset?.description || ""} />
+      <Box sx={{ marginY: 5, maxWidth: "100%", height: "auto" }}>
+        <Image
+          src={asset.url}
+          width={asset.width || 500}
+          height={asset.height || 200}
+          alt={asset?.description || ""}
+          style={{ maxWidth: "100%", height: "auto" }}
+        />
       </Box>
     );
   }

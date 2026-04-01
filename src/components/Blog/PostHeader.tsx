@@ -31,8 +31,7 @@ const PostHeader = ({ title, tags, date, image }: Props) => {
       )}
       <Box sx={{ textAlign: "center", paddingY: 6 }} component="section">
         <Image
-          style={{ borderRadius: "24px" }}
-          //   layout="responsive"
+          style={{ borderRadius: "24px", maxWidth: "100%", height: "auto" }}
           src={image?.url || ""}
           alt={`Cover image for ${title}`}
           width={1060}
