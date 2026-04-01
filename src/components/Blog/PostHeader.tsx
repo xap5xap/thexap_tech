@@ -30,13 +30,17 @@ const PostHeader = ({ title, tags, date, image }: Props) => {
         </Typography>
       )}
       <Box sx={{ textAlign: "center", paddingY: 6 }} component="section">
-        <Image
-          style={{ borderRadius: "24px", maxWidth: "100%", height: "auto" }}
-          src={image?.url || ""}
-          alt={`Cover image for ${title}`}
-          width={1060}
-          height={742}
-        />
+        <Box
+          sx={{
+            position: "relative",
+            width: "100%",
+            aspectRatio: "16 / 9",
+            borderRadius: "24px",
+            overflow: "hidden"
+          }}
+        >
+          <Image style={{ objectFit: "cover" }} src={image?.url || ""} alt={`Cover image for ${title}`} fill />
+        </Box>
         {(image?.description || "").length > 0 && (
           <Typography
             variant="caption"
