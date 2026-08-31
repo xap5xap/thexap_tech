@@ -246,7 +246,7 @@ Do not select an idea only because its landing page would look beautiful.
 
 ## Project management
 
-Material work in this repository belongs to Linear team **XAP**. Portfolio concepts and portfolio-strategy work default to the **Ideas** project. Before substantive work, search for an existing issue matching the intended outcome and reuse it when appropriate; otherwise create one. Keep the issue as the work ledger and only mark it done after the deliverable is verified.
+Material work in this repository belongs to Linear team **XAP**. Portfolio concepts and portfolio-strategy work default to the **Portfolio Repositioning** project. Before substantive work, search for an existing issue matching the intended outcome and reuse it when appropriate; otherwise create one. Keep the issue as the work ledger and only mark it done after the deliverable is verified.
 
 ## Verification expectations
 
