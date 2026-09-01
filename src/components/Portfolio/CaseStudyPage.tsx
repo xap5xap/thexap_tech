@@ -288,8 +288,7 @@ const CaseStudyPage = ({ caseStudy }: Props) => {
                   Explore Armonía
                 </Typography>
                 <Typography color="text.secondary" sx={{ maxWidth: 620, mb: 4 }}>
-                  The public links below show the live product and launch story. The private application link opens only
-                  its public login surface.
+                  Visit the live Armonía site to experience the public product and its cinematic hero.
                 </Typography>
                 <Stack
                   direction={{ xs: "column", sm: "row" }}

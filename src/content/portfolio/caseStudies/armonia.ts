@@ -329,8 +329,8 @@ export const armoniaCaseStudy: CaseStudy = {
       statement: "A cinematic journey was produced as part of Armonía's public storytelling system.",
       scope: "Observed launch and brand artifact; no audience-response metric is claimed.",
       source: {
-        label: "Armonía cinematic journey",
-        href: "https://www.armoniapsicologia.com/viaje",
+        label: "Armonía homepage cinematic hero",
+        href: "https://www.armoniapsicologia.com/",
         access: "public",
         asOf: "2026-09-01"
       },
@@ -387,18 +387,6 @@ export const armoniaCaseStudy: CaseStudy = {
     {
       label: "Visit Armonía",
       href: "https://www.armoniapsicologia.com/",
-      kind: "product",
-      status: "verified"
-    },
-    {
-      label: "Watch the cinematic journey",
-      href: "https://www.armoniapsicologia.com/viaje",
-      kind: "launch",
-      status: "verified"
-    },
-    {
-      label: "View the private application's public login",
-      href: "https://app.armoniapsicologia.com/login",
       kind: "product",
       status: "verified"
     }
