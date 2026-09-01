@@ -42,7 +42,7 @@ export const armoniaCaseStudy: CaseStudy = {
     shareTitle: "Armonía: from discovery to a practice operating system",
     shareDescription:
       "How Xavier and Carla turned practice research into a public experience and a private system used for daily operations.",
-    socialImageId: "cinematic-journey"
+    socialImageId: "social-preview"
   },
   narrative: {
     transformation: {
@@ -369,6 +369,15 @@ export const armoniaCaseStudy: CaseStudy = {
       src: "/images/projects/armonia/cinematic-journey.webp",
       alt: "A solitary figure follows a path through a dark valley toward a warm light beneath a tree.",
       caption: "Film frame from Armonía's cinematic journey, created to express the practice's emotional direction.",
+      evidenceState: "observed",
+      permission: "owned"
+    },
+    {
+      id: "social-preview",
+      kind: "launch-asset",
+      src: "/images/projects/armonia/social-preview.jpg",
+      alt: "A stone path crosses a dark valley toward a warm light beneath a solitary tree.",
+      caption: "Social-preview crop of Armonía's approved cinematic journey.",
       evidenceState: "observed",
       permission: "owned"
     },
