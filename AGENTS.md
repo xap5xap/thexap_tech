@@ -256,6 +256,19 @@ Do not select an idea only because its landing page would look beautiful.
 
 Material work in this repository belongs to Linear team **XAP**. Portfolio concepts and portfolio-strategy work default to the **Portfolio Repositioning** project. Before substantive work, search for an existing issue matching the intended outcome and reuse it when appropriate; otherwise create one. Keep the issue as the work ledger and only mark it done after the deliverable is verified.
 
+### Approval completion workflow
+
+When Xavier explicitly approves the final deliverable for an issue, that approval authorizes the agent to complete the normal repository and Linear delivery workflow in the same turn. Do not wait for a separate commit, push, merge, or Linear-status instruction.
+
+1. Confirm that the approved artifact satisfies the issue criteria and required verification.
+2. Commit the verified changes on the scoped working branch.
+3. Refresh `origin/develop`, confirm there is no unexpected divergence, and merge the working branch into `develop`.
+4. Push `develop` and read back the remote branch SHA to confirm the push.
+5. Record the approved decisions, verification results, commit SHA, and merged `develop` SHA in the Linear issue.
+6. Mark the Linear issue Done only after the remote `develop` readback succeeds.
+
+This standing approval applies to `develop`, not `main` or production. Stop and report instead of forcing completion if there are merge conflicts, failing checks, unrelated dirty changes, protected-branch rejection, unexpected remote divergence, or another material mismatch.
+
 ## Verification expectations
 
 For documentation-only changes:
