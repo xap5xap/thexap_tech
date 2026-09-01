@@ -19,6 +19,7 @@ import type {
   WorkType
 } from "../../content/portfolio/types";
 import { routes } from "../../lib/routes";
+import { getCaseStudyMetadata } from "../../content/portfolio/metadata";
 import HeaderFooterLayout from "../HeaderFooterLayout";
 import CaseStudyNarrativeSection from "./CaseStudyNarrativeSection";
 
@@ -105,7 +106,7 @@ const CaseStudyPage = ({ caseStudy }: Props) => {
   const cardEvidence = evidenceById.get(presentation.cardEvidenceId);
 
   return (
-    <HeaderFooterLayout>
+    <HeaderFooterLayout metadata={getCaseStudyMetadata(caseStudy)}>
       <Box component="article">
         <Box sx={{ backgroundColor: "background.paper", pt: { xs: 4, md: 7 }, pb: { xs: 7, md: 11 } }}>
           <Container maxWidth="lg">

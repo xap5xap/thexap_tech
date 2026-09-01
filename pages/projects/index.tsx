@@ -9,6 +9,7 @@ import Link from "@mui/material/Link";
 import NextLink from "next/link";
 import { routes } from "../../src/lib/routes";
 import { flagshipCaseStudies } from "../../src/content/portfolio";
+import { portfolioIndexMetadata } from "../../src/content/portfolio/metadata";
 
 const WORK_TYPE_LABELS = {
   "client-work": "Client work",
@@ -18,10 +19,12 @@ const WORK_TYPE_LABELS = {
 
 const ProjectsPage = () => {
   return (
-    <HeaderFooterLayout>
+    <HeaderFooterLayout metadata={portfolioIndexMetadata}>
       <Box sx={{ paddingY: 9, backgroundColor: "background.paper" }}>
         <Container>
-          <Typography variant="h3">Projects</Typography>
+          <Typography variant="h3" component="h1">
+            Selected products and systems
+          </Typography>
         </Container>
       </Box>
       <Container
