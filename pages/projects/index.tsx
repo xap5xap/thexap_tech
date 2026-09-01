@@ -5,11 +5,16 @@ import Typography from "@mui/material/Typography";
 import Image from "next/image";
 import CardContent from "@mui/material/CardContent";
 import HeaderFooterLayout from "../../src/components/HeaderFooterLayout";
-import CardActionArea from "@mui/material/CardActionArea";
 import Link from "@mui/material/Link";
 import NextLink from "next/link";
 import { routes } from "../../src/lib/routes";
-import projectsData from "../../data/projects.json";
+import { flagshipCaseStudies } from "../../src/content/portfolio";
+
+const WORK_TYPE_LABELS = {
+  "client-work": "Client work",
+  "owned-product-experiment": "Owned product / experiment",
+  "concept-product": "Concept product"
+} as const;
 
 const ProjectsPage = () => {
   return (
@@ -34,28 +39,46 @@ const ProjectsPage = () => {
             flexWrap: "wrap"
           }}
         >
-          {projectsData.map((el, idx) => (
-            <Link
-              key={idx}
-              component={NextLink}
-              href={`${routes.projects.path}/${el.slug}`}
-              underline="none"
-              color="inherit"
-            >
-              <Card sx={{ width: 250 }}>
-                <CardActionArea>
-                  <CardContent>
-                    <Box>
-                      <Image src={el.image} alt={`project ${el.title}`} width={100} height={100} />
-                    </Box>
-                    <Typography variant="h6" component="div">
-                      {el.title}
-                    </Typography>
-                  </CardContent>
-                </CardActionArea>
-              </Card>
-            </Link>
-          ))}
+          {flagshipCaseStudies.map(caseStudy => {
+            const primaryVisual = caseStudy.assets.find(asset => asset.id === caseStudy.presentation.primaryVisualId);
+
+            return (
+              <Link
+                key={caseStudy.identity.id}
+                component={NextLink}
+                href={`${routes.projects.path}/${caseStudy.identity.slug}`}
+                underline="none"
+                color="inherit"
+              >
+                <Card sx={{ width: { xs: "100%", sm: 360 }, textAlign: "left" }}>
+                  <Box>
+                    {primaryVisual ? (
+                      <Box sx={{ position: "relative", aspectRatio: "16 / 9" }}>
+                        <Image
+                          src={primaryVisual.src}
+                          alt={primaryVisual.alt}
+                          fill
+                          sizes="(max-width: 600px) 100vw, 360px"
+                          style={{ objectFit: "cover" }}
+                        />
+                      </Box>
+                    ) : null}
+                    <CardContent>
+                      <Typography variant="overline" color="primary">
+                        {WORK_TYPE_LABELS[caseStudy.identity.workType]}
+                      </Typography>
+                      <Typography variant="h5" component="h2">
+                        {caseStudy.identity.name}
+                      </Typography>
+                      <Typography color="text.secondary" sx={{ mt: 1 }}>
+                        {caseStudy.identity.conciseSummary}
+                      </Typography>
+                    </CardContent>
+                  </Box>
+                </Card>
+              </Link>
+            );
+          })}
         </Box>
       </Container>
     </HeaderFooterLayout>

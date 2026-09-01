@@ -76,7 +76,7 @@ The exact filenames may change during implementation, but these boundaries are c
 - `index.ts` owns the published registry and the explicit flagship order.
 - Project media remains in a project-scoped public directory unless an approved external source is required.
 - Contentful remains the blog source. XAP-48 does not add a portfolio content type to Contentful.
-- `data/projects.json` remains a legacy source until XAP-51 decides each existing project's disposition. It must not be expanded into the flagship model.
+- `data/projects.json` was retired by XAP-51 after every existing entry received a disposition. Published project routes and the projects index now read from the typed flagship registry only.
 
 ### Options considered
 
@@ -549,7 +549,7 @@ The implementation may use TypeScript, runtime validation, build-time checks, or
 
 - `XAP-49` verifies Armonía's narrative, current status, ownership, claims, permissions, and assets, then implements the first production record and case-study page.
 - `XAP-50` applies the same model to the publishing engine and verifies its operating boundaries and evidence.
-- `XAP-51` decides whether each legacy `data/projects.json` entry is retained, retired, redirected, or represented elsewhere.
+- `XAP-51` retired the legacy `data/projects.json` source. Armonía remains represented through its flagship record; every other legacy entry was removed without an archive or redirect.
 - `XAP-52` implements project-specific metadata and social-preview generation from the reusable presentation fields.
 - `XAP-53` owns final cross-route responsive, keyboard, screen-reader, browser, and WCAG verification.
 - `XAP-54` selects the concept that may earn the third flagship position. A conformance fixture under XAP-48 is not a selection.

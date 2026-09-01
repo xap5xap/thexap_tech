@@ -185,7 +185,9 @@ The initial projects index contains no historical-work section and no separate a
 
 Most current legacy entries represent products that are no longer operating. Showing them as active cards, relying on broken production links, or presenting them without meaningful artifacts would weaken credibility. The nine-year engineering track record can remain visible elsewhere through verified experience and client evidence.
 
-`XAP-51` owns the audit and disposition of every legacy entry. A historical project may return later only when:
+`XAP-51` retired every legacy entry from the public portfolio. The obsolete Armonía legacy record was merged into the current flagship source, and the other discontinued entries were removed without an archive or redirects.
+
+A historical project may return later only when:
 
 - the contribution and relationship can be described accurately;
 - publishable artifacts provide meaningful evidence;
@@ -194,7 +196,7 @@ Most current legacy entries represent products that are no longer operating. Sho
 - route, redirect, and external-link requirements are understood; and
 - the project adds evidence that the flagship set does not already provide.
 
-If no legacy project meets those conditions, the portfolio has no visible archive. Portfolio size is not a success measure.
+No current legacy project meets those conditions, so the portfolio has no visible archive. Portfolio size is not a success measure.
 
 ## Responsive structural wireframes
 
