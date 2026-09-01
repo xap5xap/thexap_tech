@@ -15,7 +15,7 @@ const HeaderFooterLayout: FC<Props> = ({ children }) => {
         <title>Xavier Perez</title>
         <meta
           name="description"
-          content="AI Solutions Architect — I design and build AI-powered applications end-to-end."
+          content="AI Solutions Architect. I design and build AI-powered applications end-to-end."
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>

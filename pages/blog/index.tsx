@@ -7,11 +7,16 @@ import { client } from "../../src/contentful/urqlClient";
 import { graphql } from "../../src/gql";
 import { Blog, BlogListForHomeQuery } from "../../src/gql/graphql";
 import { getPreviewFromEnv } from "../../src/lib/utils";
+import { getMissingBlogCardFields, isRenderableBlogCard } from "../../src/lib/blogContentPolicy";
 import Masonry from "@mui/lab/Masonry";
 
 const blogListForHome = graphql(/* GraphQL */ `
   query blogListForHome($preview: Boolean) {
-    blogCollection(order: date_DESC, preview: $preview) {
+    blogCollection(
+      where: { slug_exists: true, title_exists: true, body_exists: true, featuredImage_exists: true }
+      order: date_DESC
+      preview: $preview
+    ) {
       items {
         title
         slug
@@ -47,7 +52,18 @@ const BlogPage = (props: BlogListForHomeQuery) => {
       >
         <Masonry columns={{ xs: 1, md: 2 }} spacing={4} defaultHeight={450} defaultColumns={2} defaultSpacing={1}>
           {(props.blogCollection?.items || [])
-            .filter(el => el !== null)
+            .filter(entry => {
+              if (!isRenderableBlogCard(entry)) {
+                console.warn(
+                  `[Contentful] Blog entry "${entry?.slug || "(missing slug)"}" was excluded from the blog index; missing required fields: ${getMissingBlogCardFields(
+                    entry
+                  ).join(", ")}.`
+                );
+                return false;
+              }
+
+              return true;
+            })
             .map((el, idx) => (
               <BlogCard key={idx} blog={el as Blog} />
             ))}
@@ -58,10 +74,14 @@ const BlogPage = (props: BlogListForHomeQuery) => {
 };
 
 export const getStaticProps = async () => {
-  const { data } = await client.query(blogListForHome, { preview: getPreviewFromEnv() }).toPromise();
+  const result = await client.query(blogListForHome, { preview: getPreviewFromEnv() }).toPromise();
+
+  if (result.error) {
+    throw result.error;
+  }
 
   return {
-    props: { blogCollection: data?.blogCollection ?? null }
+    props: { blogCollection: result.data?.blogCollection ?? null }
   };
 };
 
