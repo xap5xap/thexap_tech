@@ -20,7 +20,7 @@ const StrokeSection = () => {
             align on what the AI should do, how it fits into your product, and what success looks like.
           </p>
           <p>
-            I work iteratively — shipping working software early and often so you can see progress, give feedback, and
+            I work iteratively, shipping working software early and often so you can see progress, give feedback, and
             course-correct before it gets expensive to change direction.
           </p>
           <p>Schedule a meeting and let&apos;s talk about what AI can do for your product.</p>

@@ -4,6 +4,8 @@
 
 This document preserves the audit and brainstorming that led to the portfolio direction encoded in the repository's `AGENTS.md`. `AGENTS.md` contains the durable operating rules; this file contains the analysis, candidate ideas, and proposed implementation sequence that can evolve as the site changes.
 
+The approved positioning hierarchy and route-copy direction now live in `docs/portfolio/positioning-and-messaging.md`. That decision record controls when this earlier research language differs from the approved message.
+
 ## Strategic conclusion
 
 The portfolio should not become a collection of hypothetical landing pages. It should become a deliberately curated set of **real products, owned experiments, and clearly labeled concept products** that prove Xavier can take an opportunity from idea to audience.
@@ -61,9 +63,9 @@ The current legacy project pages use generic page framing and do not offer proje
 
 Supporting copy:
 
-> Product strategy, brand, UX, full-stack AI engineering, cinematic storytelling, and distribution—handled as one coherent product system.
+> Product strategy, brand, UX, full-stack AI engineering, cinematic storytelling, and distribution, handled as one coherent product system.
 
-“From idea to AI product” can remain as part of the brand vocabulary, but “audience” closes the loop and communicates that shipping software is not the end of Xavier's responsibility.
+“From idea to AI product” remains conceptually present in the supporting AI-product promise, but should not remain as a competing slogan. “Audience” closes the loop and communicates that shipping software is not the end of Xavier's responsibility.
 
 ## Recommended projects-page information architecture
 
@@ -84,7 +86,7 @@ Visible project labels should include:
 
 Use large editorial cards rather than equal logo tiles. Each card should contain:
 
-- a product image, cinematic frame, or workflow—not merely a logo;
+- a product image, cinematic frame, or workflow, not merely a logo;
 - an honest work-type and status badge;
 - the audience and intended transformation;
 - a one-sentence outcome or hypothesis;
@@ -108,7 +110,7 @@ Retain only older projects that still provide credible evidence of production ex
 
 Recommended direction:
 
-> **Bring me the product problem—not a finished specification.**
+> **Bring me the product problem, not a finished specification.**
 
 > I can help shape the opportunity, build the system, create the launch story, and get it in front of the right audience.
 
@@ -128,7 +130,7 @@ Every flagship should answer:
 
 ## Recommended initial portfolio slate
 
-### 1. Armonía — real flagship
+### 1. Armonía: real flagship
 
 **Proof gap filled:** whole-product ownership and emotionally resonant storytelling.
 
@@ -143,7 +145,7 @@ Potential evidence set:
 - appointment and content funnels;
 - real constraints, decisions, and measured evidence where available.
 
-### 2. Publishing engine — owned internal system
+### 2. Publishing engine: owned internal system
 
 **Proof gap filled:** invisible automation, agentic workflows, approval gates, and distribution infrastructure.
 
@@ -158,7 +160,7 @@ Potential evidence set:
 - status tracking and failure handling;
 - examples of assets produced by the system.
 
-### 3. Echoes — concept product
+### 3. Echoes: concept product
 
 **Concept:** An AI oral-history studio that interviews a family member and turns the conversation into a written story, audio keepsake, and short illustrated film.
 
@@ -172,7 +174,7 @@ Potential evidence set:
 
 **Distribution motion:** A personalized mini-documentary designed to be shared with relatives, creating a natural family-referral loop.
 
-### 4. Pilot Room — concept product
+### 4. Pilot Room: concept product
 
 **Concept:** An AI launch operator for independent creators that turns a product brief into positioning, campaign assets, channel experiments, and a learning dashboard.
 
@@ -186,7 +188,7 @@ Potential evidence set:
 
 **Distribution motion:** A public “launch a product in seven days” challenge, teardown videos, reusable templates, and a waitlist experiment.
 
-### 5. Quito Alive — concept evolution
+### 5. Quito Alive: concept evolution
 
 **Concept:** Reimagine Quito360 as a multilingual AI city companion that creates thematic routes using local stories, maps, imagery, and cultural context.
 
@@ -252,7 +254,7 @@ A beautiful landing page is not sufficient reason to select an idea. Prefer conc
 7. Only then select a contrasting second concept.
 8. Move weaker historical projects into a compact archive.
 
-Do not build five concepts in parallel. One complete concept—with a functioning experience, system explanation, launch film, campaign, and test—is stronger than five polished homepages.
+Do not build five concepts in parallel. One complete concept with a functioning experience, system explanation, launch film, campaign, and test is stronger than five polished homepages.
 
 ## Truth and evidence rules
 
@@ -265,9 +267,8 @@ Do not build five concepts in parallel. One complete concept—with a functionin
 - Document failure modes, safeguards, and evaluation where AI behavior matters.
 - Treat distribution as product work rather than a post-launch afterthought.
 
-## Open decisions
+## Remaining open decisions
 
-- Final homepage language: retain “From idea to AI product” or promote “From idea to audience.”
 - Which three projects should be visually featured at launch.
 - Whether the portfolio remains backed by `data/projects.json` or moves to a richer content model.
 - Which concept should be the first full build after Armonía and the publishing engine.
@@ -275,10 +276,10 @@ Do not build five concepts in parallel. One complete concept—with a functionin
 
 ## Sources
 
-[1] https://www.thexap.com/projects — Xavier Perez — Projects
-[2] https://www.thexap.com — Xavier Perez — Home
-[3] https://www.thexap.com/about-me — Xavier Perez — About
-[4] https://www.thexap.com/projects/selfstudy — Xavier Perez — Selfstudy project
-[5] https://www.thexap.com/projects/haiku — Xavier Perez — Haiku Deck project
-[6] https://www.thexap.com/projects/armonia — Xavier Perez — Armonia project
-[7] https://www.armoniapsicologia.com — Armonía Psicología
+[1] https://www.thexap.com/projects | Xavier Perez | Projects
+[2] https://www.thexap.com | Xavier Perez | Home
+[3] https://www.thexap.com/about-me | Xavier Perez | About
+[4] https://www.thexap.com/projects/selfstudy | Xavier Perez | Selfstudy project
+[5] https://www.thexap.com/projects/haiku | Xavier Perez | Haiku Deck project
+[6] https://www.thexap.com/projects/armonia | Xavier Perez | Armonia project
+[7] https://www.armoniapsicologia.com | Armonía Psicología

@@ -21,7 +21,7 @@ const planData = [
     title: "2. Architecture & Build",
     description: [
       "Design the system end-to-end: frontend, AI backend, integrations, and infrastructure.",
-      "Build with production in mind from day one — evaluation, error handling, and monitoring included.",
+      "Build with production in mind from day one. Evaluation, error handling, and monitoring are included.",
       "Iterate fast with working software, not slide decks."
     ]
   },

@@ -15,7 +15,7 @@ const ReassureSection = () => {
         }}
       >
         <Typography variant="h4" textAlign="left">
-          I help teams architect and ship AI-powered applications — from intelligent features to full agentic systems —
+          I help teams architect and ship AI-powered applications, from intelligent features to full agentic systems,
           built on 9 years of production fullstack experience
         </Typography>
       </Container>

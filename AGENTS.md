@@ -10,9 +10,11 @@ These instructions apply to the entire `thexap_tech` repository.
 
 This repository contains Xavier Perez's personal website and portfolio. It currently presents his freelance track record, AI product positioning, blog, project archive, and meeting flow.
 
-The site's strategic direction is to position Xavier as an app creator, mentor, and freelancer who uses AI to create and distribute digital products. The portfolio must show that clients can rely on him for the whole product cycle—not only frontend or backend implementation.
+The site's strategic direction is to position Xavier as an independent AI product partner for founders and small product teams. Freelancing is the engagement model, while mentoring is a secondary offer. The portfolio must show that clients can rely on him for the whole product cycle, not only frontend or backend implementation.
 
-The existing projects experience reflects an earlier positioning as a freelance frontend/fullstack developer. Work on that surface should move it toward a focused body of evidence for Xavier's current promise: **from idea to AI product, launch, and distribution**.
+The existing projects experience reflects an earlier positioning as a freelance frontend/fullstack developer. Work on that surface should move it toward a focused body of evidence for Xavier's current promise: **from idea to audience by designing, building, launching, and distributing AI products**.
+
+`docs/portfolio/positioning-and-messaging.md` is the controlling messaging brief for the approved audience, positioning hierarchy, proof plan, CTA, and route-copy direction.
 
 ## Product north star
 
@@ -21,6 +23,12 @@ A visitor should leave believing:
 > Xavier can discover the opportunity, shape the product, create the brand and experience, build the system, produce the launch story, distribute it, and learn from the market.
 
 The portfolio is not a gallery of attractive landing pages and not a list of technologies. It is a set of product stories that demonstrate judgment, range, craft, and end-to-end ownership.
+
+## Writing and punctuation
+
+- Do not use the Unicode U+2014 em dash anywhere in repository content. This applies to user-facing copy, metadata, documentation, source comments, and agent-authored text files.
+- Rewrite the sentence with a comma, colon, period, parentheses, or clearer sentence structure instead.
+- Before completing work, run `rg -n $'\u2014' . --glob '!.git/**' --glob '!node_modules/**' --glob '!.next/**'` and confirm that it returns no matches.
 
 ## Current technical stack
 
@@ -85,7 +93,7 @@ The project portfolio is not currently stored in Contentful; it is the static da
 - `CONTENTFUL_SPACE_ID`
 - `CONTENTFUL_ACCESS_TOKEN`
 - `CONTENTFUL_PREVIEW_ACCESS_TOKEN`
-- `CONTENTFUL_PREVIEW` — optional; selects preview content when enabled
+- `CONTENTFUL_PREVIEW` (optional): selects preview content when enabled
 
 A production build can execute Contentful queries during static generation. If credentials or network access are unavailable, report the exact build blocker rather than claiming successful verification.
 
@@ -120,9 +128,9 @@ Not every project must contain every step at production depth, but the portfolio
 
 Every project must be labeled honestly as one of:
 
-- **Live product / client work** — shipped work for a real organization or customer.
-- **Owned product / experiment** — something Xavier operates, tests, or distributes himself.
-- **Concept product** — a hypothetical product created to demonstrate product thinking and execution.
+- **Live product / client work:** Shipped work for a real organization or customer.
+- **Owned product / experiment:** Something Xavier operates, tests, or distributes himself.
+- **Concept product:** A hypothetical product created to demonstrate product thinking and execution.
 
 Concept products are encouraged, but never present them as client work or validated businesses. Never invent users, revenue, testimonials, conversion lifts, client constraints, or production status. Clearly distinguish:
 
