@@ -7,26 +7,21 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import Image from "next/image";
 import HeaderFooterLayout from "../../src/components/HeaderFooterLayout";
+import CaseStudyPage from "../../src/components/Portfolio/CaseStudyPage";
+import { caseStudiesBySlug, flagshipCaseStudies, type CaseStudy } from "../../src/content/portfolio";
 import projectsData from "../../data/projects.json";
 import { ParsedUrlQuery } from "querystring";
 import { GetStaticPaths, GetStaticProps } from "next";
 
-type Props = {
-  title?: string;
-  productDescription?: string;
-  role?: string;
-  responsabilities?: string;
-  technologies?: string[];
-  urls?: string[];
-  image?: string;
-  imageLarge: string;
-};
+type LegacyProject = (typeof projectsData)[number];
+
+type Props = { kind: "case-study"; caseStudy: CaseStudy } | { kind: "legacy"; project: LegacyProject };
 
 interface Params extends ParsedUrlQuery {
   slug: string;
 }
 
-const IndividualProjectPage = ({
+const LegacyProjectPage = ({
   title,
   productDescription,
   role,
@@ -34,7 +29,7 @@ const IndividualProjectPage = ({
   technologies,
   urls,
   imageLarge
-}: Props) => {
+}: LegacyProject) => {
   return (
     <HeaderFooterLayout>
       <Box sx={{ paddingY: 9, backgroundColor: "background.paper" }}>
@@ -103,18 +98,56 @@ const IndividualProjectPage = ({
   );
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const getStaticProps: GetStaticProps<any, Params> = async ({ params }) => {
-  const project = projectsData.find(el => el.slug === params?.slug);
-  return { props: project };
+const IndividualProjectPage = (props: Props) => {
+  if (props.kind === "case-study") {
+    return <CaseStudyPage caseStudy={props.caseStudy} />;
+  }
+
+  return <LegacyProjectPage {...props.project} />;
+};
+
+export const getStaticProps: GetStaticProps<Props, Params> = async ({ params }) => {
+  const slug = params?.slug;
+  const caseStudy = slug ? caseStudiesBySlug.get(slug) : undefined;
+
+  if (caseStudy) {
+    const { existsSync } = await import("fs");
+    const { join } = await import("path");
+    const missingAssets = caseStudy.assets.filter(asset => !existsSync(join(process.cwd(), "public", asset.src)));
+
+    if (missingAssets.length > 0) {
+      throw new Error(
+        `Case study "${caseStudy.identity.slug}" has missing public assets: ${missingAssets
+          .map(asset => asset.src)
+          .join(", ")}`
+      );
+    }
+
+    return { props: { kind: "case-study", caseStudy } };
+  }
+
+  const project = projectsData.find(item => item.slug === slug);
+
+  if (!project) {
+    return { notFound: true };
+  }
+
+  return { props: { kind: "legacy", project } };
 };
 
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
+  const slugs = Array.from(
+    new Set([
+      ...flagshipCaseStudies.map(caseStudy => caseStudy.identity.slug),
+      ...projectsData.map(project => project.slug)
+    ])
+  );
+
   return {
-    paths: projectsData.map(project => {
+    paths: slugs.map(slug => {
       return {
         params: {
-          slug: project.slug
+          slug
         }
       };
     }),
