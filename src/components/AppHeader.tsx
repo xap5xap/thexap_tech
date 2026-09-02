@@ -16,7 +16,6 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import { routes } from "../lib/routes";
-import router from "next/router";
 
 const Header = styled("header")(({ theme }) => ({
   position: "sticky",
@@ -32,11 +31,12 @@ const Header = styled("header")(({ theme }) => ({
 
 const AppHeader = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
-
-  const redirectTo = (path: string) => {
-    setOpenDrawer(false);
-    router.push(path);
-  };
+  const navigationItems = [
+    { label: "Home", href: routes.home.path },
+    { label: "Blog", href: routes.blog.path },
+    { label: "Projects", href: routes.projects.path },
+    { label: "About me", href: routes.aboutMe.path }
+  ];
 
   return (
     <Header>
@@ -53,68 +53,58 @@ const AppHeader = () => {
             onClick={() => setOpenDrawer(val => !val)}
             sx={{ display: { xs: "block", md: "none" } }}
             color="inherit"
-            aria-label="open drawer"
+            aria-label={openDrawer ? "Close navigation menu" : "Open navigation menu"}
+            aria-controls="mobile-navigation"
+            aria-expanded={openDrawer}
             edge="end"
             data-testid="hamburguer"
           >
             <MenuIcon sx={{ color: "grey.200" }}></MenuIcon>
           </IconButton>
           <Link component={NextLink} href={ROUTES.home} prefetch={false} sx={{ display: "flex" }}>
-            <Image src="/images/logo_x.svg" alt="logo" title="Xavier Perez" width={50} height={50} />
+            <Image src="/images/logo_x.svg" alt="Xavier Perez" title="Xavier Perez" width={50} height={50} />
           </Link>
         </Box>
-        <Stack direction="row" spacing={3}>
+        <Stack direction="row" spacing={{ xs: 1, md: 3 }} sx={{ alignItems: "center" }}>
+          <Box component="nav" aria-label="Primary navigation" sx={{ display: { xs: "none", md: "block" } }}>
+            <Stack direction="row" spacing={3}>
+              {navigationItems.slice(1).map(item => (
+                <Button
+                  key={item.href}
+                  component={NextLink}
+                  href={item.href}
+                  variant="text"
+                  sx={{ textAlign: "center" }}
+                >
+                  {item.label}
+                </Button>
+              ))}
+            </Stack>
+          </Box>
           <Button
             component={NextLink}
-            href={routes.blog.path}
-            variant="text"
-            sx={{ textAlign: "center", display: { xs: "none", md: "block" } }}
+            href={routes.scheduleMeeting.path}
+            sx={{ px: { xs: 1.25, sm: 2 }, fontSize: { xs: "0.75rem", sm: "0.875rem" }, whiteSpace: "nowrap" }}
           >
-            Blog
-          </Button>
-          <Button
-            component={NextLink}
-            href={routes.projects.path}
-            variant="text"
-            sx={{ textAlign: "center", display: { xs: "none", md: "block" } }}
-          >
-            Projects
-          </Button>
-          <Button
-            component={NextLink}
-            href={routes.aboutMe.path}
-            variant="text"
-            sx={{ textAlign: "center", display: { xs: "none", md: "block" } }}
-          >
-            About me
-          </Button>
-          <Button component={NextLink} href={routes.scheduleMeeting.path}>
             SCHEDULE A MEETING
           </Button>
         </Stack>
       </Container>
-      <Drawer data-testid="nav-menu-drawer" anchor="left" open={openDrawer} onClose={() => setOpenDrawer(false)}>
-        <List>
-          <ListItem>
-            <ListItemButton onClick={() => redirectTo(routes.home.path)}>
-              <ListItemText primary="Home" />
-            </ListItemButton>
-          </ListItem>
-          <ListItem>
-            <ListItemButton onClick={() => redirectTo(routes.blog.path)}>
-              <ListItemText primary="Blog" />
-            </ListItemButton>
-          </ListItem>
-          <ListItem>
-            <ListItemButton onClick={() => redirectTo(routes.projects.path)}>
-              <ListItemText primary="Projects" />
-            </ListItemButton>
-          </ListItem>
-          <ListItem>
-            <ListItemButton onClick={() => redirectTo(routes.aboutMe.path)}>
-              <ListItemText primary="About me" />
-            </ListItemButton>
-          </ListItem>
+      <Drawer
+        data-testid="nav-menu-drawer"
+        anchor="left"
+        open={openDrawer}
+        onClose={() => setOpenDrawer(false)}
+        PaperProps={{ component: "nav", "aria-label": "Mobile navigation" }}
+      >
+        <List id="mobile-navigation">
+          {navigationItems.map(item => (
+            <ListItem key={item.href} disablePadding>
+              <ListItemButton component={NextLink} href={item.href} onClick={() => setOpenDrawer(false)}>
+                <ListItemText primary={item.label} />
+              </ListItemButton>
+            </ListItem>
+          ))}
         </List>
       </Drawer>
     </Header>

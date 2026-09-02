@@ -42,7 +42,7 @@ const ProjectsPage = () => {
             flexWrap: "wrap"
           }}
         >
-          {flagshipCaseStudies.map(caseStudy => {
+          {flagshipCaseStudies.map((caseStudy, index) => {
             const primaryVisual = caseStudy.assets.find(asset => asset.id === caseStudy.presentation.primaryVisualId);
 
             return (
@@ -61,6 +61,7 @@ const ProjectsPage = () => {
                           src={primaryVisual.src}
                           alt={primaryVisual.alt}
                           fill
+                          priority={index === 0}
                           sizes="(max-width: 600px) 100vw, 360px"
                           style={{ objectFit: "cover" }}
                         />

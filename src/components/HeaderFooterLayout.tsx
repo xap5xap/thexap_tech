@@ -25,8 +25,16 @@ const HeaderFooterLayout: FC<Props> = ({ children, metadata }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {metadata ? <SiteMetadata metadata={metadata} /> : null}
+      <Box component="a" href="#main-content" className="skip-link">
+        Skip to main content
+      </Box>
       <AppHeader></AppHeader>
-      <Box component="main" sx={{ position: "relative", minHeight: "calc(100vh - 70px - 94px)" }}>
+      <Box
+        component="main"
+        id="main-content"
+        tabIndex={-1}
+        sx={{ position: "relative", minHeight: "calc(100vh - 70px - 94px)" }}
+      >
         {children}
       </Box>
       <AppFooter />

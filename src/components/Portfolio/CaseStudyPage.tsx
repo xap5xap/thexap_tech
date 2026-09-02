@@ -303,6 +303,7 @@ const CaseStudyPage = ({ caseStudy }: Props) => {
                       href={link.href}
                       target="_blank"
                       rel="noreferrer"
+                      aria-label={`${link.label} (opens in a new tab)`}
                       endIcon={<ArrowOutwardRounded />}
                       variant={link.kind === "product" ? "contained" : "outlined"}
                     >
