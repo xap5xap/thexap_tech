@@ -55,17 +55,19 @@ The gap between the old case study and the current product makes Armonía the be
 
 The current legacy project pages use generic page framing and do not offer project-specific narrative hooks for proposals, LinkedIn sharing, direct outreach, or sales conversations. Each flagship should have a distinct title, description, social preview, hero visual, and outcome-led summary.
 
-## Recommended positioning
+## Approved positioning after XAP-90
 
 ### Primary direction
 
-> **From idea to audience. I design, build, launch, and distribute AI products.**
+> **Senior Full-Stack Product Engineer working as an independent product partner.**
 
-Supporting copy:
+Near-term transformation:
 
-> Product strategy, brand, UX, full-stack AI engineering, cinematic storytelling, and distribution, handled as one coherent product system.
+> Move an ambiguous opportunity, fragmented ownership, a prototype, or an existing product toward a coherent, dependable, shipped software product with visible decisions and verification.
 
-“From idea to AI product” remains conceptually present in the supporting AI-product promise, but should not remain as a competing slogan. “Audience” closes the loop and communicates that shipping software is not the end of Xavier's responsibility.
+`From idea to audience` remains the longer-term portfolio and founder north star, not the sole near-term commercial headline or a blanket outcome claim. `From idea to AI product` remains retired. `AI-native` describes Xavier's current delivery method and supporting specialization, not the primary category or proof of production-AI experience.
+
+`docs/portfolio/positioning-and-messaging.md` is the controlling source for the approved audience, commercial priority, category, transformation, proof boundaries, CTA direction, and route-copy requirements.
 
 ## Recommended projects-page information architecture
 

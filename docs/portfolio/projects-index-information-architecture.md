@@ -5,7 +5,8 @@
 - Issue: `XAP-47`
 - Decision owner: Xavier Perez
 - Decision date: 2026-08-31
-- Status: approved
+- Positioning alignment: amended by `XAP-90` on 2026-09-03
+- Status: approved as aligned
 - Controlling messaging brief: `docs/portfolio/positioning-and-messaging.md`
 - Supporting research: `docs/portfolio/research-and-strategy.md`
 
@@ -26,7 +27,7 @@ Xavier confirmed the following inputs before this proposal was authored:
 
 After scanning the page, a founder or small product team should understand:
 
-1. Xavier works as an independent AI product partner who connects product thinking, experience, technology, launch, distribution, and learning.
+1. Xavier is a Senior Full-Stack Product Engineer who works as an independent product partner, with AI-native as a delivery method and supporting specialization.
 2. The portfolio contains exactly three deliberately different flagship positions rather than an undifferentiated project gallery.
 3. Each flagship is honest about its work type, current status, intended audience, transformation, Xavier's ownership, and available evidence.
 4. The complete product cycle is demonstrated across the portfolio as a whole; no single project is required to claim every stage.
@@ -44,7 +45,7 @@ The initial `/projects` experience uses five sections in this order.
 
 **Purpose**
 
-Introduce the page as a curated body of evidence for the approved portfolio promise. The supporting copy should connect the work to founders and small product teams and explain that the stories cover real client products, owned systems or experiments, and clearly labeled concept products.
+Introduce the page as a curated body of evidence for the approved positioning and longer-term product north star. The supporting copy should connect the work to founders and small product teams and explain that the stories cover real client products, owned systems or experiments, and clearly labeled concept products.
 
 The hero should not repeat the homepage verbatim, lead with technology names, or claim outcomes that the cards do not substantiate.
 
@@ -82,7 +83,7 @@ This note replaces an initial historical-work section. It gives visitors the con
 
 ### 5. Contextual conversion section
 
-Use the exact CTA contract approved in `XAP-46`.
+Use the CTA labels and bounded fit-conversation intent retained by `XAP-90`. `XAP-91` and `XAP-92` must adapt the contextual copy to the amended positioning before implementation.
 
 **Section headline**
 
