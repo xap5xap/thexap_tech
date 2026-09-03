@@ -33,6 +33,7 @@ export const getDesignTokens = (mode: "light" | "dark") =>
     palette: {
       primary: {
         main: orangeMain,
+        contrastText: "#202124",
         ...(mode === "dark" && {
           main: orangeMain
         })
@@ -146,6 +147,12 @@ export function getThemedComponents(_theme: Theme) {
       MuiCssBaseline: {
         defaultProps: {
           enableColorScheme: true
+        },
+        styleOverrides: {
+          "a:focus-visible, button:focus-visible, [role='button']:focus-visible": {
+            outline: `3px solid ${orangeMain}`,
+            outlineOffset: 3
+          }
         }
       }
     }

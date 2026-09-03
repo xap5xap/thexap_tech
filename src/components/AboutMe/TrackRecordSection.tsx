@@ -25,7 +25,7 @@ const TrackRecordSection = () => {
         >
           <Box>
             <p>
-              I&apos;m Xavier Perez — an AI Solutions Architect with 9 years of fullstack development experience in
+              I&apos;m Xavier Perez, an AI Solutions Architect with 9 years of fullstack development experience in
               React, TypeScript, Node.js, and AWS.
             </p>
             <p>
@@ -58,7 +58,7 @@ const TrackRecordSection = () => {
           <Box>
             <p>Building AI into a product is a high-stakes decision.</p>
             <p>
-              I understand the pressure — the budget, the timeline, the need to get it right the first time. I treat
+              I understand the pressure: the budget, the timeline, the need to get it right the first time. I treat
               every project like my own and bring the same care and intensity that earned me 100% job success across 28
               projects.
             </p>

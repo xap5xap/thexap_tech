@@ -14,3 +14,34 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.skip-link {
+  background: #f59415;
+  border-radius: 0 0 0.5rem 0;
+  color: #202124;
+  font-weight: 700;
+  left: 0;
+  padding: 0.75rem 1rem;
+  position: fixed;
+  top: 0;
+  transform: translateY(-120%);
+  transition: transform 150ms ease-in-out;
+  z-index: 2000;
+}
+
+.skip-link:focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: 2px;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -941,7 +941,7 @@ function drawSmokeLayer(
   for (let i = 0; i < clouds.length; i++) {
     const cloud = clouds[i];
 
-    // Only show clouds progressively — outer clouds appear later
+    // Only show clouds progressively; outer clouds appear later
     const cloudDist = Math.abs(cloud.cx);
     const appearThreshold = cloudDist * 0.8;
     if (smokeIntensity < appearThreshold) continue;

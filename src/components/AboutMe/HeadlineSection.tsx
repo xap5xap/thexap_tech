@@ -28,7 +28,7 @@ const HeadlineSection = () => {
             </p>
             <p>
               You&apos;ve done the hard part: you see the opportunity. Now you need someone who can turn that vision
-              into a real product — someone who understands both the AI layer and the full application stack underneath
+              into a real product: someone who understands both the AI layer and the full application stack underneath
               it.
             </p>
             <p>
