@@ -1,35 +1,28 @@
 import Stake from "./Stake";
-import MoneyOffIcon from "@mui/icons-material/MoneyOff";
-import BuildIcon from "@mui/icons-material/Build";
-import PsychologyIcon from "@mui/icons-material/Psychology";
+import LoopIcon from "@mui/icons-material/Loop";
+import HubIcon from "@mui/icons-material/Hub";
+import FactCheckIcon from "@mui/icons-material/FactCheck";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 
 const stakesData = [
   {
-    icon: <MoneyOffIcon sx={{ fontSize: 40 }} />,
-    title: "Burning budget on AI that never ships",
+    icon: <LoopIcon sx={{ fontSize: 40 }} />,
+    title: "The next outcome keeps reopening",
+    description: ["Priorities, scope, and completion criteria are not yet owned as one product decision."]
+  },
+  {
+    icon: <HubIcon sx={{ fontSize: 40 }} />,
+    title: "Product and system decisions are separated",
     description: [
-      "Teams spend months experimenting with AI features that never make it to production.",
-      "Without the right architecture, AI becomes the most expensive line item with nothing to show for it."
+      "UX, application, integration, infrastructure, and release choices are handled as disconnected tasks."
     ]
   },
   {
-    icon: <BuildIcon sx={{ fontSize: 40 }} />,
-    title: "AI bolted on, not built in",
-    description: [
-      "Wrapping an API call around a language model is not an AI product.",
-      "Without proper architecture, you end up with brittle integrations that break under real-world usage."
-    ]
-  },
-  {
-    icon: <PsychologyIcon sx={{ fontSize: 40 }} />,
-    title: "No AI expertise on the team",
-    description: [
-      "Your developers are great at building apps, but AI architecture is a different skill set.",
-      "Agentic workflows, model orchestration, and tool integration require specialized knowledge."
-    ]
+    icon: <FactCheckIcon sx={{ fontSize: 40 }} />,
+    title: "Verification is hard to see",
+    description: ["It is not clear what evidence will show that the agreed state is ready to release or hand off."]
   }
 ];
 const StakesSection = () => {
@@ -44,9 +37,19 @@ const StakesSection = () => {
           rowGap: 6
         }}
       >
-        <Typography variant="h3" textAlign="center">
-          Most AI integrations fail before they launch
+        <Typography component="h2" variant="h3" textAlign="center">
+          When the product has outgrown &quot;it works,&quot; ownership needs to catch up.
         </Typography>
+        <Box sx={{ maxWidth: 900, textAlign: "center" }}>
+          <Typography>
+            You may have a working prototype, a live product, or a consequential next release. The harder question is
+            who owns the connected product, system, verification, and release decisions needed to move it forward.
+          </Typography>
+          <Typography color="text.secondary" sx={{ mt: 2 }}>
+            When those decisions remain split or keep falling back to you, the product can be working while its next
+            state is still difficult to define, verify, release, or hand off.
+          </Typography>
+        </Box>
         <Box
           sx={{
             display: "flex",
@@ -56,8 +59,8 @@ const StakesSection = () => {
             rowGap: 6
           }}
         >
-          {stakesData.map((el, idx) => (
-            <Stake key={idx} title={el.title} description={el.description} icon={el.icon} />
+          {stakesData.map(el => (
+            <Stake key={el.title} title={el.title} description={el.description} icon={el.icon} asList={false} />
           ))}
         </Box>
       </Container>

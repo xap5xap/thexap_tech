@@ -24,10 +24,10 @@ const CODE_LINES = [
 ];
 
 const STATUS_ITEMS = [
-  { label: "Lint", appear: 0.6 },
+  { label: "Scope", appear: 0.6 },
   { label: "Tests", appear: 0.7 },
   { label: "Build", appear: 0.8 },
-  { label: "Deploy", appear: 0.9 }
+  { label: "Handoff", appear: 0.9 }
 ];
 
 interface Props {
@@ -84,7 +84,7 @@ export default function ProductionScene({ progress, width, height }: Props) {
     ctx.font = `${Math.max(9, Math.min(11, width * 0.025))}px monospace`;
     ctx.fillStyle = "rgba(255,255,255,0.5)";
     ctx.textAlign = "center";
-    ctx.fillText("agent-build.sh", termX + termW / 2, dotY + 4);
+    ctx.fillText("verify-state.sh", termX + termW / 2, dotY + 4);
 
     // Code area
     const codeStartY = termY + chromeH + 12;

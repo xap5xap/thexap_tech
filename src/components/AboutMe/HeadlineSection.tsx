@@ -10,33 +10,33 @@ const HeadlineSection = () => {
         sx={{
           display: "grid",
           gridTemplateColumns: { xs: "auto", md: "auto 1fr" },
-          columnGap: 3
+          columnGap: 5,
+          rowGap: 4,
+          alignItems: "center"
         }}
       >
-        <Box>
-          <Image src="/images/yo.jpg" alt="my picture" height={300} width={267} />
+        <Box sx={{ display: "flex", justifyContent: { xs: "center", md: "flex-start" } }}>
+          <Image
+            src="/images/yo.jpg"
+            alt="Xavier Perez"
+            height={300}
+            width={267}
+            style={{ width: "100%", maxWidth: 267, height: "auto" }}
+          />
         </Box>
         <Box>
-          <Typography variant="h4">
-            You know AI can transform your product. You just need the right architect.
+          <Typography component="h1" variant="h3">
+            A senior product engineer for the stage after &quot;it works.&quot;
           </Typography>
-          <Box>
-            <p>
-              Maybe you&apos;ve experimented with ChatGPT wrappers. Maybe your team has prototyped something promising
-              but can&apos;t get it to production. Or maybe you&apos;re starting fresh and want AI built in from the
-              ground up.
-            </p>
-            <p>
-              You&apos;ve done the hard part: you see the opportunity. Now you need someone who can turn that vision
-              into a real product: someone who understands both the AI layer and the full application stack underneath
-              it.
-            </p>
-            <p>
-              I design and build AI-powered applications end-to-end. Agentic workflows, model orchestration, tool
-              integration, and the React + Node.js + AWS infrastructure to support it all.
-            </p>
-            <p>That&apos;s where I come in.</p>
-          </Box>
+          <Typography sx={{ mt: 3 }}>
+            I help founders, product leads, and small product teams move a working prototype or existing product toward
+            an agreed dependable release with clearer ownership and visible verification.
+          </Typography>
+          <Typography color="text.secondary" sx={{ mt: 2 }}>
+            I work as an independent product partner. That means I do more than complete isolated tickets: I help define
+            the next owned outcome, connect product and system decisions within the agreed scope, and make the handoff
+            or release state explicit.
+          </Typography>
         </Box>
       </Container>
     </Box>

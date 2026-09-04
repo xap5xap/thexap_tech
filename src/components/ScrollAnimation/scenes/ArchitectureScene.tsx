@@ -20,14 +20,14 @@ interface Edge {
 
 const NODES: Node[] = [
   { x: 0.5, y: 0.12, label: "User", appear: 0.15 },
-  { x: 0.25, y: 0.32, label: "API Gateway", appear: 0.2 },
-  { x: 0.75, y: 0.32, label: "Agent", appear: 0.25 },
-  { x: 0.15, y: 0.55, label: "Auth", appear: 0.35 },
-  { x: 0.5, y: 0.55, label: "Orchestrator", appear: 0.3 },
-  { x: 0.85, y: 0.55, label: "Tools", appear: 0.4 },
-  { x: 0.3, y: 0.78, label: "Database", appear: 0.5 },
-  { x: 0.7, y: 0.78, label: "Model", appear: 0.55 },
-  { x: 0.5, y: 0.92, label: "Monitoring", appear: 0.65 }
+  { x: 0.25, y: 0.32, label: "Product", appear: 0.2 },
+  { x: 0.75, y: 0.32, label: "Experience", appear: 0.25 },
+  { x: 0.15, y: 0.55, label: "Application", appear: 0.35 },
+  { x: 0.5, y: 0.55, label: "Integrations", appear: 0.3 },
+  { x: 0.85, y: 0.55, label: "Data", appear: 0.4 },
+  { x: 0.3, y: 0.78, label: "Verification", appear: 0.5 },
+  { x: 0.7, y: 0.78, label: "Release", appear: 0.55 },
+  { x: 0.5, y: 0.92, label: "Handoff", appear: 0.65 }
 ];
 
 const EDGES: Edge[] = [
@@ -149,7 +149,7 @@ export default function ArchitectureScene({ progress, width, height }: Props) {
       ctx.font = `bold ${Math.max(12, Math.min(16, width * 0.035))}px monospace`;
       ctx.fillStyle = `rgba(245, 148, 21, ${titleOpacity})`;
       ctx.textAlign = "center";
-      ctx.fillText("SYSTEM ARCHITECTURE", width / 2, 20);
+      ctx.fillText("CONNECTED DECISIONS", width / 2, 20);
     }
   }, [progress, width, height]);
 

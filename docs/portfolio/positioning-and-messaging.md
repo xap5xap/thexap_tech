@@ -3,11 +3,14 @@
 ## Status and authority
 
 - Issue: `XAP-46`
+- Amended by: `XAP-90`
 - Decision owner: Xavier Perez
 - Decision date: 2026-08-31
-- Status: approved
+- Amendment date: 2026-09-03
+- Website implementation approval: `XAP-94`, 2026-09-04
+- Status: approved as amended
 
-This document defines the message hierarchy for thexap portfolio. It translates the broader strategy in `research-and-strategy.md` into decisions that later homepage, About, projects-index, and case-study work must follow.
+This document defines the message hierarchy for thexap portfolio. It translates the broader strategy in `research-and-strategy.md` and the approved `XAP-90` positioning decision into decisions that later homepage, About, projects-index, case-study, and Upwork work must follow.
 
 It does not authorize a visual redesign or page implementation. Route changes belong to their delivery issues after this copy package is approved.
 
@@ -15,65 +18,93 @@ It does not authorize a visual redesign or page implementation. Route changes be
 
 ### Primary audience
 
-The portfolio is primarily for **founders and small product teams** that see a meaningful product opportunity but need a partner who can connect product thinking, experience, technology, launch, and learning.
+The portfolio is primarily for **founders, product leads, and small product teams** that have a meaningful software opportunity, prototype, or existing product but lack enough senior ownership across product decisions and full-stack delivery.
 
 The audience should recognize situations such as:
 
 - the opportunity is promising, but the product is not yet clearly shaped;
-- an AI prototype exists, but it is not a coherent or production-ready product;
+- a prototype or existing product exists, but the next dependable release is not clear;
 - strategy, design, engineering, and launch are split across disconnected contributors;
 - the team can build software but lacks the time or range to carry the whole product journey;
-- shipping is treated as the finish line, with no credible route to an audience or learning signal.
+- the team needs one accountable senior owner who can diagnose, prioritize, build, verify, and ship the next product state.
 
-### Primary positioning line
+The secondary audience is a compatible product company, AI-enabled SaaS team, venture studio, or employer seeking an embedded senior product engineer. This audience is secondary because country eligibility, work hours, employment structure, and direct AI-proof requirements must be qualified role by role.
+
+### Primary market category
+
+> **Senior Full-Stack Product Engineer**
+
+This is the familiar role language for search, comparison, and qualification across contract and employment channels.
+
+### Working relationship
+
+> **Independent product partner**
+
+This describes how Xavier works with founders and teams: direct access to the accountable senior engineer, product judgment before implementation, and continuity across a meaningful engagement. It does not imply an agency or unstated team.
+
+### Longer-term portfolio and founder north star
 
 > **From idea to audience.**
 
-This replaces `From idea to AI product` as the umbrella line. The old phrase should not remain as a competing slogan.
+This remains the long-term direction for Xavier's portfolio and independent product-builder work. It is not the sole near-term commercial headline or a claim that audience reach, distribution performance, product-market fit, or learning outcomes are already proven.
 
-`AI product` remains explicit in the supporting promise so the offer does not become confused with a general creative or marketing service.
+`From idea to AI product` remains retired and must not return as a competing slogan.
 
-### Supporting promise
+### Near-term transformation
 
-> **I design, build, launch, and distribute AI products.**
+Xavier helps a founder or small team move from an ambiguous opportunity, fragmented ownership, a prototype, or an existing product to a coherent, dependable, shipped software product with visible decisions and verification.
+
+This is a decision-level transformation. The approved channel copy is recorded in `messaging-research/channel-wirecopy.md`, with validation in `XAP-93`. The website uses that package with Xavier's final `XAP-94` review revisions recorded below. Upwork implementation remains separately governed by `XAP-95`.
+
+### Role of AI-native
+
+`AI-native` is:
+
+1. a current delivery method, where Xavier uses coding agents and generative tools as leverage under human review;
+2. a supporting specialization for relevant AI-enabled product work;
+3. future case-level proof when a real runtime-AI or AI-built-app productionization case exists.
+
+It is not the primary market category, a proxy for nine years of production-AI experience, or proof of agents, RAG, evaluations, automation, or AI-built-app rescue outcomes.
 
 ### Audience explanation
 
-> For founders and small product teams that see the opportunity and need one partner to turn it into a coherent product and launch.
+The right buyer has a product opportunity, prototype, or existing system, but the next correct product and engineering decisions are not obvious. The work requires more than an isolated ticket or model integration and benefits from one senior owner across scope, UX, application architecture, frontend, backend, data, integrations, release, and communication.
 
 ### Expanded explanation
 
-> Product strategy, brand and UX, full-stack AI engineering, launch storytelling, and distribution, handled as one coherent product system.
+Xavier combines product judgment, user experience, full-stack engineering, release discipline, and direct stakeholder communication. AI-enabled behavior, brand, launch, distribution, and learning belong in the scope only when the engagement and evidence support them.
 
 ### Role and engagement model
 
-Xavier should be positioned as an **independent AI product partner**.
+Xavier should be positioned in the market as a **Senior Full-Stack Product Engineer** who works as an **independent product partner**.
 
-- Product partnership is the primary promise.
-- Freelancing is the engagement model and a source of delivery evidence, not the headline identity.
+- Founder-led contracts and ongoing product partnerships are the primary near-term commercial objective.
+- Well-qualified milestone work can be an entry route to a larger engagement.
+- Selective long-term contracts or employment are secondary when Ecuador eligibility, schedule, role scope, evidence fit, and the longer-term founder direction are compatible.
+- Freelancing and contracting are engagement models and sources of delivery evidence, not the headline identity.
 - Mentoring is a secondary offer. It may appear on the About page or in a secondary action, but it should not compete with the main product-partner conversion path.
 - The portfolio must not imply that Xavier is an agency or claim capabilities that depend on an unstated team.
 
 ## What makes the offer different
 
-Ordinary implementation services usually begin with a specification and end at deployment. This offer begins with the opportunity and remains accountable for how the product is understood, built, introduced, and evaluated.
+Ordinary implementation services usually begin with a specification and end at deployment. This offer begins with the product situation and remains accountable for diagnosing what matters, connecting the decisions, building coherently, verifying the work, and shipping the next dependable release.
 
 The differentiators are:
 
 1. **Opportunity before specification.** Clarify the audience, problem, bet, and product boundary before committing to a build.
-2. **One coherent product system.** Treat strategy, brand, UX, engineering, AI behavior, launch story, and distribution as connected decisions.
-3. **Production judgment.** Use nine years of full-stack delivery experience to move beyond demos and account for reliability, failure handling, evaluation, and operation.
+2. **One coherent product system.** Treat product decisions, UX, application architecture, frontend, backend, data, integrations, release, and communication as connected work.
+3. **Production judgment.** Use at least nine years of full-stack delivery experience to move beyond demos and account for reliability, testing, maintainability, release, and operation. AI-specific evaluation and safeguards require case-level proof.
 4. **Evidence over claims.** Show artifacts, decisions, constraints, and observed signals instead of relying on capability adjectives.
-5. **Launch is not the finish line.** Design a route to an audience and define what response would produce useful learning.
+5. **A path for evidence growth.** Add AI runtime, launch, distribution, and learning claims only as verified cases close the current proof gaps.
 
 ## Claim boundaries
 
-The positioning is a description of Xavier's scope and working model, not a guarantee of market adoption.
+The positioning is a description of Xavier's category, scope, and working model, not a guarantee of market adoption.
 
-- `From idea to audience` promises that audience and distribution decisions are part of the product process. It does not promise traffic, revenue, product-market fit, or growth.
+- `From idea to audience` is the longer-term portfolio and founder north star. It does not promise traffic, revenue, product-market fit, growth, or that every engagement includes distribution.
 - `Distribute` means selecting credible channels, creating reusable launch assets, executing or enabling a defined distribution motion, and observing an agreed signal. It does not imply guaranteed reach.
 - `Learn` means defining a useful signal, observing the result, separating evidence from interpretation, and recording the next decision.
-- `AI product` requires AI to perform a meaningful product job. Where relevant, the case study must explain system behavior, failure modes, safeguards, and evaluation.
+- `AI-enabled product` requires AI to perform a meaningful product job. Where relevant, the case study must explain system behavior, failure modes, safeguards, and evaluation.
 - Nine years of full-stack experience may support production credibility, but must not be presented as nine years of AI-specific experience.
 - Concept work, simulated data, hypotheses, and measured outcomes must remain explicitly distinguished.
 
@@ -81,12 +112,14 @@ The positioning is a description of Xavier's scope and working model, not a guar
 
 Every major portfolio route should preserve this order:
 
-1. **Umbrella:** From idea to audience.
-2. **Offer:** Xavier designs, builds, launches, and distributes AI products.
-3. **Audience:** Founders and small product teams with a meaningful opportunity.
-4. **Difference:** One product partner connects the disciplines that usually become separate handoffs.
-5. **Proof:** Case studies show product decisions, artifacts, systems, launch work, distribution, and learning.
-6. **Action:** Bring the product opportunity and evaluate the right next step with Xavier.
+1. **Situation:** A founder or small team has an opportunity, prototype, or existing product but lacks senior product and full-stack ownership for the next dependable release.
+2. **Category:** Senior Full-Stack Product Engineer.
+3. **Relationship:** Independent product partner.
+4. **Transformation:** Move from ambiguity or fragmented ownership to a coherent, verified, shipped software product.
+5. **Specialization:** AI-enabled product work where the AI job and evidence are explicit; AI-native is the delivery method.
+6. **Proof:** Dated platform evidence, relevant client feedback, approved product cases, named safeguards, and verified states.
+7. **Action:** Bring the product situation and evaluate the right next step with Xavier.
+8. **North star:** Build stronger evidence over time toward the complete idea-to-audience direction.
 
 Technology names belong in supporting evidence. They should not interrupt this hierarchy or become the main story.
 
@@ -118,21 +151,21 @@ Case-study content should use these evidence states internally while drafting:
 
 ### Approved contextual CTA section
 
-The longer copy provides context around the action. It is not a button label.
+The longer copy provides context around the action. It is not a button label. The following website copy comes from the approved channel package and final `XAP-94` implementation review.
 
 Section headline:
 
-> **Bring me the product opportunity, not a finished specification.**
+> **Does your working product need clearer ownership for its next state?**
 
 Supporting text:
 
-> We'll clarify the audience and opportunity, decide what is worth building, and identify the strongest path from product to launch.
+> Bring the current product state, the outcome that matters next, and where ownership is unclear. An initial conversation will establish whether direct senior ownership fits the work.
 
 Primary button:
 
 > **Schedule a meeting**
 
-Secondary action when the route needs one:
+Secondary action on About and Projects, omitted from the homepage by Xavier's review decision:
 
 > **See selected work**
 
@@ -140,7 +173,9 @@ Secondary action when the route needs one:
 
 The primary action opens a product-fit conversation for a founder or small product team. The visitor may arrive with a problem, opportunity, early concept, prototype, or existing product; they do not need to prepare a technical specification.
 
-On the homepage and About page, the contextual headline and supporting text belong in the existing closing CTA section rendered by `HireLaunchSection`. The hero button and closing-section button both remain `Schedule a meeting`. The projects index may adopt the same closing-section pattern when its information architecture is redesigned.
+The homepage uses one primary conversion path. It must not split into equal employer and client hero paths. A qualified employer may use the same conversation path or a subordinate About-page route after Xavier confirms that employment is genuinely available.
+
+The homepage, About page, and projects index use the shared closing CTA section rendered by `HireLaunchSection`. The homepage hero and closing-section buttons both remain `Schedule a meeting`. The homepage omits both `See selected work` buttons; About and Projects retain that secondary action. The existing Projects navigation link remains available.
 
 The conversation promises:
 
@@ -158,14 +193,17 @@ It does not promise free product strategy, a completed solution, or a guaranteed
 
 Required changes:
 
-- Replace the hero heading `From idea to AI product.` with `From idea to audience.`
-- Put the supporting AI-product promise and primary audience directly beneath the umbrella line.
-- Reframe the problem beyond failed AI integration: the broader risk is a promising opportunity becoming a disconnected prototype, build, or launch with no coherent path to an audience.
-- Preserve production-ready AI and architecture as important proof, but make them part of the wider product system rather than the entire offer.
-- Expand the process from `Discovery → Architecture & Build → Ship & Iterate` to the approved portfolio cycle: `Discover → Position → Design → Build → Launch → Distribute → Learn`.
+- Use the final approved hero title `A clear path to your next release`, with no trailing period. It replaces the longer XAP-92 hero title; `From idea to AI product.` remains retired.
+- Make `Senior Full-Stack Product Engineer`, the founder and small-team audience, and the dependable-release transformation immediately legible.
+- Reframe the problem around a promising opportunity, prototype, or existing product that lacks coherent senior ownership across product and full-stack decisions.
+- Present AI-enabled work as a supported specialization and AI-native as the delivery method, not the whole record or primary category.
+- Use a near-term process that visibly covers diagnosis, prioritization, product and UX decisions, full-stack delivery, verification, and release. Preserve the longer complete product cycle in case-study and founder-direction evidence where it is real.
 - Keep `Schedule a meeting` as the hero and closing CTA button label.
 - In the closing CTA section, replace `Ready to build AI into your product?` with the approved contextual CTA headline and supporting text.
 - Keep the Upwork track record as supporting delivery evidence and avoid presenting it as proof of every new capability.
+- Omit the hero sentence `Backed by at least nine years of full-stack production delivery.` The full-stack record remains in the dedicated proof section and About page.
+- Omit the homepage Armonía section headed by `Live product and client work`, as requested during XAP-94 review. The projects index and Armonía case study remain the portfolio proof routes.
+- Preserve this approved homepage order: hero, audience/problem, stakes, guide, plan, proof, and final CTA.
 
 ### About `/about-me`
 
@@ -173,10 +211,10 @@ Required changes:
 
 Required changes:
 
-- Lead with independent AI product partnership rather than `AI Solutions Architect` alone.
-- Explain how product strategy, experience, engineering, launch, and distribution fit together in Xavier's working model.
+- Lead with `Senior Full-Stack Product Engineer` and explain independent product partnership as the working relationship rather than using `AI Solutions Architect` or `independent AI product partner` as the primary category.
+- Explain how product judgment, user experience, full-stack engineering, release discipline, and direct stakeholder communication fit together in Xavier's working model.
 - Preserve the nine-year full-stack and freelance track record as the foundation for production judgment.
-- Separate established full-stack evidence from newer AI, media, and distribution evidence.
+- Separate established full-stack evidence from newer AI-native methods, AI-enabled product evidence, media, and distribution evidence.
 - Describe freelancing as the engagement model rather than the portfolio's defining identity.
 - Present mentoring as a clearly secondary offer that supports product judgment without competing with the main CTA.
 - Replace architecture-only closing copy with the contextual product-opportunity headline and supporting text, while keeping `Schedule a meeting` as the button label.
@@ -227,22 +265,27 @@ Required changes:
 
 ## Copy consistency rules
 
-- Use `AI product` as a concrete category, not as decoration on every heading.
-- Use `product partner` to describe Xavier's role and `freelance` to describe the engagement model or track record.
+- Use `Senior Full-Stack Product Engineer` as the primary market category.
+- Use `independent product partner` to describe the working relationship and `freelance` or `contract` to describe engagement models or the track record.
+- Use `AI-native` for the delivery method and `AI-enabled product` only when AI performs a meaningful, evidenced product job.
 - Use `audience` to mean the people the product must reach and learn from, not a guaranteed acquisition result.
 - Prefer verbs and inspectable artifacts over adjectives such as `innovative`, `cutting-edge`, or `end-to-end` without proof.
 - Lead with audience transformation and product decisions; put technologies later.
 - Do not imply that concept work is client work, that planned systems are live, or that illustrative data is measured.
-- Keep the same primary message across routes while giving each route one distinct job.
+- Keep the same situation, category, transformation, proof boundary, and primary action across routes while giving each route one distinct job.
 
 ## Approval checklist
 
-- [x] Primary audience: founders and small product teams.
-- [x] Umbrella line: `From idea to audience.`
-- [x] `AI product` retained in the supporting promise rather than as a competing slogan.
-- [x] Product partnership primary; freelancing as engagement model; mentoring secondary.
+- [x] Primary audience: founders, product leads, and small product teams with a product-ownership and production-confidence gap.
+- [x] Primary market category: `Senior Full-Stack Product Engineer`.
+- [x] Working relationship: independent product partner.
+- [x] Commercial priority: founder-led contracts and product partnerships first; selective compatible employment second.
+- [x] `AI-native` is a delivery method and supporting specialization, not the primary category.
+- [x] `From idea to audience` is the longer-term portfolio and founder north star, not a blanket near-term outcome claim.
+- [x] Product partnership primary; freelancing and contracting as engagement models; mentoring secondary.
+- [x] One primary homepage conversion path; no equal employer/client split.
 - [x] Truthful evidence plan for every proof pillar.
 - [x] Required copy changes listed by route.
-- [x] Exact supporting copy and CTA package approved after review.
+- [x] CTA labels and bounded fit-conversation intent retained; contextual copy and homepage review revisions approved through `XAP-94`.
 
-This document is the controlling messaging brief for downstream portfolio issues.
+This document is the controlling messaging brief for downstream portfolio and Upwork issues after the approved XAP-90 amendment.

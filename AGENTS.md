@@ -10,19 +10,19 @@ These instructions apply to the entire `thexap_tech` repository.
 
 This repository contains Xavier Perez's personal website and portfolio. It currently presents his freelance track record, AI product positioning, blog, project archive, and meeting flow.
 
-The site's strategic direction is to position Xavier as an independent AI product partner for founders and small product teams. Freelancing is the engagement model, while mentoring is a secondary offer. The portfolio must show that clients can rely on him for the whole product cycle, not only frontend or backend implementation.
+The approved near-term market category is **Senior Full-Stack Product Engineer** for founders, product leads, and small product teams. Xavier works as an **independent product partner**. Founder-led contracts and product partnerships are the primary commercial objective, selective compatible long-term contracts or employment are secondary, and mentoring remains a secondary offer.
 
-The existing projects experience reflects an earlier positioning as a freelance frontend/fullstack developer. Work on that surface should move it toward a focused body of evidence for Xavier's current promise: **from idea to audience by designing, building, launching, and distributing AI products**.
+The existing projects experience reflects an earlier positioning as a freelance frontend/fullstack developer. Work on that surface should build evidence for Xavier's approved near-term transformation: moving an ambiguous opportunity, fragmented ownership, a prototype, or an existing product toward a coherent, dependable, shipped software product with visible decisions and verification. `AI-native` describes the delivery method and supporting specialization, not the primary category or proof of production-AI experience.
 
 `docs/portfolio/positioning-and-messaging.md` is the controlling messaging brief for the approved audience, positioning hierarchy, proof plan, CTA, and route-copy direction.
 
-## Product north star
+## Longer-term product north star
 
-A visitor should leave believing:
+A visitor should eventually have evidence to believe:
 
 > Xavier can discover the opportunity, shape the product, create the brand and experience, build the system, produce the launch story, distribute it, and learn from the market.
 
-The portfolio is not a gallery of attractive landing pages and not a list of technologies. It is a set of product stories that demonstrate judgment, range, craft, and end-to-end ownership.
+This complete idea-to-audience cycle is the longer-term portfolio and founder north star, not a blanket near-term commercial outcome claim. The portfolio is not a gallery of attractive landing pages and not a list of technologies. It is a set of product stories that demonstrate judgment, range, craft, and truthful ownership.
 
 ## Writing and punctuation
 
@@ -63,7 +63,7 @@ Husky runs lint-staged on commit. Staged JavaScript and TypeScript files are pro
 ### Page structure
 
 - `pages/index.tsx` assembles the homepage marketing funnel.
-- Homepage sections currently render in this order: `Hero` → `StakesSection` → `ValuesSection` → `GuideSection` → `PlanSection` → `HireLaunchSection`.
+- Homepage sections currently render in this order: `Hero` → `StakesSection` → `ValuesSection` → `GuideSection` → `PlanSection` → `ProofSection` → `HireLaunchSection`.
 - `src/components/HeaderFooterLayout.tsx` provides the shared site frame.
 - `pages/blog/` contains the Contentful-backed blog index and dynamic post pages.
 - `pages/projects/index.tsx` renders the current project grid from `data/projects.json`.
@@ -207,7 +207,7 @@ Prefer a small set of flagship case studies with substantial evidence over a lar
 3. **Create a limited concept slate, not an unlimited mockup collection.** Choose concepts that fill missing proof: AI product architecture, product strategy, motion/storytelling, and distribution.
 4. **Show the product, not only its marketing page.** At least one believable workflow, interactive prototype, or working vertical slice should accompany each major concept.
 5. **Design distribution while designing the product.** Launch artifacts and channel strategy are part of the concept from the beginning.
-6. **Curate aggressively.** A project earns a flagship slot only when it strengthens Xavier's current promise and has enough evidence to support a real case study.
+6. **Curate aggressively.** A project earns a flagship slot only when it strengthens the approved positioning or closes a named proof gap and has enough evidence to support a real case study.
 
 ## Idea-storm workflow
 

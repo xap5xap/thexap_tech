@@ -19,7 +19,7 @@ const HeaderFooterLayout: FC<Props> = ({ children, metadata }) => {
         {metadata ? null : (
           <meta
             name="description"
-            content="AI Solutions Architect. I design and build AI-powered applications end-to-end."
+            content="Independent product partner helping founders and product teams move working software toward a dependable release with clear ownership and visible verification."
           />
         )}
         <link rel="icon" href="/favicon.ico" />

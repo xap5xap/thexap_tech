@@ -19,7 +19,7 @@ const Hero = () => {
         justifyContent: "flex-end",
         alignItems: "center",
         flex: 1,
-        height: "calc(100vh - 150px)",
+        minHeight: { xs: "calc(100svh - 70px)", md: "calc(100vh - 70px)" },
         overflow: "hidden"
       }}
     >
@@ -29,37 +29,59 @@ const Hero = () => {
           position: "absolute",
           inset: 0,
           zIndex: 100,
-          background: "linear-gradient(to top, rgba(32,33,36,0.85) 0%, rgba(32,33,36,0.4) 40%, transparent 70%)",
+          background: "linear-gradient(to top, rgba(32,33,36,0.96) 0%, rgba(32,33,36,0.68) 48%, transparent 88%)",
           pointerEvents: "none"
         }}
       />
       <Box
         sx={{
           zIndex: 200,
-          mb: { xs: "25px", md: "24px" },
+          width: "100%",
+          px: 2,
+          pb: { xs: 4, md: 6 },
           textAlign: "center"
         }}
       >
         <Typography
+          component="p"
+          variant="overline"
+          sx={{ color: "primary.main", fontWeight: 700, letterSpacing: "0.08em" }}
+        >
+          For founders, product leads, and small product teams
+        </Typography>
+        <Typography
+          component="h1"
           variant="h1"
           sx={{
             color: "#ffffff",
-            textShadow: "0 2px 8px rgba(0,0,0,0.8)"
+            textShadow: "0 2px 8px rgba(0,0,0,0.8)",
+            maxWidth: 1120,
+            mx: "auto",
+            mt: 1,
+            fontSize: { xs: "2.35rem", sm: "3.25rem", md: "4.5rem" },
+            lineHeight: 1.06
           }}
         >
-          From idea to AI product.
+          A clear path to your next release
         </Typography>
         <Typography
-          variant="h4"
+          component="p"
+          variant="h6"
           sx={{
             color: "#ffffff",
-            textShadow: "0 2px 8px rgba(0,0,0,0.8)"
+            textShadow: "0 2px 8px rgba(0,0,0,0.8)",
+            maxWidth: 900,
+            mx: "auto",
+            mt: 2,
+            fontSize: { xs: "1.05rem", sm: "1.25rem", md: "1.45rem" },
+            lineHeight: 1.45
           }}
         >
-          Don&apos;t let AI become the most expensive experiment your product never shipped.
+          Work directly with a Senior Full-Stack Product Engineer who helps you decide what comes next, connect product
+          and engineering decisions, and make the path to release clear.
         </Typography>
-        <Button component={NextLink} href={routes.scheduleMeeting.path} sx={{ mt: 2 }}>
-          SCHEDULE A MEETING
+        <Button component={NextLink} href={routes.scheduleMeeting.path} size="large" sx={{ mt: 3 }}>
+          Schedule a meeting
         </Button>
       </Box>
     </Box>

@@ -1,6 +1,7 @@
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Image from "next/image";
+import Typography from "@mui/material/Typography";
 import UpworkAchievements from "../UpworkAchievements";
 import UpworkReviews from "../UpworkReviews";
 
@@ -24,50 +25,55 @@ const TrackRecordSection = () => {
           }}
         >
           <Box>
-            <p>
-              I&apos;m Xavier Perez, an AI Solutions Architect with 9 years of fullstack development experience in
-              React, TypeScript, Node.js, and AWS.
-            </p>
-            <p>
-              I&apos;ve spent those years freelancing and helping teams ship real products. Now I bring that same
-              delivery mindset to AI-powered applications: agentic systems, model orchestration, MCP integrations, and
-              production-grade AI architecture.
-            </p>
-            <p>
-              28+ projects delivered with 100% job success on Upwork. Top Rated freelancer. The track record speaks for
-              itself.
-            </p>
+            <Typography component="h2" variant="h4">
+              What direct ownership looks like.
+            </Typography>
+            <Typography sx={{ mt: 3 }}>
+              I work best when a founder or product lead has a meaningful product consequence, a working state to
+              understand, and a next outcome that needs one accountable senior owner.
+            </Typography>
+            <Typography sx={{ mt: 2 }}>
+              We make the scope and decision boundaries explicit. I connect the product and system decisions I own, show
+              the evidence behind completion, and release or hand off the agreed state. The engagement keeps ownership
+              inside and outside the scope visible.
+            </Typography>
+            <Typography color="text.secondary" sx={{ mt: 2 }}>
+              A bounded specialist, lower-cost provider, agency, internal employee, or AI-assisted DIY approach may be
+              the better fit when the work is well specified, already well led, easily verified, or requires continuous
+              team capacity. The goal is fit, not provider theater.
+            </Typography>
           </Box>
           <Box sx={{ display: "flex", justifyContent: "center" }}>
-            <Image src="/images/codeImage.jpg" alt="code image" width={450} height={333} />
+            <Image
+              src="/images/codeImage.jpg"
+              alt="Code editor showing full-stack product work"
+              width={450}
+              height={333}
+              style={{ width: "100%", maxWidth: 450, height: "auto" }}
+            />
           </Box>
+        </Box>
+        <Box sx={{ maxWidth: 900, textAlign: "center", mt: 4 }}>
+          <Typography component="h2" variant="h4">
+            Established full-stack delivery, honestly scoped.
+          </Typography>
+          <Typography sx={{ mt: 3 }}>
+            The strongest public evidence is a dated Upwork record, client feedback about how I work, and the approved
+            Armonía product case.
+          </Typography>
+          <Typography sx={{ mt: 2 }}>
+            As captured on 2026-09-04, Upwork showed 29 total jobs, 28 completed jobs, one job in progress, 15,309
+            hours, 100% Job Success, and Top Rated Plus. Client feedback supports autonomy, reliability, quality,
+            communication, testing, UX judgment, maintainability, and launch contribution.
+          </Typography>
+          <Typography color="text.secondary" sx={{ mt: 2 }}>
+            Those facts support full-stack production judgment and direct ownership. They do not establish nine years of
+            AI-product work or repeated production agents, RAG, evaluations, regulated AI, or AI-built-app rescue
+            outcomes.
+          </Typography>
         </Box>
         <UpworkAchievements />
         <UpworkReviews />
-        <Box
-          sx={{
-            display: "grid",
-            gridTemplateColumns: { xs: "1fr", md: "1fr 1fr" },
-            columnGap: 3,
-            alignItems: "center"
-          }}
-        >
-          <Box sx={{ display: "flex", justifyContent: "center" }}>
-            <Image src="/images/passion.jpg" alt="passion image" width={450} height={300} />
-          </Box>
-          <Box>
-            <p>Building AI into a product is a high-stakes decision.</p>
-            <p>
-              I understand the pressure: the budget, the timeline, the need to get it right the first time. I treat
-              every project like my own and bring the same care and intensity that earned me 100% job success across 28
-              projects.
-            </p>
-            <p>
-              Whether you&apos;re adding AI to an existing product or building something new from scratch, I&apos;ll be
-              with you from architecture to deployment.
-            </p>
-          </Box>
-        </Box>
       </Container>
     </Box>
   );

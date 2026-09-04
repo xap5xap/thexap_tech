@@ -9,29 +9,23 @@ import Stake from "./Stake";
 const planData = [
   {
     icon: <SearchIcon sx={{ fontSize: 94 }} />,
-    title: "1. Discovery",
+    title: "1. Bring the current state and consequence",
     description: [
-      "Understand your product, your users, and where AI creates real value.",
-      "Identify the right AI patterns: agentic workflows, RAG, tool use, or model orchestration.",
-      "Define scope so we build what matters first."
+      "Share what exists now, who it serves, what the next outcome needs to change, and why that outcome matters."
     ]
   },
   {
     icon: <ArchitectureIcon sx={{ fontSize: 94 }} />,
-    title: "2. Architecture & Build",
+    title: "2. Define the owned outcome and boundaries",
     description: [
-      "Design the system end-to-end: frontend, AI backend, integrations, and infrastructure.",
-      "Build with production in mind from day one. Evaluation, error handling, and monitoring are included.",
-      "Iterate fast with working software, not slide decks."
+      "We establish the product state to own, the decisions inside and outside the engagement, and the evidence that will count as complete."
     ]
   },
   {
     icon: <RocketLaunchIcon sx={{ fontSize: 94 }} />,
-    title: "3. Ship & Iterate",
+    title: "3. Connect, verify, release or hand off",
     description: [
-      "Deploy to production with confidence. Real users, real feedback.",
-      "Measure AI performance and optimize based on actual usage.",
-      "Continuous improvement so your AI gets better over time."
+      "I carry the connected product and system decisions within the agreed scope, make verification visible, and release or hand off the agreed state."
     ]
   }
 ];
@@ -48,8 +42,8 @@ const PlanSection = () => {
           rowGap: 6
         }}
       >
-        <Typography variant="h3" textAlign="center">
-          How we bring your AI-powered app to life
+        <Typography component="h2" variant="h3" textAlign="center">
+          A clear path to the agreed next state.
         </Typography>
         <Box
           sx={{
@@ -60,10 +54,21 @@ const PlanSection = () => {
             rowGap: 6
           }}
         >
-          {planData.map((el, idx) => (
-            <Stake key={idx} title={el.title} description={el.description} icon={el.icon} color="primary" />
+          {planData.map(el => (
+            <Stake
+              key={el.title}
+              title={el.title}
+              description={el.description}
+              icon={el.icon}
+              color="primary"
+              asList={false}
+            />
           ))}
         </Box>
+        <Typography color="text.secondary" textAlign="center" sx={{ maxWidth: 900 }}>
+          The exact engagement depends on the product state and agreed scope. This plan does not promise a fixed
+          diagnostic, duration, price, turnaround time, or permanent product outcome.
+        </Typography>
       </Container>
     </Box>
   );
