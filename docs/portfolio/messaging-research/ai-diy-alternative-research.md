@@ -2,7 +2,7 @@
 
 **Issue:** XAP-98
 
-**Status:** Research complete, owner decision pending
+**Status:** Approved by Xavier on 2026-09-03
 
 **Research window:** 2026-09-03
 
@@ -20,7 +20,7 @@ Hiring becomes rational when the buyer wants another person to own a consequenti
 
 Xavier should recommend AI DIY when the work is narrow, reversible, low consequence, easy for the founder to evaluate, and supported by managed services or strong internal technical review. He should work alongside the buyer's AI workflow when the buyer retains product direction and wants targeted setup, review, hardening, or continuity. He should offer broader product-partner ownership only when ambiguity, coupling, or consequence makes that ownership valuable and his proof supports the claim.
 
-This is an evidence-based recommendation, not Xavier's final owner decision.
+This is the owner-approved XAP-98 evidence base for the AI-assisted do-it-yourself alternative.
 
 ## Evidence labels used throughout
 
@@ -33,7 +33,7 @@ This is an evidence-based recommendation, not Xavier's final owner decision.
 - **Interpretation:** the conclusion this research draws from one or more sources.
 - **Hypothesis:** a plausible conclusion that still requires primary validation.
 - **Recommendation:** an action suggested from the current evidence.
-- **Owner decision:** a ruling Xavier has explicitly approved. None is recorded in section 15 yet.
+- **Owner decision:** a ruling Xavier has explicitly approved and recorded in section 15.
 
 ## 1. Research method, sample, dates, exclusions, and limitations
 
@@ -612,24 +612,20 @@ If Xavier later authorizes interviews, a useful first tranche would be 8-12 part
 
 These are research propositions for XAP-96. None is selected wording.
 
-## 15. Owner decision awaiting Xavier's approval
+## 15. Owner decision
 
-**Status: AWAITING OWNER DECISION. No option below has been approved.**
+**Status: APPROVED BY XAVIER ON 2026-09-03.**
 
-### Proposed decision package
+Xavier approved this research as the XAP-98 evidence base for the AI-assisted do-it-yourself alternative without amendments.
 
-1. Accept the conditional answer: AI DIY is a valid default for bounded, low-consequence, founder-evaluable work.
-2. Remove routine code generation and generic "AI expertise" from the premium differentiation.
-3. Test the remaining premium as transferred ownership of diagnosis, product/system judgment, verification, release risk, continuity, and accountability.
-4. Offer a ladder from DIY enablement and audit to productionization, safety-net review, and full partnership, instead of assuming every lead needs the largest engagement.
-5. Make recommending continued DIY an explicit credibility behavior.
-6. Treat every comparative advantage in section 11 as unavailable until its required proof exists.
-7. Carry the supported implications, unresolved internal problem, and proof constraints into XAP-96 only after this artifact is approved.
+### Approved decision package
 
-### Owner response requested
+1. AI DIY is a valid default for bounded, low-consequence, founder-evaluable work.
+2. Routine code generation and generic "AI expertise" are not premium differentiators.
+3. The remaining premium hypothesis is transferred ownership of diagnosis, product and system judgment, verification, release risk, continuity, and accountability.
+4. Xavier should offer a ladder from DIY enablement and audit to productionization, safety-net review, and full partnership instead of assuming every lead needs the largest engagement.
+5. Recommending continued DIY is an explicit credibility behavior.
+6. Every comparative advantage in section 11 remains unavailable until its required proof exists.
+7. XAP-96 may synthesize the supported implications, unresolved internal problem, and proof constraints only after its own explicit start authorization.
 
-- **Approve:** accept this research as the XAP-98 decision input and authorize the normal XAP-98 completion workflow only.
-- **Amend:** identify the finding, source interpretation, fit condition, engagement path, or proof requirement to change.
-- **Reject:** state which conclusion is not acceptable and why; XAP-98 remains open for revision.
-
-Approval of this document would not approve BrandScript wording, channel wirecopy, website changes, XAP-96 execution, or any claim currently marked as a proof gap.
+This approval authorized the normal XAP-98 completion workflow only. It did not authorize BrandScript wording, channel wirecopy, website changes, XAP-96 execution, or any claim marked as a proof gap.
