@@ -1,6 +1,6 @@
 # XAP-92 homepage and Upwork channel wirecopy
 
-Status: Draft for owner review
+Status: Owner-approved, with XAP-93 validation revisions incorporated
 
 Prepared: 2026-09-04
 
@@ -54,7 +54,7 @@ Move from a working product to a dependable release, with one accountable senior
 
 ### Supporting promise
 
-Work directly with a Senior Full-Stack Product Engineer who helps define the next owned outcome, connect product and system decisions, make verification visible, and release or hand off the agreed product state.
+Work directly with a Senior Full-Stack Product Engineer who helps you decide what comes next, connect product and engineering decisions, and make the path to release clear.
 
 ### Three-step plan
 
@@ -95,7 +95,9 @@ Draft copy:
 >
 > # Move from a working product to a dependable release, with one accountable senior owner.
 >
-> Work directly with a Senior Full-Stack Product Engineer who helps define the next owned outcome, connect product and system decisions, make verification visible, and release or hand off the agreed product state.
+> Work directly with a Senior Full-Stack Product Engineer who helps you decide what comes next, connect product and engineering decisions, and make the path to release clear.
+>
+> Backed by at least nine years of full-stack production delivery.
 >
 > **Schedule a meeting**
 >
@@ -246,7 +248,7 @@ Draft copy:
 
 > ## A production track record you can inspect.
 >
-> The category is new. The delivery record is not.
+> Senior product ownership, backed by at least nine years of full-stack production delivery.
 
 Proof block 1:
 
@@ -256,7 +258,7 @@ Proof block 1:
 
 Proof block 2:
 
-> ### What clients consistently describe
+> ### What public client feedback supports
 >
 > Public feedback supports a pattern of autonomous work, reliability, clear communication, testing discipline, UX judgment, maintainable engineering, and contribution from early ideas through a working product.
 
@@ -512,7 +514,7 @@ Recommended opening:
 
 > When your working product needs clearer ownership for its next release, I can own the agreed next state.
 >
-> I'm a Senior Full-Stack Product Engineer, and I work directly with founders and product teams.
+> I work directly with founders and product teams, backed by at least nine years of full-stack production delivery. Tell me where things stand.
 
 Why:
 
@@ -527,7 +529,7 @@ Recommended copy:
 
 > When your working product needs clearer ownership for its next release, I can own the agreed next state.
 >
-> I'm a Senior Full-Stack Product Engineer, and I work directly with founders and product teams.
+> I work directly with founders and product teams, backed by at least nine years of full-stack production delivery. Tell me where things stand.
 >
 > You may be here
 >
@@ -539,8 +541,8 @@ Recommended copy:
 >
 > - Get clear on what needs to change next, what is in scope, and how we will know it is ready.
 > - Connect the UX, frontend, backend, integrations, infrastructure, testing, and release work.
-> - Orchestrate implementation, verify the result, and release or hand off the agreed product state.
-> - Use AI-assisted workflows to coordinate work across the technology involved, while staying accountable for product decisions, verification, and what gets delivered.
+> - Lead implementation across the agreed scope, verify the result, and release or hand off the agreed product state.
+> - Use AI-assisted workflows where they fit the agreed scope, while staying accountable for product decisions, verification, and what gets delivered.
 >
 > You'll know what I own, what still needs a decision, and what counts as done.
 >
@@ -548,7 +550,7 @@ Recommended copy:
 >
 > - At least nine years of full-stack production work.
 > - 100% Job Success, Top Rated Plus, 29 total jobs, and 15,309 hours on Upwork as captured on 2026-09-04.
-> - Clients have highlighted my autonomy, reliability, communication, testing, UX judgment, maintainable engineering, and ability to help move early ideas into working products.
+> - Public client feedback supports my autonomy, reliability, communication, testing, UX judgment, and maintainable engineering. One client also described my help moving early ideas into a working product.
 > - AWS Certified AI Practitioner. AI is part of how I work, not a replacement for product and engineering judgment.
 >
 > One example
