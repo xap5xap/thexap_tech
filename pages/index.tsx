@@ -6,16 +6,19 @@ import GuideSection from "../src/components/GuideSection";
 import PlanSection from "../src/components/PlanSection";
 import HireLaunchSection from "../src/components/HireLaunchSection";
 import HeaderFooterLayout from "../src/components/HeaderFooterLayout";
+import ProofSection from "../src/components/ProofSection";
+import { homeMetadata } from "../src/content/portfolio/metadata";
 
 const Home: NextPage = () => {
   return (
-    <HeaderFooterLayout>
+    <HeaderFooterLayout metadata={homeMetadata}>
       <Hero />
       <StakesSection />
       <ValuesSection />
       <GuideSection />
       <PlanSection />
-      <HireLaunchSection />
+      <ProofSection />
+      <HireLaunchSection showSelectedWork={false} />
     </HeaderFooterLayout>
   );
 };

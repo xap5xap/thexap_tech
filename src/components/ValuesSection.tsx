@@ -26,26 +26,23 @@ function segmentProgress(progress: number, start: number, end: number): number {
 
 const valueData = [
   {
-    title: "Architecture-first AI",
+    title: "Rework pressure",
     description: [
-      "AI features that are designed into your system from the ground up, not patched on after the fact.",
-      "Agentic workflows, tool integration, and model orchestration built on solid foundations."
+      "A decision made in one part of the product can create new questions elsewhere when no one owns the connected state."
     ],
     imageSrc: "/images/communication.svg"
   },
   {
-    title: "Production-ready from day one",
+    title: "Hidden release risk",
     description: [
-      "No prototypes that fall apart under real traffic. Every AI feature is built to handle production workloads.",
-      "Proper error handling, evaluation, and monitoring so your AI actually works when users depend on it."
+      "If completion evidence is not explicit, a build can look finished while important assumptions remain untested."
     ],
     imageSrc: "/images/Ethical.svg"
   },
   {
-    title: "End-to-end delivery",
+    title: "Founder or product-lead coordination load",
     description: [
-      "From frontend to agentic backend, the entire stack is covered. No handoffs, no gaps.",
-      "9 years of fullstack experience means your AI-powered app ships complete, not half-built."
+      "Product and engineering ownership can keep returning to the person already carrying the business or product context."
     ],
     imageSrc: "/images/QC2.svg"
   }
@@ -78,8 +75,13 @@ const ValuesSection = () => {
           rowGap: 9
         }}
       >
-        <Typography variant="h3" textAlign="center">
-          AI that works in production, not just in demos
+        <Typography component="h2" variant="h3" textAlign="center">
+          A working product can still be difficult to trust, release, or evolve.
+        </Typography>
+        <Typography color="text.secondary" textAlign="center" sx={{ maxWidth: 900 }}>
+          Without a clearly owned next state, decisions can keep reopening, context can disappear between handoffs, and
+          verification can remain implicit. The result is not necessarily a failed product. It is a product whose next
+          move remains harder to coordinate and trust than it should be.
         </Typography>
         <Box
           ref={valuesContainerRef}

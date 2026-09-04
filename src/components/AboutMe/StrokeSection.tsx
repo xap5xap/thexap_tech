@@ -1,6 +1,7 @@
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Image from "next/image";
+import Typography from "@mui/material/Typography";
 
 const StrokeSection = () => {
   return (
@@ -14,19 +15,26 @@ const StrokeSection = () => {
         }}
       >
         <Box>
-          <p>Available 8am to 7pm EST, Monday to Friday.</p>
-          <p>
-            Good AI architecture starts with clear communication. Before writing a single line of code, I make sure we
-            align on what the AI should do, how it fits into your product, and what success looks like.
-          </p>
-          <p>
-            I work iteratively, shipping working software early and often so you can see progress, give feedback, and
-            course-correct before it gets expensive to change direction.
-          </p>
-          <p>Schedule a meeting and let&apos;s talk about what AI can do for your product.</p>
+          <Typography component="h2" variant="h4">
+            Clear communication starts before implementation.
+          </Typography>
+          <Typography sx={{ mt: 3 }}>
+            We align on the current product state, the next owned outcome, decision boundaries, and what evidence will
+            count as complete.
+          </Typography>
+          <Typography color="text.secondary" sx={{ mt: 2 }}>
+            If your working product needs clearer ownership for its next state, schedule an initial fit conversation or
+            review selected work first.
+          </Typography>
         </Box>
         <Box sx={{ display: "flex", justifyContent: "center" }}>
-          <Image src="/images/something.jpg" alt="do something amazing image" width={450} height={300} />
+          <Image
+            src="/images/something.jpg"
+            alt="Product decisions mapped before implementation"
+            width={450}
+            height={300}
+            style={{ width: "100%", maxWidth: 450, height: "auto" }}
+          />
         </Box>
       </Container>
     </Box>

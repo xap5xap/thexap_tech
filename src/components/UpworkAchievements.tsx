@@ -12,8 +12,12 @@ const UpworkAchievements = () => {
         rowGap: 3
       }}
     >
+      <Typography component="h3" variant="h5" textAlign="center">
+        Dated Upwork record
+      </Typography>
       <Typography color="text.secondary" textAlign="center">
-        Since 2016 I have been helping startups and companies ship software that matters
+        As captured on 2026-09-04: 29 total jobs, 28 completed jobs, one job in progress, 15,309 hours, 100% Job
+        Success, and Top Rated Plus.
       </Typography>
       <Box
         sx={{
@@ -24,10 +28,10 @@ const UpworkAchievements = () => {
           rowGap: 2
         }}
       >
-        <KnowMeItem primaryText="28" secondaryText="Projects completed" />
-        <KnowMeItem primaryText="9000+" secondaryText="Worked hours" />
+        <KnowMeItem primaryText="29" secondaryText="Total jobs" />
+        <KnowMeItem primaryText="15,309" secondaryText="Total hours" />
         <KnowMeItem primaryText="100%" secondaryText="Job Success" />
-        <KnowMeItem primaryText="5" secondaryText="Years Top Rated freelancer" />
+        <KnowMeItem primaryText="Top Rated Plus" secondaryText="Upwork status" />
       </Box>
     </Box>
   );

@@ -10,6 +10,7 @@ import NextLink from "next/link";
 import { routes } from "../../src/lib/routes";
 import { flagshipCaseStudies } from "../../src/content/portfolio";
 import { portfolioIndexMetadata } from "../../src/content/portfolio/metadata";
+import HireLaunchSection from "../../src/components/HireLaunchSection";
 
 const WORK_TYPE_LABELS = {
   "client-work": "Client work",
@@ -85,6 +86,7 @@ const ProjectsPage = () => {
           })}
         </Box>
       </Container>
+      <HireLaunchSection />
     </HeaderFooterLayout>
   );
 };

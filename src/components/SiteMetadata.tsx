@@ -13,6 +13,7 @@ const absoluteUrl = (path: string) => new URL(path, SITE_ORIGIN).toString();
 const SiteMetadata = ({ metadata }: Props) => {
   const canonicalUrl = absoluteUrl(metadata.canonicalPath);
   const imageUrl = absoluteUrl(metadata.image.src);
+  const shareDescription = metadata.shareDescription || metadata.description;
   const robots = metadata.indexable
     ? "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"
     : "noindex,nofollow";
@@ -30,7 +31,7 @@ const SiteMetadata = ({ metadata }: Props) => {
       <meta property="og:site_name" content={SITE_NAME} key="og:site_name" />
       <meta property="og:url" content={canonicalUrl} key="og:url" />
       <meta property="og:title" content={metadata.shareTitle} key="og:title" />
-      <meta property="og:description" content={metadata.description} key="og:description" />
+      <meta property="og:description" content={shareDescription} key="og:description" />
       <meta property="og:image" content={imageUrl} key="og:image" />
       <meta property="og:image:secure_url" content={imageUrl} key="og:image:secure_url" />
       <meta property="og:image:type" content={metadata.image.contentType} key="og:image:type" />
@@ -44,7 +45,7 @@ const SiteMetadata = ({ metadata }: Props) => {
 
       <meta name="twitter:card" content="summary_large_image" key="twitter:card" />
       <meta name="twitter:title" content={metadata.shareTitle} key="twitter:title" />
-      <meta name="twitter:description" content={metadata.description} key="twitter:description" />
+      <meta name="twitter:description" content={shareDescription} key="twitter:description" />
       <meta name="twitter:image" content={imageUrl} key="twitter:image" />
       <meta name="twitter:image:alt" content={metadata.image.alt} key="twitter:image:alt" />
     </Head>

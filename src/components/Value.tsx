@@ -1,9 +1,6 @@
-import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { FC, ReactNode, RefObject } from "react";
-import { routes } from "../lib/routes";
-import NextLink from "next/link";
 
 type Props = {
   title: string;
@@ -39,19 +36,14 @@ const Value: FC<Props> = ({ title, description, imageSrc, reverse, imageRef, ani
           zIndex: 2
         }}
       >
-        <Typography variant="h4" textAlign={{ xs: "center", md: "left" }}>
+        <Typography component="h3" variant="h4" textAlign={{ xs: "center", md: "left" }}>
           {title}
         </Typography>
-        <ul>
-          {description.map((el, idx) => (
-            <li key={idx}>{el}</li>
-          ))}
-        </ul>
-        <Box>
-          <Button component={NextLink} href={routes.scheduleMeeting.path} size="small">
-            Schedule a meeting
-          </Button>
-        </Box>
+        {description.map(el => (
+          <Typography key={el} color="text.secondary" textAlign={{ xs: "center", md: "left" }}>
+            {el}
+          </Typography>
+        ))}
       </Box>
     </Box>
   );

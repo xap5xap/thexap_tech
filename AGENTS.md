@@ -63,7 +63,7 @@ Husky runs lint-staged on commit. Staged JavaScript and TypeScript files are pro
 ### Page structure
 
 - `pages/index.tsx` assembles the homepage marketing funnel.
-- Homepage sections currently render in this order: `Hero` → `StakesSection` → `ValuesSection` → `GuideSection` → `PlanSection` → `HireLaunchSection`.
+- Homepage sections currently render in this order: `Hero` → `StakesSection` → `ValuesSection` → `GuideSection` → `PlanSection` → `ProofSection` → `HireLaunchSection`.
 - `src/components/HeaderFooterLayout.tsx` provides the shared site frame.
 - `pages/blog/` contains the Contentful-backed blog index and dynamic post pages.
 - `pages/projects/index.tsx` renders the current project grid from `data/projects.json`.

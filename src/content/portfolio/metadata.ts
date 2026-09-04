@@ -7,6 +7,7 @@ export type PageMetadata = {
   documentTitle: string;
   shareTitle: string;
   description: string;
+  shareDescription?: string;
   canonicalPath: string;
   indexable: boolean;
   image: {
@@ -18,6 +19,46 @@ export type PageMetadata = {
   };
 };
 
+const defaultSocialImage: PageMetadata["image"] = {
+  src: "/images/projects/social-preview.jpg",
+  alt: "A warm orange signal connects product stages and expands into a network of audience touchpoints.",
+  contentType: "image/jpeg",
+  width: SOCIAL_IMAGE_WIDTH,
+  height: SOCIAL_IMAGE_HEIGHT
+};
+
+export const homeMetadata: PageMetadata = {
+  documentTitle: "Xavier Perez | Senior Full-Stack Product Engineer",
+  shareTitle: "Xavier Perez | Senior Full-Stack Product Engineer",
+  description:
+    "Independent product partner helping founders and product teams move working software toward a dependable release with clear ownership and visible verification.",
+  shareDescription:
+    "Move from a working product to a dependable release with direct senior ownership, connected product decisions, and visible verification.",
+  canonicalPath: "/",
+  indexable: true,
+  image: defaultSocialImage
+};
+
+export const aboutMetadata: PageMetadata = {
+  documentTitle: "About Xavier Perez | Senior Full-Stack Product Engineer",
+  shareTitle: "About Xavier Perez | Senior Full-Stack Product Engineer",
+  description:
+    "Meet Xavier Perez, an independent product partner with at least nine years of full-stack production delivery for founders and product teams.",
+  canonicalPath: "/about-me",
+  indexable: true,
+  image: defaultSocialImage
+};
+
+export const scheduleMeetingMetadata: PageMetadata = {
+  documentTitle: "Schedule a meeting | Xavier Perez",
+  shareTitle: "Schedule a meeting with Xavier Perez",
+  description:
+    "Bring the current product state, the outcome that matters next, and where ownership is unclear. Start with a bounded fit conversation.",
+  canonicalPath: "/schedule-meeting",
+  indexable: true,
+  image: defaultSocialImage
+};
+
 export const portfolioIndexMetadata: PageMetadata = {
   documentTitle: "Selected products and systems | Xavier Perez",
   shareTitle: "Selected products and systems",
@@ -25,13 +66,7 @@ export const portfolioIndexMetadata: PageMetadata = {
     "Case studies showing Xavier's work across product strategy, design, engineering, launch, and distribution, from idea to audience.",
   canonicalPath: "/projects",
   indexable: true,
-  image: {
-    src: "/images/projects/social-preview.jpg",
-    alt: "A warm orange signal moves through connected product stages and expands into a network of audience touchpoints.",
-    contentType: "image/jpeg",
-    width: SOCIAL_IMAGE_WIDTH,
-    height: SOCIAL_IMAGE_HEIGHT
-  }
+  image: defaultSocialImage
 };
 
 const getDisclosure = (caseStudy: CaseStudy) => {

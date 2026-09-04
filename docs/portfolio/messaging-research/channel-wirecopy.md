@@ -8,6 +8,18 @@ Canonical issue: XAP-92
 
 This document translates the approved BrandScript v2 into a complete homepage wirecopy package and a complete Upwork profile recommendation. It is copy direction only. It does not authorize a website edit, an Upwork edit, validation, publication, pricing, a new offer, or a downstream issue.
 
+## Final website review revisions: XAP-94
+
+On 2026-09-04, Xavier approved the website implementation after requesting the following homepage revisions. These decisions supersede the corresponding homepage title, proof placement, flagship section, and secondary-button recommendations below. The earlier package remains preserved as the validation baseline.
+
+- Hero title: `A clear path to your next release`, with no trailing period.
+- Remove `Backed by at least nine years of full-stack production delivery.` from the hero; retain the delivery record in the proof section and About page.
+- Remove the homepage Armonía section introduced by `Live product and client work`. Keep the existing portfolio entries and Armonía case study unchanged.
+- Remove both homepage `See selected work` buttons. Keep the `Schedule a meeting` buttons and existing Projects navigation link. About and Projects retain their secondary buttons.
+- Final homepage order: hero, audience/problem, stakes, guide, plan, proof, and final CTA.
+
+These revisions apply to the website only. The approved Upwork package and its separate XAP-95 implementation gate are unchanged. The controlling brief in `../positioning-and-messaging.md` records the resulting website contract. Production deployment still requires its separate release authorization.
+
 ## 1. Controlling decisions and evidence boundary
 
 The following decisions control every draft in this document:

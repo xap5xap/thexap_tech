@@ -7,6 +7,7 @@
 - Decision owner: Xavier Perez
 - Decision date: 2026-08-31
 - Amendment date: 2026-09-03
+- Website implementation approval: `XAP-94`, 2026-09-04
 - Status: approved as amended
 
 This document defines the message hierarchy for thexap portfolio. It translates the broader strategy in `research-and-strategy.md` and the approved `XAP-90` positioning decision into decisions that later homepage, About, projects-index, case-study, and Upwork work must follow.
@@ -53,7 +54,7 @@ This remains the long-term direction for Xavier's portfolio and independent prod
 
 Xavier helps a founder or small team move from an ambiguous opportunity, fragmented ownership, a prototype, or an existing product to a coherent, dependable, shipped software product with visible decisions and verification.
 
-This is a decision-level transformation, not approved channel copy. Exact homepage and Upwork wording belongs to `XAP-91` and `XAP-92` and must be validated in `XAP-93`.
+This is a decision-level transformation. The approved channel copy is recorded in `messaging-research/channel-wirecopy.md`, with validation in `XAP-93`. The website uses that package with Xavier's final `XAP-94` review revisions recorded below. Upwork implementation remains separately governed by `XAP-95`.
 
 ### Role of AI-native
 
@@ -150,21 +151,21 @@ Case-study content should use these evidence states internally while drafting:
 
 ### Approved contextual CTA section
 
-The longer copy provides context around the action. It is not a button label. `XAP-91` and `XAP-92` must adapt its language to the approved XAP-90 position before implementation.
+The longer copy provides context around the action. It is not a button label. The following website copy comes from the approved channel package and final `XAP-94` implementation review.
 
 Section headline:
 
-> **Bring me the product opportunity, not a finished specification.**
+> **Does your working product need clearer ownership for its next state?**
 
 Supporting text:
 
-> We'll clarify the audience and opportunity, decide what is worth building, and identify the strongest path from product to launch.
+> Bring the current product state, the outcome that matters next, and where ownership is unclear. An initial conversation will establish whether direct senior ownership fits the work.
 
 Primary button:
 
 > **Schedule a meeting**
 
-Secondary action when the route needs one:
+Secondary action on About and Projects, omitted from the homepage by Xavier's review decision:
 
 > **See selected work**
 
@@ -174,7 +175,7 @@ The primary action opens a product-fit conversation for a founder or small produ
 
 The homepage uses one primary conversion path. It must not split into equal employer and client hero paths. A qualified employer may use the same conversation path or a subordinate About-page route after Xavier confirms that employment is genuinely available.
 
-On the homepage and About page, the contextual headline and supporting text belong in the existing closing CTA section rendered by `HireLaunchSection`. The hero button and closing-section button both remain `Schedule a meeting`. The projects index may adopt the same closing-section pattern when its information architecture is redesigned.
+The homepage, About page, and projects index use the shared closing CTA section rendered by `HireLaunchSection`. The homepage hero and closing-section buttons both remain `Schedule a meeting`. The homepage omits both `See selected work` buttons; About and Projects retain that secondary action. The existing Projects navigation link remains available.
 
 The conversation promises:
 
@@ -192,7 +193,7 @@ It does not promise free product strategy, a completed solution, or a guaranteed
 
 Required changes:
 
-- Replace `From idea to AI product.` and do not use `From idea to audience.` as the sole near-term commercial headline. `XAP-92` must draft the exact approved headline from the XAP-90 situation, category, transformation, and evidence hierarchy.
+- Use the final approved hero title `A clear path to your next release`, with no trailing period. It replaces the longer XAP-92 hero title; `From idea to AI product.` remains retired.
 - Make `Senior Full-Stack Product Engineer`, the founder and small-team audience, and the dependable-release transformation immediately legible.
 - Reframe the problem around a promising opportunity, prototype, or existing product that lacks coherent senior ownership across product and full-stack decisions.
 - Present AI-enabled work as a supported specialization and AI-native as the delivery method, not the whole record or primary category.
@@ -200,6 +201,9 @@ Required changes:
 - Keep `Schedule a meeting` as the hero and closing CTA button label.
 - In the closing CTA section, replace `Ready to build AI into your product?` with the approved contextual CTA headline and supporting text.
 - Keep the Upwork track record as supporting delivery evidence and avoid presenting it as proof of every new capability.
+- Omit the hero sentence `Backed by at least nine years of full-stack production delivery.` The full-stack record remains in the dedicated proof section and About page.
+- Omit the homepage Armonía section headed by `Live product and client work`, as requested during XAP-94 review. The projects index and Armonía case study remain the portfolio proof routes.
+- Preserve this approved homepage order: hero, audience/problem, stakes, guide, plan, proof, and final CTA.
 
 ### About `/about-me`
 
@@ -282,6 +286,6 @@ Required changes:
 - [x] One primary homepage conversion path; no equal employer/client split.
 - [x] Truthful evidence plan for every proof pillar.
 - [x] Required copy changes listed by route.
-- [x] CTA labels and bounded fit-conversation intent retained; contextual copy must be adapted to XAP-90 in `XAP-91` and `XAP-92`.
+- [x] CTA labels and bounded fit-conversation intent retained; contextual copy and homepage review revisions approved through `XAP-94`.
 
 This document is the controlling messaging brief for downstream portfolio and Upwork issues after the approved XAP-90 amendment.
