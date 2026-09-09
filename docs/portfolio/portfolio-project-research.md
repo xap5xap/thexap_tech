@@ -1,6 +1,6 @@
 # XAP-103: fictional-client concept product research
 
-Research date: September 7, 2026. Status: complete research draft for owner review; no product selected. Ledger: [XAP-103](https://linear.app/thexap/issue/XAP-103/research-identify-portfolio-projects-that-demonstrate-the-current), Portfolio Repositioning.
+Research date: September 7, 2026. Owner decision: accepted as complete on September 9, 2026; no product selected. Ledger: [XAP-103](https://linear.app/thexap/issue/XAP-103/research-identify-portfolio-projects-that-demonstrate-the-current), Portfolio Repositioning.
 
 ## Executive recommendation
 
@@ -392,13 +392,15 @@ After a separately authorized publication, a proposed two-week observation windo
 
 If the content gets little qualified exposure, classify consulting demand as untested rather than disproven. If adequately exposed buyers repeatedly see only frontend craft or generic implementation, revise the case around the connected decisions before building another product. If they understand the offer but prefer an existing platform or specialist, record the qualification boundary. Do not infer authority from views, follower growth, posting frequency, fabricated testimonials or generated asset volume.
 
-## Remaining owner decisions and proposed next step
+## Owner decision and remaining choices
 
-Research approval and product selection are separate decisions. The review should first establish whether this fresh concept route and comparison are useful. Product selection would then choose the brief, confirm hours and the strongest personal interest, and explicitly authorize its implementation.
+On September 9, 2026, Xavier accepted this research as complete and directed XAP-103 to close without selecting a product. He also authorized merging the completed research into `main` and returning the working copy to `main`. This decision completes the research issue only. It does not authorize concept implementation, recruitment, outreach, publication, spending, provider commitments, deployment, or changes to the website, Upwork, Contentful, or approved positioning.
+
+Product selection remains a separate future decision. It would choose the brief, confirm hours and the strongest personal interest, and explicitly authorize implementation.
 
 | Decision | Current state | Why it matters |
 | --- | --- | --- |
-| Approve or amend this research | Pending | Authorizes only the established scoped repository/Linear delivery after review |
+| Approve or amend this research | Accepted as complete on September 9, 2026 | Authorizes closing XAP-103 and the requested repository delivery only |
 | Choose a product | None selected; Tanda recommended, Umbral alternative | Determines the actual build and product audience; no automatic multi-project slate |
 | Focused weekly hours | One week confirmed; 30-hour comparison assumption pending | Changes whether Tanda, Umbral, Relevo or a reduced scope is feasible |
 | Domain and creative interest | Open | Ties should be resolved partly by Xavier's interest, not false scoring precision |
@@ -407,7 +409,7 @@ Research approval and product selection are separate decisions. The review shoul
 | Maintenance appetite | Local-first estimating baseline proposed, not owner decision | Determines whether future public demos should stay online or be archived with recordings |
 | Feedback and publication | Not authorized | Enables stronger evidence later, but does not block a disclosed demonstration |
 
-No product selection, implementation, recruitment, outreach, publication, spending, provider commitment, deployment or modification to the website, Upwork, Contentful or approved positioning is authorized by approving this research. After final research approval, AGENTS.md authorizes the scoped commit, integration and push to develop, remote readback and issue completion. This handoff stops before those actions.
+Closing XAP-103 records the research decision without choosing Tanda, Umbral, Relevo, Taller, Préstamo, or another concept. Any future selection and build requires a separate explicit decision and scoped issue.
 
 ## XAP-103 acceptance coverage and verification
 
@@ -421,8 +423,8 @@ No product selection, implementation, recruitment, outreach, publication, spendi
 | Alternatives, disconfirming evidence, effort, maintenance and access assessed | Existing-software counterexamples, effort table and sensitivity | Covered; no vendor trial or observed build-time study claimed |
 | Criteria and trade-offs explicit; no product preselected | Two scorecards, feasibility gate, shortlist and owner decisions | Covered |
 | Documentation helps buyers understand and defines useful learning | Capture plan, five surfaces and three separate learning records | Covered |
-| Final artifact reviewed with Xavier and decision recorded | This draft is ready for review | Pending owner review and decision |
-| Repository verification and approved delivery before Done | Verification record below, then approval workflow | Documentation verification passed with existing warning; delivery awaits final research approval |
+| Final artifact reviewed with Xavier and decision recorded | Owner decision above | Covered; accepted as complete on September 9, 2026, with no product selected |
+| Repository verification and approved delivery before Done | Verification record below and final Linear delivery record | Documentation verification passed with existing warning; final remote readback is recorded in XAP-103 before Done |
 
 ### Repository verification record
 
@@ -435,4 +437,5 @@ No product selection, implementation, recruitment, outreach, publication, spendi
 - `npm run build` passed under Node `v22.23.1`, npm `10.9.8`, Next.js `15.5.14`, with the available `.env.local` environment. Compilation, type checking and all 52 statically generated pages completed. The same existing image warning remained. No Contentful build blocker occurred.
 - No tracked first-party test suite was found; `npm run test` names Jest, which is not a direct dependency. No automated test-suite pass will be claimed.
 - Product-level verification in the candidate briefs is future work. This documentation change does not implement or test those products.
-- Final repository/Linear readback and the artifact fingerprint are recorded in XAP-103. No commit, push, merge, product selection or Done transition occurred. Owner review and the eventual delivery steps remain pending.
+- The research checkpoint was committed and pushed before owner review. Final merge and remote readback evidence are recorded in XAP-103 before its Done transition.
+- Xavier accepted the artifact as complete on September 9, 2026 and directed the issue to close without selecting a product. No concept implementation is authorized by that decision.
