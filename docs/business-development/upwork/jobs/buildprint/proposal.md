@@ -8,7 +8,11 @@ Copy from these sections: [Cover letter](#cover-letter) and [Application screeni
 
 ## Writing style
 
-Sound like a thoughtful friend helping someone bring an idea to life. Be warm, candid, simple, and direct. Keep each answer short. Avoid jargon, sales language, repetitive explanations, and em dashes. Incorporate Xavier's feedback. After approving questions 1-3 individually, he asked for the remaining answers together.
+- Cut to the chase.
+- Keep responses and drafts simple.
+- Write like you are helping a friend, not preparing formal business copy.
+- Avoid jargon, sales language, repetitive explanations, and em dashes.
+- Incorporate Xavier's feedback before moving to the next answer.
 
 ## Cover letter
 

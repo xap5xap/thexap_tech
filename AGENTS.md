@@ -26,6 +26,10 @@ This complete idea-to-audience cycle is the longer-term portfolio and founder no
 
 ## Writing and punctuation
 
+- Cut to the chase.
+- Keep responses and drafts simple.
+- Write like you are helping a friend, not preparing formal business copy.
+- Apply these rules to assistant replies, repository documents, proposals, screening answers, and Linear updates.
 - Do not use the Unicode U+2014 em dash anywhere in repository content. This applies to user-facing copy, metadata, documentation, source comments, and agent-authored text files.
 - Rewrite the sentence with a comma, colon, period, parentheses, or clearer sentence structure instead.
 - Before completing work, run `rg -n $'\u2014' . --glob '!.git/**' --glob '!node_modules/**' --glob '!.next/**'` and confirm that it returns no matches.
