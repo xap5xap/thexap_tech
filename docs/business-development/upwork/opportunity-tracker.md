@@ -1,6 +1,6 @@
 # Upwork opportunity tracker
 
-Updated September 11, 2026. This tracker records decisions and application status. The dated research reports remain the source for the original market capture and ranking. Follow the [Upwork writing style](README.md) for every draft.
+Updated September 18, 2026. This tracker records decisions and application status. The dated research reports remain the source for the original market capture and ranking. Follow the [Upwork writing style](README.md) for every draft.
 
 ## Status guide
 
@@ -26,6 +26,7 @@ Do not infer an application or outcome from a draft. Change `Applied`, `Intervie
 | 3 | Existing SaaS technical ownership | `~022096935944376628276` | Preparing | Xavier approved the cover-letter wording September 10; availability still needs confirmation | [Job brief](jobs/existing-saas-technical-ownership/job-post.md), [proposal](jobs/existing-saas-technical-ownership/proposal.md) |
 | 4 | Technical Product Manager, SaaS | `~022087883401522996504` | Passed | Xavier decided not to apply on September 10 | [Job brief](jobs/technical-product-manager-saas/job-post.md), [proposal](jobs/technical-product-manager-saas/proposal.md) |
 | 5 | KINSTALL B2B SaaS | `~022088299779008397024` | Shortlisted | Research captured September 9; geography, activity, attachments, and capacity need review | [Research report](2026-09-09-ai-product-execution-demand.md) |
+| Unranked | Secret World map marketplace | `~022100839223652532326` | Applied | Xavier confirmed the application was submitted September 18; exact submitted fields were not independently read back | [Job brief](jobs/secret-world-map-marketplace/job-post.md), [proposal](jobs/secret-world-map-marketplace/proposal.md) |
 
 ## Daily research workflow
 
