@@ -21,6 +21,7 @@ const blogListForHome = graphql(/* GraphQL */ `
         title
         slug
         excerpt
+        date
         featuredImage {
           url
         }
