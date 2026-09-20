@@ -12,6 +12,8 @@ const TagsChips = ({ tags }: Props) => {
       sx={{
         display: "flex",
         flexDirection: "row",
+        flexWrap: "wrap",
+        rowGap: 1,
         columnGap: 2,
         paddingY: 2,
         paddingX: 1

@@ -73,6 +73,7 @@ const getMorePosts = graphql(/* GraphQL */ `
       items {
         title
         slug
+        date
         featuredImage {
           url
         }

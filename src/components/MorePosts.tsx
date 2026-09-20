@@ -18,7 +18,8 @@ const MorePosts = ({ posts }: Props) => {
       <Box
         sx={{
           display: "flex",
-          flexDirection: "row",
+          flexDirection: { xs: "column", md: "row" },
+          gap: 4,
           justifyContent: "space-between"
         }}
       >

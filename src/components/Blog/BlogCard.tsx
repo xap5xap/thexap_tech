@@ -1,6 +1,5 @@
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
-import CardActionArea from "@mui/material/CardActionArea";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
@@ -10,12 +9,14 @@ import Link from "@mui/material/Link";
 import NextLink from "next/link";
 import { routes } from "../../lib/routes";
 import TagsChips from "../TagsChips";
+import { formatBlogDate } from "../../lib/blogDate";
 
 type Props = {
   blog: Blog;
 };
 
 const BlogCard = ({ blog }: Props) => {
+  const dateLabel = formatBlogDate(blog.date);
   return (
     <Box sx={{ display: "flex", justifyContent: "center" }}>
       <Link component={NextLink} href={`${routes.blog.path}/${blog.slug}`} underline="none" color="inherit">
@@ -27,7 +28,7 @@ const BlogCard = ({ blog }: Props) => {
             justifyContent: "space-between"
           }}
         >
-          <CardActionArea
+          <Box
             sx={{
               display: "flex",
               flexDirection: "column",
@@ -42,8 +43,20 @@ const BlogCard = ({ blog }: Props) => {
               width={524}
               height={297}
               quality={75}
+              style={{ maxWidth: "100%", height: "auto" }}
             />
             <CardContent>
+              {dateLabel && (
+                <Typography
+                  component="time"
+                  dateTime={blog.date}
+                  variant="body2"
+                  color="text.secondary"
+                  sx={{ display: "block", mb: 1 }}
+                >
+                  {dateLabel}
+                </Typography>
+              )}
               <Typography variant="h5">{blog.title}</Typography>
               {(blog.excerpt?.length || 0) > 0 && (
                 <Typography component="div" variant="body2" color="text.secondary">
@@ -51,7 +64,7 @@ const BlogCard = ({ blog }: Props) => {
                 </Typography>
               )}
             </CardContent>
-          </CardActionArea>
+          </Box>
           {blog.contentfulMetadata?.tags.length > 0 && (
             <CardActions>
               <TagsChips tags={blog.contentfulMetadata?.tags} />

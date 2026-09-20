@@ -4,7 +4,7 @@ import Typography from "@mui/material/Typography";
 import Image from "next/image";
 import { Asset, ContentfulTag, Maybe } from "../../gql/graphql";
 import TagsChips from "../TagsChips";
-import { format } from "date-fns";
+import { formatBlogDate } from "../../lib/blogDate";
 
 type Props = {
   title?: Maybe<string>;
@@ -15,6 +15,7 @@ type Props = {
 };
 
 const PostHeader = ({ title, tags, date, image }: Props) => {
+  const dateLabel = formatBlogDate(date);
   return (
     <>
       <Box component="section" sx={{ paddingBottom: 2 }}>
@@ -24,9 +25,9 @@ const PostHeader = ({ title, tags, date, image }: Props) => {
         <TagsChips tags={tags} />
       </Box>
       <Divider />
-      {date && (
-        <Typography mt={4} variant="body2">
-          {format(new Date(date || ""), "MMMM dd, yyyy")}
+      {dateLabel && (
+        <Typography component="time" dateTime={date} mt={4} variant="body2" sx={{ display: "block" }}>
+          {dateLabel}
         </Typography>
       )}
       <Box sx={{ textAlign: "center", paddingY: 6 }} component="section">

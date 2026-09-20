@@ -1365,6 +1365,7 @@ export type GetMorePostsQuery = {
       __typename?: "Blog";
       title?: string | null;
       slug?: string | null;
+      date?: any | null;
       featuredImage?: { __typename?: "Asset"; url?: string | null } | null;
       contentfulMetadata: {
         __typename?: "ContentfulMetadata";
@@ -1448,6 +1449,7 @@ export type BlogListForHomeQuery = {
       title?: string | null;
       slug?: string | null;
       excerpt?: string | null;
+      date?: any | null;
       featuredImage?: { __typename?: "Asset"; url?: string | null } | null;
       contentfulMetadata: {
         __typename?: "ContentfulMetadata";
@@ -1745,6 +1747,7 @@ export const GetMorePostsDocument = {
                     selections: [
                       { kind: "Field", name: { kind: "Name", value: "title" } },
                       { kind: "Field", name: { kind: "Name", value: "slug" } },
+                      { kind: "Field", name: { kind: "Name", value: "date" } },
                       {
                         kind: "Field",
                         name: { kind: "Name", value: "featuredImage" },
@@ -2049,6 +2052,7 @@ export const BlogListForHomeDocument = {
                       { kind: "Field", name: { kind: "Name", value: "title" } },
                       { kind: "Field", name: { kind: "Name", value: "slug" } },
                       { kind: "Field", name: { kind: "Name", value: "excerpt" } },
+                      { kind: "Field", name: { kind: "Name", value: "date" } },
                       {
                         kind: "Field",
                         name: { kind: "Name", value: "featuredImage" },
