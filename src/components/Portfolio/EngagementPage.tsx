@@ -18,8 +18,12 @@ import { getEngagementMetadata } from "../../content/portfolio/metadata";
 import HeaderFooterLayout from "../HeaderFooterLayout";
 import PortfolioContact from "./PortfolioContact";
 import { TechnologyMap, TechnologyVisual } from "./TechnologyVisual";
+import { useMemo, useRef } from "react";
+import type { ProjectCategory } from "../../analytics/contract";
+import { useProjectLinkTracking } from "../../analytics/usePortfolioTracking";
 
-type Props = { engagement: EngagementPageContent; related: Array<{ slug: string; name: string }> };
+export type RelatedEngagement = { id: string; slug: string; name: string; category: ProjectCategory };
+type Props = { engagement: EngagementPageContent; related: RelatedEngagement[] };
 const Copy = ({ section }: { section: PublicEngagementSection }) => (
   <>
     {section.paragraphs.map((paragraph, index) => (
@@ -29,6 +33,33 @@ const Copy = ({ section }: { section: PublicEngagementSection }) => (
     ))}
   </>
 );
+
+const RelatedEngagementLink = ({ item }: { item: RelatedEngagement }) => {
+  const linkRef = useRef<HTMLAnchorElement | null>(null);
+  const project = useMemo(
+    () => ({ project_id: item.id, project_slug: item.slug, project_category: item.category }),
+    [item.category, item.id, item.slug]
+  );
+  const tracking = useProjectLinkTracking({
+    project,
+    placement: "related_projects",
+    cardRef: linkRef,
+    titleRef: linkRef,
+    forceTargetType: "project_title_link"
+  });
+  return (
+    <Button
+      ref={linkRef}
+      component={NextLink}
+      href={engagementPath(item.slug)}
+      variant="text"
+      onClick={tracking.onClick}
+      onAuxClick={tracking.onAuxClick}
+    >
+      {item.name}
+    </Button>
+  );
+};
 
 const EngagementPage = ({ engagement, related }: Props) => {
   const {
@@ -408,9 +439,7 @@ const EngagementPage = ({ engagement, related }: Props) => {
           {related.length > 0 && (
             <Box component="nav" aria-label="Related engagements" sx={{ py: 3 }}>
               {related.map(item => (
-                <Button key={item.slug} component={NextLink} href={engagementPath(item.slug)} variant="text">
-                  {item.name}
-                </Button>
+                <RelatedEngagementLink key={item.slug} item={item} />
               ))}
             </Box>
           )}

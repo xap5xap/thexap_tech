@@ -7,17 +7,10 @@ import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeProvider } from "../src/context/ThemeContext";
 import "../styles/prism.css";
 import { AnalyticsProvider } from "../src/analytics/AnalyticsProvider";
-import { classifyPage, type ProjectCategory, type ProjectContext } from "../src/analytics/contract";
+import { classifyPage, type ProjectContext } from "../src/analytics/contract";
+import { projectCategoryFromLabel } from "../src/analytics/events";
 
 const clientSideEmotionCache = createEmotionCache();
-
-const categoryMap: Record<string, ProjectCategory> = {
-  "Web & product": "web_product",
-  "Full stack & cloud": "full_stack_cloud",
-  Mobile: "mobile",
-  "Testing & reliability": "testing_reliability",
-  "Data & workflows": "data_workflows"
-};
 
 const getProjectContext = (pageProps: Record<string, unknown>): ProjectContext | undefined => {
   const caseStudy = pageProps.caseStudy as { identity?: { id?: unknown; slug?: unknown } } | undefined;
@@ -32,12 +25,12 @@ const getProjectContext = (pageProps: Record<string, unknown>): ProjectContext |
     typeof engagement?.identity?.id === "string" &&
     typeof engagement.identity.slug === "string" &&
     typeof engagement.showcase?.category === "string" &&
-    categoryMap[engagement.showcase.category]
+    projectCategoryFromLabel(engagement.showcase.category)
   ) {
     return {
       project_id: engagement.identity.id,
       project_slug: engagement.identity.slug,
-      project_category: categoryMap[engagement.showcase.category]
+      project_category: projectCategoryFromLabel(engagement.showcase.category)!
     };
   }
   return undefined;
