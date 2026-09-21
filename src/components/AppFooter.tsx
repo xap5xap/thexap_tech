@@ -8,8 +8,11 @@ import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 import Stack from "@mui/material/Stack";
 import IconButton from "@mui/material/IconButton";
+import Button from "@mui/material/Button";
+import { useAnalytics } from "../analytics/AnalyticsProvider";
 
 const AppFooter = () => {
+  const { openSettings } = useAnalytics();
   return (
     <Box
       sx={{
@@ -32,6 +35,9 @@ const AppFooter = () => {
               Xavier Perez
             </Typography>
           </Link>
+          <Button variant="text" color="inherit" onClick={openSettings} sx={{ textTransform: "none" }}>
+            Analytics settings
+          </Button>
           <Box sx={{ py: { xs: 2, sm: 0 } }}>
             <Stack spacing={2} direction="row">
               <IconButton
