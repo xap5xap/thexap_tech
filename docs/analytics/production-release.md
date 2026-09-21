@@ -31,13 +31,14 @@ The XAP-202 builder, tests, acceptance evidence, and standalone workflow are inc
 - Pre-release aliases: `https://www.thexap.com`, `https://thexap.com`, and the Vercel project aliases.
 - Production measurement variable: `NEXT_PUBLIC_GA4_MEASUREMENT_ID` added for Production only. Vercel readback confirmed its name and scope without exposing the stored value.
 - Existing Contentful variables and `NEXT_PUBLIC_ANALYTICS` were left unchanged. The accepted implementation does not read the legacy analytics variable.
+- Candidate Preview: `dpl_7njAzNbWTuw53Uuu61xDbNypr1UK`, `https://thexap-tech-m3jq6j7pc-xap5xaps-projects.vercel.app`, Ready after an 80-page Vercel build.
 
 ## Release gates
 
 | Evidence layer | Required result | Current result |
 | --- | --- | --- |
 | Repository | Exact candidate passes lint, build, portfolio, analytics, attribution, TypeScript, diff review, and U+2014 scan | Passed: lint with one pre-existing `Value.tsx` image warning; 80-page build; portfolio 21/21; analytics 23/23; attribution 6/6; TypeScript clean; no U+2014 matches |
-| Candidate runtime | Desktop, mobile, keyboard, consent, blocked-script, routing, portfolio, and Calendly checks pass on the candidate | Pending |
+| Candidate runtime | Desktop, mobile, keyboard, consent, blocked-script, routing, portfolio, and Calendly checks pass on the candidate | Passed on Preview: home to projects, filter, engagement, back/forward, flagship, two blog slugs, CTA, and scheduling routes; 390 x 844 had no horizontal overflow; consent controls were keyboard reachable; accept/withdraw readback passed; one Calendly iframe loaded available dates; no browser errors; no Google script appeared on the ineligible preview host before or after consent |
 | Account settings | XAP-200 saved settings and Production variable read back | GA4 settings verified in XAP-200; Vercel variable name and scope verified |
 | Protected delivery | Normal PR checks and merge complete without bypass | Pending |
 | Deployment | New production deployment is Ready, aliases resolve to it, and built code contains the intended measurement ID | Pending |
