@@ -14,13 +14,19 @@ This document defines the narrative, taxonomy, flagship-card contract, archive r
 
 It does not authorize production UI implementation, choose a data source, define the full flagship case-study model, publish case-study claims, select the first concept product, or decide the disposition of every legacy project.
 
+## September 20 amendment: Upwork engagement section
+
+Xavier authorized XAP-158 to add 28 individual Upwork engagements beneath the featured work and above the shared CTA. This supersedes the earlier no-archive direction only for this source-backed section. It does not restore retired project URLs, select other flagships, or authorize production release. The [engagement presentation](upwork-presentation.md) defines the layout and publication rules; the [inventory](upwork-contract-inventory.md) lists all 28 intended routes and the excluded introductory call. Thirteen contribution case notes and fifteen title/description-based briefs now implement the section. Briefs may include explicitly illustrative technology context from the period, following Xavier's September 20 instruction. Unknown historical product availability is recorded as unverified rather than inactive. The original flagship decisions below remain in force.
+
+The later September 20 visual revision replaces the initial compact list with technology-logo cards, optional category filters, stronger project headlines, prominent roles, client excerpts, and technology responsibility maps. The index hero now reads `From complex problems to products people use.` These presentation changes follow Xavier's explicit request; the historical copy below remains a record of the original approved IA. Armonía remains the sole current flagship. Generated artwork was rejected and is not used.
+
 ## Confirmed direction
 
 Xavier confirmed the following inputs before this proposal was authored:
 
 - Armonía is classified as client work.
 - The third flagship position remains reserved until the concept-selection work in `XAP-54` is complete.
-- The initial projects index does not show a historical-work or archive section.
+- The original August 31 index omitted a historical-work section. The September 20 amendment adds the scoped Upwork experience section.
 - Legacy projects are evaluated individually in `XAP-51`; discontinued projects do not appear merely to increase portfolio volume.
 
 ## Visitor outcome
@@ -182,7 +188,7 @@ Ownership labels answer what Xavier personally did. Product-cycle stages answer 
 
 ## Archive decision
 
-The initial projects index contains no historical-work section and no separate archive route.
+The original August 31 decision omitted a historical-work section and separate archive route. The September 20 amendment above replaces this constraint for verified Upwork engagement records.
 
 Most current legacy entries represent products that are no longer operating. Showing them as active cards, relying on broken production links, or presenting them without meaningful artifacts would weaken credibility. The nine-year engineering track record can remain visible elsewhere through verified experience and client evidence.
 
@@ -197,7 +203,7 @@ A historical project may return later only when:
 - route, redirect, and external-link requirements are understood; and
 - the project adds evidence that the flagship set does not already provide.
 
-No current legacy project meets those conditions, so the portfolio has no visible archive. Portfolio size is not a success measure.
+This was the basis for the original retirement. The new Upwork section tells contract-specific stories under new URLs; it does not reverse the retired-route decisions. Portfolio size is not a success measure.
 
 ## Responsive structural wireframes
 

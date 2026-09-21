@@ -20,6 +20,7 @@ import type {
 } from "../../content/portfolio/types";
 import { routes } from "../../lib/routes";
 import { getCaseStudyMetadata } from "../../content/portfolio/metadata";
+import { EVIDENCE_LABELS } from "../../content/portfolio/evidenceLabels";
 import HeaderFooterLayout from "../HeaderFooterLayout";
 import CaseStudyNarrativeSection from "./CaseStudyNarrativeSection";
 
@@ -70,31 +71,31 @@ const NARRATIVE_SECTIONS: Array<{
   {
     key: "transformation",
     eyebrow: "01 / What changed",
-    title: "The operating model changed, not just the interface."
+    title: "What changed"
   },
-  { key: "audience", eyebrow: "02 / For whom", title: "Two audiences. Two surfaces. One coherent practice." },
-  { key: "productBet", eyebrow: "03 / Why this product", title: "Research before software." },
-  { key: "ownership", eyebrow: "04 / My role", title: "End-to-end product ownership, with Carla as the decider." },
+  { key: "audience", eyebrow: "02 / For whom", title: "The audience and problem" },
+  { key: "productBet", eyebrow: "03 / Why this product", title: "The product decision" },
+  { key: "ownership", eyebrow: "04 / My role", title: "My contribution" },
   {
     key: "experienceAndSystem",
     eyebrow: "05 / How it works",
-    title: "Trust begins in public. Operations continue in private."
+    title: "The experience and system"
   },
-  { key: "decisions", eyebrow: "06 / Decisions", title: "The choices that shaped adoption and trust." },
+  { key: "decisions", eyebrow: "06 / Decisions", title: "Decisions and trade-offs" },
   {
     key: "launchAndDistribution",
     eyebrow: "07 / Reaching people",
-    title: "A launch story designed as part of the product."
+    title: "Launch and distribution"
   },
   {
     key: "evidenceAndValidation",
     eyebrow: "08 / Evidence",
-    title: "What can be shown, and what is deliberately withheld."
+    title: "Evidence and validation"
   },
   {
     key: "learningAndNextIteration",
     eyebrow: "09 / Learning",
-    title: "Keep the chain from evidence to decision intact."
+    title: "Learning and next steps"
   }
 ];
 
@@ -211,7 +212,7 @@ const CaseStudyPage = ({ caseStudy }: Props) => {
               {cardEvidence && (
                 <Box sx={{ mt: 4, borderLeft: 3, borderColor: "primary.main", pl: 2.5 }}>
                   <Typography variant="caption" color="primary.main" sx={{ fontWeight: 700, mb: 0.5 }}>
-                    Verified outcome
+                    {EVIDENCE_LABELS[cardEvidence.state]}
                   </Typography>
                   <Typography color="text.secondary">{cardEvidence.statement}</Typography>
                 </Box>
@@ -265,7 +266,7 @@ const CaseStudyPage = ({ caseStudy }: Props) => {
               <CaseStudyNarrativeSection
                 id={section.key}
                 eyebrow={section.eyebrow}
-                title={section.title}
+                title={presentation.narrativeTitles?.[section.key] || section.title}
                 section={narrative[section.key]}
                 assetsById={assetsById}
                 evidenceById={evidenceById}
@@ -286,10 +287,10 @@ const CaseStudyPage = ({ caseStudy }: Props) => {
             >
               <Box>
                 <Typography variant="h3" component="h2" sx={{ mb: 2 }}>
-                  Explore Armonía
+                  Explore {identity.name}
                 </Typography>
                 <Typography color="text.secondary" sx={{ maxWidth: 620, mb: 4 }}>
-                  Visit the live Armonía site to experience the public product and its cinematic hero.
+                  {presentation.exploreDescription || "Explore the sources and available product artifacts."}
                 </Typography>
                 <Stack
                   direction={{ xs: "column", sm: "row" }}

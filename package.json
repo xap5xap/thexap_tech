@@ -9,6 +9,7 @@
     "dev": "next",
     "build": "next build",
     "test": "jest",
+    "test:portfolio": "node --test tests/portfolio.test.cjs",
     "prepare": "husky"
   },
   "dependencies": {

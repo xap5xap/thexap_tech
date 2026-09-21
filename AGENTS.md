@@ -54,9 +54,10 @@ Treat the source tree and `package.json` as authoritative when this summary beco
 - **Lint:** `npm run lint`
 - **Start production server:** `npm run start`
 - **GraphQL codegen watch mode:** `npm run codegen`
+- **Portfolio validation tests:** `npm run test:portfolio`
 - **Legacy test script:** `npm run test`
 
-The package currently defines `npm run test`, but the repository has no tracked first-party test files and Jest is not a direct dependency. Do not report tests as passing unless the test setup is repaired and a real suite executes.
+`npm run test:portfolio` runs focused Node tests for portfolio publication, evidence, routing identities, and metadata. The legacy `npm run test` still refers to Jest, which is not a direct dependency. Report the actual suite run rather than claiming that the legacy test command passes.
 
 ## Pre-commit behavior
 
@@ -70,8 +71,8 @@ Husky runs lint-staged on commit. Staged JavaScript and TypeScript files are pro
 - Homepage sections currently render in this order: `Hero` → `StakesSection` → `ValuesSection` → `GuideSection` → `PlanSection` → `ProofSection` → `HireLaunchSection`.
 - `src/components/HeaderFooterLayout.tsx` provides the shared site frame.
 - `pages/blog/` contains the Contentful-backed blog index and dynamic post pages.
-- `pages/projects/index.tsx` renders the current project grid from `data/projects.json`.
-- `pages/projects/[slug].tsx` statically generates the current project detail pages from `data/projects.json`.
+- `pages/projects/index.tsx` renders featured case studies and publication-ready Upwork engagements from `src/content/portfolio`.
+- `pages/projects/[slug].tsx` statically generates flagship pages. `pages/projects/upwork/[slug].tsx` generates publication-ready individual engagement pages.
 - `pages/schedule-meeting.tsx` provides the Calendly flow.
 - `pages/_app.tsx` owns the Emotion cache, MUI theme provider, global styles, and Google Analytics.
 
@@ -90,7 +91,7 @@ GraphQL Code Generator scans:
 
 Generated artifacts live in `src/gql/`. Do not hand-edit generated files when the source query or schema should be changed instead.
 
-The project portfolio is not currently stored in Contentful; it is the static dataset in `data/projects.json`. Keep that distinction explicit when planning the portfolio redesign.
+The portfolio uses typed repository-local content in `src/content/portfolio`. Contentful remains the blog source. The editorial Upwork ledger in `docs/portfolio/upwork/` is never imported into public page props or browser bundles.
 
 ### Required environment variables
 

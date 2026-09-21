@@ -1,4 +1,6 @@
 import type { CaseStudy } from "./types";
+import type { EngagementPageContent } from "./engagementTypes";
+import { engagementPath } from "./engagementPresentation";
 
 const SOCIAL_IMAGE_WIDTH = 1200;
 const SOCIAL_IMAGE_HEIGHT = 630;
@@ -137,5 +139,27 @@ export const getCaseStudyMetadata = (caseStudy: CaseStudy): PageMetadata => {
       width: hasDedicatedSocialImage ? SOCIAL_IMAGE_WIDTH : undefined,
       height: hasDedicatedSocialImage ? SOCIAL_IMAGE_HEIGHT : undefined
     }
+  };
+};
+
+export const getEngagementMetadata = (engagement: EngagementPageContent): PageMetadata => {
+  const imageId = engagement.presentation.socialImageId;
+  const socialImage = imageId ? engagement.assets.find(asset => asset.id === imageId) : undefined;
+  if (imageId && !socialImage) throw new Error(`Missing engagement social image: ${imageId}`);
+  return {
+    documentTitle: `${engagement.presentation.shareTitle} | Xavier Perez`,
+    shareTitle: engagement.presentation.shareTitle,
+    description: engagement.presentation.shareDescription,
+    canonicalPath: engagementPath(engagement.identity.slug),
+    indexable: true,
+    image: socialImage
+      ? {
+          src: socialImage.src,
+          alt: socialImage.alt,
+          contentType: getImageContentType(socialImage.src),
+          width: SOCIAL_IMAGE_WIDTH,
+          height: SOCIAL_IMAGE_HEIGHT
+        }
+      : defaultSocialImage
   };
 };
