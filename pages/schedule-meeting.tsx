@@ -4,8 +4,27 @@ import Typography from "@mui/material/Typography";
 import HeaderFooterLayout from "../src/components/HeaderFooterLayout";
 import { InlineWidget } from "react-calendly";
 import { scheduleMeetingMetadata } from "../src/content/portfolio/metadata";
+import { useEffect, useRef } from "react";
+import { CalendlyMessageSequence } from "../src/analytics/calendly";
+import { useAnalytics } from "../src/analytics/AnalyticsProvider";
 
 const ScheduleMeetingPage = () => {
+  const calendarRef = useRef<HTMLDivElement | null>(null);
+  const sequenceRef = useRef(new CalendlyMessageSequence());
+  const { trackEvent } = useAnalytics();
+  const trackEventRef = useRef(trackEvent);
+  trackEventRef.current = trackEvent;
+
+  useEffect(() => {
+    const onMessage = (message: MessageEvent) => {
+      const activeFrameSource = calendarRef.current?.querySelector("iframe")?.contentWindow;
+      const event = sequenceRef.current.consume(message, activeFrameSource);
+      if (event) trackEventRef.current(event.name, event.params);
+    };
+    window.addEventListener("message", onMessage);
+    return () => window.removeEventListener("message", onMessage);
+  }, []);
+
   return (
     <>
       <HeaderFooterLayout metadata={scheduleMeetingMetadata}>
@@ -23,7 +42,7 @@ const ScheduleMeetingPage = () => {
             </Typography>
           </Container>
         </Box>
-        <Box sx={{ height: { xs: 780, md: 720 }, backgroundColor: "background.default" }}>
+        <Box ref={calendarRef} sx={{ height: { xs: 780, md: 720 }, backgroundColor: "background.default" }}>
           <InlineWidget
             styles={{ width: "100%", height: "100%" }}
             url="https://calendly.com/xavier-perez-dev/30min?background_color=303136&text_color=ffffff&primary_color=f59415"

@@ -24,6 +24,7 @@ import { EVIDENCE_LABELS } from "../../content/portfolio/evidenceLabels";
 import HeaderFooterLayout from "../HeaderFooterLayout";
 import CaseStudyNarrativeSection from "./CaseStudyNarrativeSection";
 import { TrackedTechnologyLabel } from "./TrackedTechnologyLabel";
+import { interactionTrackingAttributes } from "../../analytics/events";
 
 type Props = {
   caseStudy: CaseStudy;
@@ -305,6 +306,11 @@ const CaseStudyPage = ({ caseStudy }: Props) => {
                       href={link.href}
                       target="_blank"
                       rel="noreferrer"
+                      {...interactionTrackingAttributes(
+                        "outbound_click",
+                        link.kind === "product" ? "live_product" : "evidence_source",
+                        "flagship_artifact"
+                      )}
                       aria-label={`${link.label} (opens in a new tab)`}
                       endIcon={<ArrowOutwardRounded />}
                       variant={link.kind === "product" ? "contained" : "outlined"}

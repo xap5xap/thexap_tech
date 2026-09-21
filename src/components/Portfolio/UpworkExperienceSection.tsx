@@ -12,7 +12,11 @@ import { engagementPath } from "../../content/portfolio/engagementPresentation";
 import { upworkProfile } from "../../content/portfolio/upworkProfile";
 import { TechnologyVisual } from "./TechnologyVisual";
 import { useAnalytics } from "../../analytics/AnalyticsProvider";
-import { filterCategoryFromLabel, projectCategoryFromLabel } from "../../analytics/events";
+import {
+  filterCategoryFromLabel,
+  interactionTrackingAttributes,
+  projectCategoryFromLabel
+} from "../../analytics/events";
 import { useProjectLinkTracking } from "../../analytics/usePortfolioTracking";
 
 const filters: Array<"All work" | EngagementCategory> = [
@@ -177,6 +181,7 @@ const UpworkExperienceSection = ({ engagements }: { engagements: EngagementSumma
           </Box>
           <Link
             href={upworkProfile.href}
+            {...interactionTrackingAttributes("outbound_click", "upwork_profile", "upwork_profile")}
             color="inherit"
             sx={{ fontSize: 14, display: "inline-flex", alignItems: "center", gap: 1, minHeight: 44 }}
           >

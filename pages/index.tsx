@@ -18,7 +18,7 @@ const Home: NextPage = () => {
       <GuideSection />
       <PlanSection />
       <ProofSection />
-      <HireLaunchSection showSelectedWork={false} />
+      <HireLaunchSection showSelectedWork={false} contactPlacement="homepage_proof" />
     </HeaderFooterLayout>
   );
 };

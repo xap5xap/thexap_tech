@@ -24,7 +24,7 @@ import {
   withdrawGoogleTag
 } from "./googleTag";
 import { PageviewController } from "./pageviewController";
-import { buildPortfolioEventPayload, type PortfolioEventName } from "./events";
+import { buildPortfolioEventPayload, canCollectAnalyticsEvent, type AnalyticsEventName } from "./events";
 
 const CONSENT_COPY =
   "Optional analytics help me understand which pages and projects visitors find useful. If you accept, Google Analytics uses cookies to measure site activity. You can reject analytics or change your choice at any time.";
@@ -32,7 +32,7 @@ const CONSENT_COPY =
 type AnalyticsContextValue = {
   consent: AnalyticsConsent;
   openSettings: () => void;
-  trackEvent: (name: PortfolioEventName, params: Record<string, unknown>) => boolean;
+  trackEvent: (name: AnalyticsEventName, params: Record<string, unknown>) => boolean;
   visitKey?: string;
   pageContext: PageContext;
 };
@@ -47,7 +47,7 @@ const AnalyticsContext = createContext<AnalyticsContextValue>({
 let sharedController: PageviewController | undefined;
 let tagReady = false;
 let tagLoading: Promise<void> | undefined;
-let pendingEvents: Array<{ name: PortfolioEventName; payload: Record<string, unknown> }> = [];
+let pendingEvents: Array<{ name: AnalyticsEventName; payload: Record<string, unknown> }> = [];
 
 const flushPendingEvents = () => {
   if (!tagReady) return;
@@ -159,8 +159,8 @@ export const AnalyticsProvider = ({ children, pageContext }: Props) => {
   );
 
   const trackEvent = useCallback(
-    (name: PortfolioEventName, params: Record<string, unknown>) => {
-      if (consent !== "granted" || !environmentAllowed) return false;
+    (name: AnalyticsEventName, params: Record<string, unknown>) => {
+      if (!canCollectAnalyticsEvent(consent, environmentAllowed)) return false;
       const payload = buildPortfolioEventPayload(name, params, currentSnapshot());
       if (!payload) return false;
       if (tagReady) sendGoogleEvent(name, payload);
@@ -169,6 +169,29 @@ export const AnalyticsProvider = ({ children, pageContext }: Props) => {
     },
     [consent, currentSnapshot, environmentAllowed]
   );
+
+  useEffect(() => {
+    const onActivation = (event: MouseEvent) => {
+      if ((event.type === "click" && event.button !== 0) || (event.type === "auxclick" && event.button !== 1)) return;
+      if (!(event.target instanceof Element)) return;
+      const target = event.target.closest<HTMLElement>("[data-analytics-event]");
+      if (!target) return;
+
+      const name = target.dataset.analyticsEvent;
+      if (name !== "contact_click" && name !== "outbound_click") return;
+      trackEvent(name, {
+        destination_type: target.dataset.analyticsDestination,
+        source_placement: target.dataset.analyticsPlacement
+      });
+    };
+
+    document.addEventListener("click", onActivation);
+    document.addEventListener("auxclick", onActivation);
+    return () => {
+      document.removeEventListener("click", onActivation);
+      document.removeEventListener("auxclick", onActivation);
+    };
+  }, [trackEvent]);
 
   const contextValue = useMemo<AnalyticsContextValue>(
     () => ({ consent, openSettings: () => setSettingsOpen(true), trackEvent, visitKey, pageContext }),

@@ -1,10 +1,14 @@
 import {
   toPageViewPayload,
   validateProjectContext,
+  type AnalyticsConsent,
   type PageSnapshot,
   type ProjectCategory,
   type ProjectContext
 } from "./contract.ts";
+
+export const canCollectAnalyticsEvent = (consent: AnalyticsConsent, environmentAllowed: boolean): boolean =>
+  consent === "granted" && environmentAllowed;
 
 export const SOURCE_PLACEMENTS = [
   "header",
@@ -35,7 +39,24 @@ export const FILTER_CATEGORIES = [
 export type FilterCategory = (typeof FILTER_CATEGORIES)[number];
 
 export type ProjectTargetType = "project_card" | "project_title_link";
-export type PortfolioEventName = "project_impression" | "select_content" | "portfolio_filter" | "technology_exposure";
+export const OUTBOUND_DESTINATIONS = [
+  "live_product",
+  "upwork_profile",
+  "github",
+  "linkedin",
+  "x",
+  "evidence_source"
+] as const;
+export type OutboundDestination = (typeof OUTBOUND_DESTINATIONS)[number];
+export type InteractionEventName = "contact_click" | "outbound_click";
+export type ConversionEventName = "meeting_step" | "generate_lead";
+export type AnalyticsEventName =
+  | "project_impression"
+  | "select_content"
+  | "portfolio_filter"
+  | "technology_exposure"
+  | InteractionEventName
+  | ConversionEventName;
 
 const categoryByLabel: Record<string, ProjectCategory> = {
   "Web & product": "web_product",
@@ -92,6 +113,8 @@ const isPlacement = (value: unknown): value is SourcePlacement =>
   typeof value === "string" && SOURCE_PLACEMENTS.includes(value as SourcePlacement);
 const isTargetType = (value: unknown): value is ProjectTargetType =>
   value === "project_card" || value === "project_title_link";
+const isOutboundDestination = (value: unknown): value is OutboundDestination =>
+  typeof value === "string" && OUTBOUND_DESTINATIONS.includes(value as OutboundDestination);
 
 const projectFromParams = (params: Record<string, unknown>): ProjectContext | undefined =>
   validateProjectContext({
@@ -101,10 +124,39 @@ const projectFromParams = (params: Record<string, unknown>): ProjectContext | un
   });
 
 export const sanitizePortfolioEvent = (
-  name: PortfolioEventName,
+  name: AnalyticsEventName,
   params: Record<string, unknown>,
   currentProject?: ProjectContext
 ): Record<string, unknown> | undefined => {
+  if (name === "contact_click") {
+    if (params.destination_type !== "schedule_meeting" || !isPlacement(params.source_placement)) return undefined;
+    return {
+      ...(validateProjectContext(currentProject) || {}),
+      destination_type: "schedule_meeting",
+      source_placement: params.source_placement
+    };
+  }
+
+  if (name === "outbound_click") {
+    if (!isOutboundDestination(params.destination_type) || !isPlacement(params.source_placement)) return undefined;
+    return {
+      ...(validateProjectContext(currentProject) || {}),
+      destination_type: params.destination_type,
+      source_placement: params.source_placement
+    };
+  }
+
+  if (name === "meeting_step") {
+    if (params.meeting_step !== "event_type_viewed" && params.meeting_step !== "date_and_time_selected") {
+      return undefined;
+    }
+    return { meeting_step: params.meeting_step };
+  }
+
+  if (name === "generate_lead") {
+    return params.method === "calendly" ? { method: "calendly" } : undefined;
+  }
+
   if (name === "portfolio_filter") {
     const filter = params.filter_category;
     const count = params.result_count;
@@ -158,10 +210,11 @@ export const sanitizePortfolioEvent = (
 };
 
 export const buildPortfolioEventPayload = (
-  name: PortfolioEventName,
+  name: AnalyticsEventName,
   params: Record<string, unknown>,
   snapshot: PageSnapshot
 ): Record<string, unknown> | undefined => {
+  if ((name === "meeting_step" || name === "generate_lead") && snapshot.page_type !== "schedule") return undefined;
   const event = sanitizePortfolioEvent(name, params, snapshot.project);
   if (!event) return undefined;
   return { ...toPageViewPayload(snapshot), ...event };
@@ -169,3 +222,13 @@ export const buildPortfolioEventPayload = (
 
 export const targetTypeForDimensions = (cardHeight: number, viewportHeight: number): ProjectTargetType =>
   cardHeight * 0.5 <= viewportHeight ? "project_card" : "project_title_link";
+
+export const interactionTrackingAttributes = (
+  event: InteractionEventName,
+  destination: "schedule_meeting" | OutboundDestination,
+  placement: SourcePlacement
+) => ({
+  "data-analytics-event": event,
+  "data-analytics-destination": destination,
+  "data-analytics-placement": placement
+});

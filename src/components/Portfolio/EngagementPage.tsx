@@ -21,6 +21,8 @@ import { TechnologyMap, TechnologyVisual } from "./TechnologyVisual";
 import { useMemo, useRef } from "react";
 import type { ProjectCategory } from "../../analytics/contract";
 import { useProjectLinkTracking } from "../../analytics/usePortfolioTracking";
+import { interactionTrackingAttributes } from "../../analytics/events";
+import { upworkProfile } from "../../content/portfolio/upworkProfile";
 
 export type RelatedEngagement = { id: string; slug: string; name: string; category: ProjectCategory };
 type Props = { engagement: EngagementPageContent; related: RelatedEngagement[] };
@@ -227,7 +229,11 @@ const EngagementPage = ({ engagement, related }: Props) => {
                 </Typography>
                 <Typography variant="caption" color="text.secondary" sx={{ mt: 2 }}>
                   {feedback.sourceHref ? (
-                    <Link href={feedback.sourceHref} color="inherit">
+                    <Link
+                      href={feedback.sourceHref}
+                      color="inherit"
+                      {...interactionTrackingAttributes("outbound_click", "evidence_source", "engagement_feedback")}
+                    >
                       Read the work history on Upwork
                     </Link>
                   ) : (
@@ -430,6 +436,11 @@ const EngagementPage = ({ engagement, related }: Props) => {
                 key={link.href}
                 href={link.href}
                 color="inherit"
+                {...interactionTrackingAttributes(
+                  "outbound_click",
+                  link.href === upworkProfile.href ? "upwork_profile" : "evidence_source",
+                  "engagement_artifact"
+                )}
                 sx={{ display: "inline-block", py: 1.5, fontSize: 13 }}
               >
                 {link.label}

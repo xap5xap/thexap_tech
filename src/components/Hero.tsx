@@ -4,6 +4,7 @@ import Typography from "@mui/material/Typography";
 import NextLink from "next/link";
 import { routes } from "../lib/routes";
 import dynamic from "next/dynamic";
+import { interactionTrackingAttributes } from "../analytics/events";
 
 const HeroCanvasContainer = dynamic(() => import("./ScrollAnimation/HeroCanvasContainer"), {
   ssr: false
@@ -80,7 +81,13 @@ const Hero = () => {
           Work directly with a Senior Full-Stack Product Engineer who helps you decide what comes next, connect product
           and engineering decisions, and make the path to release clear.
         </Typography>
-        <Button component={NextLink} href={routes.scheduleMeeting.path} size="large" sx={{ mt: 3 }}>
+        <Button
+          component={NextLink}
+          href={routes.scheduleMeeting.path}
+          size="large"
+          sx={{ mt: 3 }}
+          {...interactionTrackingAttributes("contact_click", "schedule_meeting", "homepage_proof")}
+        >
           Schedule a meeting
         </Button>
       </Box>
