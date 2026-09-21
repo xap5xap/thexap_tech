@@ -11,6 +11,8 @@
     "test": "jest",
     "test:portfolio": "node --test tests/portfolio.test.cjs",
     "test:analytics": "node --test tests/analytics.test.mjs",
+    "test:attribution": "node --test tests/upwork-attribution.test.cjs",
+    "url:upwork": "node scripts/upwork-attribution.cjs",
     "prepare": "husky"
   },
   "dependencies": {

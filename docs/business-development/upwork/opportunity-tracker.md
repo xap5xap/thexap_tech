@@ -1,6 +1,6 @@
 # Upwork opportunity tracker
 
-Updated September 18, 2026. This tracker records decisions and application status. The dated research reports remain the source for the original market capture and ranking. Follow the [Upwork writing style](README.md) for every draft.
+Updated September 20, 2026. This tracker records decisions, application status, and bounded attribution state. The dated research reports remain the source for the original market capture and ranking. Follow the [Upwork writing style](README.md) for every draft.
 
 ## Status guide
 
@@ -17,16 +17,24 @@ Updated September 18, 2026. This tracker records decisions and application statu
 
 Do not infer an application or outcome from a draft. Change `Applied`, `Interviewing`, `Hired`, or `Passed` only from Xavier's confirmation or a verified Upwork readback.
 
+Attribution is independent of application status:
+
+- `Not distributed`: no confirmed proposal send uses an alias.
+- `Historical unknown`: the application predates the tagged-link workflow or the exact sent links were not verified.
+- `Distributed privately`: a confirmed send and its alias mapping exist in verified private custody. Do not put the alias-to-job mapping in this repository.
+
+A reserved alias stays `Not distributed`. An observed analytics alias cannot change a row to Applied, Interviewing, or Hired.
+
 ## Current opportunities
 
-| Rank | Opportunity | Upwork job ID | Status | Latest action | Saved material |
-| --- | --- | --- | --- | --- | --- |
-| 1 | BuildPrint SaaS beta | `~022097084188898847661` | Preparing | Cover letter and screening answers saved; submission unconfirmed | [Job brief](jobs/buildprint/job-post.md), [proposal](jobs/buildprint/proposal.md) |
-| 2 | Asset & Service History PWA | `~022092570052512761530` | Applied | Xavier confirmed the application was submitted September 10 | [Job brief](jobs/asset-service-history-pwa/job-post.md), [proposal](jobs/asset-service-history-pwa/proposal.md) |
-| 3 | Existing SaaS technical ownership | `~022096935944376628276` | Preparing | Xavier approved the cover-letter wording September 10; availability still needs confirmation | [Job brief](jobs/existing-saas-technical-ownership/job-post.md), [proposal](jobs/existing-saas-technical-ownership/proposal.md) |
-| 4 | Technical Product Manager, SaaS | `~022087883401522996504` | Passed | Xavier decided not to apply on September 10 | [Job brief](jobs/technical-product-manager-saas/job-post.md), [proposal](jobs/technical-product-manager-saas/proposal.md) |
-| 5 | KINSTALL B2B SaaS | `~022088299779008397024` | Shortlisted | Research captured September 9; geography, activity, attachments, and capacity need review | [Research report](2026-09-09-ai-product-execution-demand.md) |
-| Unranked | Secret World map marketplace | `~022100839223652532326` | Applied | Xavier confirmed the application was submitted September 18; exact submitted fields were not independently read back | [Job brief](jobs/secret-world-map-marketplace/job-post.md), [proposal](jobs/secret-world-map-marketplace/proposal.md) |
+| Rank | Opportunity | Upwork job ID | Status | Attribution | Latest action | Saved material |
+| --- | --- | --- | --- | --- | --- | --- |
+| 1 | BuildPrint SaaS beta | `~022097084188898847661` | Preparing | Not distributed | Cover letter and screening answers saved; submission unconfirmed | [Job brief](jobs/buildprint/job-post.md), [proposal](jobs/buildprint/proposal.md) |
+| 2 | Asset & Service History PWA | `~022092570052512761530` | Applied | Historical unknown | Xavier confirmed the application was submitted September 10; exact sent links were not independently read back | [Job brief](jobs/asset-service-history-pwa/job-post.md), [proposal](jobs/asset-service-history-pwa/proposal.md) |
+| 3 | Existing SaaS technical ownership | `~022096935944376628276` | Preparing | Not distributed | Xavier approved the cover-letter wording September 10; availability still needs confirmation | [Job brief](jobs/existing-saas-technical-ownership/job-post.md), [proposal](jobs/existing-saas-technical-ownership/proposal.md) |
+| 4 | Technical Product Manager, SaaS | `~022087883401522996504` | Passed | Not distributed | Xavier decided not to apply on September 10 | [Job brief](jobs/technical-product-manager-saas/job-post.md), [proposal](jobs/technical-product-manager-saas/proposal.md) |
+| 5 | KINSTALL B2B SaaS | `~022088299779008397024` | Shortlisted | Not distributed | Research captured September 9; geography, activity, attachments, and capacity need review | [Research report](2026-09-09-ai-product-execution-demand.md) |
+| Unranked | Secret World map marketplace | `~022100839223652532326` | Applied | Historical unknown | Xavier confirmed the application was submitted September 18; exact submitted fields and links were not independently read back | [Job brief](jobs/secret-world-map-marketplace/job-post.md), [proposal](jobs/secret-world-map-marketplace/proposal.md) |
 
 ## Daily research workflow
 
