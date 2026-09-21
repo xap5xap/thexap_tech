@@ -1,7 +1,9 @@
 # Portfolio and Upwork reporting runbook
 
-Issue: XAP-205  
-Contract: `docs/analytics/measurement-plan.md` version 1.0.0  
+Issue: XAP-205
+
+Contract: `docs/analytics/measurement-plan.md` version 1.0.0
+
 Prepared: September 21, 2026 (America/Guayaquil)
 
 ## Evidence state
