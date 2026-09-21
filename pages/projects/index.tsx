@@ -19,6 +19,7 @@ import { upworkProfile } from "../../src/content/portfolio/upworkProfile";
 import { useMemo, useRef } from "react";
 import type { CaseStudy } from "../../src/content/portfolio/types";
 import { useProjectLinkTracking } from "../../src/analytics/usePortfolioTracking";
+import { interactionTrackingAttributes } from "../../src/analytics/events";
 
 const FeaturedProject = ({ study }: { study: CaseStudy }) => {
   const cardRef = useRef<HTMLAnchorElement | null>(null);
@@ -140,6 +141,7 @@ const ProjectsPage = ({ engagements }: { engagements: EngagementSummary[] }) => 
             <Button
               component={NextLink}
               href="/schedule-meeting"
+              {...interactionTrackingAttributes("contact_click", "schedule_meeting", "projects_hero")}
               endIcon={<ArrowOutwardRounded />}
               sx={{ minHeight: 48, borderRadius: "10px", px: 2.5 }}
             >
@@ -186,7 +188,12 @@ const ProjectsPage = ({ engagements }: { engagements: EngagementSummary[] }) => 
           </Box>
         ))}
         <Box sx={{ gridColumn: { xs: "1 / -1", md: "auto" }, alignSelf: "center" }}>
-          <Link href={upworkProfile.href} color="inherit" sx={{ fontSize: 12 }}>
+          <Link
+            href={upworkProfile.href}
+            color="inherit"
+            sx={{ fontSize: 12 }}
+            {...interactionTrackingAttributes("outbound_click", "upwork_profile", "upwork_profile")}
+          >
             29 jobs. A track record you can check.
           </Link>
           <Typography sx={{ fontSize: 10, color: "text.secondary", mt: 0.75 }}>

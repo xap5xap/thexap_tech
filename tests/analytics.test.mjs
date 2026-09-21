@@ -16,12 +16,14 @@ import {
 import { PageviewController } from "../src/analytics/pageviewController.ts";
 import {
   buildPortfolioEventPayload,
+  canCollectAnalyticsEvent,
   canonicalTechnology,
   filterCategoryFromLabel,
   projectCategoryFromLabel,
   sanitizePortfolioEvent,
   targetTypeForDimensions
 } from "../src/analytics/events.ts";
+import { CALENDLY_ORIGIN, CalendlyMessageSequence, sanitizeCalendlyMessage } from "../src/analytics/calendly.ts";
 
 const home = (location = "https://www.thexap.com/") =>
   buildPageSnapshot({
@@ -271,4 +273,109 @@ test("invalid project IDs, placements, filters, counts, and technology values em
 test("tall-card fallback selects the title target only when half the card cannot fit", () => {
   assert.equal(targetTypeForDimensions(800, 600), "project_card");
   assert.equal(targetTypeForDimensions(1300, 600), "project_title_link");
+});
+
+test("contact and outbound events retain only allowlisted dimensions and current project context", () => {
+  const snapshot = engagement("senior-react-nextjs-2022", "UW-01");
+  assert.deepEqual(
+    buildPortfolioEventPayload(
+      "contact_click",
+      {
+        destination_type: "schedule_meeting",
+        source_placement: "portfolio_contact",
+        destination_url: "https://private.example/contact?email=person@example.com"
+      },
+      snapshot
+    ),
+    {
+      page_location: snapshot.page_location,
+      page_title: snapshot.page_title,
+      content_group: "portfolio",
+      page_type: "upwork_engagement",
+      project_id: "UW-01",
+      project_slug: "senior-react-nextjs-2022",
+      project_category: "full_stack_cloud",
+      destination_type: "schedule_meeting",
+      source_placement: "portfolio_contact"
+    }
+  );
+  assert.equal(
+    buildPortfolioEventPayload(
+      "outbound_click",
+      { destination_type: "private_client", source_placement: "engagement_artifact" },
+      snapshot
+    ),
+    undefined
+  );
+});
+
+test("meeting events are accepted only on the schedule page with frozen values", () => {
+  const schedule = buildPageSnapshot({
+    location: "https://www.thexap.com/schedule-meeting",
+    title: "Schedule a meeting",
+    context: classifyPage("/schedule-meeting")
+  });
+  assert.deepEqual(buildPortfolioEventPayload("meeting_step", { meeting_step: "event_type_viewed" }, schedule), {
+    page_location: schedule.page_location,
+    page_title: schedule.page_title,
+    content_group: "conversion",
+    page_type: "schedule",
+    meeting_step: "event_type_viewed"
+  });
+  assert.equal(buildPortfolioEventPayload("generate_lead", { method: "calendly" }, home()), undefined);
+  assert.equal(buildPortfolioEventPayload("meeting_step", { meeting_step: "invitee_created" }, schedule), undefined);
+});
+
+test("custom events require granted consent and the production environment gate", () => {
+  assert.equal(canCollectAnalyticsEvent(null, true), false);
+  assert.equal(canCollectAnalyticsEvent("denied", true), false);
+  assert.equal(canCollectAnalyticsEvent("granted", false), false);
+  assert.equal(canCollectAnalyticsEvent("granted", true), true);
+});
+
+test("Calendly messages require the exact origin, active source, object data, and allowlisted event", () => {
+  const activeFrame = {};
+  const valid = { origin: CALENDLY_ORIGIN, source: activeFrame, data: { event: "calendly.event_scheduled", payload: { email: "private@example.com" } } };
+  assert.deepEqual(sanitizeCalendlyMessage(valid, activeFrame), {
+    event: "calendly.event_scheduled",
+    analytics: { name: "generate_lead", params: { method: "calendly" } }
+  });
+  assert.equal(sanitizeCalendlyMessage({ ...valid, origin: "https://evil.example" }, activeFrame), undefined);
+  assert.equal(sanitizeCalendlyMessage({ ...valid, source: {} }, activeFrame), undefined);
+  assert.equal(sanitizeCalendlyMessage({ ...valid, data: null }, activeFrame), undefined);
+  assert.equal(
+    sanitizeCalendlyMessage({ ...valid, data: { event: "calendly.profile_page_viewed" } }, activeFrame),
+    undefined
+  );
+});
+
+test("Calendly sequence deduplicates each stage, resets after completion, and resets on remount", () => {
+  const activeFrame = {};
+  const message = event => ({ origin: CALENDLY_ORIGIN, source: activeFrame, data: { event, payload: { uri: "private" } } });
+  const sequence = new CalendlyMessageSequence();
+
+  assert.deepEqual(sequence.consume(message("calendly.event_type_viewed"), activeFrame), {
+    name: "meeting_step",
+    params: { meeting_step: "event_type_viewed" }
+  });
+  assert.equal(sequence.consume(message("calendly.event_type_viewed"), activeFrame), undefined);
+  assert.deepEqual(sequence.consume(message("calendly.date_and_time_selected"), activeFrame), {
+    name: "meeting_step",
+    params: { meeting_step: "date_and_time_selected" }
+  });
+  assert.deepEqual(sequence.consume(message("calendly.event_scheduled"), activeFrame), {
+    name: "generate_lead",
+    params: { method: "calendly" }
+  });
+  assert.equal(sequence.consume(message("calendly.event_scheduled"), activeFrame), undefined);
+  assert.deepEqual(sequence.consume(message("calendly.event_type_viewed"), activeFrame), {
+    name: "meeting_step",
+    params: { meeting_step: "event_type_viewed" }
+  });
+
+  const remounted = new CalendlyMessageSequence();
+  assert.deepEqual(remounted.consume(message("calendly.event_type_viewed"), activeFrame), {
+    name: "meeting_step",
+    params: { meeting_step: "event_type_viewed" }
+  });
 });

@@ -6,6 +6,7 @@ import Typography from "@mui/material/Typography";
 import Image from "next/image";
 import type { AssetRecord, EvidenceItem, NarrativeBlock, NarrativeSection } from "../../content/portfolio/types";
 import { EVIDENCE_LABELS } from "../../content/portfolio/evidenceLabels";
+import { interactionTrackingAttributes } from "../../analytics/events";
 
 type Props = {
   id: string;
@@ -52,7 +53,12 @@ const EvidenceBlock = ({ evidence }: { evidence: EvidenceItem }) => {
         <Typography variant="caption" color="text.secondary" sx={{ mt: 1.5 }}>
           Source:{" "}
           {source.href && source.access === "public" ? (
-            <Link href={source.href} target="_blank" rel="noreferrer">
+            <Link
+              href={source.href}
+              target="_blank"
+              rel="noreferrer"
+              {...interactionTrackingAttributes("outbound_click", "evidence_source", "flagship_artifact")}
+            >
               {source.label}
             </Link>
           ) : (

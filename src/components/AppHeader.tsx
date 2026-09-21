@@ -16,6 +16,7 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import { routes } from "../lib/routes";
+import { interactionTrackingAttributes } from "../analytics/events";
 
 const Header = styled("header")(({ theme }) => ({
   position: "sticky",
@@ -84,6 +85,7 @@ const AppHeader = () => {
           <Button
             component={NextLink}
             href={routes.scheduleMeeting.path}
+            {...interactionTrackingAttributes("contact_click", "schedule_meeting", "header")}
             sx={{ px: { xs: 1.25, sm: 2 }, fontSize: { xs: "0.75rem", sm: "0.875rem" }, whiteSpace: "nowrap" }}
           >
             SCHEDULE A MEETING

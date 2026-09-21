@@ -6,12 +6,14 @@ import Stack from "@mui/material/Stack";
 import Image from "next/image";
 import { routes } from "../lib/routes";
 import NextLink from "next/link";
+import { interactionTrackingAttributes, type SourcePlacement } from "../analytics/events";
 
 type Props = {
   showSelectedWork?: boolean;
+  contactPlacement?: SourcePlacement;
 };
 
-const HireLaunchSection = ({ showSelectedWork = true }: Props) => {
+const HireLaunchSection = ({ showSelectedWork = true, contactPlacement }: Props) => {
   return (
     <Box component="section" sx={{ paddingY: 9 }}>
       <Container
@@ -32,7 +34,14 @@ const HireLaunchSection = ({ showSelectedWork = true }: Props) => {
           conversation will establish whether direct senior ownership fits the work.
         </Typography>
         <Stack direction={{ xs: "column", sm: "row" }} spacing={1.5} sx={{ mt: 1 }}>
-          <Button component={NextLink} href={routes.scheduleMeeting.path} size="large">
+          <Button
+            component={NextLink}
+            href={routes.scheduleMeeting.path}
+            size="large"
+            {...(contactPlacement
+              ? interactionTrackingAttributes("contact_click", "schedule_meeting", contactPlacement)
+              : {})}
+          >
             Schedule a meeting
           </Button>
           {showSelectedWork ? (
