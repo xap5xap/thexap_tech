@@ -65,6 +65,8 @@ export type PresentationRecord = {
   shareTitle: string;
   shareDescription: string;
   socialImageId?: AssetId;
+  narrativeTitles?: Partial<Record<keyof CaseStudyNarrative, string>>;
+  exploreDescription?: string;
 };
 
 export type CaseStudyNarrative = {

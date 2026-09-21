@@ -37,6 +37,18 @@ export const armoniaCaseStudy: CaseStudy = {
     ]
   },
   presentation: {
+    narrativeTitles: {
+      transformation: "The operating model changed, not just the interface.",
+      audience: "Two audiences. Two surfaces. One coherent practice.",
+      productBet: "Research before software.",
+      ownership: "End-to-end product ownership, with Carla as the decider.",
+      experienceAndSystem: "Trust begins in public. Operations continue in private.",
+      decisions: "The choices that shaped adoption and trust.",
+      launchAndDistribution: "A launch story designed as part of the product.",
+      evidenceAndValidation: "What can be shown, and what is deliberately withheld.",
+      learningAndNextIteration: "Keep the chain from evidence to decision intact."
+    },
+    exploreDescription: "Visit the live Armonía site to experience the public product and its cinematic hero.",
     primaryVisualId: "cinematic-journey",
     cardEvidenceId: "active-use",
     shareTitle: "Armonía: from discovery to a practice operating system",
