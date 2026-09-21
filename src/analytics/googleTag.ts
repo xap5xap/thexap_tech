@@ -1,17 +1,19 @@
-import { PRODUCTION_GA4_MEASUREMENT_ID } from "./contract";
+import { PRODUCTION_GA4_MEASUREMENT_ID } from "./contract.ts";
 
 declare global {
   interface Window {
-    dataLayer?: unknown[][];
+    dataLayer?: IArguments[];
     gtag?: (...args: unknown[]) => void;
   }
 }
 
 const SCRIPT_ID = "thexap-ga4";
 
-const command = (...args: unknown[]) => {
+const command: (...args: unknown[]) => void = function () {
   window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push(args);
+  // Google gtag.js requires the function's Arguments object rather than a copied array.
+  // eslint-disable-next-line prefer-rest-params
+  window.dataLayer.push(arguments);
 };
 
 export const initializeGoogleTag = (measurementId: string): Promise<void> => {

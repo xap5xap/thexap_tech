@@ -24,6 +24,7 @@ import {
   targetTypeForDimensions
 } from "../src/analytics/events.ts";
 import { CALENDLY_ORIGIN, CalendlyMessageSequence, sanitizeCalendlyMessage } from "../src/analytics/calendly.ts";
+import { initializeGoogleTag } from "../src/analytics/googleTag.ts";
 
 const home = (location = "https://www.thexap.com/") =>
   buildPageSnapshot({
@@ -106,6 +107,36 @@ test("environment gate accepts only the verified destination on the canonical pr
   assert.equal(isProductionAnalyticsEnvironment(PRODUCTION_GA4_MEASUREMENT_ID, "localhost"), false);
   assert.equal(isProductionAnalyticsEnvironment("G-OTHER", "www.thexap.com"), false);
   assert.equal(isProductionAnalyticsEnvironment(undefined, "www.thexap.com"), false);
+});
+
+test("Google tag commands use the arguments objects required by gtag.js", async () => {
+  const originalWindow = globalThis.window;
+  const originalDocument = globalThis.document;
+  const listeners = new Map();
+  const script = {
+    dataset: {},
+    addEventListener: (name, listener) => listeners.set(name, listener),
+    remove: () => undefined
+  };
+
+  globalThis.window = {};
+  globalThis.document = {
+    getElementById: () => null,
+    createElement: () => script,
+    head: { appendChild: () => undefined }
+  };
+
+  try {
+    const loading = initializeGoogleTag(PRODUCTION_GA4_MEASUREMENT_ID);
+    assert.equal(window.dataLayer.length, 4);
+    assert.equal(window.dataLayer.every(entry => Object.prototype.toString.call(entry) === "[object Arguments]"), true);
+    assert.equal(window.dataLayer.some(Array.isArray), false);
+    listeners.get("load")();
+    await loading;
+  } finally {
+    globalThis.window = originalWindow;
+    globalThis.document = originalDocument;
+  }
 });
 
 test("consent cookie accepts only the versioned values and emits the frozen attributes", () => {
