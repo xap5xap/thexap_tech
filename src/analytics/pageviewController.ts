@@ -46,7 +46,8 @@ export class PageviewController {
     if (!this.current || this.consentGranted) return;
     this.consentGranted = true;
     this.grantNumber += 1;
-    const key = `${this.current.key}-grant-${this.grantNumber}`;
+    const key = `visit-${this.visitNumber}-grant-${this.grantNumber}`;
+    this.current = { key, snapshot: this.current.snapshot };
     this.queue(key, this.current.snapshot);
     this.lastConsentedLocation = this.current.snapshot.page_location;
   }

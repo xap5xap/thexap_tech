@@ -24,6 +24,7 @@ import {
   withdrawGoogleTag
 } from "./googleTag";
 import { PageviewController } from "./pageviewController";
+import { buildPortfolioEventPayload, type PortfolioEventName } from "./events";
 
 const CONSENT_COPY =
   "Optional analytics help me understand which pages and projects visitors find useful. If you accept, Google Analytics uses cookies to measure site activity. You can reject analytics or change your choice at any time.";
@@ -31,19 +32,29 @@ const CONSENT_COPY =
 type AnalyticsContextValue = {
   consent: AnalyticsConsent;
   openSettings: () => void;
-  trackEvent: (name: string, params: Record<string, unknown>) => void;
+  trackEvent: (name: PortfolioEventName, params: Record<string, unknown>) => boolean;
   visitKey?: string;
+  pageContext: PageContext;
 };
 
 const AnalyticsContext = createContext<AnalyticsContextValue>({
   consent: null,
   openSettings: () => undefined,
-  trackEvent: () => undefined
+  trackEvent: () => false,
+  pageContext: { content_group: "utility", page_type: "not_found" }
 });
 
 let sharedController: PageviewController | undefined;
 let tagReady = false;
 let tagLoading: Promise<void> | undefined;
+let pendingEvents: Array<{ name: PortfolioEventName; payload: Record<string, unknown> }> = [];
+
+const flushPendingEvents = () => {
+  if (!tagReady) return;
+  const events = pendingEvents;
+  pendingEvents = [];
+  for (const event of events) sendGoogleEvent(event.name, event.payload);
+};
 
 const getController = () => {
   if (!sharedController) sharedController = new PageviewController(payload => sendGoogleEvent("page_view", payload));
@@ -84,6 +95,7 @@ export const AnalyticsProvider = ({ children, pageContext }: Props) => {
     if (tagReady) {
       grantGoogleConsent();
       getController().flush();
+      flushPendingEvents();
       return;
     }
     if (!tagLoading) {
@@ -91,6 +103,7 @@ export const AnalyticsProvider = ({ children, pageContext }: Props) => {
         .then(() => {
           tagReady = true;
           getController().flush();
+          flushPendingEvents();
         })
         .catch(() => {
           tagReady = false;
@@ -113,6 +126,7 @@ export const AnalyticsProvider = ({ children, pageContext }: Props) => {
       setVisitKey(controller.getVisitKey());
       if (consent === "granted" && environmentAllowed) {
         controller.grant();
+        setVisitKey(controller.getVisitKey());
         loadAndFlush();
       }
     }, 0);
@@ -129,11 +143,13 @@ export const AnalyticsProvider = ({ children, pageContext }: Props) => {
 
       if (nextConsent === "granted" && environmentAllowed) {
         controller.grant();
+        setVisitKey(controller.getVisitKey());
         loadAndFlush();
         return;
       }
 
       controller.deny();
+      pendingEvents = [];
       if (consent === "granted") {
         withdrawGoogleTag();
         removeAccessibleGoogleCookies(window.location.hostname, document.cookie);
@@ -143,16 +159,20 @@ export const AnalyticsProvider = ({ children, pageContext }: Props) => {
   );
 
   const trackEvent = useCallback(
-    (name: string, params: Record<string, unknown>) => {
-      if (consent !== "granted" || !environmentAllowed || !tagReady) return;
-      sendGoogleEvent(name, params);
+    (name: PortfolioEventName, params: Record<string, unknown>) => {
+      if (consent !== "granted" || !environmentAllowed) return false;
+      const payload = buildPortfolioEventPayload(name, params, currentSnapshot());
+      if (!payload) return false;
+      if (tagReady) sendGoogleEvent(name, payload);
+      else pendingEvents.push({ name, payload });
+      return true;
     },
-    [consent, environmentAllowed]
+    [consent, currentSnapshot, environmentAllowed]
   );
 
   const contextValue = useMemo<AnalyticsContextValue>(
-    () => ({ consent, openSettings: () => setSettingsOpen(true), trackEvent, visitKey }),
-    [consent, trackEvent, visitKey]
+    () => ({ consent, openSettings: () => setSettingsOpen(true), trackEvent, visitKey, pageContext }),
+    [consent, pageContext, trackEvent, visitKey]
   );
 
   return (

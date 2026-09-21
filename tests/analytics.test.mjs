@@ -14,6 +14,14 @@ import {
   validateProjectContext
 } from "../src/analytics/contract.ts";
 import { PageviewController } from "../src/analytics/pageviewController.ts";
+import {
+  buildPortfolioEventPayload,
+  canonicalTechnology,
+  filterCategoryFromLabel,
+  projectCategoryFromLabel,
+  sanitizePortfolioEvent,
+  targetTypeForDimensions
+} from "../src/analytics/events.ts";
 
 const home = (location = "https://www.thexap.com/") =>
   buildPageSnapshot({
@@ -171,13 +179,96 @@ test("denial and withdrawal clear queued work; a later grant sends only the then
   const controller = new PageviewController(payload => sent.push(payload));
   controller.observe(home());
   controller.grant();
+  const firstGrantKey = controller.getVisitKey();
   controller.deny();
   controller.flush();
   controller.observe(engagement("senior-react-nextjs-2022", "UW-01"));
   controller.flush();
   assert.equal(sent.length, 0);
   controller.grant();
+  assert.notEqual(controller.getVisitKey(), firstGrantKey);
   controller.flush();
   assert.equal(sent.length, 1);
   assert.equal(sent[0].project_id, "UW-01");
+});
+
+test("public presentation labels map only to the frozen reporting categories", () => {
+  assert.equal(projectCategoryFromLabel("Full stack & cloud"), "full_stack_cloud");
+  assert.equal(projectCategoryFromLabel("Unknown"), undefined);
+  assert.equal(filterCategoryFromLabel("All work"), "all_work");
+  assert.equal(filterCategoryFromLabel("React"), undefined);
+});
+
+test("technology labels resolve through the frozen dictionary and unknown labels are rejected", () => {
+  assert.equal(canonicalTechnology("Amazon EventBridge"), "amazon_eventbridge");
+  assert.equal(canonicalTechnology("React Native"), "react_native");
+  assert.equal(canonicalTechnology("Illustrative framework"), undefined);
+});
+
+test("portfolio event payloads keep bounded project, placement, visibility, and CTR fields", () => {
+  const snapshot = engagement("senior-react-nextjs-2022", "UW-01");
+  assert.deepEqual(
+    buildPortfolioEventPayload(
+      "select_content",
+      {
+        ...snapshot.project,
+        source_placement: "projects_grid",
+        target_type: "project_card",
+        content_type: "project",
+        item_id: "UW-01",
+        impression_eligible: true,
+        is_first_selection: true,
+        destination_url: "https://private.example/job?id=42"
+      },
+      snapshot
+    ),
+    {
+      page_location: snapshot.page_location,
+      page_title: snapshot.page_title,
+      content_group: "portfolio",
+      page_type: "upwork_engagement",
+      project_id: "UW-01",
+      project_slug: "senior-react-nextjs-2022",
+      project_category: "full_stack_cloud",
+      source_placement: "projects_grid",
+      target_type: "project_card",
+      content_type: "project",
+      item_id: "UW-01",
+      impression_eligible: true,
+      is_first_selection: true
+    }
+  );
+});
+
+test("invalid project IDs, placements, filters, counts, and technology values emit no event", () => {
+  assert.equal(
+    sanitizePortfolioEvent("project_impression", {
+      project_id: "private-client",
+      project_slug: "private",
+      project_category: "web_product",
+      source_placement: "arbitrary_component",
+      target_type: "project_card"
+    }),
+    undefined
+  );
+  assert.equal(
+    sanitizePortfolioEvent("portfolio_filter", { filter_category: "react", result_count: -1 }),
+    undefined
+  );
+  assert.equal(
+    sanitizePortfolioEvent("technology_exposure", {
+      project_id: "UW-01",
+      project_slug: "senior-react-nextjs-2022",
+      project_category: "full_stack_cloud",
+      technology: "unknown",
+      source_placement: "technology_section",
+      target_type: "technology_label"
+    }),
+    undefined
+  );
+});
+
+test("tall-card fallback selects the title target only when half the card cannot fit", () => {
+  assert.equal(targetTypeForDimensions(800, 600), "project_card");
+  assert.equal(targetTypeForDimensions(1300, 600), "project_title_link");
 });

@@ -23,6 +23,7 @@ import { getCaseStudyMetadata } from "../../content/portfolio/metadata";
 import { EVIDENCE_LABELS } from "../../content/portfolio/evidenceLabels";
 import HeaderFooterLayout from "../HeaderFooterLayout";
 import CaseStudyNarrativeSection from "./CaseStudyNarrativeSection";
+import { TrackedTechnologyLabel } from "./TrackedTechnologyLabel";
 
 type Props = {
   caseStudy: CaseStudy;
@@ -319,7 +320,14 @@ const CaseStudyPage = ({ caseStudy }: Props) => {
                     Supporting technology
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    {[...(supportingDetails.technologies || []), ...(supportingDetails.services || [])].join(" · ")}
+                    {[...(supportingDetails.technologies || []), ...(supportingDetails.services || [])].map(
+                      (technology, index, items) => (
+                        <span key={technology}>
+                          <TrackedTechnologyLabel label={technology}>{technology}</TrackedTechnologyLabel>
+                          {index < items.length - 1 ? " · " : null}
+                        </span>
+                      )
+                    )}
                   </Typography>
                 </Box>
               )}
