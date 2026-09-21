@@ -1,7 +1,6 @@
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
-import Script from "next/script";
 import HeaderFooterLayout from "../src/components/HeaderFooterLayout";
 import { InlineWidget } from "react-calendly";
 import { scheduleMeetingMetadata } from "../src/content/portfolio/metadata";
@@ -9,7 +8,6 @@ import { scheduleMeetingMetadata } from "../src/content/portfolio/metadata";
 const ScheduleMeetingPage = () => {
   return (
     <>
-      <Script src="https://assets.calendly.com/assets/external/widget.js" onLoad={() => console.log("onLoad")}></Script>
       <HeaderFooterLayout metadata={scheduleMeetingMetadata}>
         <Box component="section" sx={{ py: { xs: 6, md: 8 }, backgroundColor: "background.paper" }}>
           <Container maxWidth="md">
