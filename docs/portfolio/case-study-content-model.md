@@ -14,6 +14,12 @@ This document defines the reusable content contract, narrative standard, disclos
 
 It does not implement `/projects` or `/projects/[slug]`, publish claims about Armonía or the publishing engine, select the third flagship, decide the fate of legacy projects, or implement SEO and social-preview metadata. Those actions remain with their downstream issues.
 
+## September 20 extension: individual client engagements
+
+XAP-158 adds a separate engagement validation profile without weakening the flagship requirements below. `engagementTypes.ts` reuses the shared evidence, asset, and link vocabulary. It adds stable contract identity, draft/ready publication state, source basis, optional figures, and separate contract, delivery, and product states. A ready engagement uses one of two formats: a case note with source-supported personal contribution, or an engagement brief based on the title and available description. Xavier explicitly requested the brief format for thin records on September 20. Briefs include recorded scope and may add a visibly illustrative engineering perspective. Period technology examples are date-validated and kept separate from recorded project technologies. Additional personal recollection is optional for briefs. See [Upwork presentation](upwork-presentation.md).
+
+`engagements/index.ts` separates publication-ready route records from the explicit flagship selection. Only ready records become page props, through an explicit field projection that omits evidence arrays, provenance references, editorial notes, and unused assets. Feedback display copy and attribution are authored separately from its source record. The editorial ledger and unresolved questions are not imported by page code. Unready records generate no routes, metadata, index entries, or client-side records. Narrative headings and exploration copy are presentation fields, so Armonía retains its approved wording while shared components remain generic.
+
 ## Confirmed inputs
 
 Xavier confirmed the following decisions before this proposal was authored:
@@ -76,7 +82,7 @@ The exact filenames may change during implementation, but these boundaries are c
 - `index.ts` owns the published registry and the explicit flagship order.
 - Project media remains in a project-scoped public directory unless an approved external source is required.
 - Contentful remains the blog source. XAP-48 does not add a portfolio content type to Contentful.
-- `data/projects.json` was retired by XAP-51 after every existing entry received a disposition. Published project routes and the projects index now read from the typed flagship registry only.
+- `data/projects.json` was retired by XAP-51 after every existing entry received a disposition. Published project routes use the typed flagship registry and the separate publication-ready engagement registry.
 
 ### Options considered
 

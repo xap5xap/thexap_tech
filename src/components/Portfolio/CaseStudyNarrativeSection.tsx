@@ -4,13 +4,8 @@ import Link from "@mui/material/Link";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import Image from "next/image";
-import type {
-  AssetRecord,
-  EvidenceItem,
-  EvidenceState,
-  NarrativeBlock,
-  NarrativeSection
-} from "../../content/portfolio/types";
+import type { AssetRecord, EvidenceItem, NarrativeBlock, NarrativeSection } from "../../content/portfolio/types";
+import { EVIDENCE_LABELS } from "../../content/portfolio/evidenceLabels";
 
 type Props = {
   id: string;
@@ -19,15 +14,6 @@ type Props = {
   section: NarrativeSection;
   assetsById: Map<string, AssetRecord>;
   evidenceById: Map<string, EvidenceItem>;
-};
-
-const EVIDENCE_LABELS: Record<EvidenceState, string> = {
-  observed: "Observed",
-  "verified-outcome": "Verified outcome",
-  assumption: "Assumption",
-  hypothesis: "Hypothesis",
-  illustrative: "Illustrative",
-  planned: "Planned"
 };
 
 const EvidenceBlock = ({ evidence }: { evidence: EvidenceItem }) => {

@@ -1,0 +1,1 @@
+Technology marks from Simple Icons 16.32.0, served locally. Source: https://github.com/simple-icons/simple-icons/tree/16.32.0/icons. The icon set is distributed under CC0; see LICENSE.md. Marks identify technologies and do not imply endorsement. SVG geometry is unchanged.

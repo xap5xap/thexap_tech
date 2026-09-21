@@ -4,12 +4,14 @@
 
 This record defines the metadata, canonical, indexability, disclosure, and verification decisions implemented under `XAP-52`.
 
-The current published portfolio-route manifest is exactly:
+The original flagship portfolio routes are:
 
 - `/projects`
 - `/projects/armonia`
 
-Future case-study routes receive metadata only after their records enter the validated published flagship registry.
+Case-study routes receive metadata only after entering the validated flagship registry. XAP-158 adds `/projects/upwork/<date-qualified-slug>` through the validated engagement registry. The [28-route inventory](upwork-contract-inventory.md) is now generated in the local production build, with unique metadata for all 28 completed records. These routes await final review and develop integration; they have not been deployed. Synthetic draft records remain excluded by validation.
+
+Engagement previews reuse the approved 1200 by 630 portfolio social image unless an approved dedicated image is supplied. Titles and descriptions must be unique and preserve the actual engagement and contract period. Unknown product availability is never labeled live or inactive. The excluded introductory call has no route or preview. The repository currently has no sitemap generator or sitemap file; no unrelated sitemap system is added. Existing navigation remains the discovery path.
 
 ## Primary sharing contexts
 
