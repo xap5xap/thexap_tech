@@ -8,8 +8,12 @@ import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 import Stack from "@mui/material/Stack";
 import IconButton from "@mui/material/IconButton";
+import Button from "@mui/material/Button";
+import { useAnalytics } from "../analytics/AnalyticsProvider";
+import { interactionTrackingAttributes } from "../analytics/events";
 
 const AppFooter = () => {
+  const { openSettings } = useAnalytics();
   return (
     <Box
       sx={{
@@ -32,12 +36,16 @@ const AppFooter = () => {
               Xavier Perez
             </Typography>
           </Link>
+          <Button variant="text" color="inherit" onClick={openSettings} sx={{ textTransform: "none" }}>
+            Analytics settings
+          </Button>
           <Box sx={{ py: { xs: 2, sm: 0 } }}>
             <Stack spacing={2} direction="row">
               <IconButton
                 target="_blank"
                 rel="noopener noreferrer"
                 href="https://github.com/xap5xap"
+                {...interactionTrackingAttributes("outbound_click", "github", "footer")}
                 aria-label="github"
                 title="GitHub"
                 size="small"
@@ -48,6 +56,7 @@ const AppFooter = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 href="https://twitter.com/thexap_tech"
+                {...interactionTrackingAttributes("outbound_click", "x", "footer")}
                 aria-label="twitter"
                 title="Twitter"
                 size="small"
@@ -58,6 +67,7 @@ const AppFooter = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 href="https://www.linkedin.com/in/xavier-perez-b62566204/"
+                {...interactionTrackingAttributes("outbound_click", "linkedin", "footer")}
                 aria-label="linkedin"
                 title="LinkedIn"
                 size="small"

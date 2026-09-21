@@ -4,6 +4,7 @@ import AccountTreeOutlined from "@mui/icons-material/AccountTreeOutlined";
 import SmartphoneOutlined from "@mui/icons-material/SmartphoneOutlined";
 import StorageOutlined from "@mui/icons-material/StorageOutlined";
 import type { EngagementShowcase } from "../../content/portfolio/engagementShowcase";
+import { TrackedTechnologyLabel } from "./TrackedTechnologyLabel";
 
 const marks: Record<string, { slug: string; color: string }> = {
   React: { slug: "react", color: "#087ea4" },
@@ -211,7 +212,9 @@ export const TechnologyMap = ({ technologies }: { technologies: string[] }) => {
                   <Box sx={{ bgcolor: "#f3f3f0", p: 0.6, borderRadius: "6px", display: "flex" }}>
                     <TechnologyMark name={name} size={20} />
                   </Box>
-                  <Typography sx={{ fontSize: 13 }}>{name}</Typography>
+                  <Typography sx={{ fontSize: 13 }}>
+                    <TrackedTechnologyLabel label={name}>{name}</TrackedTechnologyLabel>
+                  </Typography>
                 </Box>
               ))}
             </Box>

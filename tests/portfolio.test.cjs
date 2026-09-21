@@ -29,6 +29,8 @@ const {
 const { getEngagementMetadata, getCaseStudyMetadata } = require("../src/content/portfolio/metadata.ts");
 const { engagementStatus, formatContractPeriod } = require("../src/content/portfolio/engagementPresentation.ts");
 const { armoniaCaseStudy } = require("../src/content/portfolio/caseStudies/armonia.ts");
+const { flagshipCaseStudies } = require("../src/content/portfolio/index.ts");
+const { canonicalTechnology, projectCategoryFromLabel } = require("../src/analytics/events.ts");
 const { validateCaseStudy } = require("../src/content/portfolio/validateCaseStudy.ts");
 const ledger = require("../docs/portfolio/upwork/source-ledger.json");
 
@@ -79,6 +81,25 @@ test("all current records validate and every draft is excluded from publication 
     assert.ok(!publishedEngagements.some(row => row.identity.slug === draft.identity.slug));
     assert.throws(() => getEngagementPageContent(draft), /unpublished/);
     assert.throws(() => getEngagementSummary(draft), /unpublished/);
+  }
+});
+
+test("every published project and recorded technology has a stable analytics identity", () => {
+  assert.equal(flagshipCaseStudies.length, 1);
+  assert.equal(publishedEngagements.length, 28);
+  assert.equal(armoniaCaseStudy.identity.id, "armonia");
+  assert.equal(armoniaCaseStudy.identity.slug, "armonia");
+  for (const record of publishedEngagements) {
+    const summary = getEngagementSummary(record);
+    assert.match(summary.identity.id, /^UW-\d{2}$/);
+    assert.ok(projectCategoryFromLabel(summary.showcase.category));
+    for (const technology of summary.technologies) assert.ok(canonicalTechnology(technology), technology);
+  }
+  for (const technology of [
+    ...(armoniaCaseStudy.supportingDetails.technologies || []),
+    ...(armoniaCaseStudy.supportingDetails.services || [])
+  ]) {
+    assert.ok(canonicalTechnology(technology), technology);
   }
 });
 

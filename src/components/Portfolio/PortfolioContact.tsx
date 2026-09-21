@@ -4,6 +4,7 @@ import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import NextLink from "next/link";
+import { interactionTrackingAttributes } from "../../analytics/events";
 
 const PortfolioContact = () => (
   <Container maxWidth="lg" sx={{ py: { xs: 6, md: 9 } }}>
@@ -43,6 +44,7 @@ const PortfolioContact = () => (
       <Button
         component={NextLink}
         href="/schedule-meeting"
+        {...interactionTrackingAttributes("contact_click", "schedule_meeting", "portfolio_contact")}
         endIcon={<ArrowOutwardRounded />}
         size="large"
         sx={{ minHeight: 52, px: 3, borderRadius: "10px", flexShrink: 0 }}

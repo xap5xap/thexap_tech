@@ -16,6 +16,80 @@ import PortfolioContact from "../../src/components/Portfolio/PortfolioContact";
 import type { EngagementSummary } from "../../src/content/portfolio/engagementTypes";
 import { getEngagementSummary, publishedEngagements } from "../../src/content/portfolio/engagements";
 import { upworkProfile } from "../../src/content/portfolio/upworkProfile";
+import { useMemo, useRef } from "react";
+import type { CaseStudy } from "../../src/content/portfolio/types";
+import { useProjectLinkTracking } from "../../src/analytics/usePortfolioTracking";
+import { interactionTrackingAttributes } from "../../src/analytics/events";
+
+const FeaturedProject = ({ study }: { study: CaseStudy }) => {
+  const cardRef = useRef<HTMLAnchorElement | null>(null);
+  const titleRef = useRef<HTMLHeadingElement | null>(null);
+  const project = useMemo(
+    () => ({ project_id: study.identity.id, project_slug: study.identity.slug, project_category: "featured" as const }),
+    [study.identity.id, study.identity.slug]
+  );
+  const tracking = useProjectLinkTracking({
+    project,
+    placement: "projects_featured",
+    cardRef,
+    titleRef
+  });
+  const visual = study.assets.find(asset => asset.id === study.presentation.primaryVisualId)!;
+
+  return (
+    <Link
+      ref={cardRef}
+      component={NextLink}
+      href={`/projects/${study.identity.slug}`}
+      color="inherit"
+      underline="none"
+      onClick={tracking.onClick}
+      onAuxClick={tracking.onAuxClick}
+      sx={{
+        display: "grid",
+        gridTemplateColumns: { xs: "1fr", md: "1.15fr 1fr" },
+        border: 1,
+        borderColor: "divider",
+        borderRadius: "22px",
+        overflow: "hidden",
+        bgcolor: "background.paper",
+        "&:hover": { borderColor: "primary.main" }
+      }}
+    >
+      <Box sx={{ position: "relative", minHeight: { xs: 230, md: 370 } }}>
+        <Image
+          src={visual.src}
+          alt={visual.alt}
+          fill
+          priority
+          sizes="(max-width:900px) 100vw, 650px"
+          style={{ objectFit: "cover" }}
+        />
+      </Box>
+      <Box sx={{ p: { xs: 3, md: 5 }, display: "flex", flexDirection: "column", justifyContent: "center" }}>
+        <Typography sx={{ color: "primary.main", fontSize: 12, mb: 2 }}>
+          Product strategy · Experience · Full-stack engineering
+        </Typography>
+        <Typography
+          ref={titleRef}
+          component="h3"
+          sx={{ fontSize: { xs: 34, md: 46 }, letterSpacing: "-.035em", fontWeight: 750 }}
+        >
+          {study.identity.name}
+        </Typography>
+        <Typography sx={{ fontSize: { xs: 19, md: 23 }, lineHeight: 1.35, fontWeight: 600, mt: 1 }}>
+          From practice research to a system used every day.
+        </Typography>
+        <Typography color="text.secondary" sx={{ mt: 2, fontSize: 15 }}>
+          {study.identity.conciseSummary}
+        </Typography>
+        <Typography sx={{ mt: 3, fontWeight: 600, fontSize: 14, display: "flex", alignItems: "center", gap: 1 }}>
+          Explore the product story <ArrowOutwardRounded sx={{ fontSize: 18, color: "primary.main" }} />
+        </Typography>
+      </Box>
+    </Link>
+  );
+};
 
 const ProjectsPage = ({ engagements }: { engagements: EngagementSummary[] }) => (
   <HeaderFooterLayout metadata={portfolioIndexMetadata}>
@@ -67,6 +141,7 @@ const ProjectsPage = ({ engagements }: { engagements: EngagementSummary[] }) => 
             <Button
               component={NextLink}
               href="/schedule-meeting"
+              {...interactionTrackingAttributes("contact_click", "schedule_meeting", "projects_hero")}
               endIcon={<ArrowOutwardRounded />}
               sx={{ minHeight: 48, borderRadius: "10px", px: 2.5 }}
             >
@@ -113,7 +188,12 @@ const ProjectsPage = ({ engagements }: { engagements: EngagementSummary[] }) => 
           </Box>
         ))}
         <Box sx={{ gridColumn: { xs: "1 / -1", md: "auto" }, alignSelf: "center" }}>
-          <Link href={upworkProfile.href} color="inherit" sx={{ fontSize: 12 }}>
+          <Link
+            href={upworkProfile.href}
+            color="inherit"
+            sx={{ fontSize: 12 }}
+            {...interactionTrackingAttributes("outbound_click", "upwork_profile", "upwork_profile")}
+          >
             29 jobs. A track record you can check.
           </Link>
           <Typography sx={{ fontSize: 10, color: "text.secondary", mt: 0.75 }}>
@@ -136,61 +216,9 @@ const ProjectsPage = ({ engagements }: { engagements: EngagementSummary[] }) => 
         >
           Featured product story
         </Typography>
-        {flagshipCaseStudies.map(study => {
-          const visual = study.assets.find(asset => asset.id === study.presentation.primaryVisualId)!;
-          return (
-            <Link
-              key={study.identity.id}
-              component={NextLink}
-              href={`/projects/${study.identity.slug}`}
-              color="inherit"
-              underline="none"
-              sx={{
-                display: "grid",
-                gridTemplateColumns: { xs: "1fr", md: "1.15fr 1fr" },
-                border: 1,
-                borderColor: "divider",
-                borderRadius: "22px",
-                overflow: "hidden",
-                bgcolor: "background.paper",
-                "&:hover": { borderColor: "primary.main" }
-              }}
-            >
-              <Box sx={{ position: "relative", minHeight: { xs: 230, md: 370 } }}>
-                <Image
-                  src={visual.src}
-                  alt={visual.alt}
-                  fill
-                  priority
-                  sizes="(max-width:900px) 100vw, 650px"
-                  style={{ objectFit: "cover" }}
-                />
-              </Box>
-              <Box sx={{ p: { xs: 3, md: 5 }, display: "flex", flexDirection: "column", justifyContent: "center" }}>
-                <Typography sx={{ color: "primary.main", fontSize: 12, mb: 2 }}>
-                  Product strategy · Experience · Full-stack engineering
-                </Typography>
-                <Typography
-                  component="h3"
-                  sx={{ fontSize: { xs: 34, md: 46 }, letterSpacing: "-.035em", fontWeight: 750 }}
-                >
-                  {study.identity.name}
-                </Typography>
-                <Typography sx={{ fontSize: { xs: 19, md: 23 }, lineHeight: 1.35, fontWeight: 600, mt: 1 }}>
-                  From practice research to a system used every day.
-                </Typography>
-                <Typography color="text.secondary" sx={{ mt: 2, fontSize: 15 }}>
-                  {study.identity.conciseSummary}
-                </Typography>
-                <Typography
-                  sx={{ mt: 3, fontWeight: 600, fontSize: 14, display: "flex", alignItems: "center", gap: 1 }}
-                >
-                  Explore the product story <ArrowOutwardRounded sx={{ fontSize: 18, color: "primary.main" }} />
-                </Typography>
-              </Box>
-            </Link>
-          );
-        })}
+        {flagshipCaseStudies.map(study => (
+          <FeaturedProject key={study.identity.id} study={study} />
+        ))}
       </Box>
     </Container>
     <UpworkExperienceSection engagements={engagements} />

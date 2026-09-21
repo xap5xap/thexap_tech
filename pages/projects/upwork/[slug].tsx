@@ -1,17 +1,19 @@
 import type { GetStaticPaths, GetStaticProps } from "next";
 import type { ParsedUrlQuery } from "querystring";
-import EngagementPage from "../../../src/components/Portfolio/EngagementPage";
+import EngagementPage, { type RelatedEngagement } from "../../../src/components/Portfolio/EngagementPage";
 import type { EngagementPageContent } from "../../../src/content/portfolio/engagementTypes";
 import {
   engagementsBySlug,
   getEngagementPageContent,
+  getEngagementSummary,
   publishedEngagements
 } from "../../../src/content/portfolio/engagements";
+import { projectCategoryFromLabel } from "../../../src/analytics/events";
 
 interface Params extends ParsedUrlQuery {
   slug: string;
 }
-type Props = { engagement: EngagementPageContent; related: Array<{ slug: string; name: string }> };
+type Props = { engagement: EngagementPageContent; related: RelatedEngagement[] };
 
 export default function UpworkEngagementRoute(props: Props) {
   return <EngagementPage {...props} />;
@@ -32,7 +34,13 @@ export const getStaticProps: GetStaticProps<Props, Params> = async ({ params }) 
   }
   const related = record.relatedSlugs.map(slug => {
     const other = engagementsBySlug.get(slug)!;
-    return { slug, name: other.identity.name };
+    const summary = getEngagementSummary(other);
+    return {
+      id: other.identity.id,
+      slug,
+      name: other.identity.name,
+      category: projectCategoryFromLabel(summary.showcase.category)!
+    };
   });
   return { props: { engagement: getEngagementPageContent(record), related } };
 };

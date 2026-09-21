@@ -23,6 +23,8 @@ import { getCaseStudyMetadata } from "../../content/portfolio/metadata";
 import { EVIDENCE_LABELS } from "../../content/portfolio/evidenceLabels";
 import HeaderFooterLayout from "../HeaderFooterLayout";
 import CaseStudyNarrativeSection from "./CaseStudyNarrativeSection";
+import { TrackedTechnologyLabel } from "./TrackedTechnologyLabel";
+import { interactionTrackingAttributes } from "../../analytics/events";
 
 type Props = {
   caseStudy: CaseStudy;
@@ -304,6 +306,11 @@ const CaseStudyPage = ({ caseStudy }: Props) => {
                       href={link.href}
                       target="_blank"
                       rel="noreferrer"
+                      {...interactionTrackingAttributes(
+                        "outbound_click",
+                        link.kind === "product" ? "live_product" : "evidence_source",
+                        "flagship_artifact"
+                      )}
                       aria-label={`${link.label} (opens in a new tab)`}
                       endIcon={<ArrowOutwardRounded />}
                       variant={link.kind === "product" ? "contained" : "outlined"}
@@ -319,7 +326,14 @@ const CaseStudyPage = ({ caseStudy }: Props) => {
                     Supporting technology
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    {[...(supportingDetails.technologies || []), ...(supportingDetails.services || [])].join(" · ")}
+                    {[...(supportingDetails.technologies || []), ...(supportingDetails.services || [])].map(
+                      (technology, index, items) => (
+                        <span key={technology}>
+                          <TrackedTechnologyLabel label={technology}>{technology}</TrackedTechnologyLabel>
+                          {index < items.length - 1 ? " · " : null}
+                        </span>
+                      )
+                    )}
                   </Typography>
                 </Box>
               )}

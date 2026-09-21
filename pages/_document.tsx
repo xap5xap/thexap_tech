@@ -4,8 +4,6 @@ import createEmotionCache from "../src/theme/createEmotionCache";
 import createEmotionServer from "@emotion/server/create-instance";
 import React from "react";
 
-const GOOGLE_ANALYTICS_ID = process.env.NEXT_PUBLIC_ANALYTICS;
-
 export default class MyDocument extends Document {
   render() {
     return (
@@ -24,15 +22,6 @@ export default class MyDocument extends Document {
         </Head>
         <body>
           <Main />
-          <script
-            // eslint-disable-next-line react/no-danger
-            dangerouslySetInnerHTML={{
-              __html: `
-                window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-                window.ga('create','${GOOGLE_ANALYTICS_ID}');
-              `
-            }}
-          />
           <NextScript />
         </body>
       </Html>

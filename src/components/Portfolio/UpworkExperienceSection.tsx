@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import ArrowOutwardRounded from "@mui/icons-material/ArrowOutwardRounded";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -11,6 +11,13 @@ import type { EngagementCategory } from "../../content/portfolio/engagementShowc
 import { engagementPath } from "../../content/portfolio/engagementPresentation";
 import { upworkProfile } from "../../content/portfolio/upworkProfile";
 import { TechnologyVisual } from "./TechnologyVisual";
+import { useAnalytics } from "../../analytics/AnalyticsProvider";
+import {
+  filterCategoryFromLabel,
+  interactionTrackingAttributes,
+  projectCategoryFromLabel
+} from "../../analytics/events";
+import { useProjectLinkTracking } from "../../analytics/usePortfolioTracking";
 
 const filters: Array<"All work" | EngagementCategory> = [
   "All work",
@@ -30,10 +37,110 @@ const cardPeriod = (record: EngagementSummary) => {
       : `${start} - ${end}`;
 };
 
+const EngagementCard = ({ record }: { record: EngagementSummary }) => {
+  const cardRef = useRef<HTMLAnchorElement | null>(null);
+  const titleRef = useRef<HTMLHeadingElement | null>(null);
+  const project = useMemo(
+    () => ({
+      project_id: record.identity.id,
+      project_slug: record.identity.slug,
+      project_category: projectCategoryFromLabel(record.showcase.category)!
+    }),
+    [record.identity.id, record.identity.slug, record.showcase.category]
+  );
+  const tracking = useProjectLinkTracking({ project, placement: "projects_grid", cardRef, titleRef });
+
+  return (
+    <Box component="li" role="listitem" sx={{ minWidth: 0 }}>
+      <Link
+        ref={cardRef}
+        component={NextLink}
+        prefetch={false}
+        href={engagementPath(record.identity.slug)}
+        color="inherit"
+        underline="none"
+        aria-label={`${record.showcase.headline} View ${record.identity.name}`}
+        onClick={tracking.onClick}
+        onAuxClick={tracking.onAuxClick}
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          height: "100%",
+          overflow: "hidden",
+          border: 1,
+          borderColor: "divider",
+          borderRadius: "18px",
+          bgcolor: "background.paper",
+          transition: "transform 180ms ease, border-color 180ms ease",
+          "&:hover": { transform: "translateY(-5px)", borderColor: "primary.main" },
+          "@media (prefers-reduced-motion: reduce)": { transition: "none", "&:hover": { transform: "none" } }
+        }}
+      >
+        <Box sx={{ height: 220 }}>
+          <TechnologyVisual technologies={record.technologies} showcase={record.showcase} />
+        </Box>
+        <Box sx={{ p: 3, display: "flex", flexDirection: "column", flex: 1 }}>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              flexWrap: "wrap",
+              gap: 1,
+              mb: 2
+            }}
+          >
+            <Typography sx={{ color: "primary.main", fontSize: 11, fontWeight: 700 }}>
+              {record.showcase.category}
+            </Typography>
+            <Typography sx={{ color: "text.secondary", fontFamily: "monospace", fontSize: 10 }}>
+              {cardPeriod(record)}
+            </Typography>
+          </Box>
+          <Typography
+            ref={titleRef}
+            component="h3"
+            sx={{ fontSize: 23, letterSpacing: "-.025em", lineHeight: 1.22, fontWeight: 700, mb: 1.5 }}
+          >
+            {record.showcase.headline}
+          </Typography>
+          <Typography sx={{ fontSize: 14, lineHeight: 1.65, color: "text.secondary", mb: 3 }}>
+            {record.summary}
+          </Typography>
+          <Box
+            sx={{
+              mt: "auto",
+              pt: 2,
+              borderTop: 1,
+              borderColor: "divider",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              gap: 2
+            }}
+          >
+            <Typography sx={{ fontSize: 12, fontWeight: 500 }}>{record.showcase.role}</Typography>
+            <ArrowOutwardRounded sx={{ fontSize: 20, color: "primary.main", flexShrink: 0 }} />
+          </Box>
+        </Box>
+      </Link>
+    </Box>
+  );
+};
+
 const UpworkExperienceSection = ({ engagements }: { engagements: EngagementSummary[] }) => {
   const [filter, setFilter] = useState<(typeof filters)[number]>("All work");
+  const { trackEvent } = useAnalytics();
   if (!engagements.length) return null;
   const visible = engagements.filter(record => filter === "All work" || record.showcase.category === filter);
+  const chooseFilter = (label: (typeof filters)[number]) => {
+    if (label === filter) return;
+    const category = filterCategoryFromLabel(label);
+    if (!category) return;
+    const resultCount = engagements.filter(record => label === "All work" || record.showcase.category === label).length;
+    trackEvent("portfolio_filter", { filter_category: category, result_count: resultCount });
+    setFilter(label);
+  };
   return (
     <Box
       component="section"
@@ -74,6 +181,7 @@ const UpworkExperienceSection = ({ engagements }: { engagements: EngagementSumma
           </Box>
           <Link
             href={upworkProfile.href}
+            {...interactionTrackingAttributes("outbound_click", "upwork_profile", "upwork_profile")}
             color="inherit"
             sx={{ fontSize: 14, display: "inline-flex", alignItems: "center", gap: 1, minHeight: 44 }}
           >
@@ -85,7 +193,7 @@ const UpworkExperienceSection = ({ engagements }: { engagements: EngagementSumma
             <Button
               key={label}
               aria-pressed={filter === label}
-              onClick={() => setFilter(label)}
+              onClick={() => chooseFilter(label)}
               variant={filter === label ? "contained" : "outlined"}
               sx={{
                 minHeight: 44,
@@ -116,76 +224,7 @@ const UpworkExperienceSection = ({ engagements }: { engagements: EngagementSumma
           }}
         >
           {visible.map(record => (
-            <Box component="li" role="listitem" key={record.identity.id} sx={{ minWidth: 0 }}>
-              <Link
-                component={NextLink}
-                prefetch={false}
-                href={engagementPath(record.identity.slug)}
-                color="inherit"
-                underline="none"
-                aria-label={`${record.showcase.headline} View ${record.identity.name}`}
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  height: "100%",
-                  overflow: "hidden",
-                  border: 1,
-                  borderColor: "divider",
-                  borderRadius: "18px",
-                  bgcolor: "background.paper",
-                  transition: "transform 180ms ease, border-color 180ms ease",
-                  "&:hover": { transform: "translateY(-5px)", borderColor: "primary.main" },
-                  "@media (prefers-reduced-motion: reduce)": { transition: "none", "&:hover": { transform: "none" } }
-                }}
-              >
-                <Box sx={{ height: 220 }}>
-                  <TechnologyVisual technologies={record.technologies} showcase={record.showcase} />
-                </Box>
-                <Box sx={{ p: 3, display: "flex", flexDirection: "column", flex: 1 }}>
-                  <Box
-                    sx={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      alignItems: "center",
-                      flexWrap: "wrap",
-                      gap: 1,
-                      mb: 2
-                    }}
-                  >
-                    <Typography sx={{ color: "primary.main", fontSize: 11, fontWeight: 700 }}>
-                      {record.showcase.category}
-                    </Typography>
-                    <Typography sx={{ color: "text.secondary", fontFamily: "monospace", fontSize: 10 }}>
-                      {cardPeriod(record)}
-                    </Typography>
-                  </Box>
-                  <Typography
-                    component="h3"
-                    sx={{ fontSize: 23, letterSpacing: "-.025em", lineHeight: 1.22, fontWeight: 700, mb: 1.5 }}
-                  >
-                    {record.showcase.headline}
-                  </Typography>
-                  <Typography sx={{ fontSize: 14, lineHeight: 1.65, color: "text.secondary", mb: 3 }}>
-                    {record.summary}
-                  </Typography>
-                  <Box
-                    sx={{
-                      mt: "auto",
-                      pt: 2,
-                      borderTop: 1,
-                      borderColor: "divider",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "space-between",
-                      gap: 2
-                    }}
-                  >
-                    <Typography sx={{ fontSize: 12, fontWeight: 500 }}>{record.showcase.role}</Typography>
-                    <ArrowOutwardRounded sx={{ fontSize: 20, color: "primary.main", flexShrink: 0 }} />
-                  </Box>
-                </Box>
-              </Link>
-            </Box>
+            <EngagementCard key={record.identity.id} record={record} />
           ))}
         </Box>
         <Typography variant="caption" color="text.secondary" sx={{ mt: 3 }}>
