@@ -84,6 +84,10 @@ test("route classification requires public context for dynamic project and blog 
   assert.equal(classifyPage("/projects/private-project").page_type, "not_found");
   assert.equal(classifyPage("/blog/public-post", undefined, true).page_type, "blog_post");
   assert.equal(classifyPage("/blog/missing", undefined, false).page_type, "not_found");
+  assert.deepEqual(classifyPage("/tools/opportunity-brief-builder?draft=private#preview"), {
+    content_group: "utility",
+    page_type: "tool"
+  });
 });
 
 test("project context rejects unknown IDs, invalid slugs, and flagship/category mismatches", () => {
