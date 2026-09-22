@@ -19,6 +19,8 @@ import {
   isRenderableBlogCard,
   isRenderableBlogEntry
 } from "../../src/lib/blogContentPolicy";
+import { getBlogArticleMetadata } from "../../src/lib/blogArticleMetadata";
+import { prepareVisualTutorialContent } from "../../src/lib/visualTutorial";
 
 interface Params extends ParsedUrlQuery {
   slug: string;
@@ -112,8 +114,25 @@ const getPostBySlug = graphql(/* GraphQL */ `
                 sys {
                   id
                 }
+                title
                 url
                 description
+                contentType
+                fileName
+                size
+                width
+                height
+              }
+              hyperlink {
+                sys {
+                  id
+                }
+                title
+                url
+                description
+                contentType
+                fileName
+                size
                 width
                 height
               }
@@ -122,9 +141,14 @@ const getPostBySlug = graphql(/* GraphQL */ `
         }
         date
         slug
+        excerpt
         featuredImage {
+          title
           url
           description
+          contentType
+          fileName
+          size
           width
           height
         }
@@ -158,9 +182,25 @@ const IndividualBlogPage = ({ blog, morePosts }: Props) => {
     return <ErrorPage statusCode={404} />;
   }
 
+  const metadata = getBlogArticleMetadata({
+    title: blog.title,
+    excerpt: blog.excerpt,
+    slug: blog.slug,
+    date: blog.date,
+    image: blog.featuredImage
+  });
+  const prepared = prepareVisualTutorialContent({
+    document: blog.body.json,
+    blockAssets: blog.body.links.assets.block,
+    featuredImage: blog.featuredImage,
+    articleSlug: blog.slug
+  });
+
+  prepared.diagnostics.forEach(diagnostic => console.warn(`[Contentful] ${diagnostic}`));
+
   return (
     <HeaderFooterLayout>
-      <BlogCover title={blog.title} url={blog.featuredImage.url} />
+      <BlogCover url={blog.featuredImage.url} />
       <Container
         component="article"
         sx={{
@@ -170,16 +210,45 @@ const IndividualBlogPage = ({ blog, morePosts }: Props) => {
         }}
       >
         <Head>
-          <title>{blog.title}</title>
-          <meta property="og:image" content={blog.featuredImage.url} />
+          <title>{metadata.title}</title>
+          <meta name="description" content={metadata.description} key="description" />
+          <link rel="canonical" href={metadata.canonicalUrl} key="canonical" />
+          <meta property="og:type" content="article" key="og:type" />
+          <meta property="og:locale" content={metadata.locale} key="og:locale" />
+          <meta property="og:site_name" content={metadata.siteName} key="og:site_name" />
+          <meta property="og:url" content={metadata.canonicalUrl} key="og:url" />
+          <meta property="og:title" content={metadata.title} key="og:title" />
+          <meta property="og:description" content={metadata.description} key="og:description" />
+          <meta property="og:image" content={metadata.image.url} key="og:image" />
+          <meta property="og:image:secure_url" content={metadata.image.url} key="og:image:secure_url" />
+          {metadata.image.contentType ? (
+            <meta property="og:image:type" content={metadata.image.contentType} key="og:image:type" />
+          ) : null}
+          {metadata.image.width ? (
+            <meta property="og:image:width" content={String(metadata.image.width)} key="og:image:width" />
+          ) : null}
+          {metadata.image.height ? (
+            <meta property="og:image:height" content={String(metadata.image.height)} key="og:image:height" />
+          ) : null}
+          <meta property="og:image:alt" content={metadata.image.alt} key="og:image:alt" />
+          {metadata.publishedTime ? (
+            <meta property="article:published_time" content={metadata.publishedTime} key="article:published_time" />
+          ) : null}
+          <meta name="twitter:card" content="summary_large_image" key="twitter:card" />
+          <meta name="twitter:title" content={metadata.title} key="twitter:title" />
+          <meta name="twitter:description" content={metadata.description} key="twitter:description" />
+          <meta name="twitter:image" content={metadata.image.url} key="twitter:image" />
+          <meta name="twitter:image:alt" content={metadata.image.alt} key="twitter:image:alt" />
         </Head>
         <PostHeader
           title={blog.title}
           tags={blog.contentfulMetadata?.tags}
           image={blog.featuredImage}
           date={blog.date}
+          articleSlug={blog.slug}
+          caption={prepared.heroCaption}
         />
-        <PostBody content={blog.body as BlogBody} />
+        <PostBody content={blog.body as BlogBody} articleSlug={blog.slug} prepared={prepared} />
         <MorePosts posts={morePosts} />
       </Container>
     </HeaderFooterLayout>

@@ -9,8 +9,11 @@
     "dev": "next",
     "build": "next build",
     "test": "jest",
+    "fixture:visual-tutorial": "node tests/render-visual-tutorial-fixture.cjs",
+    "test:visual-tutorial": "node --test tests/visual-tutorial.test.cjs",
     "test:portfolio": "node --test tests/portfolio.test.cjs",
     "test:analytics": "node --test tests/analytics.test.mjs",
+    "test:opportunity-brief": "node --test tests/opportunity-brief-builder.test.mjs",
     "test:attribution": "node --test tests/upwork-attribution.test.cjs",
     "url:upwork": "node scripts/upwork-attribution.cjs",
     "prepare": "husky"

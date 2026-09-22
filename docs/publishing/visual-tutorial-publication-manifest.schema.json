@@ -1,0 +1,578 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "urn:thexap:schema:visual-tutorial-publication-manifest:1.0.0",
+  "title": "thexap.com visual tutorial publication manifest",
+  "description": "A fail-closed handoff for one Contentful-backed visual tutorial package.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "profile",
+    "packageId",
+    "contentVersion",
+    "locale",
+    "slug",
+    "expectedPublicUrl",
+    "contentHash",
+    "manifestHash",
+    "metadata",
+    "article",
+    "hero",
+    "inlineVisuals",
+    "downloads",
+    "interactiveResources",
+    "resourceCallout"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "profile": {
+      "enum": ["prepared", "reviewable"]
+    },
+    "packageId": {
+      "type": "string",
+      "pattern": "^tutorial\\.[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "maxLength": 96
+    },
+    "contentVersion": {
+      "type": "string",
+      "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-[0-9A-Za-z]+(?:[.-][0-9A-Za-z]+)*)?$",
+      "maxLength": 64
+    },
+    "locale": {
+      "const": "en-US"
+    },
+    "slug": {
+      "$ref": "#/definitions/slug"
+    },
+    "expectedPublicUrl": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://www\\.thexap\\.com/blog/[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "contentHash": {
+      "$ref": "#/definitions/sha256"
+    },
+    "manifestHash": {
+      "$ref": "#/definitions/sha256"
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "excerpt", "editorialDate", "tagIds"],
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160
+        },
+        "excerpt": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "editorialDate": {
+          "type": "string",
+          "format": "date"
+        },
+        "tagIds": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]+$",
+            "maxLength": 64
+          }
+        }
+      }
+    },
+    "article": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/localFile"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "mimeType": {
+              "const": "text/markdown"
+            }
+          }
+        }
+      ]
+    },
+    "hero": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/imageAsset"
+        },
+        {
+          "type": "object",
+          "not": {
+            "required": ["order"]
+          },
+          "properties": {
+            "id": {
+              "const": "hero"
+            },
+            "presentation": {
+              "const": "hero"
+            },
+            "decorative": {
+              "const": false
+            }
+          }
+        }
+      ]
+    },
+    "inlineVisuals": {
+      "type": "array",
+      "items": {
+        "allOf": [
+          {
+            "$ref": "#/definitions/imageAsset"
+          },
+          {
+            "type": "object",
+            "required": ["order"],
+            "properties": {
+              "order": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "presentation": {
+                "enum": ["prose", "wide"]
+              }
+            }
+          }
+        ]
+      }
+    },
+    "downloads": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "allOf": [
+        {
+          "contains": {
+            "type": "object",
+            "properties": {
+              "mimeType": {
+                "const": "application/pdf"
+              }
+            },
+            "required": ["mimeType"]
+          }
+        },
+        {
+          "contains": {
+            "type": "object",
+            "properties": {
+              "mimeType": {
+                "const": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+              }
+            },
+            "required": ["mimeType"]
+          }
+        }
+      ],
+      "items": {
+        "$ref": "#/definitions/downloadAsset"
+      }
+    },
+    "interactiveResources": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/interactiveResource"
+      }
+    },
+    "resourceCallout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["heading", "intro", "placement"],
+      "properties": {
+        "heading": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "intro": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 300
+        },
+        "placement": {
+          "const": "after-article"
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "profile": {
+            "const": "prepared"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "hero": {
+            "properties": {
+              "expectedPublicUrl": {
+                "type": "null"
+              }
+            }
+          },
+          "inlineVisuals": {
+            "items": {
+              "properties": {
+                "expectedPublicUrl": {
+                  "type": "null"
+                }
+              }
+            }
+          },
+          "downloads": {
+            "items": {
+              "properties": {
+                "expectedPublicUrl": {
+                  "type": "null"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "profile": {
+            "const": "reviewable"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "hero": {
+            "properties": {
+              "expectedPublicUrl": {
+                "$ref": "#/definitions/contentfulAssetUrl"
+              }
+            }
+          },
+          "inlineVisuals": {
+            "items": {
+              "properties": {
+                "expectedPublicUrl": {
+                  "$ref": "#/definitions/contentfulAssetUrl"
+                }
+              }
+            }
+          },
+          "downloads": {
+            "items": {
+              "properties": {
+                "expectedPublicUrl": {
+                  "$ref": "#/definitions/contentfulAssetUrl"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "definitions": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "maxLength": 100
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*$",
+      "maxLength": 48
+    },
+    "relativePath": {
+      "type": "string",
+      "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))[A-Za-z0-9][A-Za-z0-9._/-]*$",
+      "maxLength": 240
+    },
+    "contentfulAssetUrl": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://(?:images|assets)\\.ctfassets\\.net/.+$"
+    },
+    "localFile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256", "bytes", "mimeType"],
+      "properties": {
+        "path": {
+          "$ref": "#/definitions/relativePath"
+        },
+        "sha256": {
+          "$ref": "#/definitions/sha256"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "mimeType": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 127
+        }
+      }
+    },
+    "attribution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["label", "url"],
+      "properties": {
+        "label": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https://"
+        }
+      }
+    },
+    "imageAsset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "path",
+        "sha256",
+        "bytes",
+        "mimeType",
+        "width",
+        "height",
+        "sourceKind",
+        "decorative",
+        "alt",
+        "caption",
+        "attribution",
+        "presentation",
+        "mobileBehavior",
+        "expectedPublicUrl"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/id"
+        },
+        "path": {
+          "$ref": "#/definitions/relativePath"
+        },
+        "sha256": {
+          "$ref": "#/definitions/sha256"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10000000
+        },
+        "mimeType": {
+          "enum": ["image/png", "image/jpeg", "image/webp"]
+        },
+        "width": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 8192
+        },
+        "height": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 8192
+        },
+        "sourceKind": {
+          "enum": ["original", "generated", "licensed", "third-party"]
+        },
+        "decorative": {
+          "type": "boolean"
+        },
+        "alt": {
+          "type": "string",
+          "maxLength": 500
+        },
+        "caption": {
+          "type": ["string", "null"],
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "attribution": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/attribution"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "presentation": {
+          "enum": ["hero", "prose", "wide"]
+        },
+        "order": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "mobileBehavior": {
+          "const": "scale"
+        },
+        "expectedPublicUrl": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/contentfulAssetUrl"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "decorative": {
+                "const": true
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "alt": {
+                "maxLength": 0
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "alt": {
+                "minLength": 1
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "sourceKind": {
+                "enum": ["licensed", "third-party"]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "attribution": {
+                "$ref": "#/definitions/attribution"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "downloadAsset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "path",
+        "sha256",
+        "bytes",
+        "mimeType",
+        "fileName",
+        "label",
+        "description",
+        "expectedPublicUrl"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/id"
+        },
+        "path": {
+          "$ref": "#/definitions/relativePath"
+        },
+        "sha256": {
+          "$ref": "#/definitions/sha256"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 50000000
+        },
+        "mimeType": {
+          "enum": ["application/pdf", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"]
+        },
+        "fileName": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*\\.(?:pdf|docx)$",
+          "maxLength": 180
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 300
+        },
+        "expectedPublicUrl": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/contentfulAssetUrl"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "interactiveResource": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "owner", "label", "description", "expectedPublicUrl"],
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/id"
+        },
+        "owner": {
+          "const": "website"
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 300
+        },
+        "expectedPublicUrl": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https://www\\.thexap\\.com/tools/[a-z0-9]+(?:-[a-z0-9]+)*$"
+        }
+      }
+    }
+  }
+}
