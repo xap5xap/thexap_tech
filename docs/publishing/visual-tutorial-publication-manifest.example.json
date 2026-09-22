@@ -1,0 +1,116 @@
+{
+  "schemaVersion": "1.0.0",
+  "profile": "reviewable",
+  "packageId": "tutorial.launch-scope-canvas",
+  "contentVersion": "1.0.0-rc.1",
+  "locale": "en-US",
+  "slug": "turn-a-broad-idea-into-a-testable-scope",
+  "expectedPublicUrl": "https://www.thexap.com/blog/turn-a-broad-idea-into-a-testable-scope",
+  "contentHash": "b59e94f8bedee93517f274d15cbd03e820d63cce791bbfc5cf8a14722ac3ac52",
+  "manifestHash": "8107ed226115fbe74e63a15f35135d0f355e43f3cf3367d1b3a786a1270dd9ac",
+  "metadata": {
+    "title": "Turn a broad idea into a testable product scope",
+    "excerpt": "Use a small scope canvas to name one audience, one painful situation, one promised change and the riskiest assumption to test next.",
+    "editorialDate": "2026-09-21",
+    "tagIds": ["productDevelopment", "testing"]
+  },
+  "article": {
+    "path": "blog.md",
+    "sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+    "bytes": 8421,
+    "mimeType": "text/markdown"
+  },
+  "hero": {
+    "id": "hero",
+    "path": "images/hero.png",
+    "sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+    "bytes": 483210,
+    "mimeType": "image/png",
+    "width": 1600,
+    "height": 900,
+    "sourceKind": "original",
+    "decorative": false,
+    "alt": "A broad cloud of product ideas narrowing into one audience, one problem and one testable assumption.",
+    "caption": "A useful first scope narrows the decision before it expands the feature list.",
+    "attribution": null,
+    "presentation": "hero",
+    "mobileBehavior": "scale",
+    "expectedPublicUrl": "https://images.ctfassets.net/000000000000/hero-example/hero.png"
+  },
+  "inlineVisuals": [
+    {
+      "id": "idea-problem-solution",
+      "order": 1,
+      "path": "images/idea-problem-solution.png",
+      "sha256": "3333333333333333333333333333333333333333333333333333333333333333",
+      "bytes": 278144,
+      "mimeType": "image/png",
+      "width": 1200,
+      "height": 1500,
+      "sourceKind": "original",
+      "decorative": false,
+      "alt": "Three stacked cards distinguish an idea, a user problem and a proposed solution.",
+      "caption": "Separating these three statements keeps a proposed feature from masquerading as evidence.",
+      "attribution": null,
+      "presentation": "wide",
+      "mobileBehavior": "scale",
+      "expectedPublicUrl": "https://images.ctfassets.net/000000000000/idea-problem-solution-example/idea-problem-solution.png"
+    },
+    {
+      "id": "scope-canvas-example",
+      "order": 2,
+      "path": "images/scope-canvas-example.png",
+      "sha256": "4444444444444444444444444444444444444444444444444444444444444444",
+      "bytes": 301020,
+      "mimeType": "image/png",
+      "width": 1200,
+      "height": 1500,
+      "sourceKind": "original",
+      "decorative": false,
+      "alt": "A completed fictional scope canvas with audience, current workaround, promised change, non-goals and a decision rule.",
+      "caption": "Fictional example: a small neighborhood repair service tests request clarity before building scheduling automation.",
+      "attribution": null,
+      "presentation": "wide",
+      "mobileBehavior": "scale",
+      "expectedPublicUrl": "https://images.ctfassets.net/000000000000/scope-canvas-example/scope-canvas-example.png"
+    }
+  ],
+  "downloads": [
+    {
+      "id": "scope-canvas-pdf",
+      "path": "downloads/launch-scope-canvas.pdf",
+      "sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+      "bytes": 218450,
+      "mimeType": "application/pdf",
+      "fileName": "launch-scope-canvas.pdf",
+      "label": "Download the scope canvas as PDF",
+      "description": "A print-ready scope canvas with a fictional completed example and completion check.",
+      "expectedPublicUrl": "https://assets.ctfassets.net/000000000000/scope-canvas-pdf/launch-scope-canvas.pdf"
+    },
+    {
+      "id": "scope-canvas-docx",
+      "path": "downloads/launch-scope-canvas.docx",
+      "sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+      "bytes": 84230,
+      "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "fileName": "launch-scope-canvas.docx",
+      "label": "Download the editable scope canvas as DOCX",
+      "description": "An editable scope canvas with the same prompts and fictional example as the PDF.",
+      "expectedPublicUrl": "https://assets.ctfassets.net/000000000000/scope-canvas-docx/launch-scope-canvas.docx"
+    }
+  ],
+  "interactiveResources": [
+    {
+      "id": "opportunity-brief-builder",
+      "owner": "website",
+      "label": "Open the Opportunity Brief Builder",
+      "description": "Complete the same reasoning in a browser and export the result as Markdown.",
+      "expectedPublicUrl": "https://www.thexap.com/tools/opportunity-brief-builder"
+    }
+  ],
+  "resourceCallout": {
+    "heading": "Use the scope resources",
+    "intro": "Choose the format that fits the way you want to work. The downloads contain the same core prompts, and the builder stays on thexap.com.",
+    "placement": "after-article"
+  }
+}
