@@ -1389,6 +1389,7 @@ export type GetPostBySlugQuery = {
       title?: string | null;
       date?: any | null;
       slug?: string | null;
+      excerpt?: string | null;
       body?: {
         __typename?: "BlogBody";
         json: any;
@@ -1412,8 +1413,24 @@ export type GetPostBySlugQuery = {
             __typename?: "BlogBodyAssets";
             block: Array<{
               __typename?: "Asset";
+              title?: string | null;
               url?: string | null;
               description?: string | null;
+              contentType?: string | null;
+              fileName?: string | null;
+              size?: number | null;
+              width?: number | null;
+              height?: number | null;
+              sys: { __typename?: "Sys"; id: string };
+            } | null>;
+            hyperlink: Array<{
+              __typename?: "Asset";
+              title?: string | null;
+              url?: string | null;
+              description?: string | null;
+              contentType?: string | null;
+              fileName?: string | null;
+              size?: number | null;
               width?: number | null;
               height?: number | null;
               sys: { __typename?: "Sys"; id: string };
@@ -1423,8 +1440,12 @@ export type GetPostBySlugQuery = {
       } | null;
       featuredImage?: {
         __typename?: "Asset";
+        title?: string | null;
         url?: string | null;
         description?: string | null;
+        contentType?: string | null;
+        fileName?: string | null;
+        size?: number | null;
         width?: number | null;
         height?: number | null;
       } | null;
@@ -1917,8 +1938,37 @@ export const GetPostBySlugDocument = {
                                                   selections: [{ kind: "Field", name: { kind: "Name", value: "id" } }]
                                                 }
                                               },
+                                              { kind: "Field", name: { kind: "Name", value: "title" } },
                                               { kind: "Field", name: { kind: "Name", value: "url" } },
                                               { kind: "Field", name: { kind: "Name", value: "description" } },
+                                              { kind: "Field", name: { kind: "Name", value: "contentType" } },
+                                              { kind: "Field", name: { kind: "Name", value: "fileName" } },
+                                              { kind: "Field", name: { kind: "Name", value: "size" } },
+                                              { kind: "Field", name: { kind: "Name", value: "width" } },
+                                              { kind: "Field", name: { kind: "Name", value: "height" } }
+                                            ]
+                                          }
+                                        },
+                                        {
+                                          kind: "Field",
+                                          name: { kind: "Name", value: "hyperlink" },
+                                          selectionSet: {
+                                            kind: "SelectionSet",
+                                            selections: [
+                                              {
+                                                kind: "Field",
+                                                name: { kind: "Name", value: "sys" },
+                                                selectionSet: {
+                                                  kind: "SelectionSet",
+                                                  selections: [{ kind: "Field", name: { kind: "Name", value: "id" } }]
+                                                }
+                                              },
+                                              { kind: "Field", name: { kind: "Name", value: "title" } },
+                                              { kind: "Field", name: { kind: "Name", value: "url" } },
+                                              { kind: "Field", name: { kind: "Name", value: "description" } },
+                                              { kind: "Field", name: { kind: "Name", value: "contentType" } },
+                                              { kind: "Field", name: { kind: "Name", value: "fileName" } },
+                                              { kind: "Field", name: { kind: "Name", value: "size" } },
                                               { kind: "Field", name: { kind: "Name", value: "width" } },
                                               { kind: "Field", name: { kind: "Name", value: "height" } }
                                             ]
@@ -1935,14 +1985,19 @@ export const GetPostBySlugDocument = {
                       },
                       { kind: "Field", name: { kind: "Name", value: "date" } },
                       { kind: "Field", name: { kind: "Name", value: "slug" } },
+                      { kind: "Field", name: { kind: "Name", value: "excerpt" } },
                       {
                         kind: "Field",
                         name: { kind: "Name", value: "featuredImage" },
                         selectionSet: {
                           kind: "SelectionSet",
                           selections: [
+                            { kind: "Field", name: { kind: "Name", value: "title" } },
                             { kind: "Field", name: { kind: "Name", value: "url" } },
                             { kind: "Field", name: { kind: "Name", value: "description" } },
+                            { kind: "Field", name: { kind: "Name", value: "contentType" } },
+                            { kind: "Field", name: { kind: "Name", value: "fileName" } },
+                            { kind: "Field", name: { kind: "Name", value: "size" } },
                             { kind: "Field", name: { kind: "Name", value: "width" } },
                             { kind: "Field", name: { kind: "Name", value: "height" } }
                           ]
