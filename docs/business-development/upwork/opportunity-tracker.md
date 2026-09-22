@@ -1,6 +1,6 @@
 # Upwork opportunity tracker
 
-Updated September 20, 2026. This tracker records decisions, application status, and bounded attribution state. The dated research reports remain the source for the original market capture and ranking. Follow the [Upwork writing style](README.md) for every draft.
+Updated September 22, 2026. This tracker records decisions, application status, and bounded attribution state. The dated research reports remain the source for the original market capture and ranking. Follow the [Upwork writing style](README.md) for every draft.
 
 ## Status guide
 
@@ -35,6 +35,7 @@ A reserved alias stays `Not distributed`. An observed analytics alias cannot cha
 | 4 | Technical Product Manager, SaaS | `~022087883401522996504` | Passed | Not distributed | Xavier decided not to apply on September 10 | [Job brief](jobs/technical-product-manager-saas/job-post.md), [proposal](jobs/technical-product-manager-saas/proposal.md) |
 | 5 | KINSTALL B2B SaaS | `~022088299779008397024` | Shortlisted | Not distributed | Research captured September 9; geography, activity, attachments, and capacity need review | [Research report](2026-09-09-ai-product-execution-demand.md) |
 | Unranked | Secret World map marketplace | `~022100839223652532326` | Applied | Historical unknown | Xavier confirmed the application was submitted September 18; exact submitted fields and links were not independently read back | [Job brief](jobs/secret-world-map-marketplace/job-post.md), [proposal](jobs/secret-world-map-marketplace/proposal.md) |
+| Unranked | Multi-brand social media AI platform | `~022102458229293359010` | Passed | Not distributed | Xavier accepted the pass recommendation September 22; saved as a future production-AI proof reference | [Job brief and candidate example](jobs/social-media-ai-agent-platform/job-post.md) |
 
 ## Daily research workflow
 
