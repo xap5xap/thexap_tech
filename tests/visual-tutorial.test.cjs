@@ -163,10 +163,10 @@ test("PDF and DOCX hyperlinks render as resource links and never as next/image s
   assert.doesNotMatch(html, /<img[^>]+(?:\.pdf|\.docx)/);
 });
 
-test("native thexap.com resource URLs render as local Next.js paths", () => {
+test("site-owned thexap.com URLs render as local Next.js paths", () => {
   assert.equal(
-    getSiteOwnedHref("https://www.thexap.com/tools/opportunity-brief-builder"),
-    "/tools/opportunity-brief-builder"
+    getSiteOwnedHref("https://www.thexap.com/blog/choosing-a-beachhead"),
+    "/blog/choosing-a-beachhead"
   );
   assert.equal(getSiteOwnedHref("https://external.example/tools/example"), null);
 
@@ -178,7 +178,7 @@ test("native thexap.com resource URLs render as local Next.js paths", () => {
       prepared
     })
   );
-  assert.match(html, /href="\/tools\/opportunity-brief-builder"/);
+  assert.match(html, /href="\/blog\/choosing-a-beachhead"/);
 });
 
 test("missing and unsupported Assets degrade to text or safe links without throwing", () => {

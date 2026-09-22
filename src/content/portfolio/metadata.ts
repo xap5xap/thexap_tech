@@ -61,18 +61,6 @@ export const scheduleMeetingMetadata: PageMetadata = {
   image: defaultSocialImage
 };
 
-export const opportunityBriefBuilderMetadata: PageMetadata = {
-  documentTitle: "Opportunity Brief Builder | Xavier Perez",
-  shareTitle: "Opportunity Brief Builder",
-  description:
-    "Turn an early product idea into a clear opportunity brief with a testable assumption, decision rule, and exportable Markdown.",
-  shareDescription:
-    "Frame the user, current situation, intended change, and assumption worth testing. Your entries stay in the browser tab.",
-  canonicalPath: "/tools/opportunity-brief-builder",
-  indexable: true,
-  image: defaultSocialImage
-};
-
 export const portfolioIndexMetadata: PageMetadata = {
   documentTitle: "Selected products and systems | Xavier Perez",
   shareTitle: "Selected products and systems",

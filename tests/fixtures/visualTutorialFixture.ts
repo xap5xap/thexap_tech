@@ -74,16 +74,14 @@ export const visualTutorialFixture = {
         embeddedAsset("completed-brief"),
         paragraph([text("The third graphic intentionally has no caption and must not consume this prose paragraph.")]),
         { nodeType: BLOCKS.HEADING_2, data: {}, content: [text("Use the opportunity resources")] },
-        paragraph([text("Choose an editable, printable or browser-based format.")]),
+        paragraph([text("Choose an editable or printable format.")]),
         {
           nodeType: BLOCKS.UL_LIST,
           data: {},
           content: [
             listItem([assetHyperlink("brief-pdf", "Download the opportunity brief as PDF (218 KB)")]),
             listItem([assetHyperlink("brief-docx", "Download the editable opportunity brief as DOCX (84 KB)")]),
-            listItem([
-              hyperlink("https://www.thexap.com/tools/opportunity-brief-builder", "Open the Opportunity Brief Builder")
-            ])
+            listItem([hyperlink("https://www.thexap.com/blog/choosing-a-beachhead", "Read a related product article")])
           ]
         }
       ]

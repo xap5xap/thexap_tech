@@ -13,8 +13,8 @@ This contract defines how a private visual tutorial package becomes a Contentful
 ## Decisions
 
 1. Contentful owns the blog entry, Contentful metadata tags, featured image, inline publication images and public PDF/DOCX files.
-2. `thexap.com` owns the article renderer, metadata rendering and interactive application code.
-3. Interactive tools are normal website routes linked from the article. They are not HTML, CSS or JavaScript files uploaded to Contentful. The Opportunity Brief Builder route is permanently `https://www.thexap.com/tools/opportunity-brief-builder` unless Xavier separately approves a route and redirect decision.
+2. `thexap.com` owns the article renderer, metadata rendering and any separately approved interactive application code.
+3. Interactive tools, when separately approved, are normal website routes linked from the article. They are not HTML, CSS or JavaScript files uploaded to Contentful.
 4. Downloads use Contentful Asset hyperlinks inside the existing `blog.body` RichText field. This uses the live schema's existing `BlogBodyAssets.hyperlink` capability. No Contentful model change is required.
 5. Image alt text lives in the Contentful Asset `description`. Caption and attribution stay separate in generated RichText caption paragraphs. The Asset `title` carries a small machine-readable presentation key so the website can associate the right caption without a new content type.
 6. The publisher consumes one schema-valid manifest, fails before writes on any local mismatch, and uses a private durable receipt to create, update or resume one draft. A rerun may not create another entry or another copy of a known asset.
@@ -33,14 +33,13 @@ flowchart LR
     P -->|entry and asset drafts| C[Contentful]
     C -->|published entry event through existing webhook| V[Vercel]
     V --> W[thexap.com article renderer]
-    W --> T[Native Opportunity Brief Builder route]
     C -->|Asset hyperlinks| W
     X[Xavier approval gates] --> P
     X --> C
     R[Private receipt] <--> P
 ```
 
-The Contentful article contains a normal HTTPS link to the native tool route. Contentful does not host the tool implementation. Vercel receives the existing webhook after Contentful publication. A webhook acceptance or a ready deployment does not prove that the expected page rendered correctly.
+Vercel receives the existing webhook after Contentful publication. A webhook acceptance or a ready deployment does not prove that the expected page rendered correctly.
 
 ## Ownership matrix
 
@@ -49,7 +48,7 @@ The Contentful article contains a normal HTTPS link to the native tool route. Co
 | Content workspace  | Content authoring workflow    | Public Markdown, approved local images, PDF/DOCX files, visual plan, publication manifest and private editorial/evidence records                        | CMS state, website code, public deployment state or remote credentials                                          |
 | Publisher          | `contentful-publish`          | Fail-closed validation, RichText conversion, Contentful draft creation/update, idempotent retry/resume, private receipt and explicit publish command    | Editorial decisions, new tags, schema mutations, website routes, Vercel configuration or social authorization   |
 | Contentful         | CMS                           | `blog` entry, metadata tag links, featured Asset, inline image Assets, PDF/DOCX Assets and their draft/published versions                               | Interactive application code, website layout or proof that Vercel/public rendering succeeded                    |
-| Website repository | `thexap_tech`                 | Blog queries, generated GraphQL types, article/asset rendering, SEO/social metadata, responsive and accessible presentation, native tool routes         | Private source evidence, CMS write credentials or Contentful publication state                                  |
+| Website repository | `thexap_tech`                 | Blog queries, generated GraphQL types, article/asset rendering, SEO/social metadata, and responsive and accessible presentation                         | Private source evidence, CMS write credentials or Contentful publication state                                  |
 | Vercel             | Existing deployment path      | Build and deployment created by the existing Contentful webhook                                                                                         | Editorial approval, CMS publication or public rendering verification                                            |
 | Xavier             | Product and publication owner | Slug/route decisions, tags and public metadata, visual/accessibility decisions, exact-version approval, upload/publication/social/cleanup authorization | Routine implementation mechanics after a bounded action is authorized                                           |
 | Linear             | Work ledger                   | Decisions, acceptance evidence, repository references, public-safe hashes and limitations                                                               | Tokens, Contentful/Vercel private identifiers, private evidence, raw logs or a second copy of the full contract |
@@ -62,7 +61,6 @@ All final URLs use HTTPS. Local paths, preview URLs, Contentful admin URLs and p
 | Resource                   | Required public form                                     | Rule                                                                                                                  |
 | -------------------------- | -------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
 | Article                    | `https://www.thexap.com/blog/{slug}`                     | Exact manifest slug, no query, fragment or trailing slash                                                             |
-| Opportunity Brief Builder  | `https://www.thexap.com/tools/opportunity-brief-builder` | Site-owned native route; do not upload the prototype files to Contentful                                              |
 | Other interactive resource | `https://www.thexap.com/tools/{tool-slug}`               | Requires its own approved route issue; external vendors are not inferred by this contract                             |
 | Image or download          | Exact processed Contentful Asset delivery URL            | Host must be `images.ctfassets.net` or `assets.ctfassets.net`; the admin URL and Asset ID stay in the private receipt |
 
@@ -128,7 +126,7 @@ The publisher must finish every local check before creating an API client or mak
 - Tag IDs are unique and case-sensitive. A later read-only Contentful preflight proves they exist and are public before any write.
 - The first standalone image reference after the H1 is the declared hero. It is used only as `featuredImage`, not duplicated in the body.
 - Every remaining standalone local image reference matches one declared inline visual, in the same order, exactly once. Undeclared, missing or unused visual records fail.
-- Every site link is an approved `https://www.thexap.com` URL. The Opportunity Brief Builder link, when present, is exactly `/tools/opportunity-brief-builder`.
+- Every site link is an approved `https://www.thexap.com` URL.
 - `prepared` manifests have null Contentful Asset URLs. `reviewable` manifests have non-null URLs matching the exact draft readback.
 - Recomputed `contentHash` and `manifestHash` match.
 - No public string contains an absolute local path, a secret, a private product identifier or private evidence.
@@ -151,7 +149,7 @@ Schema 1 rejects fenced or indented code blocks, tables, blockquotes, nested lis
 
 The parser must prove it consumed every non-whitespace token. Validation compares block order, plain text, headings, list items, hyperlinks and image slots between source Markdown and generated RichText. Silent stripping, flattening or conversion to visibly different content fails before network access. The current converter's warn-and-skip behavior is not allowed.
 
-Downloads and tool links do not appear as local Markdown links. The publisher appends the manifest-defined resource callout after the article, which prevents local/private paths from leaking into the public body.
+Downloads and separately approved site links do not appear as local Markdown links. The publisher appends the manifest-defined resource callout after the article, which prevents local/private paths from leaking into the public body.
 
 ## Contentful representation
 
@@ -197,8 +195,6 @@ PDF and DOCX files are Contentful Assets. They remain draft while the entry is d
 5. one list item per interactive resource in manifest order, containing a normal HTTPS `hyperlink`.
 
 The website queries `body.links.assets.hyperlink` with `sys.id`, `title`, `description`, `url`, `contentType`, `fileName` and `size`. It renders PDF/DOCX links as accessible resource links or cards, never through `next/image`. Unknown file types render as a safe normal link or are omitted with a logged diagnostic; they do not crash the page.
-
-The Opportunity Brief Builder list item links to `https://www.thexap.com/tools/opportunity-brief-builder`. It never links to `interactive/index.html` or another local prototype file.
 
 ## Accessibility and responsive images
 
@@ -317,13 +313,13 @@ A publication can be called complete only when all applicable evidence exists fo
 | ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Local package            | Schema and semantic validation output; source SHA-256/bytes/MIME/dimensions; supported Markdown round-trip; no private/local links; PDF and DOCX inspection; contextual privacy review                                  |
 | Contentful preflight     | Current `blog` fields/locale, public tag existence, unique slug result and no schema contradiction                                                                                                                      |
-| Draft                    | Private receipt; entry/Asset draft IDs and versions; field-by-field readback; ordered inline images; hero not duplicated; Asset titles/descriptions; two download hyperlinks; tool link; zero unintended remote objects |
+| Draft                    | Private receipt; entry/Asset draft IDs and versions; field-by-field readback; ordered inline images; hero not duplicated; Asset titles/descriptions; two download hyperlinks; approved site links; zero unintended remote objects |
 | Exact approval           | Xavier's record naming content version, content hash, manifest hash and the reviewed draft version                                                                                                                      |
 | CMS publication          | Published versions/timestamps for every required Asset and the entry; delivery API field/metadata/body readback                                                                                                         |
 | Webhook                  | Existing webhook delivery event, target, response/outcome and timestamp, or an explicit statement that evidence is unavailable                                                                                          |
 | Vercel                   | Deployment/build identifier held privately, expected project/environment, source revision, build result and `READY` production state                                                                                    |
 | Public article           | HTTP success for canonical URL; canonical/description/Open Graph/X metadata; exact title/date/tags/body; correct hero/figures/captions/attributions                                                                     |
-| Public resources         | PDF and DOCX links resolve with correct MIME type, filename and original-byte hash; Opportunity Brief Builder route resolves and the article link targets it                                                            |
+| Public resources         | PDF and DOCX links resolve with correct MIME type, filename and original-byte hash                                                                                                                                        |
 | Blog index               | One card for the slug with expected title, date, excerpt, tags and featured image                                                                                                                                       |
 | Accessibility/responsive | Real-browser desktop/tablet/390 px checks, keyboard and focus, heading order, alt/caption semantics, no overflow/distortion, no console errors                                                                          |
 
@@ -337,7 +333,6 @@ A publication can be called complete only when all applicable evidence exists fo
 - Public Contentful delivery URLs are allowed in a `reviewable` manifest because they are intended article destinations. They are not a substitute for private remote IDs or state.
 - Use least-privilege read credentials for preflight/readback and a write credential only for an authorized write operation.
 - Logs redact authorization headers, tokens, cookies, private identifiers and user-entered tool content.
-- The Opportunity Brief Builder's reader inputs remain in browser memory only under XAP-207. The publication manifest never contains reader data.
 - No remote image fetch, third-party host or new vendor is introduced by default. Licensed/third-party media requires an approved source and attribution.
 
 ## Versioning and backward compatibility
@@ -359,27 +354,25 @@ The dependency order is:
 
 ```text
 XAP-206
-  -> XAP-207 (native Opportunity Brief Builder)
   -> XAP-208 (article, figure and resource renderer)
        -> XAP-209 (manifest-driven publisher)
             -> XAP-210 (existing webhook and release runbook)
                  -> supervised XAP-130 publication
 ```
 
-XAP-207 and XAP-208 may proceed in parallel after this contract is Done. XAP-209 also depends on XAP-208 because its RichText output must have a verified renderer. XAP-210 audits the existing integration after renderer/publisher delivery. None of these dependencies authorizes XAP-130 publication.
+XAP-208 may proceed after this contract is Done. XAP-209 also depends on XAP-208 because its RichText output must have a verified renderer. XAP-210 audits the existing integration after renderer/publisher delivery. None of these dependencies authorizes XAP-130 publication.
 
 | Issue   | Workspace and allowed writes                                                    | Must implement/verify                                                                                                                                                                                                    | No-touch and stop conditions                                                                                                                                                                                      |
 | ------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| XAP-207 | `/Users/xavierperez/React/thexap_tech`; native tool route/components/tests/docs | `/tools/opportunity-brief-builder`, prototype behavior, browser-memory-only privacy, metadata, desktop/390 px accessibility and links back to the eventual tutorial URL                                                  | Read prototype workspace only; no CMS/publisher/Vercel writes. Stop for persistence, auth, new vendor, analytics-consent change, route change or unresolved material product/visual choice.                       |
 | XAP-208 | `thexap_tech`; blog queries/components/source tests/generated GraphQL only      | Query Asset title/description/dimensions/type/name/size plus block/hyperlink collections; `vtp1` figures; Asset download links; metadata/canonical; legacy fallback; desktop/tablet/390 px browser checks                | No Contentful/publisher/content-package writes. Regenerate types from live schema. Stop for schema mutation, new route, accessibility tradeoff, unavailable schema or overlapping unrelated changes.              |
 | XAP-209 | `/Users/xavierperez/tools/contentful-publish` and its matching skill/docs/tests | Consume schema; local fail-closed validator; exact RichText mapping; draft Assets; idempotent receipt; create/update/resume/status/publish commands; duplicate/partial-failure tests; existing behavior regression tests | CH-01 and website are read-only fixtures. No real upload/publication/model/tag/webhook/deployment change. Stop for a model change, new credential, deletion, production write or unsupported Contentful behavior. |
 | XAP-210 | `thexap_tech/docs/publishing/contentful-vercel-release-runbook.md`              | Read-only audit of existing webhook, one historical/authorized trace, state/evidence/timing/recovery runbook and privacy-safe receipt template                                                                           | No trigger/config/deploy/publish/retry. Stop and request a repair issue if integration is absent/broken or access is insufficient. Never create a second webhook.                                                 |
 
-All four issues run repository-specific lint/build/tests, scan for U+2014 and report unavailable authenticated checks exactly. They do not change the status of sibling issues.
+All three issues run repository-specific lint/build/tests, scan for U+2014 and report unavailable authenticated checks exactly. They do not change the status of sibling issues.
 
 ## XAP-130 migration notes
 
-XAP-130's private v1.2-rc1 manifest is a content snapshot, not this publication manifest. It proves the shape to migrate: article Markdown, one hero, three inline PNG visuals, PDF/DOCX downloads, a local interactive prototype and exact file hashes. Do not edit that package in XAP-206.
+XAP-130's private v1.2-rc1 manifest is a content snapshot, not this publication manifest. It proves the shape to migrate: article Markdown, one hero, three inline PNG visuals, PDF/DOCX downloads and exact file hashes. Do not edit that package in XAP-206.
 
 When XAP-130 reaches the supervised release path:
 
@@ -387,10 +380,9 @@ When XAP-130 reaches the supervised release path:
 2. Copy exact current file hashes, byte counts, MIME types and dimensions after fresh verification. Do not copy absolute paths or private history fields.
 3. Declare the hero and three inline PNGs in their exact article order with approved alt, caption and attribution values.
 4. Declare exactly the PDF and DOCX companion files. The existing publisher cannot upload them yet; wait for XAP-209.
-5. Link the interactive resource to `https://www.thexap.com/tools/opportunity-brief-builder`. Do not upload the local HTML/CSS/JavaScript prototype. Wait for XAP-207 and verify the native route.
-6. Select existing public tag IDs and final editorial metadata before local validation. Unknown/new tags remain an owner decision and a stop condition.
-7. Run the prepared -> draft -> reviewable -> exact approval -> publication lifecycle. The old Contentful dry run is conversion evidence only.
-8. Do not call XAP-130 published or Done until XAP-207 through XAP-210 and every public-readback layer above are complete.
+5. Select existing public tag IDs and final editorial metadata before local validation. Unknown/new tags remain an owner decision and a stop condition.
+6. Run the prepared -> draft -> reviewable -> exact approval -> publication lifecycle. The old Contentful dry run is conversion evidence only.
+7. Do not call XAP-130 published or Done until XAP-208 through XAP-210 and every public-readback layer above are complete.
 
 ## Stop conditions
 

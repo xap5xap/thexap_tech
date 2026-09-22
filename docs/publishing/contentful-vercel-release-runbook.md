@@ -37,7 +37,6 @@ flowchart LR
     H -->|main| V[thexap-tech production build]
     V --> W[www.thexap.com]
     W --> B[Blog index and article]
-    W --> T[Site-owned tool route]
 ```
 
 | Surface                                 | Current owner                         | Responsibility                                                                                                                                                                  |
@@ -46,7 +45,7 @@ flowchart LR
 | Publisher                               | `contentful-publish`                  | Validate, create/resume/status one draft, publish the exact approved Assets and entry, and confirm Content Delivery API readback. It does not verify the webhook or deployment. |
 | Contentful                              | Xavier's Contentful account and space | Store the `blog` entry and Assets, expose delivery state, and deliver the existing webhook. The authenticated owner used for this audit created and last updated the webhook.   |
 | Vercel                                  | Xavier's `thexap-tech` project        | Own the secret-bearing deploy-hook URL, bind the hook to `main`, build the repository snapshot and assign a successful production deployment.                                   |
-| Website repository                      | `thexap_tech`                         | Own the renderer, public metadata, native tool route and repository delivery.                                                                                                   |
+| Website repository                      | `thexap_tech`                         | Own the renderer, public metadata and repository delivery.                                                                                                                     |
 | Xavier                                  | Publication and production owner      | Approve the exact version, CMS publication, any recovery action, production code release, rollback and final visual acceptance.                                                 |
 
 The deploy-hook URL is credential material. Vercel project administrators can view or revoke it. Contentful space administrators can view or replace the stored destination. The current Contentful definition has no custom headers; the opaque URL path is the secret. Never copy that URL, tokens, provider IDs or raw logs into Git, Linear, screenshots or chat.
@@ -75,9 +74,9 @@ The Asset topics matter. The XAP-209 publication order publishes the required As
 - Deploy-hook branch: `main`.
 - Historical calls created production-targeted deployments from the then-current `main` commit.
 - The currently served production revision and current remote `main` both resolve to `befd5b5fbaa93d7f9ecb9a14ec1d6de47d2eb289` at audit time.
-- XAP-207 commit `b21c501443adaae71f993ecc50ae6f7c9d25c2cd` and XAP-208 commit `c852bd4ebf1ee1518118f88eae396b569b3264b6` are on `develop` and are not ancestors of current `main`.
+- XAP-208 commit `c852bd4ebf1ee1518118f88eae396b569b3264b6` is on `develop` and is not an ancestor of current `main`.
 
-That last point is a release gate for XAP-130. Publishing the article before a separately authorized production code release would rebuild `main` without the native Opportunity Brief Builder and without the XAP-208 visual tutorial renderer.
+That last point is a release gate for XAP-130. Publishing the article before a separately authorized production code release would rebuild `main` without the XAP-208 visual tutorial renderer.
 
 ### Current public readback
 
@@ -87,8 +86,7 @@ At 2026-09-22T16:32:23Z:
 - The article rendered the current Contentful title, editorial date, Product Development tag and a Contentful-hosted featured image.
 - `https://www.thexap.com/blog` returned HTTP 200 and its card matched the article title, date and tag.
 - Article and index came from the same public build.
-- The legacy article has no PDF, DOCX or Opportunity Brief Builder link, so it cannot prove the new resource renderer.
-- `https://www.thexap.com/tools/opportunity-brief-builder` returned HTTP 404 because XAP-207 is not on production `main`.
+- The legacy article has no PDF or DOCX links, so it cannot prove the new resource renderer.
 - The selected legacy article did not expose the XAP-208 canonical metadata behavior on current production.
 
 XAP-208's tests and review evidence prove the renderer on `develop`. They are not production evidence.
@@ -108,7 +106,7 @@ Selected entry: `choosing-a-beachhead`
 | Build succeeded                           | The deployment record entered build at `17:35:18.174Z` and later became Ready. The connector's detailed build-log operation was unavailable, so a distinct build completion timestamp/log was not observed.                          | Not independently observable. Do not invent a separate completion time.                        |
 | Production deployment ready               | The same production deployment reached `READY` at `17:36:23.379Z`.                                                                                                                                                                   | Passed. Ready was 75.880 seconds after Contentful publication.                                 |
 | Article URL responds                      | Fresh audit readback returned HTTP 200. XAP-157 also recorded an HTTP 200 production check after its release.                                                                                                                        | Passed currently; the fresh check is not proof of the historical response time.                |
-| Index and article render approved content | Fresh audit matched title, date, tag and featured-image host between the article and index. XAP-157 recorded the same release family after publication. PDF, DOCX, captions and the tool route were not part of this legacy package. | Passed for applicable legacy fields; new visual tutorial fields remain untested in production. |
+| Index and article render approved content | Fresh audit matched title, date, tag and featured-image host between the article and index. XAP-157 recorded the same release family after publication. PDF, DOCX and captions were not part of this legacy package. | Passed for applicable legacy fields; new visual tutorial fields remain untested in production. |
 
 Observed elapsed time is a useful baseline, not a service-level guarantee.
 
@@ -122,15 +120,14 @@ Complete this checklist before asking Xavier for Contentful publication authoriz
 - [ ] `status` agrees with the private receipt and exact reviewable manifest.
 - [ ] `contentVersion`, `contentHash`, `manifestHash` and reviewed Contentful entry version match Xavier's exact-version approval.
 - [ ] Hero, three inline visuals, PDF, DOCX and their hashes/metadata match the approved package.
-- [ ] The article links only to the approved public tool route and public Contentful delivery URLs.
+- [ ] The article links only to approved public HTTPS destinations and public Contentful delivery URLs.
 - [ ] Tags, title, excerpt, editorial date, slug, alt text, captions and attribution are final.
 - [ ] The explicit Contentful publication authorization names the package/version and action.
 
 ### Production code and configuration
 
-- [ ] Remote `main` contains the approved XAP-207 tool implementation and XAP-208 renderer commit, or named successors with equivalent verified behavior.
+- [ ] Remote `main` contains the approved XAP-208 renderer commit, or a named successor with equivalent verified behavior.
 - [ ] The current production deployment serves that same `main` revision before CMS publication.
-- [ ] The native tool route returns HTTP 200 on production.
 - [ ] The Contentful webhook is still active, still filtered to `master`, and still targets the single Vercel deploy hook.
 - [ ] The Vercel deploy hook is still named `Contentful`, targets `main`, and belongs to project `thexap-tech`.
 - [ ] No second webhook or parallel deployment mechanism exists for this publication.
@@ -206,14 +203,11 @@ The webhook also fires for Asset publication. A canceled Asset-triggered build i
 - [ ] Confirm all inline visuals appear in manifest order with correct aspect ratio, alt, caption and attribution.
 - [ ] Confirm image URLs use the expected Contentful delivery host and return successfully.
 
-### Downloads and tool route
+### Downloads
 
 - [ ] Open PDF and DOCX links from the rendered resource callout.
 - [ ] Require successful responses, expected MIME types, filenames and original-byte SHA-256 values.
 - [ ] Confirm PDF/DOCX are rendered as resource links/cards and never as images.
-- [ ] Confirm the article link targets exactly `https://www.thexap.com/tools/opportunity-brief-builder`.
-- [ ] Require HTTP 200 from the tool route and verify its expected title and interaction start state.
-- [ ] Do not enter or persist reader data during release verification.
 
 ### Blog index and accessibility
 
@@ -253,7 +247,7 @@ The webhook also fires for Asset publication. A canceled Asset-triggered build i
 ### Ready deployment serves missing or stale content
 
 1. Confirm the Ready candidate was created after the final entry webhook response.
-2. Confirm its Git SHA contains the renderer and tool route required by the manifest.
+2. Confirm its Git SHA contains the renderer required by the manifest.
 3. Recheck Content Delivery API state and the exact public URL without CMS writes.
 4. Check whether the wrong deployment is Current on the production domains.
 5. Treat a code/config defect, stale CMS readback and wrong domain assignment as different problems.
@@ -335,8 +329,8 @@ No Contentful/Vercel private IDs, secret-bearing URLs, tokens or raw private log
 - The visible Contentful call history ends with XAP-157 on 2026-09-20. Current configuration and health were readable, but a future call can still fail.
 - Detailed Vercel build logs and a distinct historical build-complete timestamp were unavailable through the connected read-only deployment tool. Deployment creation, build-start and Ready timestamps were available.
 - The exact historical production-domain assignment time for the selected XAP-157 deployment was unavailable. Current article/index readback is separate evidence.
-- The selected historical article is metadata-only legacy content. It cannot prove PDF, DOCX, tutorial caption or tool-link rendering.
-- Production `main` does not yet contain XAP-207 or XAP-208. A separately authorized production code release and live readback must precede XAP-130 CMS publication.
+- The selected historical article is metadata-only legacy content. It cannot prove PDF, DOCX or tutorial caption rendering.
+- At audit time, production `main` did not yet contain XAP-208. A separately authorized production code release and live readback had to precede XAP-130 CMS publication.
 - The XAP-130 exact package/version approval, Contentful publication, resulting build/deployment and full public visual/resource verification remain supervised work.
 - This audit does not claim XAP-130 publication or a new production deployment.
-- XAP-210 repository verification passed lint, Prettier, the visual-tutorial, Opportunity Brief Builder and portfolio suites. The production build compiled successfully but could not finish static page generation because repeated Contentful GraphQL connections timed out; this is unavailable build evidence, not a passing build.
+- XAP-210 repository verification passed lint, Prettier, the visual-tutorial and portfolio suites. The production build compiled successfully but could not finish static page generation because repeated Contentful GraphQL connections timed out; this is unavailable build evidence, not a passing build.

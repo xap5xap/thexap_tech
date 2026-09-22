@@ -99,18 +99,10 @@
       "expectedPublicUrl": "https://assets.ctfassets.net/000000000000/scope-canvas-docx/launch-scope-canvas.docx"
     }
   ],
-  "interactiveResources": [
-    {
-      "id": "opportunity-brief-builder",
-      "owner": "website",
-      "label": "Open the Opportunity Brief Builder",
-      "description": "Complete the same reasoning in a browser and export the result as Markdown.",
-      "expectedPublicUrl": "https://www.thexap.com/tools/opportunity-brief-builder"
-    }
-  ],
+  "interactiveResources": [],
   "resourceCallout": {
     "heading": "Use the scope resources",
-    "intro": "Choose the format that fits the way you want to work. The downloads contain the same core prompts, and the builder stays on thexap.com.",
+    "intro": "Choose the format that fits the way you want to work. The downloads contain the same core prompts.",
     "placement": "after-article"
   }
 }
