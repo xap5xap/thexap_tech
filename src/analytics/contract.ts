@@ -16,6 +16,7 @@ export type PageType =
   | "blog_index"
   | "blog_post"
   | "schedule"
+  | "tool"
   | "not_found";
 
 export type ProjectCategory =
@@ -130,6 +131,7 @@ export const classifyPage = (pathnameValue: string, project?: ProjectContext, ha
   if (pathname === "/projects") return { content_group: "portfolio", page_type: "projects_index" };
   if (pathname === "/blog") return { content_group: "editorial", page_type: "blog_index" };
   if (pathname === "/schedule-meeting") return { content_group: "conversion", page_type: "schedule" };
+  if (pathname === "/tools/opportunity-brief-builder") return { content_group: "utility", page_type: "tool" };
   if (/^\/blog\/[a-z0-9]+(?:-[a-z0-9]+)*$/.test(pathname) && hasBlogPost) {
     return { content_group: "editorial", page_type: "blog_post" };
   }
