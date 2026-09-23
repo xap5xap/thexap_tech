@@ -89,24 +89,24 @@ A partial resource declaration is invalid. Schema 1.0.0 keeps its original resou
 
 The core article fields are always required. Resource fields follow the complete-form rule above, so the publisher never silently guesses whether a resource section should exist.
 
-| Field                  | Requirement                                                                                                                     |
-| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| Field                  | Requirement                                                                                                                             |
+| ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
 | `schemaVersion`        | Exact supported manifest schema version: `1.0.0` for the original resource form, or `1.1.0` for article-only or complete resource form. |
-| `profile`              | `prepared` before a Contentful draft, `reviewable` after draft readback.                                                        |
-| `packageId`            | Stable public-safe identity for the tutorial across versions.                                                                   |
-| `contentVersion`       | SemVer without a leading `v`, for example `1.2.0-rc.1`.                                                                         |
-| `locale`               | `en-US` in schema 1, matching the current Contentful model and publisher.                                                       |
-| `slug`                 | Lowercase kebab case. It must match the article URL and Contentful field exactly.                                               |
-| `expectedPublicUrl`    | Exact canonical article URL on `www.thexap.com`.                                                                                |
-| `contentHash`          | Hash of public content inputs and decisions, defined below.                                                                     |
-| `manifestHash`         | Hash of the complete manifest, defined below.                                                                                   |
-| `metadata`             | Title, explicit excerpt, editorial date and ordered Contentful public tag IDs.                                                  |
-| `article`              | Package-relative `blog.md`, byte count, MIME type and SHA-256.                                                                  |
-| `hero`                 | One required informative featured image with actual dimensions and accessibility metadata.                                      |
-| `inlineVisuals`        | Required array, possibly empty. Each declared item must occur exactly once in the article and order must be contiguous from 1.  |
-| `downloads`            | Omitted for article-only. A resource package requires exactly one PDF and one DOCX.                                              |
-| `interactiveResources` | Omitted for article-only. A resource package requires this array, which may be empty. Site routes only.                           |
-| `resourceCallout`      | Omitted for article-only. A resource package requires heading, introduction and `after-article` placement.                       |
+| `profile`              | `prepared` before a Contentful draft, `reviewable` after draft readback.                                                                |
+| `packageId`            | Stable public-safe identity for the tutorial across versions.                                                                           |
+| `contentVersion`       | SemVer without a leading `v`, for example `1.2.0-rc.1`.                                                                                 |
+| `locale`               | `en-US` in schema 1, matching the current Contentful model and publisher.                                                               |
+| `slug`                 | Lowercase kebab case. It must match the article URL and Contentful field exactly.                                                       |
+| `expectedPublicUrl`    | Exact canonical article URL on `www.thexap.com`.                                                                                        |
+| `contentHash`          | Hash of public content inputs and decisions, defined below.                                                                             |
+| `manifestHash`         | Hash of the complete manifest, defined below.                                                                                           |
+| `metadata`             | Title, explicit excerpt, editorial date and ordered Contentful public tag IDs.                                                          |
+| `article`              | Package-relative `blog.md`, byte count, MIME type and SHA-256.                                                                          |
+| `hero`                 | One required informative featured image with actual dimensions and accessibility metadata.                                              |
+| `inlineVisuals`        | Required array, possibly empty. Each declared item must occur exactly once in the article and order must be contiguous from 1.          |
+| `downloads`            | Omitted for article-only. A resource package requires exactly one PDF and one DOCX.                                                     |
+| `interactiveResources` | Omitted for article-only. A resource package requires this array, which may be empty. Site routes only.                                 |
+| `resourceCallout`      | Omitted for article-only. A resource package requires heading, introduction and `after-article` placement.                              |
 
 Within an image record, `caption` and `attribution` keys are required but may be `null`. `alt` is required and non-empty unless `decorative` is true. The hero cannot be decorative. Licensed or third-party images require an attribution label and HTTPS URL. `expectedPublicUrl` is required but is `null` in the `prepared` profile and an exact Contentful delivery URL in the `reviewable` profile.
 
@@ -166,20 +166,20 @@ Downloads and tool links do not appear as local Markdown links. For a resource p
 
 The current `blog` content type and `en-US` locale remain unchanged.
 
-| Contentful location               | Manifest/source                                          | Required mapping                                                                       |
-| --------------------------------- | -------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `fields.title`                    | `metadata.title`                                         | Exact string                                                                           |
-| `fields.slug`                     | `slug`                                                   | Exact string                                                                           |
-| `fields.date`                     | `metadata.editorialDate`                                 | Store at `12:00:00-05:00` on that Ecuador calendar date; do not substitute upload time |
-| `fields.excerpt`                  | `metadata.excerpt`                                       | Exact string, at most 256 characters; do not derive it during upload                   |
-| `fields.featuredImage`            | `hero`                                                   | Link the one draft hero Asset                                                          |
-| `fields.body`                     | `article`, inline visuals and optional generated resource callout | RichText mapping below                                                        |
-| `fields.tags`                     | none                                                     | Leave empty; this legacy Symbol is not the public tag source                           |
-| `metadata.tags`                   | `metadata.tagIds`                                        | Existing public Contentful Tag links, exact case                                       |
-| Asset `file`                      | image/download file record                               | Exact bytes, filename and MIME type                                                    |
-| Asset `description` for images    | image `alt`                                              | Exact alt text, or empty only for a declared decorative inline image                   |
-| Asset `description` for downloads | resource-package download `description`                  | Plain accessible description                                                           |
-| Asset delivery URL                | processed Asset readback                                 | Copy into the reviewable manifest, never infer it                                      |
+| Contentful location               | Manifest/source                                                   | Required mapping                                                                       |
+| --------------------------------- | ----------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `fields.title`                    | `metadata.title`                                                  | Exact string                                                                           |
+| `fields.slug`                     | `slug`                                                            | Exact string                                                                           |
+| `fields.date`                     | `metadata.editorialDate`                                          | Store at `12:00:00-05:00` on that Ecuador calendar date; do not substitute upload time |
+| `fields.excerpt`                  | `metadata.excerpt`                                                | Exact string, at most 256 characters; do not derive it during upload                   |
+| `fields.featuredImage`            | `hero`                                                            | Link the one draft hero Asset                                                          |
+| `fields.body`                     | `article`, inline visuals and optional generated resource callout | RichText mapping below                                                                 |
+| `fields.tags`                     | none                                                              | Leave empty; this legacy Symbol is not the public tag source                           |
+| `metadata.tags`                   | `metadata.tagIds`                                                 | Existing public Contentful Tag links, exact case                                       |
+| Asset `file`                      | image/download file record                                        | Exact bytes, filename and MIME type                                                    |
+| Asset `description` for images    | image `alt`                                                       | Exact alt text, or empty only for a declared decorative inline image                   |
+| Asset `description` for downloads | resource-package download `description`                           | Plain accessible description                                                           |
+| Asset delivery URL                | processed Asset readback                                          | Copy into the reviewable manifest, never infer it                                      |
 
 ### Image title and caption protocol
 
@@ -324,19 +324,19 @@ Contentful draft review does not prove public Asset delivery. Published Assets d
 
 A publication can be called complete only when all applicable evidence exists for the same approved hashes and remote entry version.
 
-| Layer                    | Required evidence                                                                                                                                                                                                       |
-| ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Local package            | Schema and semantic validation output; source SHA-256/bytes/MIME/dimensions; supported Markdown round-trip; no private/local links; contextual privacy review; PDF and DOCX inspection when declared                    |
-| Contentful preflight     | Current `blog` fields/locale, public tag existence, unique slug result and no schema contradiction                                                                                                                      |
+| Layer                    | Required evidence                                                                                                                                                                                                         |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Local package            | Schema and semantic validation output; source SHA-256/bytes/MIME/dimensions; supported Markdown round-trip; no private/local links; contextual privacy review; PDF and DOCX inspection when declared                      |
+| Contentful preflight     | Current `blog` fields/locale, public tag existence, unique slug result and no schema contradiction                                                                                                                        |
 | Draft                    | Private receipt; entry/Asset draft IDs and versions; field-by-field readback; ordered inline images; hero not duplicated; Asset titles/descriptions; declared resource links when present; zero unintended remote objects |
-| Exact approval           | Xavier's record naming content version, content hash, manifest hash and the reviewed draft version                                                                                                                      |
-| CMS publication          | Published versions/timestamps for every required Asset and the entry; delivery API field/metadata/body readback                                                                                                         |
-| Webhook                  | Existing webhook delivery event, target, response/outcome and timestamp, or an explicit statement that evidence is unavailable                                                                                          |
-| Vercel                   | Deployment/build identifier held privately, expected project/environment, source revision, build result and `READY` production state                                                                                    |
-| Public article           | HTTP success for canonical URL; canonical/description/Open Graph/X metadata; exact title/date/tags/body; correct hero/figures/captions/attributions                                                                     |
-| Public resources         | When declared, PDF and DOCX links resolve with correct MIME type, filename and original-byte hash, and each declared site route resolves                                                                               |
-| Blog index               | One card for the slug with expected title, date, excerpt, tags and featured image                                                                                                                                       |
-| Accessibility/responsive | Real-browser desktop/tablet/390 px checks, keyboard and focus, heading order, alt/caption semantics, no overflow/distortion, no console errors                                                                          |
+| Exact approval           | Xavier's record naming content version, content hash, manifest hash and the reviewed draft version                                                                                                                        |
+| CMS publication          | Published versions/timestamps for every required Asset and the entry; delivery API field/metadata/body readback                                                                                                           |
+| Webhook                  | Existing webhook delivery event, target, response/outcome and timestamp, or an explicit statement that evidence is unavailable                                                                                            |
+| Vercel                   | Deployment/build identifier held privately, expected project/environment, source revision, build result and `READY` production state                                                                                      |
+| Public article           | HTTP success for canonical URL; canonical/description/Open Graph/X metadata; exact title/date/tags/body; correct hero/figures/captions/attributions                                                                       |
+| Public resources         | When declared, PDF and DOCX links resolve with correct MIME type, filename and original-byte hash, and each declared site route resolves                                                                                  |
+| Blog index               | One card for the slug with expected title, date, excerpt, tags and featured image                                                                                                                                         |
+| Accessibility/responsive | Real-browser desktop/tablet/390 px checks, keyboard and focus, heading order, alt/caption semantics, no overflow/distortion, no console errors                                                                            |
 
 `Complete` is an evidence conclusion, not a synonym for `entry.publish()` or `READY`. If a layer cannot be observed, record it as unavailable and stop short of complete.
 
