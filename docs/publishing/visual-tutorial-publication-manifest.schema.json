@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "urn:thexap:schema:visual-tutorial-publication-manifest:1.0.0",
+  "$id": "urn:thexap:schema:visual-tutorial-publication-manifest:1.1.0",
   "title": "thexap.com visual tutorial publication manifest",
   "description": "A fail-closed handoff for one Contentful-backed visual tutorial package.",
   "type": "object",
@@ -18,14 +18,11 @@
     "metadata",
     "article",
     "hero",
-    "inlineVisuals",
-    "downloads",
-    "interactiveResources",
-    "resourceCallout"
+    "inlineVisuals"
   ],
   "properties": {
     "schemaVersion": {
-      "const": "1.0.0"
+      "enum": ["1.0.0", "1.1.0"]
     },
     "profile": {
       "enum": ["prepared", "reviewable"]
@@ -210,6 +207,45 @@
     }
   },
   "allOf": [
+    {
+      "if": {
+        "required": ["schemaVersion"],
+        "properties": {
+          "schemaVersion": {
+            "const": "1.0.0"
+          }
+        }
+      },
+      "then": {
+        "required": ["downloads", "interactiveResources", "resourceCallout"]
+      }
+    },
+    {
+      "if": {
+        "required": ["schemaVersion"],
+        "properties": {
+          "schemaVersion": {
+            "const": "1.1.0"
+          }
+        }
+      },
+      "then": {
+        "oneOf": [
+          {
+            "not": {
+              "anyOf": [
+                { "required": ["downloads"] },
+                { "required": ["interactiveResources"] },
+                { "required": ["resourceCallout"] }
+              ]
+            }
+          },
+          {
+            "required": ["downloads", "interactiveResources", "resourceCallout"]
+          }
+        ]
+      }
+    },
     {
       "if": {
         "properties": {

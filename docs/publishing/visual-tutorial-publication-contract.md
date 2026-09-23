@@ -1,21 +1,23 @@
 # Visual tutorial publication contract
 
-Status: canonical decision record for XAP-206
+Status: canonical decision record for XAP-206, extended for XAP-213
 
-Contract version: 1.0.0
+Contract version: 1.1.0
 
 Manifest schema: [`visual-tutorial-publication-manifest.schema.json`](visual-tutorial-publication-manifest.schema.json)
 
 Fictional example: [`visual-tutorial-publication-manifest.example.json`](visual-tutorial-publication-manifest.example.json)
 
+Article-only example: [`visual-tutorial-publication-manifest.article-only.example.json`](visual-tutorial-publication-manifest.article-only.example.json)
+
 This contract defines how a private visual tutorial package becomes a Contentful-backed article on `thexap.com`. It is an implementation contract, not permission to upload, publish, deploy, post to social media or clean up remote data.
 
 ## Decisions
 
-1. Contentful owns the blog entry, Contentful metadata tags, featured image, inline publication images and public PDF/DOCX files.
+1. Contentful owns the blog entry, Contentful metadata tags, featured image and inline publication images. It also owns public PDF/DOCX files when a resource package declares them.
 2. `thexap.com` owns the article renderer, metadata rendering and interactive application code.
 3. Interactive tools are normal website routes linked from the article. They are not HTML, CSS or JavaScript files uploaded to Contentful. The Opportunity Brief Builder route is permanently `https://www.thexap.com/tools/opportunity-brief-builder` unless Xavier separately approves a route and redirect decision.
-4. Downloads use Contentful Asset hyperlinks inside the existing `blog.body` RichText field. This uses the live schema's existing `BlogBodyAssets.hyperlink` capability. No Contentful model change is required.
+4. Resource-package downloads use Contentful Asset hyperlinks inside the existing `blog.body` RichText field. This uses the live schema's existing `BlogBodyAssets.hyperlink` capability. Article-only packages do not append download links or a resource callout. No Contentful model change is required for either form.
 5. Image alt text lives in the Contentful Asset `description`. Caption and attribution stay separate in generated RichText caption paragraphs. The Asset `title` carries a small machine-readable presentation key so the website can associate the right caption without a new content type.
 6. The publisher consumes one schema-valid manifest, fails before writes on any local mismatch, and uses a private durable receipt to create, update or resume one draft. A rerun may not create another entry or another copy of a known asset.
 7. All assets remain draft while the entry is a draft. Asset processing is allowed during draft preparation. Publishing assets and publishing the entry are separate, ordered transitions.
@@ -23,7 +25,7 @@ This contract defines how a private visual tutorial package becomes a Contentful
 9. Publishing the Contentful entry uses the existing Contentful-to-Vercel webhook. This contract does not create or authorize a second webhook.
 10. CMS publication, webhook delivery, Vercel build creation, successful build, ready production deployment and verified public rendering are separate evidence states.
 
-The current live GraphQL schema was checked read-only on 2026-09-21. It exposes the existing `Blog` fields used below, Asset metadata and both block and hyperlink Asset collections for `Blog.body`. The repository's generated types agree. The current publisher does not yet satisfy this contract: it creates duplicates on rerun, publishes assets before a draft review, skips missing inline images and cannot upload downloads. XAP-209 owns those changes.
+The live GraphQL schema was checked read-only on 2026-09-21. It exposes the existing `Blog` fields used below, Asset metadata and both block and hyperlink Asset collections for `Blog.body`. The repository's generated types agree. Publisher 2.1.0 supports the two package forms without changing the Contentful model. That local support is not upload or publication authorization.
 
 ## Architecture
 
@@ -33,7 +35,7 @@ flowchart LR
     P -->|entry and asset drafts| C[Contentful]
     C -->|published entry event through existing webhook| V[Vercel]
     V --> W[thexap.com article renderer]
-    W --> T[Native Opportunity Brief Builder route]
+    W -. optional resource link .-> T[Native site tool route]
     C -->|Asset hyperlinks| W
     X[Xavier approval gates] --> P
     X --> C
@@ -46,9 +48,9 @@ The Contentful article contains a normal HTTPS link to the native tool route. Co
 
 | Surface            | Owner                         | What it owns                                                                                                                                            | What it must not own                                                                                            |
 | ------------------ | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| Content workspace  | Content authoring workflow    | Public Markdown, approved local images, PDF/DOCX files, visual plan, publication manifest and private editorial/evidence records                        | CMS state, website code, public deployment state or remote credentials                                          |
+| Content workspace  | Content authoring workflow    | Public Markdown, approved local images, optional PDF/DOCX files, visual plan, publication manifest and private editorial/evidence records               | CMS state, website code, public deployment state or remote credentials                                          |
 | Publisher          | `contentful-publish`          | Fail-closed validation, RichText conversion, Contentful draft creation/update, idempotent retry/resume, private receipt and explicit publish command    | Editorial decisions, new tags, schema mutations, website routes, Vercel configuration or social authorization   |
-| Contentful         | CMS                           | `blog` entry, metadata tag links, featured Asset, inline image Assets, PDF/DOCX Assets and their draft/published versions                               | Interactive application code, website layout or proof that Vercel/public rendering succeeded                    |
+| Contentful         | CMS                           | `blog` entry, metadata tag links, featured Asset, inline image Assets and optional PDF/DOCX Assets with their draft/published versions                  | Interactive application code, website layout or proof that Vercel/public rendering succeeded                    |
 | Website repository | `thexap_tech`                 | Blog queries, generated GraphQL types, article/asset rendering, SEO/social metadata, responsive and accessible presentation, native tool routes         | Private source evidence, CMS write credentials or Contentful publication state                                  |
 | Vercel             | Existing deployment path      | Build and deployment created by the existing Contentful webhook                                                                                         | Editorial approval, CMS publication or public rendering verification                                            |
 | Xavier             | Product and publication owner | Slug/route decisions, tags and public metadata, visual/accessibility decisions, exact-version approval, upload/publication/social/cleanup authorization | Routine implementation mechanics after a bounded action is authorized                                           |
@@ -74,30 +76,37 @@ Once an article slug has been published, changing it is a route and SEO migratio
 
 The publication manifest lives in the package root as `publication-manifest.json`. It is public-safe handoff metadata. It never contains absolute local paths, credentials, private evidence, Contentful admin URLs, remote object IDs or Vercel identifiers.
 
-Schema 1.0.0 is in the adjacent JSON Schema file. Unknown properties fail because the schema uses `additionalProperties: false`. Schema validation is necessary but not sufficient; the semantic checks below are also mandatory.
+Schema 1.1.0 is in the adjacent JSON Schema file. It continues to accept schema 1.0.0 resource packages unchanged. Unknown properties fail because the schema uses `additionalProperties: false`. Schema validation is necessary but not sufficient; the semantic checks below are also mandatory.
+
+Schema 1.1.0 supports two complete forms:
+
+- Article-only: omit `downloads`, `interactiveResources` and `resourceCallout` together.
+- Resource package: include all three fields, with exactly one PDF and one DOCX as before.
+
+A partial resource declaration is invalid. Schema 1.0.0 keeps its original resource-package requirements.
 
 ### Required and nullable values
 
-Every top-level field is required. This avoids silent defaults at a consequential boundary.
+The core article fields are always required. Resource fields follow the complete-form rule above, so the publisher never silently guesses whether a resource section should exist.
 
-| Field                  | Requirement                                                                                                                     |
-| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| `schemaVersion`        | Exact supported manifest schema version. Version 1 requires `1.0.0`.                                                            |
-| `profile`              | `prepared` before a Contentful draft, `reviewable` after draft readback.                                                        |
-| `packageId`            | Stable public-safe identity for the tutorial across versions.                                                                   |
-| `contentVersion`       | SemVer without a leading `v`, for example `1.2.0-rc.1`.                                                                         |
-| `locale`               | `en-US` in schema 1.0.0, matching the current Contentful model and publisher.                                                   |
-| `slug`                 | Lowercase kebab case. It must match the article URL and Contentful field exactly.                                               |
-| `expectedPublicUrl`    | Exact canonical article URL on `www.thexap.com`.                                                                                |
-| `contentHash`          | Hash of public content inputs and decisions, defined below.                                                                     |
-| `manifestHash`         | Hash of the complete manifest, defined below.                                                                                   |
-| `metadata`             | Title, explicit excerpt, editorial date and ordered Contentful public tag IDs.                                                  |
-| `article`              | Package-relative `blog.md`, byte count, MIME type and SHA-256.                                                                  |
-| `hero`                 | One required informative featured image with actual dimensions and accessibility metadata.                                      |
-| `inlineVisuals`        | Required array, possibly empty. Each declared item must occur exactly once in the article and order must be contiguous from 1.  |
-| `downloads`            | Exactly one PDF and one DOCX in schema 1. Both are required for the editable and print-ready companion.                         |
-| `interactiveResources` | Required array, possibly empty. Site routes only.                                                                               |
-| `resourceCallout`      | Required heading, introduction and `after-article` placement. The publisher builds it from downloads and interactive resources. |
+| Field                  | Requirement                                                                                                                             |
+| ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| `schemaVersion`        | Exact supported manifest schema version: `1.0.0` for the original resource form, or `1.1.0` for article-only or complete resource form. |
+| `profile`              | `prepared` before a Contentful draft, `reviewable` after draft readback.                                                                |
+| `packageId`            | Stable public-safe identity for the tutorial across versions.                                                                           |
+| `contentVersion`       | SemVer without a leading `v`, for example `1.2.0-rc.1`.                                                                                 |
+| `locale`               | `en-US` in schema 1, matching the current Contentful model and publisher.                                                               |
+| `slug`                 | Lowercase kebab case. It must match the article URL and Contentful field exactly.                                                       |
+| `expectedPublicUrl`    | Exact canonical article URL on `www.thexap.com`.                                                                                        |
+| `contentHash`          | Hash of public content inputs and decisions, defined below.                                                                             |
+| `manifestHash`         | Hash of the complete manifest, defined below.                                                                                           |
+| `metadata`             | Title, explicit excerpt, editorial date and ordered Contentful public tag IDs.                                                          |
+| `article`              | Package-relative `blog.md`, byte count, MIME type and SHA-256.                                                                          |
+| `hero`                 | One required informative featured image with actual dimensions and accessibility metadata.                                              |
+| `inlineVisuals`        | Required array, possibly empty. Each declared item must occur exactly once in the article and order must be contiguous from 1.          |
+| `downloads`            | Omitted for article-only. A resource package requires exactly one PDF and one DOCX.                                                     |
+| `interactiveResources` | Omitted for article-only. A resource package requires this array, which may be empty. Site routes only.                                 |
+| `resourceCallout`      | Omitted for article-only. A resource package requires heading, introduction and `after-article` placement.                              |
 
 Within an image record, `caption` and `attribution` keys are required but may be `null`. `alt` is required and non-empty unless `decorative` is true. The hero cannot be decorative. Licensed or third-party images require an attribution label and HTTPS URL. `expectedPublicUrl` is required but is `null` in the `prepared` profile and an exact Contentful delivery URL in the `reviewable` profile.
 
@@ -106,7 +115,7 @@ Within an image record, `caption` and `attribution` keys are required but may be
 All SHA-256 values are lowercase hexadecimal.
 
 1. Each declared file hash is `SHA-256` over the exact file bytes.
-2. Build the content projection with these manifest members in this order-independent object: `packageId`, `contentVersion`, `locale`, `slug`, `expectedPublicUrl`, `metadata`, `article`, `hero`, `inlineVisuals`, `downloads`, `interactiveResources`, and `resourceCallout`.
+2. Build the content projection with these always-present manifest members in this order-independent object: `packageId`, `contentVersion`, `locale`, `slug`, `expectedPublicUrl`, `metadata`, `article`, `hero` and `inlineVisuals`. Include `downloads`, `interactiveResources` and `resourceCallout` only when those keys exist in the manifest.
 3. Remove only `expectedPublicUrl` from `hero`, every inline visual and every download. Keep the article URL and every interactive route because they are editorial/public product decisions.
 4. Serialize the projection with RFC 8785 JSON Canonicalization Scheme and hash its UTF-8 bytes. That result is `contentHash`.
 5. To calculate `manifestHash`, copy the complete manifest, set `manifestHash` to 64 lowercase zeroes, serialize with RFC 8785 and hash its UTF-8 bytes.
@@ -121,7 +130,7 @@ The publisher must finish every local check before creating an API client or mak
 - All paths are package-relative, stay inside the package root and resolve to regular files. Symlinks that escape the root fail.
 - Declared byte counts, SHA-256 hashes, file signatures, extensions and MIME types match.
 - Actual image dimensions match the manifest. Images are PNG, JPEG or WebP, no larger than 10 MB or 8192 pixels on either side.
-- PDF and DOCX signatures match their declared MIME types and files are no larger than 50 MB.
+- When resources are declared, PDF and DOCX signatures match their declared MIME types and files are no larger than 50 MB.
 - IDs, paths and file names are unique. Inline `order` values are exactly `1..n` with no gap or duplicate.
 - The article has exactly one H1, and it equals `metadata.title` after trimming.
 - `slug` equals the final article URL segment. The expected URL equals `https://www.thexap.com/blog/{slug}`.
@@ -144,33 +153,33 @@ Schema 1 accepts this deliberately narrow Markdown subset:
 - paragraphs and soft-wrapped paragraph lines;
 - horizontal rules;
 - flat ordered and unordered lists;
-- bold, italic, inline code and inline HTTPS hyperlinks;
+- bold, italic, inline code, literal square-bracket placeholders and inline HTTPS hyperlinks;
 - standalone local image lines for the declared hero and inline visuals.
 
 Schema 1 rejects fenced or indented code blocks, tables, blockquotes, nested lists, task lists, footnotes, reference-style links, raw HTML, MDX, remote Markdown images and relative hyperlinks. A later schema/publisher version may add a syntax only with conversion fixtures and renderer coverage.
 
 The parser must prove it consumed every non-whitespace token. Validation compares block order, plain text, headings, list items, hyperlinks and image slots between source Markdown and generated RichText. Silent stripping, flattening or conversion to visibly different content fails before network access. The current converter's warn-and-skip behavior is not allowed.
 
-Downloads and tool links do not appear as local Markdown links. The publisher appends the manifest-defined resource callout after the article, which prevents local/private paths from leaking into the public body.
+Downloads and tool links do not appear as local Markdown links. For a resource package, the publisher appends the manifest-defined resource callout after the article, which prevents local/private paths from leaking into the public body. For an article-only package, the generated body ends with the article itself.
 
 ## Contentful representation
 
 The current `blog` content type and `en-US` locale remain unchanged.
 
-| Contentful location               | Manifest/source                                          | Required mapping                                                                       |
-| --------------------------------- | -------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `fields.title`                    | `metadata.title`                                         | Exact string                                                                           |
-| `fields.slug`                     | `slug`                                                   | Exact string                                                                           |
-| `fields.date`                     | `metadata.editorialDate`                                 | Store at `12:00:00-05:00` on that Ecuador calendar date; do not substitute upload time |
-| `fields.excerpt`                  | `metadata.excerpt`                                       | Exact string, at most 256 characters; do not derive it during upload                   |
-| `fields.featuredImage`            | `hero`                                                   | Link the one draft hero Asset                                                          |
-| `fields.body`                     | `article`, inline visuals and generated resource callout | RichText mapping below                                                                 |
-| `fields.tags`                     | none                                                     | Leave empty; this legacy Symbol is not the public tag source                           |
-| `metadata.tags`                   | `metadata.tagIds`                                        | Existing public Contentful Tag links, exact case                                       |
-| Asset `file`                      | image/download file record                               | Exact bytes, filename and MIME type                                                    |
-| Asset `description` for images    | image `alt`                                              | Exact alt text, or empty only for a declared decorative inline image                   |
-| Asset `description` for downloads | download `description`                                   | Plain accessible description                                                           |
-| Asset delivery URL                | processed Asset readback                                 | Copy into the reviewable manifest, never infer it                                      |
+| Contentful location               | Manifest/source                                                   | Required mapping                                                                       |
+| --------------------------------- | ----------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `fields.title`                    | `metadata.title`                                                  | Exact string                                                                           |
+| `fields.slug`                     | `slug`                                                            | Exact string                                                                           |
+| `fields.date`                     | `metadata.editorialDate`                                          | Store at `12:00:00-05:00` on that Ecuador calendar date; do not substitute upload time |
+| `fields.excerpt`                  | `metadata.excerpt`                                                | Exact string, at most 256 characters; do not derive it during upload                   |
+| `fields.featuredImage`            | `hero`                                                            | Link the one draft hero Asset                                                          |
+| `fields.body`                     | `article`, inline visuals and optional generated resource callout | RichText mapping below                                                                 |
+| `fields.tags`                     | none                                                              | Leave empty; this legacy Symbol is not the public tag source                           |
+| `metadata.tags`                   | `metadata.tagIds`                                                 | Existing public Contentful Tag links, exact case                                       |
+| Asset `file`                      | image/download file record                                        | Exact bytes, filename and MIME type                                                    |
+| Asset `description` for images    | image `alt`                                                       | Exact alt text, or empty only for a declared decorative inline image                   |
+| Asset `description` for downloads | resource-package download `description`                           | Plain accessible description                                                           |
+| Asset delivery URL                | processed Asset readback                                          | Copy into the reviewable manifest, never infer it                                      |
 
 ### Image title and caption protocol
 
@@ -188,7 +197,7 @@ The hero is the `featuredImage`, not a body block. If its title has `c1` or `a1`
 
 ### Download and resource callout protocol
 
-PDF and DOCX files are Contentful Assets. They remain draft while the entry is draft. At the end of `body`, the publisher appends:
+This protocol applies only to a complete resource package. PDF and DOCX files are Contentful Assets. They remain draft while the entry is draft. At the end of `body`, the publisher appends:
 
 1. one `heading-2` node with `resourceCallout.heading`;
 2. one paragraph with `resourceCallout.intro`;
@@ -199,6 +208,8 @@ PDF and DOCX files are Contentful Assets. They remain draft while the entry is d
 The website queries `body.links.assets.hyperlink` with `sys.id`, `title`, `description`, `url`, `contentType`, `fileName` and `size`. It renders PDF/DOCX links as accessible resource links or cards, never through `next/image`. Unknown file types render as a safe normal link or are omitted with a logged diagnostic; they do not crash the page.
 
 The Opportunity Brief Builder list item links to `https://www.thexap.com/tools/opportunity-brief-builder`. It never links to `interactive/index.html` or another local prototype file.
+
+For an article-only package, none of those nodes are appended. Its active package contains only the article and declared publication images.
 
 ## Accessibility and responsive images
 
@@ -228,7 +239,7 @@ stateDiagram-v2
     EntryPublished --> WebhookDelivered: existing webhook accepts event
     WebhookDelivered --> BuildStarted: Vercel creates build
     BuildStarted --> DeploymentReady: build succeeds and production is ready
-    DeploymentReady --> PublicVerified: article, index, assets, downloads and tool link pass
+    DeploymentReady --> PublicVerified: article, index and declared assets pass
     PublicVerified --> Complete
 ```
 
@@ -313,19 +324,19 @@ Contentful draft review does not prove public Asset delivery. Published Assets d
 
 A publication can be called complete only when all applicable evidence exists for the same approved hashes and remote entry version.
 
-| Layer                    | Required evidence                                                                                                                                                                                                       |
-| ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Local package            | Schema and semantic validation output; source SHA-256/bytes/MIME/dimensions; supported Markdown round-trip; no private/local links; PDF and DOCX inspection; contextual privacy review                                  |
-| Contentful preflight     | Current `blog` fields/locale, public tag existence, unique slug result and no schema contradiction                                                                                                                      |
-| Draft                    | Private receipt; entry/Asset draft IDs and versions; field-by-field readback; ordered inline images; hero not duplicated; Asset titles/descriptions; two download hyperlinks; tool link; zero unintended remote objects |
-| Exact approval           | Xavier's record naming content version, content hash, manifest hash and the reviewed draft version                                                                                                                      |
-| CMS publication          | Published versions/timestamps for every required Asset and the entry; delivery API field/metadata/body readback                                                                                                         |
-| Webhook                  | Existing webhook delivery event, target, response/outcome and timestamp, or an explicit statement that evidence is unavailable                                                                                          |
-| Vercel                   | Deployment/build identifier held privately, expected project/environment, source revision, build result and `READY` production state                                                                                    |
-| Public article           | HTTP success for canonical URL; canonical/description/Open Graph/X metadata; exact title/date/tags/body; correct hero/figures/captions/attributions                                                                     |
-| Public resources         | PDF and DOCX links resolve with correct MIME type, filename and original-byte hash; Opportunity Brief Builder route resolves and the article link targets it                                                            |
-| Blog index               | One card for the slug with expected title, date, excerpt, tags and featured image                                                                                                                                       |
-| Accessibility/responsive | Real-browser desktop/tablet/390 px checks, keyboard and focus, heading order, alt/caption semantics, no overflow/distortion, no console errors                                                                          |
+| Layer                    | Required evidence                                                                                                                                                                                                         |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Local package            | Schema and semantic validation output; source SHA-256/bytes/MIME/dimensions; supported Markdown round-trip; no private/local links; contextual privacy review; PDF and DOCX inspection when declared                      |
+| Contentful preflight     | Current `blog` fields/locale, public tag existence, unique slug result and no schema contradiction                                                                                                                        |
+| Draft                    | Private receipt; entry/Asset draft IDs and versions; field-by-field readback; ordered inline images; hero not duplicated; Asset titles/descriptions; declared resource links when present; zero unintended remote objects |
+| Exact approval           | Xavier's record naming content version, content hash, manifest hash and the reviewed draft version                                                                                                                        |
+| CMS publication          | Published versions/timestamps for every required Asset and the entry; delivery API field/metadata/body readback                                                                                                           |
+| Webhook                  | Existing webhook delivery event, target, response/outcome and timestamp, or an explicit statement that evidence is unavailable                                                                                            |
+| Vercel                   | Deployment/build identifier held privately, expected project/environment, source revision, build result and `READY` production state                                                                                      |
+| Public article           | HTTP success for canonical URL; canonical/description/Open Graph/X metadata; exact title/date/tags/body; correct hero/figures/captions/attributions                                                                       |
+| Public resources         | When declared, PDF and DOCX links resolve with correct MIME type, filename and original-byte hash, and each declared site route resolves                                                                                  |
+| Blog index               | One card for the slug with expected title, date, excerpt, tags and featured image                                                                                                                                         |
+| Accessibility/responsive | Real-browser desktop/tablet/390 px checks, keyboard and focus, heading order, alt/caption semantics, no overflow/distortion, no console errors                                                                            |
 
 `Complete` is an evidence conclusion, not a synonym for `entry.publish()` or `READY`. If a layer cannot be observed, record it as unavailable and stop short of complete.
 
@@ -350,7 +361,7 @@ Manifest schema and tutorial content have independent versions.
 - `contentVersion` uses SemVer. Patch increments cover public copy, metadata, accessibility or caption corrections. Minor increments cover added/replaced resources, visuals or meaningful sections. Major increments cover a changed reader outcome or incompatible package structure.
 - Any public change requires a new content version and exact-version approval. Remote URL binding alone changes only `manifestHash`.
 - Receipts retain prior manifest/content hashes, remote versions and transitions. Never rewrite history to make a retry look like the first attempt.
-- A schema migration must include a mechanical migrator or a documented field-by-field migration, fixtures for both versions, and proof that the website still renders already published entries.
+- A schema migration must include a mechanical migrator or a documented field-by-field migration, fixtures for both versions, and proof that the website still renders already published entries. Schema 1.1.0 needs no migration for schema 1.0.0 packages because their complete resource form remains valid unchanged.
 - Legacy blog entries remain readable. The website applies the `vtp1` protocol only to Assets that opt in through the exact title prefix.
 
 ## Downstream issue contracts
@@ -377,20 +388,19 @@ XAP-207 and XAP-208 may proceed in parallel after this contract is Done. XAP-209
 
 All four issues run repository-specific lint/build/tests, scan for U+2014 and report unavailable authenticated checks exactly. They do not change the status of sibling issues.
 
-## XAP-130 migration notes
+## XAP-130 article-only successor notes
 
-XAP-130's private v1.2-rc1 manifest is a content snapshot, not this publication manifest. It proves the shape to migrate: article Markdown, one hero, three inline PNG visuals, PDF/DOCX downloads, a local interactive prototype and exact file hashes. Do not edit that package in XAP-206.
+XAP-130's private v1.2-rc1 manifest is a historical content snapshot, not this publication manifest. It includes article Markdown, one hero, three inline PNG visuals, PDF/DOCX downloads and a local interactive prototype. Preserve it losslessly before preparing the article-only successor selected in XAP-213.
 
-When XAP-130 reaches the supervised release path:
+For the XAP-213 article-only review candidate:
 
-1. Create `publication-manifest.json` beside the package using schema 1.0.0. Normalize its content version to SemVer such as `1.2.0-rc.1` without changing the old private record.
+1. Create `publication-manifest.json` beside the active package using schema 1.1.0 and a new SemVer content version without changing the old private record.
 2. Copy exact current file hashes, byte counts, MIME types and dimensions after fresh verification. Do not copy absolute paths or private history fields.
 3. Declare the hero and three inline PNGs in their exact article order with approved alt, caption and attribution values.
-4. Declare exactly the PDF and DOCX companion files. The existing publisher cannot upload them yet; wait for XAP-209.
-5. Link the interactive resource to `https://www.thexap.com/tools/opportunity-brief-builder`. Do not upload the local HTML/CSS/JavaScript prototype. Wait for XAP-207 and verify the native route.
-6. Select existing public tag IDs and final editorial metadata before local validation. Unknown/new tags remain an owner decision and a stop condition.
-7. Run the prepared -> draft -> reviewable -> exact approval -> publication lifecycle. The old Contentful dry run is conversion evidence only.
-8. Do not call XAP-130 published or Done until XAP-207 through XAP-210 and every public-readback layer above are complete.
+4. Omit `downloads`, `interactiveResources` and `resourceCallout`. Keep earlier PDF, DOCX, builder and social artifacts only in private versioned history.
+5. Select existing public tag IDs and final editorial metadata before local validation. Unknown or new tags remain an owner decision and a stop condition.
+6. Run offline validation and dry-run for the exact review candidate. Draft upload and publication remain later, separately authorized actions.
+7. Keep XAP-130 In Review until Xavier approves the exact candidate. Do not infer upload or publication authorization from that approval.
 
 ## Stop conditions
 

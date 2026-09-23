@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "1.1.0",
+  "profile": "prepared",
+  "packageId": "tutorial.problem-and-audience",
+  "contentVersion": "1.3.0-rc.1",
+  "locale": "en-US",
+  "slug": "problem-and-audience",
+  "expectedPublicUrl": "https://www.thexap.com/blog/problem-and-audience",
+  "contentHash": "1111111111111111111111111111111111111111111111111111111111111111",
+  "manifestHash": "2222222222222222222222222222222222222222222222222222222222222222",
+  "metadata": {
+    "title": "Start with a problem you can explain",
+    "excerpt": "Write a one-page opportunity brief that names the user, the current situation and the assumption worth testing next.",
+    "editorialDate": "2026-09-22",
+    "tagIds": ["productDevelopment"]
+  },
+  "article": {
+    "path": "blog.md",
+    "sha256": "3333333333333333333333333333333333333333333333333333333333333333",
+    "bytes": 8421,
+    "mimeType": "text/markdown"
+  },
+  "hero": {
+    "id": "hero",
+    "path": "images/hero.png",
+    "sha256": "4444444444444444444444444444444444444444444444444444444444444444",
+    "bytes": 483210,
+    "mimeType": "image/png",
+    "width": 1600,
+    "height": 900,
+    "sourceKind": "original",
+    "decorative": false,
+    "alt": "Notes becoming a structured one-page opportunity brief with a two-branch decision rule.",
+    "caption": null,
+    "attribution": null,
+    "presentation": "hero",
+    "mobileBehavior": "scale",
+    "expectedPublicUrl": null
+  },
+  "inlineVisuals": [
+    {
+      "id": "opportunity-brief-framework",
+      "order": 1,
+      "path": "images/framework.png",
+      "sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+      "bytes": 278144,
+      "mimeType": "image/png",
+      "width": 1200,
+      "height": 1500,
+      "sourceKind": "original",
+      "decorative": false,
+      "alt": "A one-page framework for defining the user, current situation and assumption to test.",
+      "caption": null,
+      "attribution": null,
+      "presentation": "wide",
+      "mobileBehavior": "scale",
+      "expectedPublicUrl": null
+    }
+  ]
+}
