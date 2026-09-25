@@ -1,6 +1,6 @@
 # Upwork opportunity tracker
 
-Updated September 23, 2026. This tracker records decisions, application status, and bounded attribution state. The dated research reports remain the source for the original market capture and ranking. Follow the [Upwork writing style](README.md) for every draft.
+Updated September 24, 2026. This tracker records decisions, application status, and bounded attribution state. The dated research reports remain the source for the original market capture and ranking. Follow the [Upwork writing style](README.md) for every draft.
 
 ## Status guide
 
@@ -38,7 +38,7 @@ A reserved alias stays `Not distributed`. An observed analytics alias cannot cha
 | Unranked | Secret World map marketplace | `~022100839223652532326` | Closed | Historical unknown | Authenticated direct page on September 21 says the listing is no longer available; no interview or hire outcome was inferred | [Job brief](jobs/secret-world-map-marketplace/job-post.md), [proposal](jobs/secret-world-map-marketplace/proposal.md) |
 | Unranked | Research-administration SaaS reliability takeover | `~022102405643575634652` | Shortlisted | Not distributed | New September 22 match; consider only a fixed first milestone capped at 20 hours and confirm the Cloudflare-fetch and LLM proof gaps before proposal work | [Direct listing](https://www.upwork.com/jobs/~022102405643575634652) |
 | Unranked | Travel web app launch and product consulting | `~022102257805844849603` | Shortlisted | Not distributed | New September 22 complete-cycle match; proceed only if the paid review is separately bounded and Xavier can truthfully show a launched paid-subscription SaaS | [Direct listing](https://www.upwork.com/jobs/~022102257805844849603) |
-| Unranked | Hands-on Full-Stack Technical Lead, BrimScout | `~022102487176980458764` | Shortlisted | Not distributed | New September 23 match; $30-$45/hour is below Xavier's usual senior positioning, so consider only at $45/hour with a bounded first milestone and candid voice, Telnyx, payment-event, and backup-recovery proof gaps | [Direct listing](https://www.upwork.com/jobs/~022102487176980458764) |
+| Unranked | Senior Full-Stack Engineer, BrimScout | `~022102487176980458764` | Preparing | Not distributed | Xavier approved the draft wording September 24. Revised listing offers $45-$50/hour, a capped paid assessment, and an initial 30-day engagement; rate, capacity, start date, link, and Connects spend still need confirmation. No submission is recorded | [Job brief](jobs/brimscout/job-post.md), [proposal](jobs/brimscout/proposal.md) |
 | Unranked | Multi-brand social media AI platform | `~022102458229293359010` | Passed | Not distributed | Xavier accepted the pass recommendation September 22; saved as a future production-AI proof reference | [Job brief and candidate example](jobs/social-media-ai-agent-platform/job-post.md) |
 
 ## Daily research workflow
