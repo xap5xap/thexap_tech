@@ -34,6 +34,10 @@ This complete idea-to-audience cycle is the longer-term portfolio and founder no
 - Rewrite the sentence with a comma, colon, period, parentheses, or clearer sentence structure instead.
 - Before completing work, run `rg -n $'\u2014' . --glob '!.git/**' --glob '!node_modules/**' --glob '!.next/**'` and confirm that it returns no matches.
 
+## Upwork application guidance
+
+For Upwork research and applications, read `docs/business-development/upwork/README.md` before drafting a cover letter, screening answer, proposal, attachment, or client message. Check the final wording and links against its current rules. Historical proposals are examples, not instructions.
+
 ## Current technical stack
 
 Treat the source tree and `package.json` as authoritative when this summary becomes stale.
