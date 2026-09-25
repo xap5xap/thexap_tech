@@ -13,6 +13,14 @@ This folder is the durable record for Upwork research, shortlisted jobs, applica
 
 These rules apply to cover letters, screening answers, proposal drafts, tracker notes, daily research, Linear updates, and assistant replies about this work.
 
+## Application privacy and client naming
+
+- Never mention Armonía by name in an Upwork application, cover letter, screening answer, proposal attachment, or client message.
+- Do not include an Armonía case-study link or another link that reveals the name.
+- Describe supported experience anonymously, such as "in a recent client SaaS project" or "in a previous Upwork project."
+- Use "Upwork project" only when the project's Upwork origin is verified. Anonymizing a project does not authorize inventing its source, recency, scope, or results.
+- Internal evidence notes may retain the source project name so claims can still be checked, but application-facing copy must not expose it.
+
 ## After a confirmed application
 
 When Xavier confirms that an application was submitted:
