@@ -1,6 +1,6 @@
 # Upwork opportunity tracker
 
-Updated September 22, 2026. This tracker records decisions, application status, and bounded attribution state. The dated research reports remain the source for the original market capture and ranking. Follow the [Upwork writing style](README.md) for every draft.
+Updated September 23, 2026. This tracker records decisions, application status, and bounded attribution state. The dated research reports remain the source for the original market capture and ranking. Follow the [Upwork writing style](README.md) for every draft.
 
 ## Status guide
 
@@ -29,12 +29,16 @@ A reserved alias stays `Not distributed`. An observed analytics alias cannot cha
 
 | Rank | Opportunity | Upwork job ID | Status | Attribution | Latest action | Saved material |
 | --- | --- | --- | --- | --- | --- | --- |
-| 1 | BuildPrint SaaS beta | `~022097084188898847661` | Preparing | Not distributed | Cover letter and screening answers saved; submission unconfirmed | [Job brief](jobs/buildprint/job-post.md), [proposal](jobs/buildprint/proposal.md) |
-| 2 | Asset & Service History PWA | `~022092570052512761530` | Applied | Historical unknown | Xavier confirmed the application was submitted September 10; exact sent links were not independently read back | [Job brief](jobs/asset-service-history-pwa/job-post.md), [proposal](jobs/asset-service-history-pwa/proposal.md) |
-| 3 | Existing SaaS technical ownership | `~022096935944376628276` | Preparing | Not distributed | Xavier approved the cover-letter wording September 10; availability still needs confirmation | [Job brief](jobs/existing-saas-technical-ownership/job-post.md), [proposal](jobs/existing-saas-technical-ownership/proposal.md) |
-| 4 | Technical Product Manager, SaaS | `~022087883401522996504` | Passed | Not distributed | Xavier decided not to apply on September 10 | [Job brief](jobs/technical-product-manager-saas/job-post.md), [proposal](jobs/technical-product-manager-saas/proposal.md) |
-| 5 | KINSTALL B2B SaaS | `~022088299779008397024` | Shortlisted | Not distributed | Research captured September 9; geography, activity, attachments, and capacity need review | [Research report](2026-09-09-ai-product-execution-demand.md) |
-| Unranked | Secret World map marketplace | `~022100839223652532326` | Applied | Historical unknown | Xavier confirmed the application was submitted September 18; exact submitted fields and links were not independently read back | [Job brief](jobs/secret-world-map-marketplace/job-post.md), [proposal](jobs/secret-world-map-marketplace/proposal.md) |
+| 1 | BuildPrint SaaS beta | `~022097084188898847661` | Applied | Historical unknown | Authenticated Upwork readback on September 21 says a proposal was submitted; the submission date and exact sent links remain unverified | [Job brief](jobs/buildprint/job-post.md), [proposal](jobs/buildprint/proposal.md) |
+| 2 | Asset & Service History PWA | `~022092570052512761530` | Applied | Historical unknown | Authenticated September 23 readback keeps the listing open; the one-job client profile now shows one hire and one active contract, but nothing identifies Xavier as the hire | [Job brief](jobs/asset-service-history-pwa/job-post.md), [proposal](jobs/asset-service-history-pwa/proposal.md) |
+| 3 | Existing SaaS technical ownership | `~022096935944376628276` | Applied | Historical unknown | Authenticated September 23 readback keeps the Spain-based listing open with four hires and two interviewing; only Stas B. at fixed $105 and Oleh H. at $25/hour are attributable | [Job brief](jobs/existing-saas-technical-ownership/job-post.md), [proposal](jobs/existing-saas-technical-ownership/proposal.md) |
+| 4 | Technical Product Manager, SaaS | `~022087883401522996504` | Applied | Historical unknown | Authenticated Upwork readback on September 21 says a proposal was submitted; this conflicts with Xavier's September 10 pass decision and needs review | [Job brief](jobs/technical-product-manager-saas/job-post.md), [proposal](jobs/technical-product-manager-saas/proposal.md) |
+| 5 | KINSTALL B2B SaaS | `~022088299779008397024` | Closed | Not distributed | Authenticated direct page on September 21 says the job is no longer available | [Research report](2026-09-09-ai-product-execution-demand.md) |
+| Unranked | Next.js/PostgreSQL existing-app takeover | `~022101688790698155395` | Applied | Historical unknown | Authenticated September 23 readback keeps the listing open; job-level interviewing decreased from 5 to 4, but no Xavier-specific interview was inferred | [Direct listing](https://www.upwork.com/jobs/~022101688790698155395) |
+| Unranked | Secret World map marketplace | `~022100839223652532326` | Closed | Historical unknown | Authenticated direct page on September 21 says the listing is no longer available; no interview or hire outcome was inferred | [Job brief](jobs/secret-world-map-marketplace/job-post.md), [proposal](jobs/secret-world-map-marketplace/proposal.md) |
+| Unranked | Research-administration SaaS reliability takeover | `~022102405643575634652` | Shortlisted | Not distributed | New September 22 match; consider only a fixed first milestone capped at 20 hours and confirm the Cloudflare-fetch and LLM proof gaps before proposal work | [Direct listing](https://www.upwork.com/jobs/~022102405643575634652) |
+| Unranked | Travel web app launch and product consulting | `~022102257805844849603` | Shortlisted | Not distributed | New September 22 complete-cycle match; proceed only if the paid review is separately bounded and Xavier can truthfully show a launched paid-subscription SaaS | [Direct listing](https://www.upwork.com/jobs/~022102257805844849603) |
+| Unranked | Hands-on Full-Stack Technical Lead, BrimScout | `~022102487176980458764` | Shortlisted | Not distributed | New September 23 match; $30-$45/hour is below Xavier's usual senior positioning, so consider only at $45/hour with a bounded first milestone and candid voice, Telnyx, payment-event, and backup-recovery proof gaps | [Direct listing](https://www.upwork.com/jobs/~022102487176980458764) |
 | Unranked | Multi-brand social media AI platform | `~022102458229293359010` | Passed | Not distributed | Xavier accepted the pass recommendation September 22; saved as a future production-AI proof reference | [Job brief and candidate example](jobs/social-media-ai-agent-platform/job-post.md) |
 
 ## Daily research workflow
@@ -51,4 +55,7 @@ A daily Codex task runs at 9:00 AM in Xavier's local time. It stays quiet when t
 
 - [September 9 demand research and five-opportunity ranking](2026-09-09-ai-product-execution-demand.md)
 - [September 11 daily research](daily/2026-09-11.md)
+- [September 21 daily research](daily/2026-09-21.md)
+- [September 22 daily research](daily/2026-09-22.md)
+- [September 23 daily research](daily/2026-09-23.md)
 - [Daily research notes](daily/README.md)
