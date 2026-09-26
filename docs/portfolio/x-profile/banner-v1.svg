@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="500" viewBox="0 0 1500 500" role="img" aria-label="A clear path to your next release. Senior Full-Stack Product Engineer.">
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1c1e21"/>
+      <stop offset="0.58" stop-color="#25272b"/>
+      <stop offset="1" stop-color="#303136"/>
+    </linearGradient>
+    <linearGradient id="path" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#f59415" stop-opacity="0.12"/>
+      <stop offset="0.54" stop-color="#f59415" stop-opacity="0.82"/>
+      <stop offset="1" stop-color="#f59415"/>
+    </linearGradient>
+    <radialGradient id="glow">
+      <stop offset="0" stop-color="#f59415" stop-opacity="0.19"/>
+      <stop offset="1" stop-color="#f59415" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="64" height="64" patternUnits="userSpaceOnUse">
+      <path d="M 64 0 L 0 0 0 64" fill="none" stroke="#ffffff" stroke-opacity="0.055" stroke-width="1"/>
+    </pattern>
+    <filter id="blur"><feGaussianBlur stdDeviation="24"/></filter>
+  </defs>
+
+  <rect width="1500" height="500" fill="url(#background)"/>
+  <rect width="1500" height="500" fill="url(#grid)"/>
+  <circle cx="490" cy="210" r="235" fill="url(#glow)"/>
+  <circle cx="1300" cy="460" r="255" fill="#f59415" opacity="0.035" filter="url(#blur)"/>
+
+  <!-- A loose sketch becomes one deliberate path. The portrait covers the lower left. -->
+  <g fill="none" stroke="#e9e9e7" stroke-opacity="0.18" stroke-width="2" stroke-linecap="round">
+    <path d="M-22 160 C70 135 84 225 154 204 S240 130 302 158"/>
+    <path d="M-15 190 C68 182 109 260 177 234 S262 199 317 214"/>
+    <path d="M12 221 C99 277 164 170 245 208 S316 282 367 244"/>
+    <path d="M148 105 L202 105 M250 330 L309 330 M359 115 L418 115" stroke-dasharray="3 9"/>
+  </g>
+  <g fill="none" stroke="#f59415" stroke-opacity="0.24" stroke-width="1.5">
+    <circle cx="174" cy="234" r="8"/>
+    <circle cx="245" cy="208" r="6"/>
+    <circle cx="317" cy="214" r="7"/>
+  </g>
+  <path d="M245 208 C340 185 367 302 435 258 S525 176 582 246" fill="none" stroke="url(#path)" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="582" cy="246" r="11" fill="#f59415"/>
+  <circle cx="582" cy="246" r="20" fill="none" stroke="#f59415" stroke-opacity="0.35" stroke-width="2"/>
+
+  <text x="645" y="136" fill="#f59415" font-family="Avenir Next, Avenir, Helvetica Neue, Arial, sans-serif" font-size="24" font-weight="700" letter-spacing="3">SENIOR FULL-STACK PRODUCT ENGINEER</text>
+  <text x="642" y="226" fill="#f7f7f4" font-family="Avenir Next, Avenir, Helvetica Neue, Arial, sans-serif" font-size="67" font-weight="700" letter-spacing="-1.4">A clear path to</text>
+  <text x="642" y="306" fill="#f7f7f4" font-family="Avenir Next, Avenir, Helvetica Neue, Arial, sans-serif" font-size="67" font-weight="700" letter-spacing="-1.4">your next release</text>
+  <rect x="645" y="350" width="144" height="5" rx="2.5" fill="#f59415"/>
+  <text x="645" y="397" fill="#c7c9c7" font-family="Avenir Next, Avenir, Helvetica Neue, Arial, sans-serif" font-size="28" font-weight="500" letter-spacing="0.2">thexap.com</text>
+</svg>
