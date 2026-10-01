@@ -1,0 +1,50 @@
+{
+  "chapter": 2,
+  "title": "Find a route to users before building",
+  "contentVersion": "1.0.0-rc.1",
+  "recordedDate": "2026-10-01",
+  "article": {
+    "url": "https://www.thexap.com/blog/validate-and-reach-people",
+    "state": "published_verified",
+    "contentHash": "77440f05fc8b8de30173c4fc78a9dc7bcce4f39ca20c2b666be06bf964066773"
+  },
+  "linkedin": {
+    "url": "https://www.linkedin.com/feed/update/urn:li:share:7511485218906726401",
+    "state": "published_verified",
+    "bodyFile": "linkedin-ready.md",
+    "bodySha256": "b8be39b9a8bf1ddad08df39727250d5520a704b0715d2261a1ee5a91d41812c9",
+    "heroFile": "images/hero.png"
+  },
+  "x": {
+    "state": "ready_for_manual_posting",
+    "threadFile": "twitter-ready.md",
+    "standaloneFile": "x-standalone-ready.md",
+    "heroFile": "images/hero.png",
+    "images": "Attach hero only to thread post 1, with the ALT in twitter-ready.md. No image on posts 2 to 7.",
+    "threadWeightedCharacters": [
+      188,
+      249,
+      257,
+      264,
+      267,
+      268,
+      224
+    ],
+    "standaloneWeightedCharacters": 241,
+    "sha256": {
+      "twitter-ready.md": "a118f9200fd9b1eadab7b54916d7a8b2e26f85a5474ae5b4679102d904521ea5",
+      "x-standalone-ready.md": "7515354c16fca90e35357eca0446042461f6079d961095f7734d745af245483d"
+    }
+  },
+  "verification": {
+    "contentfulDraftAndPublishedDelivery": "PASS",
+    "existingWebhook": "PASS",
+    "productionBuildAndReadyDeployment": "PASS",
+    "publicArticleMetadataAndImages": "PASS",
+    "blogIndex": "PASS",
+    "desktopTabletMobileAndKeyboard": "PASS",
+    "linkedinFullTextHeroAndDestinationLink": "PASS",
+    "finalSocialCharacterAndPrivacyChecks": "PASS"
+  },
+  "archive": "Public source files and final social copies are saved in this Git repository. Private research and provider receipts are excluded."
+}

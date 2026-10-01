@@ -7,9 +7,9 @@ This directory keeps the public Markdown and publication images for Xavier's tut
 | Chapter | Source | Manual X thread |
 | --- | --- | --- |
 | 01. Start with a problem you can explain | [Article](chapters/001-problem-and-audience/blog.md) | [Thread](chapters/001-problem-and-audience/twitter.md) |
-| 02. Find a route to users before building | [Article](chapters/002-validate-and-reach-people/blog.md) | [Thread](chapters/002-validate-and-reach-people/twitter.md) |
+| 02. Find a route to users before building | [Article](chapters/002-validate-and-reach-people/blog.md) | [Ready thread](chapters/002-validate-and-reach-people/twitter-ready.md) |
 
-CH-02 is an approved authoring snapshot, not a publication receipt. Its X link placeholder will be replaced in a separate ready-to-paste file after the article is verified live.
+CH-02 was published on October 1, 2026: [live article](https://www.thexap.com/blog/validate-and-reach-people), [LinkedIn post](https://www.linkedin.com/feed/update/urn:li:share:7511485218906726401), and [publication record](chapters/002-validate-and-reach-people/publication.json). The X thread and [standalone post](chapters/002-validate-and-reach-people/x-standalone-ready.md) contain the verified live link and are ready for manual posting. Original authoring snapshots retain their exact approved bytes.
 
 ## Daily workflow
 
@@ -26,6 +26,7 @@ Each chapter folder may contain:
 - `x-standalone.md`: a separate short X post.
 - `images/`: the images referenced by those files.
 - `archive-hashes.json`: hashes of the archived source files.
+- `linkedin-ready.md`: the exact composed body posted to LinkedIn.
 - `twitter-ready.md` and `x-standalone-ready.md`: the composed manual-posting copies, added after the live article URL is verified.
 - `publication.json`: public URLs and separate per-destination states, added by the actual publication run.
 
