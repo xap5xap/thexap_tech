@@ -1,0 +1,14 @@
+{
+  "chapter": "001-problem-and-audience",
+  "archivedDate": "2026-10-01",
+  "sha256": {
+    "blog.md": "2ea3b207be86dc4fd4733a5dd020984f929eed064572b79957f69787238a5e0d",
+    "linkedin.md": "bed1b1d962f5bf552b509646df020e62c63d4b9d435c76f7ba7c736b2604f84a",
+    "twitter.md": "5fd9d863bd4a0a9970a48a48ec117144e401f0c4b249486da897f26a8277d3e0",
+    "x-standalone.md": "a8534d4f7e44cc8e2fbd368fe49cf3cfa883556296929d20c9fba75e47e2c934",
+    "images/brief-preview.png": "c480c8ea3d576776bdd075a59a5be2e26b7754e87e0ac464627fc7d214560567",
+    "images/comparison.png": "fb2720924a344ec66294f958d2b6f507e967aac4c12226b8e9694339c4196919",
+    "images/framework.png": "e287add063d74f9618e7bf4772b62d383486a8aaf5621b3e64cfe4bed89b1d0f",
+    "images/hero.png": "f1e8e442daee192feb73aea3e77fcb54f4270a8091f72aae9ac48dfb5851bd13"
+  }
+}

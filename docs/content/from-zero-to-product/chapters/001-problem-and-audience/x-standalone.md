@@ -1,0 +1,1 @@
+Before features, write six lines: user, situation, workaround, intended change, non-goals, and the assumption that could change your decision. A brief makes the direction reviewable, not validated. https://www.thexap.com/blog/problem-and-audience #ProductDevelopment

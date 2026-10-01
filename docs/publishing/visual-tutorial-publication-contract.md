@@ -224,6 +224,14 @@ For an article-only package, none of those nodes are appended. Its active packag
 - Caption and attribution remain legible and ordered after the visual at desktop, tablet and 390 px mobile.
 - Article verification covers heading order, keyboard navigation, visible focus, link purpose, contrast, reduced-motion behavior when relevant, no settled horizontal overflow and no console errors.
 
+## Owner-authorized daily publication
+
+Xavier requested daily automatic publication for From Zero to a Working Product on October 1, 2026. That direct instruction provides standing authorization for drafting, asset preparation, verified Contentful draft upload and publication, LinkedIn posting, public-file archiving and Slack progress within the series. The full operational authorization and run state stay in the private content workspace. The public-file archive is documented in [the series archive](../content/from-zero-to-product/README.md).
+
+This scheduled workflow records automated checks and an exact publication authorization tuple under the standing owner instruction. It does not claim a new human review for each chapter or ask the owner to repeat an action already authorized. All content, privacy, accessibility, draft readback, asset, version and delivery checks remain required. Scope ends at CH-24, with one chapter per daily run and recovery of any incomplete prior publication before advancing.
+
+The authorization excludes automatic X posting, private evidence disclosure, source-product changes, destructive cleanup, new paid commitments, production code changes and provider configuration repairs. X remains a manual handoff. Keep publication states separate from editorial issue status and report partial or blocked delivery accurately.
+
 ## Lifecycle and authorization
 
 ```mermaid
