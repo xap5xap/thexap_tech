@@ -11,9 +11,9 @@
     "contentful": "image_revision_published_delivery_verified",
     "website": "image_revision_render_verified",
     "linkedin": "original_post_unchanged_replacement_choice_pending",
-    "archive": "prepared_for_commit",
+    "archive": "committed_pushed_exact_readback_verified",
     "x": "manual_ready_not_posted",
-    "manualXHandoff": "revised_media_handoff_pending"
+    "manualXHandoff": "revised_media_handoff_delivered"
   },
   "verification": {
     "articleMetadataAndExactBody": "PASS, prose unchanged",
@@ -23,9 +23,9 @@
     "keyboardFocus": "PASS",
     "consoleErrors": 0,
     "existingProductionRelease": "READY, existing deployment only",
-    "finalSocialLimits": "PASS, exact copy blocks and LinkedIn text unchanged",
+    "finalSocialLimits": "PASS, X thread 218, 223, 223, 221, 231, 225, 239 weighted characters; standalone 242; LinkedIn 1220 characters",
     "linkedinBodyImageAltLink": "Original post verified; new hero prepared, replacement not sent",
-    "githubExactFiles": "pending revised archive commit"
+    "githubExactFiles": "PASS, all 14 source archive files read back from GitHub"
   },
   "sourceHashesFile": "archive-hashes.json",
   "finalSocialFiles": [
@@ -34,8 +34,8 @@
     "x-standalone-ready.md"
   ],
   "authority": "Owner approved the three replacement images and requested updates to the existing blog and LinkedIn post",
-  "checkedAt": "2026-10-03T16:29:14.069916+00:00",
-  "manualXHandoffAt": "2026-10-03T14:56:03.815483+00:00",
+  "checkedAt": "2026-10-03T16:41:24.208568+00:00",
+  "manualXHandoffAt": "2026-10-03T16:41:24.208568+00:00",
   "state": "visual_revision_partial",
   "previousRelease": {
     "contentVersion": "1.0.0",
@@ -62,5 +62,7 @@
       "alt": "An illustrative flowchart leads from set up to use and review. The owner chooses continue, handover or stop. A dashed continue path returns to use; handover shows a key passing between hands, and stop shows a disconnected plug.",
       "sha256": "c0b0a1d7236f2bcd921c935d584fd6f9f096736738485361b0ed439c6e3311a4"
     }
-  ]
+  ],
+  "verifiedSourceArchiveCommit": "6e55db69de84cc431ceb53f2423718580a0219eb",
+  "twitterReadyUrl": "https://github.com/xap5xap/thexap_tech/blob/6e55db69de84cc431ceb53f2423718580a0219eb/docs/content/from-zero-to-product/chapters/003-constraints-and-project-administration/twitter-ready.md"
 }
