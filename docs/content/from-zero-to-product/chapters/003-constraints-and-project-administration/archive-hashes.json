@@ -1,0 +1,49 @@
+{
+  "contentVersion": "1.0.0",
+  "files": {
+    "blog.md": {
+      "bytes": 11440,
+      "sha256": "81d48a4e95c274995d5fbe9234686c76b31a69fc386456a4268b3554f3b16c8e"
+    },
+    "companion.md": {
+      "bytes": 8646,
+      "sha256": "aa799c587392d5938f176a7df9cd2c0cbf0124b810242a071b61a2453f9ec323"
+    },
+    "linkedin.md": {
+      "bytes": 1391,
+      "sha256": "bc03797cc2b612f507aeeeb12a34a7d41bf61bee527076e41645db7785d1bf43"
+    },
+    "twitter.md": {
+      "bytes": 2285,
+      "sha256": "c7841ba26488da5202022eba95c95aaa79e58d996ed66b7664b57e6a29b3ffb4"
+    },
+    "x-standalone.md": {
+      "bytes": 458,
+      "sha256": "6643c57cfdc58572b115f5788d10272e30cbc3527ecacedc2726b13817b1599d"
+    },
+    "images/hero.png": {
+      "bytes": 2157397,
+      "sha256": "28e509774ee3494e68a96fcb637f5c30ddfdd2ce85b9dfb36067441ea282a787"
+    },
+    "images/decision-owners.png": {
+      "bytes": 160728,
+      "sha256": "db0cb2df245667728515a5e6d4252f5c0a9b1231d57782bee79dd432256f4d89"
+    },
+    "images/resource-lifecycle.png": {
+      "bytes": 152075,
+      "sha256": "4c07fc2e85adcd6b34cae277dd122ae20830344eeba8d159777e0e39b04b93f7"
+    },
+    "linkedin-ready.md": {
+      "bytes": 1221,
+      "sha256": "44e50319d608acd073d1b2d3568a09e2556c4d9f51bb6f8e56654dcda0e9033e"
+    },
+    "twitter-ready.md": {
+      "bytes": 2332,
+      "sha256": "7c915a0e2b2f463d524e990581e59adc53dc75268edc2f40d69fcc948e2a25e6"
+    },
+    "x-standalone-ready.md": {
+      "bytes": 510,
+      "sha256": "57404cb7ac931ec957366a02eece0f08d63c16b81e095cc3923afe53755653a4"
+    }
+  }
+}

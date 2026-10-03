@@ -8,14 +8,17 @@ This directory keeps the public Markdown and publication images for Xavier's tut
 | --- | --- | --- |
 | 01. Start with a problem you can explain | [Article](chapters/001-problem-and-audience/blog.md) | [Thread](chapters/001-problem-and-audience/twitter.md) |
 | 02. Find a route to users before building | [Article](chapters/002-validate-and-reach-people/blog.md) | [Ready thread](chapters/002-validate-and-reach-people/twitter-ready.md) |
+| 03. Set up ownership, constraints and project administration | [Article](chapters/003-constraints-and-project-administration/blog.md) | [Ready thread](chapters/003-constraints-and-project-administration/twitter-ready.md) |
 
 CH-02 was published on October 1, 2026: [live article](https://www.thexap.com/blog/validate-and-reach-people), [LinkedIn post](https://www.linkedin.com/feed/update/urn:li:share:7511485218906726401), and [publication record](chapters/002-validate-and-reach-people/publication.json). The X thread and [standalone post](chapters/002-validate-and-reach-people/x-standalone-ready.md) contain the verified live link and are ready for manual posting. Original authoring snapshots retain their exact approved bytes.
 
-## Daily workflow
+CH-03 was published on October 3, 2026: [live article](https://www.thexap.com/blog/constraints-and-project-administration), [LinkedIn post](https://www.linkedin.com/feed/update/urn:li:share:7512161311502430208), and [publication record](chapters/003-constraints-and-project-administration/publication.json). Its ready X thread and [standalone copy](chapters/003-constraints-and-project-administration/x-standalone-ready.md) are for manual posting.
 
-Xavier authorized daily automatic publication on October 1, 2026. The workflow takes one chapter in series order, reuses any existing draft, verifies its content and assets, publishes the exact Contentful version, checks the website, and then posts the LinkedIn adaptation. It saves the final X thread for Xavier to post manually.
+## Scheduled workflow
 
-The daily workflow resumes a partial publication before starting another chapter. It records exact local file hashes, the content version, final social text and public URLs. A completed publication has its own public-safe publication record. An archived Markdown file alone does not establish that it was posted.
+Xavier authorized automatic publication every 3 days at 09:00 America/Guayaquil, anchored to October 3, 2026. The workflow takes one chapter in series order, reuses any existing draft, verifies its content and assets, publishes the exact Contentful version, checks the website, and then posts the LinkedIn adaptation. It saves the final X thread for Xavier to post manually.
+
+The scheduled workflow resumes a partial publication before starting another chapter. It records exact local file hashes, the content version, final social text and public URLs. A completed publication has its own public-safe publication record. An archived Markdown file alone does not establish that it was posted.
 
 Each chapter folder may contain:
 

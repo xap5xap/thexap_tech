@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "chapter": 3,
+  "title": "Set up ownership, constraints and project administration",
+  "contentVersion": "1.0.0",
+  "contentHash": "cc4754642d6d43b211d3018ea504a8b35f47c32dedfa369773fe88fe79ea2b6b",
+  "publishedDate": "2026-10-03",
+  "blogUrl": "https://www.thexap.com/blog/constraints-and-project-administration",
+  "linkedinUrl": "https://www.linkedin.com/feed/update/urn:li:share:7512161311502430208",
+  "destinations": {
+    "contentful": "published_delivery_verified",
+    "website": "published_render_verified",
+    "linkedin": "published_api_and_ui_verified",
+    "archive": "included_in_this_commit",
+    "x": "manual_ready_not_posted",
+    "manualXHandoff": "pending_slack_delivery"
+  },
+  "verification": {
+    "articleMetadataAndExactBody": "PASS",
+    "articleAndIndex": "PASS",
+    "imagesAndAltText": "PASS",
+    "desktopTabletMobile": "PASS",
+    "keyboardFocus": "PASS",
+    "consoleErrors": 0,
+    "existingProductionRelease": "READY, build verified",
+    "finalSocialLimits": "PASS",
+    "linkedinBodyImageAltLink": "PASS"
+  },
+  "sourceHashesFile": "archive-hashes.json",
+  "finalSocialFiles": [
+    "linkedin-ready.md",
+    "twitter-ready.md",
+    "x-standalone-ready.md"
+  ],
+  "authority": "Standing owner instruction for scheduled publication; automatically reviewed, no separate individual human approval",
+  "checkedAt": "2026-10-03T14:50:01.228927+00:00"
+}
