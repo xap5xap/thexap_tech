@@ -11,9 +11,9 @@
     "contentful": "published_delivery_verified",
     "website": "published_render_verified",
     "linkedin": "published_api_and_ui_verified",
-    "archive": "included_in_this_commit",
+    "archive": "committed_pushed_readback_verified",
     "x": "manual_ready_not_posted",
-    "manualXHandoff": "pending_slack_delivery"
+    "manualXHandoff": "delivered_in_slack"
   },
   "verification": {
     "articleMetadataAndExactBody": "PASS",
@@ -24,7 +24,8 @@
     "consoleErrors": 0,
     "existingProductionRelease": "READY, build verified",
     "finalSocialLimits": "PASS",
-    "linkedinBodyImageAltLink": "PASS"
+    "linkedinBodyImageAltLink": "PASS",
+    "githubExactFiles": "PASS, all 14"
   },
   "sourceHashesFile": "archive-hashes.json",
   "finalSocialFiles": [
@@ -33,5 +34,8 @@
     "x-standalone-ready.md"
   ],
   "authority": "Standing owner instruction for scheduled publication; automatically reviewed, no separate individual human approval",
-  "checkedAt": "2026-10-03T14:50:01.228927+00:00"
+  "checkedAt": "2026-10-03T14:50:01.228927+00:00",
+  "verifiedArchiveCommit": "236ebdc1826ac022d2e0aa7df897106ca2998c2c",
+  "manualXHandoffAt": "2026-10-03T14:56:03.815483+00:00",
+  "state": "delivered"
 }
