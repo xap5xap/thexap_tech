@@ -10,7 +10,7 @@
   "destinations": {
     "contentful": "image_revision_published_delivery_verified",
     "website": "image_revision_render_verified",
-    "linkedin": "original_post_unchanged_replacement_choice_pending",
+    "linkedin": "original_post_retained_by_owner_request",
     "archive": "committed_pushed_exact_readback_verified",
     "x": "manual_ready_not_posted",
     "manualXHandoff": "revised_media_handoff_delivered"
@@ -24,7 +24,7 @@
     "consoleErrors": 0,
     "existingProductionRelease": "READY, existing deployment only",
     "finalSocialLimits": "PASS, X thread 218, 223, 223, 221, 231, 225, 239 weighted characters; standalone 242; LinkedIn 1220 characters",
-    "linkedinBodyImageAltLink": "Original post verified; new hero prepared, replacement not sent",
+    "linkedinBodyImageAltLink": "Original published post verified; owner chose to retain its original image and text; no replacement or deletion",
     "githubExactFiles": "PASS, all 14 source archive files read back from GitHub"
   },
   "sourceHashesFile": "archive-hashes.json",
@@ -34,9 +34,9 @@
     "x-standalone-ready.md"
   ],
   "authority": "Owner approved the three replacement images and requested updates to the existing blog and LinkedIn post",
-  "checkedAt": "2026-10-03T16:41:24.208568+00:00",
+  "checkedAt": "2026-10-03T17:21:19.180234+00:00",
   "manualXHandoffAt": "2026-10-03T16:41:24.208568+00:00",
-  "state": "visual_revision_partial",
+  "state": "visual_revision_complete_with_original_linkedin_retained",
   "previousRelease": {
     "contentVersion": "1.0.0",
     "contentHash": "cc4754642d6d43b211d3018ea504a8b35f47c32dedfa369773fe88fe79ea2b6b",
@@ -64,5 +64,6 @@
     }
   ],
   "verifiedSourceArchiveCommit": "6e55db69de84cc431ceb53f2423718580a0219eb",
-  "twitterReadyUrl": "https://github.com/xap5xap/thexap_tech/blob/6e55db69de84cc431ceb53f2423718580a0219eb/docs/content/from-zero-to-product/chapters/003-constraints-and-project-administration/twitter-ready.md"
+  "twitterReadyUrl": "https://github.com/xap5xap/thexap_tech/blob/6e55db69de84cc431ceb53f2423718580a0219eb/docs/content/from-zero-to-product/chapters/003-constraints-and-project-administration/twitter-ready.md",
+  "linkedinOwnerDecision": "Keep the existing LinkedIn post unchanged"
 }
