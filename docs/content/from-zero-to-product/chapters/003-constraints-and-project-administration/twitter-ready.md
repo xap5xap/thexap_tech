@@ -8,8 +8,8 @@ Paste only each numbered block. Media and ALT directions are outside the copy bl
 1/7 Before paying for hosting or adding a collaborator, try one small project check: can you explain who decides, what limits apply, and how you would hand it over or stop? A compact charter makes those answers usable.
 ```
 
-Image: images/hero.png
-ALT: An orange paper path rests inside a small open frame beside neatly grouped blank cards and a removable key, suggesting clear boundaries and recoverable ownership
+Image: images/hero-v2.png
+ALT: Four hands operate separate controls on a blue project console, with a bounded slider, a rotary dial, a gauge and a guarded orange release lever.
 
 ## Post 2
 
@@ -17,8 +17,8 @@ ALT: An orange paper path rests inside a small open frame beside neatly grouped 
 2/7 Name the decision owner for scope, design, spending and release. Name who does the work too. They may be the same person. Keep the decisions separate so completing a feature does not silently authorize a public release.
 ```
 
-Image: images/decision-owners.png
-ALT: Four decision rows name scope, design, spending and release, each with an accountable owner and a clear boundary for returning the decision
+Image: images/decision-owners-v2.png
+ALT: In an illustrative role map, the owner connects to scope, spending and release, while the builder connects to design within scope. A dashed return arrow sends scope changes to the owner.
 
 ## Post 3
 

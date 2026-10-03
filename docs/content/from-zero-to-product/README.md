@@ -38,3 +38,5 @@ For X, copy only the text within each numbered block. Attach the matching image 
 Private research, source identities, review wrappers, prompts, publisher manifests, account identifiers, credentials and raw provider receipts stay in the private authoring workspace. Never copy a whole authoring folder into this repository. Use only the explicit public-file allowlist above.
 
 The scheduled workflow is an approved exception to per-post confirmation for this series, Contentful and Xavier's LinkedIn profile. It does not grant permission to post to X, change a source product, delete provider objects or release website code. Quality, privacy and exact-version checks still apply. The private automation policy and original owner request hold the full operational authorization.
+
+On October 3, CH-03 received an owner-approved visual revision (1.1.0): a new hero, decision ownership map and resource lifecycle flowchart. The live article and index match the selected images. The ready X files reference the new media. The existing LinkedIn post still has its original photo while its replacement is being resolved. The chapter publication record tracks that state separately.

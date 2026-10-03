@@ -22,6 +22,6 @@ The guide includes a fictional request tracker example and a small charter you c
 
 ---
 IMAGES-TO-ATTACH:
-- images/hero.png
-ALT: An orange paper path rests inside a small open frame beside neatly grouped blank cards and a removable key, suggesting clear boundaries and recoverable ownership
+- images/hero-v2.png
+ALT: Four hands operate separate controls on a blue project console, with a bounded slider, a rotary dial, a gauge and a guarded orange release lever.
 LINK-TO-PASTE: [LINK-TO-BLOG]

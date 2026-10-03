@@ -6,7 +6,7 @@ Before you make those commitments, write a compact project charter and a small a
 
 You do not need a company handbook. You need enough clarity that the next person, including your future self, can act without guessing.
 
-![An orange paper path rests inside a small open frame beside neatly grouped blank cards and a removable key, suggesting clear boundaries and recoverable ownership](./images/hero.png)
+![Four hands operate separate controls on a blue project console, with a bounded slider, a rotary dial, a gauge and a guarded orange release lever.](./images/hero-v2.png)
 
 ## Start with the next commitment
 
@@ -31,7 +31,7 @@ Write what the builder can decide without another conversation. For example, the
 
 Avoid a row that says "everyone" owns a decision. Name the person who resolves disagreement and the input they need. When one person fills every role, write that once and still keep the decisions separate. Finishing the implementation does not itself answer whether the release is acceptable.
 
-![Four decision rows name scope, design, spending and release, each with an accountable owner and a clear boundary for returning the decision](./images/decision-owners.png)
+![In an illustrative role map, the owner connects to scope, spending and release, while the builder connects to design within scope. A dashed return arrow sends scope changes to the owner.](./images/decision-owners-v2.png)
 
 Your charter can now state the purpose, current stage, included work, non-goals, decision owners, limits and next review trigger. A stage such as "local demonstration using invented records" is more useful than an ambiguous label such as "launching soon."
 
@@ -68,7 +68,7 @@ Apply the same pattern to time and data. For a short trial, set a review date an
 
 Invented business records can keep an example simple, but a real hosted account can still involve real login or account metadata. Do not describe all provider data as fictional merely because the sample requests are invented.
 
-![A resource card connects purpose, owner, access, cost review and exit action, with a note to keep credentials in private custody](./images/resource-lifecycle.png)
+![An illustrative flowchart leads from set up to use and review. The owner chooses continue, handover or stop. A dashed continue path returns to use; handover shows a key passing between hands, and stop shows a disconnected plug.](./images/resource-lifecycle-v2.png)
 
 ## 4. Give unresolved questions an owner and a consequence
 

@@ -2,30 +2,30 @@
   "schemaVersion": 1,
   "chapter": 3,
   "title": "Set up ownership, constraints and project administration",
-  "contentVersion": "1.0.0",
-  "contentHash": "cc4754642d6d43b211d3018ea504a8b35f47c32dedfa369773fe88fe79ea2b6b",
+  "contentVersion": "1.1.0",
+  "contentHash": "41f6c87499e08f2a93df1aa001f26f70137110c0719b784f283d272869f67a3a",
   "publishedDate": "2026-10-03",
   "blogUrl": "https://www.thexap.com/blog/constraints-and-project-administration",
   "linkedinUrl": "https://www.linkedin.com/feed/update/urn:li:share:7512161311502430208",
   "destinations": {
-    "contentful": "published_delivery_verified",
-    "website": "published_render_verified",
-    "linkedin": "published_api_and_ui_verified",
-    "archive": "committed_pushed_readback_verified",
+    "contentful": "image_revision_published_delivery_verified",
+    "website": "image_revision_render_verified",
+    "linkedin": "original_post_unchanged_replacement_choice_pending",
+    "archive": "prepared_for_commit",
     "x": "manual_ready_not_posted",
-    "manualXHandoff": "delivered_in_slack"
+    "manualXHandoff": "revised_media_handoff_pending"
   },
   "verification": {
-    "articleMetadataAndExactBody": "PASS",
+    "articleMetadataAndExactBody": "PASS, prose unchanged",
     "articleAndIndex": "PASS",
-    "imagesAndAltText": "PASS",
+    "imagesAndAltText": "PASS, all three selected replacements",
     "desktopTabletMobile": "PASS",
     "keyboardFocus": "PASS",
     "consoleErrors": 0,
-    "existingProductionRelease": "READY, build verified",
-    "finalSocialLimits": "PASS",
-    "linkedinBodyImageAltLink": "PASS",
-    "githubExactFiles": "PASS, all 14"
+    "existingProductionRelease": "READY, existing deployment only",
+    "finalSocialLimits": "PASS, exact copy blocks and LinkedIn text unchanged",
+    "linkedinBodyImageAltLink": "Original post verified; new hero prepared, replacement not sent",
+    "githubExactFiles": "pending revised archive commit"
   },
   "sourceHashesFile": "archive-hashes.json",
   "finalSocialFiles": [
@@ -33,9 +33,34 @@
     "twitter-ready.md",
     "x-standalone-ready.md"
   ],
-  "authority": "Standing owner instruction for scheduled publication; automatically reviewed, no separate individual human approval",
-  "checkedAt": "2026-10-03T14:50:01.228927+00:00",
-  "verifiedArchiveCommit": "236ebdc1826ac022d2e0aa7df897106ca2998c2c",
+  "authority": "Owner approved the three replacement images and requested updates to the existing blog and LinkedIn post",
+  "checkedAt": "2026-10-03T16:29:14.069916+00:00",
   "manualXHandoffAt": "2026-10-03T14:56:03.815483+00:00",
-  "state": "delivered"
+  "state": "visual_revision_partial",
+  "previousRelease": {
+    "contentVersion": "1.0.0",
+    "contentHash": "cc4754642d6d43b211d3018ea504a8b35f47c32dedfa369773fe88fe79ea2b6b",
+    "linkedinUrl": "https://www.linkedin.com/feed/update/urn:li:share:7512161311502430208"
+  },
+  "linkedinContentVersion": "1.0.0",
+  "images": [
+    {
+      "id": "hero",
+      "path": "images/hero-v2.png",
+      "alt": "Four hands operate separate controls on a blue project console, with a bounded slider, a rotary dial, a gauge and a guarded orange release lever.",
+      "sha256": "1194ebfb74f5c357a75d208cb4dbe71c106da9472ebc1457da10c265f54ce880"
+    },
+    {
+      "id": "decision-owners",
+      "path": "images/decision-owners-v2.png",
+      "alt": "In an illustrative role map, the owner connects to scope, spending and release, while the builder connects to design within scope. A dashed return arrow sends scope changes to the owner.",
+      "sha256": "294b011ee1bce5af0d011e8621735e9cca372fae5126c817b1de2f406c1037c3"
+    },
+    {
+      "id": "resource-lifecycle",
+      "path": "images/resource-lifecycle-v2.png",
+      "alt": "An illustrative flowchart leads from set up to use and review. The owner chooses continue, handover or stop. A dashed continue path returns to use; handover shows a key passing between hands, and stop shows a disconnected plug.",
+      "sha256": "c0b0a1d7236f2bcd921c935d584fd6f9f096736738485361b0ed439c6e3311a4"
+    }
+  ]
 }
