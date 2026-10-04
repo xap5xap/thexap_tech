@@ -34,7 +34,9 @@ This complete idea-to-audience cycle is the longer-term portfolio and founder no
 - Rewrite the sentence with a comma, colon, period, parentheses, or clearer sentence structure instead.
 - Before completing work, run `rg -n $'\u2014' . --glob '!.git/**' --glob '!node_modules/**' --glob '!.next/**'` and confirm that it returns no matches.
 
-## Upwork application guidance
+## Job outreach and application guidance
+
+For any response to a job post or hiring opportunity, including an X DM, LinkedIn message, email, Upwork proposal, cover letter, screening answer, or attachment, keep Armonía out of the copy entirely. Do not name it, describe its work as an unnamed example, or include a link that identifies it. Check the final wording and every link before sending. When relevant, introduce Xavier as a freelancer who helps startups build and ship products through Upwork. Acknowledge the recipient's stated needs without inventing familiarity, pain points, or role flexibility.
 
 For Upwork research and applications, read `docs/business-development/upwork/README.md` before drafting a cover letter, screening answer, proposal, attachment, or client message. Check the final wording and links against its current rules. Historical proposals are examples, not instructions.
 

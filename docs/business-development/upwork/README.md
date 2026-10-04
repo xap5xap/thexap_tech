@@ -15,8 +15,7 @@ These rules apply to cover letters, screening answers, proposal drafts, tracker 
 
 ## Application privacy and client naming
 
-- Never mention Armonía by name in an Upwork application, cover letter, screening answer, proposal attachment, or client message.
-- Do not include an Armonía case-study link or another link that reveals the name.
+- Follow the cross-channel job outreach rule in `AGENTS.md`, including its client-name and link check.
 - Make Xavier's established Upwork client history clear. Prefer direct wording such as "Most of my client work has come through Upwork".
 - Always use wording such as "in my last Upwork project...", whenever the Upwork job post needs an example of a previous experience in whichever technology or tool.
 - Internal evidence notes may retain the source project name so claims can still be checked, but application-facing copy must not expose it.
