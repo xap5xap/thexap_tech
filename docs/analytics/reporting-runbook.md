@@ -6,24 +6,29 @@ Contract: `docs/analytics/measurement-plan.md` version 1.0.0
 
 Prepared: September 21, 2026 (America/Guayaquil)
 
+Last validated: September 28, 2026 (America/Guayaquil)
+
 ## Evidence state
 
 The native GA4 exploration `XAP-205 Portfolio and Upwork review` is saved in account `138074150`, property `198622468`:
 
 <https://analytics.google.com/analytics/web/?authuser=0#/analysis/a138074150p198622468/edit/A3wEk8G6RHqMtI-MEgQ2LQ>
 
-Its four tabs and their selected fields were read back in the authenticated property. They currently contain no data. This is a saved empty template, not processed-report validation, production receipt, a visitor, an application, or a business outcome.
+Its five tabs, selected fields, exact filters, and processed rows were read back in the authenticated property. The exploration uses 100% of available data for the validated seven-day window. No threshold or sampling warning was observed.
 
-Production collection has not begun. Release PR <https://github.com/xap5xap/thexap_tech/pull/28> passed its candidate checks but is blocked by the protected `main` branch requirement for one approving review. Therefore the measurement start date is `pending production deployment and receipt`, not the preparation date above.
+The earliest trustworthy measurement start is September 21, 2026, after production SHA `befd5b5fbaa93d7f9ecb9a14ec1d6de47d2eb289` was served by Vercel deployment `dpl_CE9dT2iMSLzz5dTDr5Wov8erht1L` and the first accepted production receipt was verified around 09:42 to 09:46 America/Guayaquil. The complete seven-day review window is September 21 through September 27, inclusive. The first complete 28-day window ends October 18 and can be reviewed on or after October 19.
+
+The September 28 validation found processed synthetic QA rows and populated registered custom dimensions. It did not establish a prospect, proposal view, application, reply, interview, hire, or other business outcome. The real `generate_lead` receipt verified for XAP-204 remains separate booking evidence and was not relabeled as a processed campaign row.
 
 ## Saved report inventory
 
 | Tab | Saved rows | Saved values | Saved filter | Current evidence |
 | --- | --- | --- | --- | --- |
-| Pages and projects | Page path and screen class; Page title and screen class; Project ID | Active users; Views; Entrances; Average engagement time per session | none | Template saved; no rows |
-| Discovery | Event name; Project ID; Source placement; First selection; Impression eligible | Event count | none | Template saved; no rows |
-| Technologies | Event name; Project ID; Technology | Event count; Active users | none | Template saved; no rows |
-| Upwork campaigns | Session source / medium; Session campaign; Session campaign ID; Session manual ad content; Event name | Sessions; Engaged sessions; Active users; Event count; Key events; Engagement rate | Session source / medium exactly matches `upwork / referral` | Template saved; no rows |
+| Pages and projects | Page path and screen class; Page title and screen class; Project ID | Active users; Views; Entrances; Average engagement time per session | none | Processed rows present; seven-day totals are 85 Views, 5 Active users, 16 Entrances, and 3m20s average engagement time per session |
+| Discovery | Event name; Project ID; Source placement; First selection; Impression eligible | Event count | Event name matches `^(project_impression\|select_content)$` | Processed rows present; 16 impressions and 3 eligible first selections in the seven-day window |
+| Technologies | Event name; Project ID; Technology | Event count; Active users | Event name exactly matches `technology_exposure` | Processed rows present; 22 exposure events across 3 projects and 3 active users in the seven-day window |
+| Upwork QA diagnostics | Session source / medium; Session campaign; Session campaign ID; Session manual ad content; Event name | Sessions; Engaged sessions; Active users; Event count; Key events; Engagement rate | Session source / medium exactly matches `upwork / referral` | One clearly labeled synthetic QA session with 23 events, 1 engaged session, and 0 key events |
+| Upwork campaigns (exclude QA) | Session source / medium; Session campaign; Session campaign ID; Session manual ad content; Event name | Sessions; Engaged sessions; Active users; Event count; Key events; Engagement rate | Session source / medium exactly matches `upwork / referral`; Session campaign ID does not exactly match `p7k2m4q` | Zero eligible rows after the QA exclusion in the seven-day window |
 
 The live property selector exposed every listed dimension and metric, including the registered event-scoped custom dimensions. The pairings above preserve page, event, or session scope for interpretation. Google documents current field compatibility in its [dimensions and metrics reference](https://support.google.com/analytics/table/13948007).
 
@@ -62,7 +67,7 @@ If a pageview summary is joined to the repository's public project-to-technology
 
 ## 4. Upwork campaign cohorts
 
-Use the filtered `Upwork campaigns` tab for current-session attribution. The accepted dimensions are:
+Use the filtered `Upwork campaigns (exclude QA)` tab for buyer-demand review and `Upwork QA diagnostics` only for synthetic release diagnostics. The accepted dimensions are:
 
 - Session source / medium
 - Session campaign
@@ -92,7 +97,7 @@ An untagged, unprocessed, blocked, rejected-consent, or otherwise missing observ
 
 ## Processed-data validation
 
-Run this only after PR #28 is normally merged, the production deployment and destination are read back, and non-booking production receipt is verified.
+The September 28 validation completed the steps below after the normal production merge, deployment readback, and non-booking receipt verification.
 
 1. Record the deployed commit, deployment ID, canonical alias, GA4 receipt timestamp, and the property's GMT-05:00 date boundary.
 2. Use a clean production browser with the exact synthetic QA campaign above.
@@ -100,9 +105,9 @@ Run this only after PR #28 is normally merged, the production deployment and des
 4. Accept analytics on the tagged `/projects` URL. Confirm the current pageview retains only the five accepted campaign values.
 5. Exercise a project impression, eligible first selection, project detail technology exposure, contact click, and the permitted Calendly flow through date/time selection. Do not enter attendee data or submit an appointment.
 6. Confirm the received event names and safe parameters in Realtime or DebugView. This proves receipt, not processed reporting.
-7. After data processes, reopen the exploration and verify the QA campaign's source/medium, campaign, campaign ID, ad content, route sequence, Project ID, Source placement, eligibility flags, Technology, and non-booking events.
-8. Add a filter that excludes `Session campaign ID = p7k2m4q` from every buyer-demand view. Keep one explicitly labeled QA view for diagnostics.
-9. Record unavailable fields, scope conflicts, thresholding, sampling, or processing gaps exactly. Do not fill missing cells or change the schema before checking registration, scope, cardinality, release receipt, and processing time.
+7. After data processes, reopen the exploration and verify the QA campaign's source/medium, campaign, campaign ID, ad content, route sequence, Project ID, Source placement, eligibility flags, Technology, and non-booking events. Completed: all registered custom dimensions populated the expected processed rows.
+8. Add a filter that excludes `Session campaign ID = p7k2m4q` from every buyer-demand view. Keep one explicitly labeled QA view for diagnostics. Completed: `Upwork campaigns (exclude QA)` returned zero rows, while `Upwork QA diagnostics` preserved the one QA session.
+9. Record unavailable fields, scope conflicts, thresholding, sampling, or processing gaps exactly. Completed for the seven-day window: 100% of available data was used, with no threshold or sampling warning observed. The 28-day window remains unavailable because it has not elapsed.
 
 Custom dimensions can take 24 to 48 hours to become available in reporting, but there is no guaranteed processing deadline. A configured dimension, Realtime event, processed QA row, real visitor row, and business outcome are separate evidence stages.
 
@@ -112,15 +117,15 @@ Use the same worksheet twice, first for days 1 to 7 after the verified measureme
 
 | Question | 7-day value | 28-day value | Evidence or limitation |
 | --- | --- | --- | --- |
-| Measurement window and deployed SHA | Pending | Pending | Production release blocked by required PR review |
-| Top consented pages/projects by Views, Active users, Entrances, and engagement | Pending | Pending | No processed production data |
-| Upwork cohort sessions and engaged sessions, excluding QA | Pending | Pending | No confirmed tagged sends or processed rows in this run |
-| Eligible project impressions and first selections | Pending | Pending | Calculate only with matching eligibility and dedupe rules |
-| Technology exposures by project | Pending | Pending | Measured labels only; rows are non-additive |
-| Contact clicks and non-booking meeting steps | Pending | Pending | Intent and funnel progress, not bookings |
-| Verified distributed aliases and observable-visit rate | Pending | Pending | Requires private ledger plus processed GA4 rows |
-| Verified replies, interviews, hires, and Connect cost | Pending | Pending | Private ledger evidence only |
-| Real completed booking receipt | Deferred | Deferred | Requires separate authorization and actual appointment evidence |
+| Measurement window and deployed SHA | September 21 through September 27, 2026; `befd5b5fbaa93d7f9ecb9a14ec1d6de47d2eb289` | Pending until October 18 completes | Property boundary is GMT-05:00; first complete 28-day review is available on or after October 19 |
+| Top consented pages/projects by Views, Active users, Entrances, and engagement | 85 Views; 5 Active users; 16 Entrances; 3m20s average engagement time per session across the saved view | Pending | The leading visible path was `/projects` with 5 Views, 4 Active users, 2 Entrances, and 1m26s average engagement time per session. Project ID rows joined to event-scoped data can show zero Views and are not separate pageview proof. |
+| Upwork cohort sessions and engaged sessions, excluding QA | 0 sessions; 0 engaged sessions | Pending | The buyer-safe tab excludes `p7k2m4q`. Zero eligible rows means no observable eligible Upwork session in this window, not zero proposal interest. The QA tab separately shows 1 synthetic session, 1 engaged session, and 23 events. |
+| Eligible project impressions and first selections | 16 impressions; 3 eligible first selections; 18.75% matched operational CTR | Pending | Calculated only from `project_impression` and first, eligible `select_content` rows with matching placement. This small population includes QA and supports no buyer-preference claim. |
+| Technology exposures by project | 22 `technology_exposure` events across 3 projects and 3 active users | Pending | Measured visible labels only. Rows are non-additive and support no preference claim. |
+| Contact clicks and non-booking meeting steps | QA diagnostics show 1 `contact_click` and 1 `meeting_step` | Pending | Synthetic funnel progress only. The saved buyer-safe cohort contains no eligible rows. |
+| Verified distributed aliases and observable-visit rate | Unavailable | Pending | No verified tagged-send denominator was added during this run. Missing denominator evidence is unknown, not 0%. |
+| Verified replies, interviews, hires, and Connect cost | Unavailable | Pending | Private ledger evidence only. No outcome was inferred from GA4. |
+| Real completed booking receipt | Verified separately on September 21 in XAP-204 | Pending processed-window review | GA4 Realtime showed `generate_lead` once and counted it as one key event after Xavier created the appointment. No appointment or visitor details were inspected or recorded. |
 
 At each review, write one bounded observation, one plausible hypothesis, one evidence gap, and one reversible next experiment. Small samples support hypotheses, not causal conclusions.
 
@@ -136,9 +141,8 @@ At each review, write one bounded observation, one plausible hypothesis, one evi
 
 ## Exact continuation
 
-1. Obtain one approving review on PR #28 and merge it normally. Do not bypass the branch rule.
-2. Verify the resulting `main` SHA, Vercel production deployment, aliases, baked measurement destination, consent network behavior, and non-booking GA4 receipt.
-3. Set the earliest trustworthy measurement start to the verified production receipt timestamp.
-4. Let the received data process, then validate the exact QA rows and exclusions in the saved exploration.
-5. Complete the 7-day and 28-day rows when their windows exist, using verified GA4 and private-ledger values.
-6. Keep XAP-205 and XAP-197 open until processed-report validation is complete. Keep real booking evidence deferred until separately authorized.
+1. On or after October 19, open the saved exploration in Xavier's authenticated Chrome browser and set the custom range to September 21 through October 18, 2026.
+2. Read back the five tab names and exact filters before interpreting values. Keep `Upwork QA diagnostics` separate from `Upwork campaigns (exclude QA)`.
+3. Complete the 28-day column with the actual available values. Record empty cells, private-ledger gaps, thresholding, sampling, or unavailable fields exactly.
+4. Recheck the private attribution record only for verified distributed aliases and independently confirmed outcomes. Do not infer them from GA4.
+5. Close XAP-205 only when every acceptance criterion is satisfied, then close XAP-197 only if all nine children and every parent criterion are complete.
