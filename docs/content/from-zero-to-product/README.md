@@ -9,10 +9,13 @@ This directory keeps the public Markdown and publication images for Xavier's tut
 | 01. Start with a problem you can explain | [Article](chapters/001-problem-and-audience/blog.md) | [Thread](chapters/001-problem-and-audience/twitter.md) |
 | 02. Find a route to users before building | [Article](chapters/002-validate-and-reach-people/blog.md) | [Ready thread](chapters/002-validate-and-reach-people/twitter-ready.md) |
 | 03. Set up ownership, constraints and project administration | [Article](chapters/003-constraints-and-project-administration/blog.md) | [Ready thread](chapters/003-constraints-and-project-administration/twitter-ready.md) |
+| 04. Scope the first complete user experience | [Article](chapters/004-first-complete-experience/blog.md) | [Ready thread](chapters/004-first-complete-experience/twitter-ready.md) |
 
 CH-02 was published on October 1, 2026: [live article](https://www.thexap.com/blog/validate-and-reach-people), [LinkedIn post](https://www.linkedin.com/feed/update/urn:li:share:7511485218906726401), and [publication record](chapters/002-validate-and-reach-people/publication.json). The X thread and [standalone post](chapters/002-validate-and-reach-people/x-standalone-ready.md) contain the verified live link and are ready for manual posting. Original authoring snapshots retain their exact approved bytes.
 
 CH-03 was published on October 3, 2026: [live article](https://www.thexap.com/blog/constraints-and-project-administration), [LinkedIn post](https://www.linkedin.com/feed/update/urn:li:share:7512161311502430208), and [publication record](chapters/003-constraints-and-project-administration/publication.json). Its ready X thread and [standalone copy](chapters/003-constraints-and-project-administration/x-standalone-ready.md) are for manual posting.
+
+CH-04 was published on October 6, 2026: [live article](https://www.thexap.com/blog/first-complete-experience), [LinkedIn post](https://www.linkedin.com/feed/update/urn:li:ugcPost:7513246867422457856), and [publication record](chapters/004-first-complete-experience/publication.json). Its LinkedIn adaptation includes the explanatory diagram and woven-band hero. The [ready X thread](chapters/004-first-complete-experience/twitter-ready.md) and [standalone copy](chapters/004-first-complete-experience/x-standalone-ready.md) are for manual posting.
 
 ## Scheduled workflow
 
