@@ -11,9 +11,10 @@
     "contentful": "published_delivery_verified",
     "website": "published_render_verified",
     "linkedin": "published_api_and_ui_verified",
-    "publicArchive": "prepared_pending_remote_readback",
-    "privateAuthoringRepository": "pending_remote_readback",
-    "x": "ready_for_manual_posting_handoff_pending"
+    "publicArchive": "committed_pushed_exact_readback_verified",
+    "privateAuthoringRepository": "committed_pushed_exact_readback_verified",
+    "x": "manual_ready_not_posted",
+    "manualXHandoff": "delivered"
   },
   "linkedinMedia": {
     "variant": "multiImage",
@@ -48,7 +49,12 @@
     "rendering": "Desktop, tablet and 390px, no overflow, loaded figures and visible keyboard focus",
     "documents": "Canonical companion text matches editable DOCX and tagged 3-page PDF; local exports",
     "linkedin": "Entire public body and both ordered loaded attachments read back",
-    "nonblockingSiteIssue": "Existing shared favicon URL returns 404; article and its assets work"
+    "nonblockingSiteIssue": "Existing shared favicon URL returns 404; article and its assets work",
+    "publicArchive": "PASS, 13 files verified against GitHub tree; article, X thread and record bytes read back",
+    "privateAuthoring": "PASS, 18 files verified against private GitHub tree and important text bytes read back",
+    "repositoryLint": "PASS with existing img warning",
+    "repositoryBuild": "PASS, production build and static route generation; no deployment invoked",
+    "timer": "ACTIVE, every 3 days at 09:00 Ecuador"
   },
   "sourceFiles": {
     "blog.md": {
@@ -92,5 +98,9 @@
       "bytes": 425
     }
   },
-  "updatedAt": "2026-10-06T14:44:45.731753+00:00"
+  "updatedAt": "2026-10-06T14:50:51.364804+00:00",
+  "state": "verified_delivery_complete",
+  "manualXHandoffAt": "2026-10-06T14:49:58.249742+00:00",
+  "verifiedSourceArchiveCommit": "3f3dcf621427bcecd42e2dedb372268733fe220f",
+  "twitterReadyUrl": "https://github.com/xap5xap/thexap_tech/blob/3f3dcf621427bcecd42e2dedb372268733fe220f/docs/content/from-zero-to-product/chapters/004-first-complete-experience/twitter-ready.md"
 }
