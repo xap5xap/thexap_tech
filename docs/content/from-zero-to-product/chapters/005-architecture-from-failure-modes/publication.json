@@ -1,0 +1,111 @@
+{
+  "chapter": 5,
+  "title": "Choose architecture from the failures the product must survive",
+  "slug": "architecture-from-failure-modes",
+  "contentVersion": "1.0.0",
+  "contentHash": "667e3fcbce64df233153de772b73f3d8037158e2666ae3a801fe986c090dbdfd",
+  "editorialDate": "2026-10-12",
+  "publishedAt": "2026-10-12T17:42:47.535565+00:00",
+  "review": "Automated package review under direct owner publication instruction; no individual human editorial approval claimed",
+  "destinations": {
+    "contentful": {
+      "state": "published_delivery_verified"
+    },
+    "website": {
+      "state": "published_render_verified",
+      "url": "https://www.thexap.com/blog/architecture-from-failure-modes"
+    },
+    "linkedin": {
+      "state": "published_api_and_ui_verified",
+      "url": "https://www.linkedin.com/feed/update/urn:li:ugcPost:7515466076642500608",
+      "media": [
+        {
+          "path": "images/failure-boundaries.png",
+          "alt": "A database saves a request and notification work together; mail sending happens separately.",
+          "sha256": "b24b9f4e86fb2924168572a1510810805196d516c5091c29c2bfe9d1fd4b300a",
+          "altCharacters": 91
+        },
+        {
+          "path": "images/hero.png",
+          "alt": "A cutaway boat stays afloat with one flooded compartment and the remaining compartments dry.",
+          "sha256": "ce51c5a48dca89d4421eae93f0579050fb5f2c5eea581526beecc7c669a5bdfa",
+          "altCharacters": 92
+        }
+      ]
+    },
+    "x": {
+      "state": "ready_for_manual_posting",
+      "threadFile": "twitter-ready.md",
+      "standaloneFile": "x-standalone-ready.md",
+      "automaticallyPosted": false,
+      "weightedCounts": [
+        225,
+        247,
+        261,
+        262,
+        267,
+        231,
+        221,
+        220
+      ]
+    },
+    "archive": {
+      "state": "remote_verification_pending"
+    },
+    "slack": {
+      "state": "milestones_delivered_final_handoff_pending"
+    }
+  },
+  "verification": {
+    "articleFields": "PASS, exact title/date/tags/entire RichText",
+    "assetSourceBytes": "PASS",
+    "desktopTabletMobile": "PASS",
+    "keyboardFocus": "PASS",
+    "socialComposition": "PASS",
+    "anonymity": "PASS",
+    "companion": "PASS, Markdown/DOCX/tagged PDF fidelity and all five pages inspected; companion documents stay local"
+  },
+  "fileHashes": {
+    "blog.md": {
+      "sha256": "bf23aa3dbd8092e616176d37c248b9f043586f624b690938d6f9d593321ff2a9",
+      "bytes": 12462
+    },
+    "companion.md": {
+      "sha256": "0c5fc65327b0c9de90cd58709b94bc1d7190aec554f954982a66e35d1f51c19a",
+      "bytes": 6739
+    },
+    "linkedin.md": {
+      "sha256": "6c1d162dc678b4a98bc9e5734467c39e9bb17054068f146bc810165bcc64d1d6",
+      "bytes": 1393
+    },
+    "twitter.md": {
+      "sha256": "032a7c1b6df108584776defe7ec8e4729d463bf5ebfa167116c4d04289ec5ea9",
+      "bytes": 2353
+    },
+    "x-standalone.md": {
+      "sha256": "178c2f4a973611f3f1bec656dc4eefdeb6f7b6a9bcff5fd3c87621b9ff80af43",
+      "bytes": 380
+    },
+    "linkedin-ready.md": {
+      "sha256": "f45877345f4047e79700261182147bb0cad45026fda6a2503422f4373874c28e",
+      "bytes": 1136
+    },
+    "twitter-ready.md": {
+      "sha256": "ead2c49509664eb61bad0b64b0743c827aa7914ecbd37d6e8131e831875cdc2b",
+      "bytes": 2387
+    },
+    "x-standalone-ready.md": {
+      "sha256": "b0d5357bd7435f822b3403fcc7ba357e6cb90e8e8594a69ed205a32fd160b26d",
+      "bytes": 425
+    },
+    "images/hero.png": {
+      "sha256": "ce51c5a48dca89d4421eae93f0579050fb5f2c5eea581526beecc7c669a5bdfa",
+      "bytes": 2649214
+    },
+    "images/failure-boundaries.png": {
+      "sha256": "b24b9f4e86fb2924168572a1510810805196d516c5091c29c2bfe9d1fd4b300a",
+      "bytes": 169857
+    }
+  },
+  "remainingPublicationBlocker": null
+}
