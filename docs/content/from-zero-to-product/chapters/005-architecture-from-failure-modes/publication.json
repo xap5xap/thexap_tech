@@ -5,7 +5,7 @@
   "contentVersion": "1.0.0",
   "contentHash": "667e3fcbce64df233153de772b73f3d8037158e2666ae3a801fe986c090dbdfd",
   "editorialDate": "2026-10-12",
-  "publishedAt": "2026-10-12T17:42:47.535565+00:00",
+  "publishedAt": "2026-10-12T17:33:17.565Z",
   "review": "Automated package review under direct owner publication instruction; no individual human editorial approval claimed",
   "destinations": {
     "contentful": {
@@ -34,7 +34,7 @@
       ]
     },
     "x": {
-      "state": "ready_for_manual_posting",
+      "state": "ready_manual_handoff_delivered",
       "threadFile": "twitter-ready.md",
       "standaloneFile": "x-standalone-ready.md",
       "automaticallyPosted": false,
@@ -47,13 +47,15 @@
         231,
         221,
         220
-      ]
+      ],
+      "manualPostState": "not_posted"
     },
     "archive": {
-      "state": "remote_verification_pending"
+      "state": "committed_pushed_exact_readback_verified",
+      "sourceFilesCommit": "446e3ec1e0d51ed7189546c74a02216daf8255e5"
     },
     "slack": {
-      "state": "milestones_delivered_final_handoff_pending"
+      "state": "final_manual_x_handoff_delivered_verified"
     }
   },
   "verification": {
@@ -107,5 +109,6 @@
       "bytes": 169857
     }
   },
-  "remainingPublicationBlocker": null
+  "remainingPublicationBlocker": null,
+  "completedAt": "2026-10-12T17:47:38.807134+00:00"
 }
