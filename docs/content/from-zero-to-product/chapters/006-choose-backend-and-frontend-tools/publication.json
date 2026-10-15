@@ -1,0 +1,109 @@
+{
+  "chapter": 6,
+  "title": "Choose backend and frontend tools with explicit tradeoffs",
+  "slug": "choose-backend-and-frontend-tools",
+  "contentVersion": "1.0.0",
+  "contentHash": "eda763152be1116fe80255e547c1e4cde53d651542c5f28df3deaf4cff368feb",
+  "editorialDate": "2026-10-15",
+  "publishedAt": "2026-10-15T14:14:17.474Z",
+  "review": "Automated package review under standing owner publication instruction; no individual human editorial approval claimed",
+  "destinations": {
+    "contentful": {
+      "state": "published_delivery_verified"
+    },
+    "website": {
+      "state": "published_render_verified",
+      "url": "https://www.thexap.com/blog/choose-backend-and-frontend-tools"
+    },
+    "linkedin": {
+      "state": "published_api_and_ui_verified",
+      "url": "https://www.linkedin.com/feed/update/urn:li:ugcPost:7516502468072038400",
+      "media": [
+        {
+          "path": "images/selection-path.png",
+          "alt": "A shortlist passes through must-pass requirements; rejected options leave the path, while surviving options are compared using evidence and a targeted check",
+          "sha256": "e33a80308efb173dca7dd820dc3ee1ec3628b6f5b93ae6ab5d35b508e3cc9d1a"
+        },
+        {
+          "path": "images/hero.png",
+          "alt": "A collection of different ceramic connectors beside a wooden fitting jig, with one connected assembly resting inside it",
+          "sha256": "46f3b14e0b8a54bf6022a1ad3508057aa079e6de18308a101b5fa9d3963bbc87"
+        }
+      ]
+    },
+    "x": {
+      "state": "ready_for_manual_posting",
+      "threadFile": "twitter-ready.md",
+      "standaloneFile": "x-standalone-ready.md",
+      "automaticallyPosted": false,
+      "weightedCounts": [
+        215,
+        227,
+        241,
+        225,
+        224,
+        238,
+        221,
+        230
+      ]
+    },
+    "archive": {
+      "state": "remote_verification_pending"
+    },
+    "slack": {
+      "state": "milestones_delivered_final_handoff_pending"
+    }
+  },
+  "verification": {
+    "articleFields": "PASS, exact title/date/tags/entire RichText",
+    "assetSourceBytes": "PASS",
+    "desktopTabletMobile": "PASS",
+    "keyboardFocus": "PASS",
+    "socialComposition": "PASS",
+    "anonymity": "PASS",
+    "companion": "PASS, source/DOCX/tagged PDF fidelity, all five pages inspected; companion documents remain local"
+  },
+  "fileHashes": {
+    "blog.md": {
+      "sha256": "aee2c6ff2768c2aa45d7ec2fd42a19272b88a508e32830ec4486d96b27f669aa",
+      "bytes": 12518
+    },
+    "companion.md": {
+      "sha256": "ce9b7bd49f7193721918caf6da2c78318a01edb43dbaec16798c601451ad2057",
+      "bytes": 6106
+    },
+    "linkedin.md": {
+      "sha256": "9bf7c4e5f69e48302fa7304b98cd7adbd1d4a8009862dc465535412241c3a91d",
+      "bytes": 1508
+    },
+    "twitter.md": {
+      "sha256": "ceaf0e966a840388708d85416796859bd61069c7968ec4a356bfebd28e5e7760",
+      "bytes": 2212
+    },
+    "x-standalone.md": {
+      "sha256": "3f74f3f490978a04fe6f6d4c2076219b97016319e3d9d1b623b60fa4a268b572",
+      "bytes": 452
+    },
+    "linkedin-ready.md": {
+      "sha256": "1cd6a983b8f660527ca876ca199e5e1e582931488aceeb2090929e6062a60f84",
+      "bytes": 1181
+    },
+    "twitter-ready.md": {
+      "sha256": "85be8a9ac6c12d2648479593d9e9867599c28ee6b2ef65ac375f2828f7fc5a7c",
+      "bytes": 2259
+    },
+    "x-standalone-ready.md": {
+      "sha256": "1491d774076cb9c21b8ad169bbde23360e754a4d60fe8d4e7b84af02545381d4",
+      "bytes": 499
+    },
+    "images/hero.png": {
+      "sha256": "46f3b14e0b8a54bf6022a1ad3508057aa079e6de18308a101b5fa9d3963bbc87",
+      "bytes": 2696072
+    },
+    "images/selection-path.png": {
+      "sha256": "e33a80308efb173dca7dd820dc3ee1ec3628b6f5b93ae6ab5d35b508e3cc9d1a",
+      "bytes": 149347
+    }
+  },
+  "remainingPublicationBlocker": null
+}
