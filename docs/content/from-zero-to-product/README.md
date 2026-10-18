@@ -12,6 +12,7 @@ This directory keeps the public Markdown and publication images for Xavier's tut
 | 04. Scope the first complete user experience | [Article](chapters/004-first-complete-experience/blog.md) | [Ready thread](chapters/004-first-complete-experience/twitter-ready.md) |
 | 05. Choose architecture from the failures the product must survive | [Article](chapters/005-architecture-from-failure-modes/blog.md) | [Ready thread](chapters/005-architecture-from-failure-modes/twitter-ready.md) |
 | 06. Choose backend and frontend tools with explicit tradeoffs | [Article](chapters/006-choose-backend-and-frontend-tools/blog.md) | [Ready thread](chapters/006-choose-backend-and-frontend-tools/twitter-ready.md) |
+| 07. Create a workspace that another person or agent can understand | [Article](chapters/007-project-workspace-and-records/blog.md) | [Ready thread](chapters/007-project-workspace-and-records/twitter-ready.md) |
 
 CH-02 was published on October 1, 2026: [live article](https://www.thexap.com/blog/validate-and-reach-people), [LinkedIn post](https://www.linkedin.com/feed/update/urn:li:share:7511485218906726401), and [publication record](chapters/002-validate-and-reach-people/publication.json). The X thread and [standalone post](chapters/002-validate-and-reach-people/x-standalone-ready.md) contain the verified live link and are ready for manual posting. Original authoring snapshots retain their exact approved bytes.
 
@@ -22,6 +23,8 @@ CH-04 was published on October 6, 2026: [live article](https://www.thexap.com/bl
 CH-05 was published on October 12, 2026: [live article](https://www.thexap.com/blog/architecture-from-failure-modes), [LinkedIn post](https://www.linkedin.com/feed/update/urn:li:ugcPost:7515466076642500608), and [publication record](chapters/005-architecture-from-failure-modes/publication.json). Its LinkedIn adaptation includes the responsibility diagram and cutaway-boat hero. The [ready X thread](chapters/005-architecture-from-failure-modes/twitter-ready.md) and [standalone copy](chapters/005-architecture-from-failure-modes/x-standalone-ready.md) are for manual posting.
 
 CH-06 was published on October 15, 2026: [live article](https://www.thexap.com/blog/choose-backend-and-frontend-tools), [LinkedIn post](https://www.linkedin.com/feed/update/urn:li:ugcPost:7516502468072038400), and [publication record](chapters/006-choose-backend-and-frontend-tools/publication.json). Its LinkedIn adaptation includes the selection flowchart and ceramic fitting hero. The [ready X thread](chapters/006-choose-backend-and-frontend-tools/twitter-ready.md) and [standalone copy](chapters/006-choose-backend-and-frontend-tools/x-standalone-ready.md) are for manual posting.
+
+CH-07 was published on October 18, 2026: [live article](https://www.thexap.com/blog/project-workspace-and-records), [LinkedIn post](https://www.linkedin.com/feed/update/urn:li:ugcPost:7517590275888918528), and [publication record](chapters/007-project-workspace-and-records/publication.json). Its LinkedIn adaptation includes the workspace map and illustrated field-guide hero. The [ready X thread](chapters/007-project-workspace-and-records/twitter-ready.md) and [standalone copy](chapters/007-project-workspace-and-records/x-standalone-ready.md) are for manual posting.
 
 ## Scheduled workflow
 
