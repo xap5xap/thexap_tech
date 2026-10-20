@@ -6,7 +6,7 @@ Contract: `docs/analytics/measurement-plan.md` version 1.0.0
 
 Prepared: September 21, 2026 (America/Guayaquil)
 
-Last validated: September 28, 2026 (America/Guayaquil)
+Last validated: October 20, 2026 (America/Guayaquil)
 
 ## Evidence state
 
@@ -14,21 +14,21 @@ The native GA4 exploration `XAP-205 Portfolio and Upwork review` is saved in acc
 
 <https://analytics.google.com/analytics/web/?authuser=0#/analysis/a138074150p198622468/edit/A3wEk8G6RHqMtI-MEgQ2LQ>
 
-Its five tabs, selected fields, exact filters, and processed rows were read back in the authenticated property. The exploration uses 100% of available data for the validated seven-day window. No threshold or sampling warning was observed.
+Its five tabs, selected fields, exact filters, and processed rows were read back in the authenticated property for both the completed seven-day and 28-day windows. The exploration uses 100% of available data. No threshold or sampling warning was observed.
 
-The earliest trustworthy measurement start is September 21, 2026, after production SHA `befd5b5fbaa93d7f9ecb9a14ec1d6de47d2eb289` was served by Vercel deployment `dpl_CE9dT2iMSLzz5dTDr5Wov8erht1L` and the first accepted production receipt was verified around 09:42 to 09:46 America/Guayaquil. The complete seven-day review window is September 21 through September 27, inclusive. The first complete 28-day window ends October 18 and can be reviewed on or after October 19.
+The earliest trustworthy measurement start is September 21, 2026, after production SHA `befd5b5fbaa93d7f9ecb9a14ec1d6de47d2eb289` was served by Vercel deployment `dpl_CE9dT2iMSLzz5dTDr5Wov8erht1L` and the first accepted production receipt was verified around 09:42 to 09:46 America/Guayaquil. The complete seven-day review window is September 21 through September 27, inclusive. The complete 28-day window is September 21 through October 18, inclusive.
 
-The September 28 validation found processed synthetic QA rows and populated registered custom dimensions. It did not establish a prospect, proposal view, application, reply, interview, hire, or other business outcome. The real `generate_lead` receipt verified for XAP-204 remains separate booking evidence and was not relabeled as a processed campaign row.
+The September 28 validation found processed synthetic QA rows and populated registered custom dimensions. The October 20 validation read back the full 28-day window and independently confirmed one processed `generate_lead` row in the native Events report. It did not establish a prospect, proposal view, application, reply, interview, hire, or other Upwork business outcome. The real booking remains separate from the synthetic campaign and buyer-demand views.
 
 ## Saved report inventory
 
 | Tab | Saved rows | Saved values | Saved filter | Current evidence |
 | --- | --- | --- | --- | --- |
-| Pages and projects | Page path and screen class; Page title and screen class; Project ID | Active users; Views; Entrances; Average engagement time per session | none | Processed rows present; seven-day totals are 85 Views, 5 Active users, 16 Entrances, and 3m20s average engagement time per session |
-| Discovery | Event name; Project ID; Source placement; First selection; Impression eligible | Event count | Event name matches `^(project_impression\|select_content)$` | Processed rows present; 16 impressions and 3 eligible first selections in the seven-day window |
-| Technologies | Event name; Project ID; Technology | Event count; Active users | Event name exactly matches `technology_exposure` | Processed rows present; 22 exposure events across 3 projects and 3 active users in the seven-day window |
+| Pages and projects | Page path and screen class; Page title and screen class; Project ID | Active users; Views; Entrances; Average engagement time per session | none | 28-day totals are 123 Views, 7 Active users, 35 Entrances, and 2m06s average engagement time per session |
+| Discovery | Event name; Project ID; Source placement; First selection; Impression eligible | Event count | Event name matches `^(project_impression\|select_content)$` | 28-day rows contain 16 impressions and 3 eligible first selections |
+| Technologies | Event name; Project ID; Technology | Event count; Active users | Event name exactly matches `technology_exposure` | 28-day rows contain 22 exposure events across 3 projects and 3 active users |
 | Upwork QA diagnostics | Session source / medium; Session campaign; Session campaign ID; Session manual ad content; Event name | Sessions; Engaged sessions; Active users; Event count; Key events; Engagement rate | Session source / medium exactly matches `upwork / referral` | One clearly labeled synthetic QA session with 23 events, 1 engaged session, and 0 key events |
-| Upwork campaigns (exclude QA) | Session source / medium; Session campaign; Session campaign ID; Session manual ad content; Event name | Sessions; Engaged sessions; Active users; Event count; Key events; Engagement rate | Session source / medium exactly matches `upwork / referral`; Session campaign ID does not exactly match `p7k2m4q` | Zero eligible rows after the QA exclusion in the seven-day window |
+| Upwork campaigns (exclude QA) | Session source / medium; Session campaign; Session campaign ID; Session manual ad content; Event name | Sessions; Engaged sessions; Active users; Event count; Key events; Engagement rate | Session source / medium exactly matches `upwork / referral`; Session campaign ID does not exactly match `p7k2m4q` | Zero eligible rows after the QA exclusion in the complete 28-day window |
 
 The live property selector exposed every listed dimension and metric, including the registered event-scoped custom dimensions. The pairings above preserve page, event, or session scope for interpretation. Google documents current field compatibility in its [dimensions and metrics reference](https://support.google.com/analytics/table/13948007).
 
@@ -107,7 +107,7 @@ The September 28 validation completed the steps below after the normal productio
 6. Confirm the received event names and safe parameters in Realtime or DebugView. This proves receipt, not processed reporting.
 7. After data processes, reopen the exploration and verify the QA campaign's source/medium, campaign, campaign ID, ad content, route sequence, Project ID, Source placement, eligibility flags, Technology, and non-booking events. Completed: all registered custom dimensions populated the expected processed rows.
 8. Add a filter that excludes `Session campaign ID = p7k2m4q` from every buyer-demand view. Keep one explicitly labeled QA view for diagnostics. Completed: `Upwork campaigns (exclude QA)` returned zero rows, while `Upwork QA diagnostics` preserved the one QA session.
-9. Record unavailable fields, scope conflicts, thresholding, sampling, or processing gaps exactly. Completed for the seven-day window: 100% of available data was used, with no threshold or sampling warning observed. The 28-day window remains unavailable because it has not elapsed.
+9. Record unavailable fields, scope conflicts, thresholding, sampling, or processing gaps exactly. Completed for both windows: 100% of available data was used, with no threshold or sampling warning observed. The native Events report also contains the processed `generate_lead` row.
 
 Custom dimensions can take 24 to 48 hours to become available in reporting, but there is no guaranteed processing deadline. A configured dimension, Realtime event, processed QA row, real visitor row, and business outcome are separate evidence stages.
 
@@ -117,17 +117,24 @@ Use the same worksheet twice, first for days 1 to 7 after the verified measureme
 
 | Question | 7-day value | 28-day value | Evidence or limitation |
 | --- | --- | --- | --- |
-| Measurement window and deployed SHA | September 21 through September 27, 2026; `befd5b5fbaa93d7f9ecb9a14ec1d6de47d2eb289` | Pending until October 18 completes | Property boundary is GMT-05:00; first complete 28-day review is available on or after October 19 |
-| Top consented pages/projects by Views, Active users, Entrances, and engagement | 85 Views; 5 Active users; 16 Entrances; 3m20s average engagement time per session across the saved view | Pending | The leading visible path was `/projects` with 5 Views, 4 Active users, 2 Entrances, and 1m26s average engagement time per session. Project ID rows joined to event-scoped data can show zero Views and are not separate pageview proof. |
-| Upwork cohort sessions and engaged sessions, excluding QA | 0 sessions; 0 engaged sessions | Pending | The buyer-safe tab excludes `p7k2m4q`. Zero eligible rows means no observable eligible Upwork session in this window, not zero proposal interest. The QA tab separately shows 1 synthetic session, 1 engaged session, and 23 events. |
-| Eligible project impressions and first selections | 16 impressions; 3 eligible first selections; 18.75% matched operational CTR | Pending | Calculated only from `project_impression` and first, eligible `select_content` rows with matching placement. This small population includes QA and supports no buyer-preference claim. |
-| Technology exposures by project | 22 `technology_exposure` events across 3 projects and 3 active users | Pending | Measured visible labels only. Rows are non-additive and support no preference claim. |
-| Contact clicks and non-booking meeting steps | QA diagnostics show 1 `contact_click` and 1 `meeting_step` | Pending | Synthetic funnel progress only. The saved buyer-safe cohort contains no eligible rows. |
-| Verified distributed aliases and observable-visit rate | Unavailable | Pending | No verified tagged-send denominator was added during this run. Missing denominator evidence is unknown, not 0%. |
-| Verified replies, interviews, hires, and Connect cost | Unavailable | Pending | Private ledger evidence only. No outcome was inferred from GA4. |
-| Real completed booking receipt | Verified separately on September 21 in XAP-204 | Pending processed-window review | GA4 Realtime showed `generate_lead` once and counted it as one key event after Xavier created the appointment. No appointment or visitor details were inspected or recorded. |
+| Measurement window and deployed SHA | September 21 through September 27, 2026; `befd5b5fbaa93d7f9ecb9a14ec1d6de47d2eb289` | September 21 through October 18, 2026; `befd5b5fbaa93d7f9ecb9a14ec1d6de47d2eb289` | Property boundary is GMT-05:00. Both windows start at the verified production measurement date. |
+| Top consented pages/projects by Views, Active users, Entrances, and engagement | 85 Views; 5 Active users; 16 Entrances; 3m20s average engagement time per session across the saved view | 123 Views; 7 Active users; 35 Entrances; 2m06s average engagement time per session | In the 28-day table, `/blog` has 18 Views, 3 Active users, 3 Entrances, and 38s average engagement; `/projects` has 5 Views, 4 Active users, 2 Entrances, and 1m26s. Project ID rows joined to event-scoped data can show zero Views and are not separate pageview proof. |
+| Upwork cohort sessions and engaged sessions, excluding QA | 0 sessions; 0 engaged sessions | 0 sessions; 0 engaged sessions | The buyer-safe tab excludes `p7k2m4q`. Zero eligible rows means no observable eligible Upwork session, not zero proposal interest. The QA tab separately shows 1 synthetic session, 1 engaged session, and 23 events. |
+| Eligible project impressions and first selections | 16 impressions; 3 eligible first selections; 18.75% matched operational CTR | 16 impressions; 3 eligible first selections; 18.75% matched operational CTR | Calculated only from `project_impression` and first, eligible `select_content` rows with matching placement. This small population includes QA and supports no buyer-preference claim. |
+| Technology exposures by project | 22 `technology_exposure` events across 3 projects and 3 active users | 22 `technology_exposure` events across 3 projects and 3 active users | Measured visible labels only. Rows are non-additive and support no preference claim. |
+| Contact clicks and non-booking meeting steps | QA diagnostics show 1 `contact_click` and 1 `meeting_step` | Native Events report shows 3 `contact_click` events and 4 `meeting_step` events across 3 users | These events show bounded intent and funnel progress. They do not prove a booking or identify a person. |
+| Verified distributed aliases and observable-visit rate | Unavailable | Unavailable | No confirmed distributed tagged alias exists in verified private custody. The missing denominator is unknown, not 0%. |
+| Verified replies, interviews, hires, and Connect cost | Unavailable | Unavailable | Existing Applied records predate tagged attribution and remain `Historical unknown`. No outcome or cost was inferred from GA4. |
+| Real completed booking receipt | Verified separately on September 21 in XAP-204 | 1 processed `generate_lead` event for 1 user | The native Events report independently contains the processed row. XAP-204 separately verified one Realtime key event after Xavier created the appointment. No appointment or visitor details were inspected or recorded. |
 
-At each review, write one bounded observation, one plausible hypothesis, one evidence gap, and one reversible next experiment. Small samples support hypotheses, not causal conclusions.
+### 28-day interpretation
+
+- Bounded observation: consented page activity continued, but the measured discovery and technology populations did not grow after the seven-day review. No buyer-safe Upwork campaign session appeared.
+- Plausible hypothesis: current traffic is mainly general site and blog activity, while the tagged Upwork workflow has not yet received a confirmed distributed link.
+- Evidence gap: there is no confirmed tagged-send denominator or verified reply, interview, hire, or Connect-cost observation for this cohort.
+- Reversible next experiment: after a future proposal is separately authorized and confirmed sent, record one validated opaque tagged link in private custody and review its eligible session only after processing. Do not change an application or spend Connects as part of reporting.
+
+Small samples support hypotheses, not causal conclusions.
 
 ## Interpretation limits
 
@@ -139,10 +146,9 @@ At each review, write one bounded observation, one plausible hypothesis, one evi
 - GA4 can apply thresholding, sampling, modeled behavior, processing delay, or compatibility restrictions. Record those states when shown.
 - No report proves that a named buyer visited, read a proposal, preferred a technology, booked, replied, interviewed, or hired Xavier.
 
-## Exact continuation
+## Ongoing review
 
-1. On or after October 19, open the saved exploration in Xavier's authenticated Chrome browser and set the custom range to September 21 through October 18, 2026.
-2. Read back the five tab names and exact filters before interpreting values. Keep `Upwork QA diagnostics` separate from `Upwork campaigns (exclude QA)`.
-3. Complete the 28-day column with the actual available values. Record empty cells, private-ledger gaps, thresholding, sampling, or unavailable fields exactly.
-4. Recheck the private attribution record only for verified distributed aliases and independently confirmed outcomes. Do not infer them from GA4.
-5. Close XAP-205 only when every acceptance criterion is satisfied, then close XAP-197 only if all nine children and every parent criterion are complete.
+1. Use exact, dated windows and keep `Upwork QA diagnostics` separate from `Upwork campaigns (exclude QA)`.
+2. Recheck the private attribution record only for confirmed distributed aliases and independently verified outcomes. Do not infer them from GA4.
+3. Preserve `Unavailable` when a denominator or outcome does not exist. Do not convert missing consented traffic into a zero-interest claim.
+4. Repeat the five report questions only when a new decision can be informed by enough compatible evidence.
