@@ -1,0 +1,109 @@
+{
+  "chapter": 9,
+  "title": "Plan issues before asking an agent to build",
+  "slug": "scrum-planning-and-ready-issues",
+  "contentVersion": "1.0.0",
+  "contentHash": "39e462d30c098c3991bd8dabdffeef071694d8da8dae2cd53333df18aa5dcc0e",
+  "editorialDate": "2026-10-24",
+  "publishedAt": "2026-10-24T14:20:21.697Z",
+  "review": "Automated package review under standing owner publication instruction; no individual human editorial approval claimed",
+  "destinations": {
+    "contentful": {
+      "state": "published_delivery_verified"
+    },
+    "website": {
+      "state": "published_render_verified",
+      "url": "https://www.thexap.com/blog/scrum-planning-and-ready-issues"
+    },
+    "linkedin": {
+      "state": "published_api_and_ui_verified",
+      "url": "https://www.linkedin.com/feed/update/urn:li:ugcPost:7519765734177050624",
+      "media": [
+        {
+          "path": "images/delivery-sequence.png",
+          "alt": "Five planned issues run from contract to acceptance; only the first is ready and later inputs need verification",
+          "sha256": "7bfd6790d0eead352e765f4623318c3c3c6048a49038438018f6037b513a3dae"
+        },
+        {
+          "path": "images/hero.png",
+          "alt": "A theater rehearsal shows a performer alongside the lighting, rigging and cue preparation behind the scene",
+          "sha256": "412d6580c775d33fa9645580824fcd61ee4daac2e713ad4fbf4ce24b3a9851cc"
+        }
+      ]
+    },
+    "x": {
+      "state": "ready_for_manual_posting",
+      "threadFile": "twitter-ready.md",
+      "standaloneFile": "x-standalone-ready.md",
+      "automaticallyPosted": false,
+      "weightedCounts": [
+        243,
+        235,
+        238,
+        221,
+        228,
+        255,
+        211,
+        220
+      ]
+    },
+    "archive": {
+      "state": "remote_verification_pending"
+    },
+    "slack": {
+      "state": "milestones_delivered_final_handoff_pending"
+    }
+  },
+  "verification": {
+    "articleFields": "PASS, exact title/date/tags/entire RichText",
+    "assetSourceBytes": "PASS",
+    "desktopTabletMobile": "PASS",
+    "keyboardFocus": "PASS",
+    "socialComposition": "PASS",
+    "anonymity": "PASS",
+    "companion": "PASS, source/DOCX/tagged PDF fidelity, all seven pages inspected; companion documents remain local"
+  },
+  "fileHashes": {
+    "blog.md": {
+      "sha256": "6c75d3fe52d4774e85a46ddcb7ca3802c69f6efb8e6b0833c868973514a4beca",
+      "bytes": 11472
+    },
+    "companion.md": {
+      "sha256": "071f9fcade3329e5c24812f6c3f7c746da4565a4226e6d70f85651d7a21c36fd",
+      "bytes": 10889
+    },
+    "linkedin.md": {
+      "sha256": "062675ed38acd7380d97bb58dda59be40081fcea316a645d8d4f1344d9374aee",
+      "bytes": 1475
+    },
+    "twitter.md": {
+      "sha256": "b2a552d63fd318eb90c7d40157a471078a7efaba8c1bd186a205db8db7b314a0",
+      "bytes": 2233
+    },
+    "x-standalone.md": {
+      "sha256": "70ae4b27ff99e6e3c7c16946ed4c1f0028afde7bb4f5b14ad5bba23b34835ccd",
+      "bytes": 460
+    },
+    "linkedin-ready.md": {
+      "sha256": "6cbb45699f5c8a2665d7f2cf3412c0f718408005245655f82dc77dc7042f7a1d",
+      "bytes": 1201
+    },
+    "twitter-ready.md": {
+      "sha256": "67feac56a977a426f99545475d8e3c5b800775d5235f77b4a6e6c484a0f63f13",
+      "bytes": 2283
+    },
+    "x-standalone-ready.md": {
+      "sha256": "48afef63f428798c15ab6bb5caaa6739e702ee2e40cb2b920d5a3712a0b5ec4a",
+      "bytes": 505
+    },
+    "images/hero.png": {
+      "sha256": "412d6580c775d33fa9645580824fcd61ee4daac2e713ad4fbf4ce24b3a9851cc",
+      "bytes": 3138190
+    },
+    "images/delivery-sequence.png": {
+      "sha256": "7bfd6790d0eead352e765f4623318c3c3c6048a49038438018f6037b513a3dae",
+      "bytes": 177427
+    }
+  },
+  "remainingPublicationBlocker": null
+}
