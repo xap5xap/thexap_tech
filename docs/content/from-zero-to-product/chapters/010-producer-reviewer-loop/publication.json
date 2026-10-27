@@ -1,0 +1,109 @@
+{
+  "chapter": 10,
+  "title": "Build a producer-reviewer loop that checks the actual work",
+  "slug": "producer-reviewer-loop",
+  "contentVersion": "1.0.0",
+  "contentHash": "1b8faf2b347d054cf3d0c6250dc81ce3d7f730267b95dab84781782288ea4f11",
+  "editorialDate": "2026-10-27",
+  "publishedAt": "2026-10-27T14:17:17.660Z",
+  "review": "Automated package review under standing owner publication instruction; no individual human editorial approval claimed",
+  "destinations": {
+    "contentful": {
+      "state": "published_delivery_verified"
+    },
+    "website": {
+      "state": "published_render_verified",
+      "url": "https://www.thexap.com/blog/producer-reviewer-loop"
+    },
+    "linkedin": {
+      "state": "published_api_and_ui_verified",
+      "url": "https://www.linkedin.com/feed/update/urn:li:ugcPost:7520852777309417473",
+      "media": [
+        {
+          "path": "images/full-recheck.png",
+          "alt": "An initial export misses R2; the corrected export restores it and all four criteria are checked again",
+          "sha256": "0a9e9b675b7e012b34bf21babde1ab73f0bdd7bedab4cfb13827ca8a5cee5c9d"
+        },
+        {
+          "path": "images/hero.png",
+          "alt": "Hands compare two windowed blue sheets beside a loose coral paper strip",
+          "sha256": "f01be70762fb183e50c48378c646d4d6f120ae779a12e242c1f74eebcd3494b4"
+        }
+      ]
+    },
+    "x": {
+      "state": "ready_for_manual_posting",
+      "threadFile": "twitter-ready.md",
+      "standaloneFile": "x-standalone-ready.md",
+      "automaticallyPosted": false,
+      "weightedCounts": [
+        234,
+        216,
+        258,
+        245,
+        245,
+        233,
+        209,
+        217
+      ]
+    },
+    "archive": {
+      "state": "remote_verification_pending"
+    },
+    "slack": {
+      "state": "milestones_delivered_final_handoff_pending"
+    }
+  },
+  "verification": {
+    "articleFields": "PASS, exact title/date/tags/entire RichText",
+    "assetSourceBytes": "PASS",
+    "desktopTabletMobile": "PASS",
+    "keyboardFocus": "PASS",
+    "socialComposition": "PASS",
+    "anonymity": "PASS",
+    "companion": "PASS, source/DOCX/tagged PDF fidelity, all four pages inspected; companion documents remain local"
+  },
+  "fileHashes": {
+    "blog.md": {
+      "sha256": "2c3456e2882df22956a78cbea4770c3faed1e22e569c6611c3f932b4e1bd2fb7",
+      "bytes": 10900
+    },
+    "companion.md": {
+      "sha256": "f7bbc71068cad31277ebfb09143f4c6c3d83959a862cd8c9ed9b1293d58d3883",
+      "bytes": 7427
+    },
+    "linkedin.md": {
+      "sha256": "416d3f90d250323d45961c53e0fac16c1f5551cbcbe6e46049b8519d17ea1ac6",
+      "bytes": 1558
+    },
+    "twitter.md": {
+      "sha256": "cd2168223a485814d96249fd8c5505b51bacac26681f4321a9c5b4f79421b4d7",
+      "bytes": 2186
+    },
+    "x-standalone.md": {
+      "sha256": "08a1543299ff2237aae3e111dc71d50e52fc086df66c679fbf4483ac987e0ac5",
+      "bytes": 439
+    },
+    "linkedin-ready.md": {
+      "sha256": "a35f96bfc18a0a0da9549b9142fed7c20f5c98d6c692927ab60dbaa89704f7ff",
+      "bytes": 1325
+    },
+    "twitter-ready.md": {
+      "sha256": "d74c96fea625afcd3c86a9b1f0c1966eaa5de069472b08550b524f13e2cbd297",
+      "bytes": 2231
+    },
+    "x-standalone-ready.md": {
+      "sha256": "e97543248867fc48e864ba565e074c0a470b6176ba84831dc42424a069dfb02a",
+      "bytes": 475
+    },
+    "images/hero.png": {
+      "sha256": "f01be70762fb183e50c48378c646d4d6f120ae779a12e242c1f74eebcd3494b4",
+      "bytes": 2391879
+    },
+    "images/full-recheck.png": {
+      "sha256": "0a9e9b675b7e012b34bf21babde1ab73f0bdd7bedab4cfb13827ca8a5cee5c9d",
+      "bytes": 112846
+    }
+  },
+  "remainingPublicationBlocker": null
+}
