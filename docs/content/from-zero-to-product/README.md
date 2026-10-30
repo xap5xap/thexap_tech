@@ -16,6 +16,7 @@ This directory keeps the public Markdown and publication images for Xavier's tut
 | 08. Configure AI agents around bounded jobs | [Article](chapters/008-configure-ai-agents-and-skills/blog.md) | [Ready thread](chapters/008-configure-ai-agents-and-skills/twitter-ready.md) |
 | 09. Plan issues before asking an agent to build | [Article](chapters/009-scrum-planning-and-ready-issues/blog.md) | [Ready thread](chapters/009-scrum-planning-and-ready-issues/twitter-ready.md) |
 | 10. Build a producer-reviewer loop that checks the actual work | [Article](chapters/010-producer-reviewer-loop/blog.md) | [Ready thread](chapters/010-producer-reviewer-loop/twitter-ready.md) |
+| 11. Make AI goal progress visible with Slack notifications | [Article](chapters/011-goal-progress-and-slack-notifications/blog.md) | [Ready thread](chapters/011-goal-progress-and-slack-notifications/twitter-ready.md) |
 
 CH-02 was published on October 1, 2026: [live article](https://www.thexap.com/blog/validate-and-reach-people), [LinkedIn post](https://www.linkedin.com/feed/update/urn:li:share:7511485218906726401), and [publication record](chapters/002-validate-and-reach-people/publication.json). The X thread and [standalone post](chapters/002-validate-and-reach-people/x-standalone-ready.md) contain the verified live link and are ready for manual posting. Original authoring snapshots retain their exact approved bytes.
 
@@ -34,6 +35,8 @@ CH-08 was published on October 21, 2026: [live article](https://www.thexap.com/b
 CH-09 was published on October 24, 2026: [live article](https://www.thexap.com/blog/scrum-planning-and-ready-issues), [LinkedIn post](https://www.linkedin.com/feed/update/urn:li:ugcPost:7519765734177050624), and [publication record](chapters/009-scrum-planning-and-ready-issues/publication.json). Its LinkedIn adaptation includes the dependency/readiness diagram and theater/backstage hero. The [ready X thread](chapters/009-scrum-planning-and-ready-issues/twitter-ready.md) and [standalone copy](chapters/009-scrum-planning-and-ready-issues/x-standalone-ready.md) are for manual posting.
 
 CH-10 was published on October 27, 2026: [live article](https://www.thexap.com/blog/producer-reviewer-loop), [LinkedIn post](https://www.linkedin.com/feed/update/urn:li:ugcPost:7520852777309417473), and [publication record](chapters/010-producer-reviewer-loop/publication.json). Its LinkedIn adaptation includes the full-recheck comparison and blue paper hero. The [ready X thread](chapters/010-producer-reviewer-loop/twitter-ready.md) and [standalone copy](chapters/010-producer-reviewer-loop/x-standalone-ready.md) are for manual posting.
+
+CH-11 was published on October 30, 2026: [live article](https://www.thexap.com/blog/goal-progress-and-slack-notifications), [LinkedIn post](https://www.linkedin.com/feed/update/urn:li:ugcPost:7521940238756122624), and [publication record](chapters/011-goal-progress-and-slack-notifications/publication.json). Its LinkedIn adaptation includes the event timeline and clockwork and bell illustration. The [ready X thread](chapters/011-goal-progress-and-slack-notifications/twitter-ready.md) and [standalone copy](chapters/011-goal-progress-and-slack-notifications/x-standalone-ready.md) are for manual posting.
 
 ## Scheduled workflow
 
