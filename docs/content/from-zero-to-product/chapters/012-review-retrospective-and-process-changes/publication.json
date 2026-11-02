@@ -1,0 +1,109 @@
+{
+  "chapter": 12,
+  "title": "Use reviews and retrospectives to improve the process",
+  "slug": "review-retrospective-and-process-changes",
+  "contentVersion": "1.0.0",
+  "contentHash": "9377a516ba2b22af1c9b90ba10191afc364b722b65fe02a004b94b5bf1381ec4",
+  "editorialDate": "2026-11-02",
+  "publishedAt": "2026-11-02T14:14:55.931Z",
+  "review": "Automated package review under standing owner publication instruction; no individual human editorial approval claimed",
+  "destinations": {
+    "contentful": {
+      "state": "published_delivery_verified"
+    },
+    "website": {
+      "state": "published_render_verified",
+      "url": "https://www.thexap.com/blog/review-retrospective-and-process-changes"
+    },
+    "linkedin": {
+      "state": "published_api_and_ui_verified",
+      "url": "https://www.linkedin.com/feed/update/urn:li:ugcPost:7523025978021838848",
+      "media": [
+        {
+          "path": "images/improvement-loop.png",
+          "alt": "A loop connects a problem, one bounded change and a later check before deciding to keep, revise or retire it.",
+          "sha256": "9fdf6d2764b0c4d503d5ee5f3c089b6f37d317474ca9e99628287a0f3a6a879a"
+        },
+        {
+          "path": "images/hero.png",
+          "alt": "An ink drawing shows a hand lifting one red stitch from black cloth while neighboring stitches remain intact.",
+          "sha256": "e57d55149bcbd673970a2fb5952a54f018fc95cfb82299c324695c751c413c27"
+        }
+      ]
+    },
+    "x": {
+      "state": "ready_for_manual_posting",
+      "threadFile": "twitter-ready.md",
+      "standaloneFile": "x-standalone-ready.md",
+      "automaticallyPosted": false,
+      "weightedCounts": [
+        253,
+        217,
+        236,
+        224,
+        242,
+        258,
+        205,
+        208
+      ]
+    },
+    "archive": {
+      "state": "remote_verification_pending"
+    },
+    "slack": {
+      "state": "milestones_delivered_final_handoff_pending"
+    }
+  },
+  "verification": {
+    "articleFields": "PASS, exact title/date/tags/entire RichText",
+    "assetSourceBytes": "PASS",
+    "desktopTabletMobile": "PASS",
+    "keyboardFocus": "PASS",
+    "socialComposition": "PASS",
+    "anonymity": "PASS",
+    "companion": "PASS, source/DOCX/tagged PDF fidelity, all five pages inspected; companion documents remain local"
+  },
+  "fileHashes": {
+    "blog.md": {
+      "sha256": "2afeb526946727b3301c8b083c13e26cd73595be565b3057236fc8277d7580ba",
+      "bytes": 10644
+    },
+    "companion.md": {
+      "sha256": "94bfb7d53b95dd4c330e0662be2b77887cc83a2f6b24db2bdef112a4c41b13b2",
+      "bytes": 6933
+    },
+    "linkedin.md": {
+      "sha256": "617e00c07c26e436375df262f353d0a45fa8974cf3d55296939a20282cf38820",
+      "bytes": 1391
+    },
+    "twitter.md": {
+      "sha256": "27cc1e0b08f54f3e06417b0fb8ab3636f86f9e63e8c6f087a7ca819ee2f8f4c2",
+      "bytes": 2286
+    },
+    "x-standalone.md": {
+      "sha256": "ed74470c2c9109edfacb1c6e163b2073f6e8bf5dc6db1cbd3fd6936fbc11c58e",
+      "bytes": 421
+    },
+    "linkedin-ready.md": {
+      "sha256": "af115620911c357d1a1733b7e191e3657a5aa8f5ad156e3406274b7835350977",
+      "bytes": 1126
+    },
+    "twitter-ready.md": {
+      "sha256": "ffee0398c836898ed846fc1b0d3d4de7beef13c437f020a8c3197ecb5d2053dc",
+      "bytes": 2349
+    },
+    "x-standalone-ready.md": {
+      "sha256": "a9193af7190a61fdefce0976fa8adbd74d43ee29c2833c5571a245a93f8f63ae",
+      "bytes": 475
+    },
+    "images/hero.png": {
+      "sha256": "e57d55149bcbd673970a2fb5952a54f018fc95cfb82299c324695c751c413c27",
+      "bytes": 3217867
+    },
+    "images/improvement-loop.png": {
+      "sha256": "9fdf6d2764b0c4d503d5ee5f3c089b6f37d317474ca9e99628287a0f3a6a879a",
+      "bytes": 70023
+    }
+  },
+  "remainingPublicationBlocker": null
+}
