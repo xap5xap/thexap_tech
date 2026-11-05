@@ -32,7 +32,7 @@
       ]
     },
     "x": {
-      "state": "ready_for_manual_posting",
+      "state": "ready_manual_handoff_delivered",
       "threadFile": "twitter-ready.md",
       "standaloneFile": "x-standalone-ready.md",
       "automaticallyPosted": false,
@@ -44,13 +44,15 @@
         203,
         185,
         210
-      ]
+      ],
+      "manualPostState": "not_posted"
     },
     "archive": {
-      "state": "remote_verification_pending"
+      "state": "committed_pushed_exact_readback_verified",
+      "sourceFilesCommit": "1660b5bad078e39abc73a9596fd7e3e56ea33412"
     },
     "slack": {
-      "state": "milestones_delivered_final_handoff_pending"
+      "state": "final_manual_x_handoff_delivered_verified"
     }
   },
   "verification": {
@@ -104,5 +106,6 @@
       "bytes": 114396
     }
   },
-  "remainingPublicationBlocker": null
+  "remainingPublicationBlocker": null,
+  "completedAt": "2026-11-05T14:16:24.396854+00:00"
 }
