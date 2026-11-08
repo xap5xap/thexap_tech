@@ -1,0 +1,46 @@
+{
+  "algorithm": "SHA-256",
+  "contentVersion": "1.0.0",
+  "files": {
+    "blog.md": {
+      "sha256": "38b6e9fcfc754856be4ecbdae4c4e1983cb96793bf5c242ea279be7e44b96331",
+      "bytes": 11653
+    },
+    "companion.md": {
+      "sha256": "80b844aaa0e3a33ba9574ecc69bbb81fac83aeb25c07068887ecd3d6fadd8c41",
+      "bytes": 5962
+    },
+    "linkedin.md": {
+      "sha256": "a4e32725376e74c46c19def3425da105440d28722567209ee30b8bcb59f42aa4",
+      "bytes": 1458
+    },
+    "twitter.md": {
+      "sha256": "40ffdbd7ed1424fe3ecdf03fb27093c4cf2c440e2304623d6fa42cf0a0585478",
+      "bytes": 1924
+    },
+    "x-standalone.md": {
+      "sha256": "48462a5915d54b81315fe3317d560feb5e7033bc9016265161f9621c0e071bff",
+      "bytes": 448
+    },
+    "linkedin-ready.md": {
+      "sha256": "c2123afef30c6f5d489850808da82f1de394fe6fd460cd36dcc1b2f6c22c4aea",
+      "bytes": 1138
+    },
+    "twitter-ready.md": {
+      "sha256": "5025d7a4ad315eaf17be6de018084f24e69bc9b7278a834661d362f95a7f9940",
+      "bytes": 1961
+    },
+    "x-standalone-ready.md": {
+      "sha256": "6a3cbfecf7c29c82ccd26c4a59c43cd8a2869fb7a8bd29bbc3d07dd1dc2ccd2b",
+      "bytes": 485
+    },
+    "images/hero.png": {
+      "sha256": "7aca916609b3ab1730cb6990fc3369fde184e45cb6c98c2788d4d863dbacc6cb",
+      "bytes": 2789724
+    },
+    "images/transaction-boundary.png": {
+      "sha256": "6acfc7d1a2a55297fa09edcfbffe4df1fb5a4755043659f732929045150bd6af",
+      "bytes": 108675
+    }
+  }
+}

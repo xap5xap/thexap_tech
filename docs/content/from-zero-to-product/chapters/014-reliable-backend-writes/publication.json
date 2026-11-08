@@ -1,0 +1,109 @@
+{
+  "chapter": 14,
+  "title": "Build backend writes that survive retries and partial failure",
+  "slug": "reliable-backend-writes",
+  "contentVersion": "1.0.0",
+  "contentHash": "da0ec7d4de0f27f1cfdc83954cde3d5ad640210684415d1bf0c6a2ec7cb134da",
+  "editorialDate": "2026-11-08",
+  "publishedAt": "2026-11-08T14:14:00.811Z",
+  "review": "Automated package review under standing owner publication instruction; no individual human editorial approval claimed",
+  "destinations": {
+    "contentful": {
+      "state": "published_delivery_verified"
+    },
+    "website": {
+      "state": "published_render_verified",
+      "url": "https://www.thexap.com/blog/reliable-backend-writes"
+    },
+    "linkedin": {
+      "state": "published_api_and_ui_verified",
+      "url": "https://www.linkedin.com/feed/update/urn:li:ugcPost:7525199852188782592",
+      "media": [
+        {
+          "path": "images/transaction-boundary.png",
+          "alt": "One database commit contains request R-42 at version 8, change C-17, receipt I-17 and work W-17; a worker later reads W-17 and sends it to the board",
+          "sha256": "6acfc7d1a2a55297fa09edcfbffe4df1fb5a4755043659f732929045150bd6af"
+        },
+        {
+          "path": "images/hero.png",
+          "alt": "A hand holds fading copies of a puzzle piece above a matching red piece already fitted into a mint panel",
+          "sha256": "7aca916609b3ab1730cb6990fc3369fde184e45cb6c98c2788d4d863dbacc6cb"
+        }
+      ]
+    },
+    "x": {
+      "state": "ready_for_manual_posting",
+      "threadFile": "twitter-ready.md",
+      "standaloneFile": "x-standalone-ready.md",
+      "automaticallyPosted": false,
+      "weightedCounts": [
+        198,
+        204,
+        207,
+        222,
+        212,
+        205,
+        225,
+        226
+      ]
+    },
+    "archive": {
+      "state": "remote_verification_pending"
+    },
+    "slack": {
+      "state": "milestones_delivered_final_handoff_pending"
+    }
+  },
+  "verification": {
+    "articleFields": "PASS, exact title/date/tags/entire RichText",
+    "assetSourceBytes": "PASS",
+    "desktopTabletMobile": "PASS",
+    "keyboardFocus": "PASS",
+    "socialComposition": "PASS",
+    "anonymity": "PASS",
+    "companion": "PASS, source/DOCX/tagged PDF fidelity, all three pages inspected; companion documents remain local"
+  },
+  "fileHashes": {
+    "blog.md": {
+      "sha256": "38b6e9fcfc754856be4ecbdae4c4e1983cb96793bf5c242ea279be7e44b96331",
+      "bytes": 11653
+    },
+    "companion.md": {
+      "sha256": "80b844aaa0e3a33ba9574ecc69bbb81fac83aeb25c07068887ecd3d6fadd8c41",
+      "bytes": 5962
+    },
+    "linkedin.md": {
+      "sha256": "a4e32725376e74c46c19def3425da105440d28722567209ee30b8bcb59f42aa4",
+      "bytes": 1458
+    },
+    "twitter.md": {
+      "sha256": "40ffdbd7ed1424fe3ecdf03fb27093c4cf2c440e2304623d6fa42cf0a0585478",
+      "bytes": 1924
+    },
+    "x-standalone.md": {
+      "sha256": "48462a5915d54b81315fe3317d560feb5e7033bc9016265161f9621c0e071bff",
+      "bytes": 448
+    },
+    "linkedin-ready.md": {
+      "sha256": "c2123afef30c6f5d489850808da82f1de394fe6fd460cd36dcc1b2f6c22c4aea",
+      "bytes": 1138
+    },
+    "twitter-ready.md": {
+      "sha256": "5025d7a4ad315eaf17be6de018084f24e69bc9b7278a834661d362f95a7f9940",
+      "bytes": 1961
+    },
+    "x-standalone-ready.md": {
+      "sha256": "6a3cbfecf7c29c82ccd26c4a59c43cd8a2869fb7a8bd29bbc3d07dd1dc2ccd2b",
+      "bytes": 485
+    },
+    "images/hero.png": {
+      "sha256": "7aca916609b3ab1730cb6990fc3369fde184e45cb6c98c2788d4d863dbacc6cb",
+      "bytes": 2789724
+    },
+    "images/transaction-boundary.png": {
+      "sha256": "6acfc7d1a2a55297fa09edcfbffe4df1fb5a4755043659f732929045150bd6af",
+      "bytes": 108675
+    }
+  },
+  "remainingPublicationBlocker": null
+}
