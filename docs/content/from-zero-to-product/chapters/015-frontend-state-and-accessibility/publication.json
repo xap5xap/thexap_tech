@@ -1,0 +1,109 @@
+{
+  "chapter": 15,
+  "title": "Build a frontend that tells users what actually happened",
+  "slug": "frontend-state-and-accessibility",
+  "contentVersion": "1.0.0",
+  "contentHash": "a31710cc2702a15e4808a9fffacfc6ee0e68add0a9ebbdc83a9444707d10ce00",
+  "editorialDate": "2026-11-11",
+  "publishedAt": "2026-11-11T14:22:59.178Z",
+  "review": "Automated package review under standing owner publication instruction; no individual human editorial approval claimed",
+  "destinations": {
+    "contentful": {
+      "state": "published_delivery_verified"
+    },
+    "website": {
+      "state": "published_render_verified",
+      "url": "https://www.thexap.com/blog/frontend-state-and-accessibility"
+    },
+    "linkedin": {
+      "state": "published_api_and_ui_verified",
+      "url": "https://www.linkedin.com/feed/update/urn:li:ugcPost:7526289258861494273",
+      "media": [
+        {
+          "path": "images/save-states.png",
+          "alt": "Illustrative editor shows a pending title, an unconfirmed save with a status check, and a confirmed title while the board is still at version 7",
+          "sha256": "d7726d2257fb06177436f10fcbd24e0e35b73fb38cca1c282cd10dc4a34cc8ba"
+        },
+        {
+          "path": "images/hero.png",
+          "alt": "A brass label holder in clear view beside another behind textured blue glass",
+          "sha256": "23042ba6ac2f00c8ac43cf823b3b17398c123b3f7a56e215518546a11cd37c8b"
+        }
+      ]
+    },
+    "x": {
+      "state": "ready_for_manual_posting",
+      "threadFile": "twitter-ready.md",
+      "standaloneFile": "x-standalone-ready.md",
+      "automaticallyPosted": false,
+      "weightedCounts": [
+        184,
+        175,
+        174,
+        210,
+        197,
+        205,
+        163,
+        219
+      ]
+    },
+    "archive": {
+      "state": "remote_verification_pending"
+    },
+    "slack": {
+      "state": "milestones_delivered_final_handoff_pending"
+    }
+  },
+  "verification": {
+    "articleFields": "PASS, exact title/date/tags/entire RichText",
+    "assetSourceBytes": "PASS",
+    "desktopTabletMobile": "PASS",
+    "keyboardFocus": "PASS",
+    "socialComposition": "PASS",
+    "anonymity": "PASS",
+    "companion": "PASS, source/DOCX/tagged PDF fidelity, all three pages inspected; companion documents remain local"
+  },
+  "fileHashes": {
+    "blog.md": {
+      "sha256": "08dc79ee125330285b886c89ab9466c9c23167e22df16a998cf1c58cd8d2548a",
+      "bytes": 10101
+    },
+    "companion.md": {
+      "sha256": "854b4816f6c18f080a7f246c3ce205b434054cffdf9b45365116e8134142967b",
+      "bytes": 4826
+    },
+    "linkedin.md": {
+      "sha256": "3bbcb6a03b5af4c9462b12fe4c631a73a2656c109794270435df27781deea879",
+      "bytes": 1225
+    },
+    "twitter.md": {
+      "sha256": "0118950b329607c72950618746fa09f84ec2043262439daa63aed72feab321f0",
+      "bytes": 1665
+    },
+    "x-standalone.md": {
+      "sha256": "9e0ec045d10573f8a570522428b9f9806d4c71216834ef1b0f8cd250423358d4",
+      "bytes": 424
+    },
+    "linkedin-ready.md": {
+      "sha256": "91c225da6805e115b98a019d7666e732c447aabe452d98e386e637fceda38d2b",
+      "bytes": 956
+    },
+    "twitter-ready.md": {
+      "sha256": "39bf43c1dcb69ef62a3a1e30179ab224a2075388baaef50cb63ddc4cbe61331e",
+      "bytes": 1711
+    },
+    "x-standalone-ready.md": {
+      "sha256": "7e6d7cd2145203ffd9bac0cc2a81a43d7c317b464a1cbeed76f293d73e1d53e8",
+      "bytes": 470
+    },
+    "images/hero.png": {
+      "sha256": "23042ba6ac2f00c8ac43cf823b3b17398c123b3f7a56e215518546a11cd37c8b",
+      "bytes": 2272592
+    },
+    "images/save-states.png": {
+      "sha256": "d7726d2257fb06177436f10fcbd24e0e35b73fb38cca1c282cd10dc4a34cc8ba",
+      "bytes": 108317
+    }
+  },
+  "remainingPublicationBlocker": null
+}

@@ -20,6 +20,7 @@ This directory keeps the public Markdown and publication images for Xavier's tut
 | 12. Use reviews and retrospectives to improve the process | [Article](chapters/012-review-retrospective-and-process-changes/blog.md) | [Ready thread](chapters/012-review-retrospective-and-process-changes/twitter-ready.md) |
 | 13. Make the data model and API describe what is true | [Article](chapters/013-contracts-data-and-state/blog.md) | [Ready thread](chapters/013-contracts-data-and-state/twitter-ready.md) |
 | 14. Build backend writes that survive retries and partial failure | [Article](chapters/014-reliable-backend-writes/blog.md) | [Ready thread](chapters/014-reliable-backend-writes/twitter-ready.md) |
+| 15. Build a frontend that tells users what actually happened | [Article](chapters/015-frontend-state-and-accessibility/blog.md) | [Ready thread](chapters/015-frontend-state-and-accessibility/twitter-ready.md) |
 
 CH-02 was published on October 1, 2026: [live article](https://www.thexap.com/blog/validate-and-reach-people), [LinkedIn post](https://www.linkedin.com/feed/update/urn:li:share:7511485218906726401), and [publication record](chapters/002-validate-and-reach-people/publication.json). The X thread and [standalone post](chapters/002-validate-and-reach-people/x-standalone-ready.md) contain the verified live link and are ready for manual posting. Original authoring snapshots retain their exact approved bytes.
 
@@ -46,6 +47,8 @@ CH-12 was published on November 2, 2026: [live article](https://www.thexap.com/b
 CH-13 was published on November 5, 2026: [live article](https://www.thexap.com/blog/contracts-data-and-state), [LinkedIn post](https://www.linkedin.com/feed/update/urn:li:ugcPost:7524111304022880259), and [publication record](chapters/013-contracts-data-and-state/publication.json). Its LinkedIn adaptation includes the version trace and print workshop illustration. The [ready X thread](chapters/013-contracts-data-and-state/twitter-ready.md) and [standalone copy](chapters/013-contracts-data-and-state/x-standalone-ready.md) are for manual posting.
 
 CH-14 was published on November 8, 2026: [live article](https://www.thexap.com/blog/reliable-backend-writes), [LinkedIn post](https://www.linkedin.com/feed/update/urn:li:ugcPost:7525199852188782592), and [publication record](chapters/014-reliable-backend-writes/publication.json). Its LinkedIn adaptation includes the transaction diagram and cut-paper puzzle illustration. The [ready X thread](chapters/014-reliable-backend-writes/twitter-ready.md) and [standalone copy](chapters/014-reliable-backend-writes/x-standalone-ready.md) are for manual posting.
+
+CH-15 was published on November 11, 2026: [live article](https://www.thexap.com/blog/frontend-state-and-accessibility), [LinkedIn post](https://www.linkedin.com/feed/update/urn:li:ugcPost:7526289258861494273), and [publication record](chapters/015-frontend-state-and-accessibility/publication.json). Its LinkedIn adaptation includes the interface illustration and blue-glass hero. The [ready X thread](chapters/015-frontend-state-and-accessibility/twitter-ready.md) and [standalone copy](chapters/015-frontend-state-and-accessibility/x-standalone-ready.md) are for manual posting.
 
 ## Scheduled workflow
 
