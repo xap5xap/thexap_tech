@@ -1,0 +1,109 @@
+{
+  "chapter": 17,
+  "title": "Build an evidence trail from requirement to working experience",
+  "slug": "evidence-and-acceptance",
+  "contentVersion": "1.0.0",
+  "contentHash": "f3f01309bf8b60f22fcd49021a170a171f09f314265482e37e5001401513bba8",
+  "editorialDate": "2026-11-17",
+  "publishedAt": "2026-11-17T14:15:17.656Z",
+  "review": "Automated package review under standing owner publication instruction; no individual human editorial approval claimed",
+  "destinations": {
+    "contentful": {
+      "state": "published_delivery_verified"
+    },
+    "website": {
+      "state": "published_render_verified",
+      "url": "https://www.thexap.com/blog/evidence-and-acceptance"
+    },
+    "linkedin": {
+      "state": "published_api_and_ui_verified",
+      "url": "https://www.linkedin.com/feed/update/urn:li:ugcPost:7528461247630069762",
+      "media": [
+        {
+          "path": "images/evidence-gap.png",
+          "alt": "The fictional evidence matrix shows three supported software checks and an unobserved user action",
+          "sha256": "2b1790e881a3d218db3193cf3da893d0c8cbeb862964075992a9c3392154f633"
+        },
+        {
+          "path": "images/hero.png",
+          "alt": "A lime pin aligns holes in layered purple sheets beside an empty opening",
+          "sha256": "bec1926b2595211fbb19ad27a3a3020682cd405577a1a2bf3689a5523e0867b6"
+        }
+      ]
+    },
+    "x": {
+      "state": "ready_for_manual_posting",
+      "threadFile": "twitter-ready.md",
+      "standaloneFile": "x-standalone-ready.md",
+      "automaticallyPosted": false,
+      "weightedCounts": [
+        194,
+        189,
+        192,
+        193,
+        165,
+        181,
+        156,
+        226
+      ]
+    },
+    "archive": {
+      "state": "remote_verification_pending"
+    },
+    "slack": {
+      "state": "milestones_delivered_final_handoff_pending"
+    }
+  },
+  "verification": {
+    "articleFields": "PASS, exact title/date/tags/entire RichText",
+    "assetSourceBytes": "PASS",
+    "desktopTabletMobile": "PASS",
+    "keyboardFocus": "PASS",
+    "socialComposition": "PASS",
+    "anonymity": "PASS",
+    "companion": "PASS, source/DOCX/tagged PDF fidelity, all three pages inspected; companion documents remain local"
+  },
+  "fileHashes": {
+    "blog.md": {
+      "sha256": "75e432d6a180345eb935ce49f9fba607679e4c29112d828d1d83d2fb7a998af7",
+      "bytes": 7773
+    },
+    "companion.md": {
+      "sha256": "a09c592df5bf1cf3a39d9bb0955794458d29fc7bc7f68d786a16354810948710",
+      "bytes": 2965
+    },
+    "linkedin.md": {
+      "sha256": "1932ae3ccb6e6ede55113527b2c069531567d4e4f3de3673c91b009eaf192cb2",
+      "bytes": 1215
+    },
+    "twitter.md": {
+      "sha256": "22cfcb9ca454885233248e86e04f72935934ca36e94c88a14607fa9e3b9b7bf2",
+      "bytes": 1699
+    },
+    "x-standalone.md": {
+      "sha256": "d81e46b6f451a89832d1fe05f309336524c4f8e7c43f1c3badea5207ddb1c718",
+      "bytes": 472
+    },
+    "linkedin-ready.md": {
+      "sha256": "c1ffae45838845043eedd7ccd75486622dd342da84557450f5f076b822c0bbd1",
+      "bytes": 986
+    },
+    "twitter-ready.md": {
+      "sha256": "8e9dd0008506e4e280806a78cd6594d2834e0a0a127ba8beaa153c8d1797b7ab",
+      "bytes": 1760
+    },
+    "x-standalone-ready.md": {
+      "sha256": "dbf85c668e16ba1dc6e394005d9fe3fe3d87e29a175e0f05fae6f8e2c9b97020",
+      "bytes": 533
+    },
+    "images/hero.png": {
+      "sha256": "bec1926b2595211fbb19ad27a3a3020682cd405577a1a2bf3689a5523e0867b6",
+      "bytes": 3560604
+    },
+    "images/evidence-gap.png": {
+      "sha256": "2b1790e881a3d218db3193cf3da893d0c8cbeb862964075992a9c3392154f633",
+      "bytes": 95539
+    }
+  },
+  "remainingPublicationBlocker": null
+}
