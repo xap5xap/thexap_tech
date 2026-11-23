@@ -1,0 +1,42 @@
+{
+  "blog.md": {
+    "sha256": "03726b2578c7181ae873a2fcef2f9b9d4e617f0b7843b03e12caaba13cd2c4af",
+    "bytes": 8160
+  },
+  "companion.md": {
+    "sha256": "daf3a7ddb245b53a3b8751b098168f26dbb9aaade0a3f374c2a199ff69fd437e",
+    "bytes": 2955
+  },
+  "linkedin.md": {
+    "sha256": "5593a0e5b2ee5f4576e769f6381d93559c6ea6fcd7befa07517fbabb3448ee67",
+    "bytes": 1082
+  },
+  "twitter.md": {
+    "sha256": "26bd2024ee7a1df435b7faabb75823ab5a82f49d2f959eed3e770a51844021e8",
+    "bytes": 1456
+  },
+  "x-standalone.md": {
+    "sha256": "c02ad7d0a301d391df133ce473b00c4ed203f783a9564511ff8af34c19e870ec",
+    "bytes": 259
+  },
+  "images/hero.png": {
+    "sha256": "b1e11a6aa27601b67d94af03058b238238d899e916cd2dc17c70184fbc4f27a4",
+    "bytes": 1949799
+  },
+  "images/hosted-journey.png": {
+    "sha256": "f322b1840095365e02e0578c6dde51a6ee973a36abb2ee9373376e55b7f5f4bc",
+    "bytes": 67411
+  },
+  "linkedin-ready.md": {
+    "sha256": "88f9411b86338fa973fa411f7032bc1f6d50fe6574da76855aec6a72134731f3",
+    "bytes": 921
+  },
+  "twitter-ready.md": {
+    "sha256": "b54ab7cc8c3996a40b07084c6312f850b61b717764b86969f636ee1ffda7bc0f",
+    "bytes": 1498
+  },
+  "x-standalone-ready.md": {
+    "sha256": "f44d87e7b8bc90f1f98c9316db9952303e48977028ec7a5ad9ad46e567485e44",
+    "bytes": 301
+  }
+}
